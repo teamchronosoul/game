@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace VN.UI
     public class VNLogPanelUGUI : MonoBehaviour
     {
         [SerializeField] private GameObject root;
-        [SerializeField] private Text logText;
+        [SerializeField] private TextMeshProUGUI logText;
 
         public bool IsOpen => root != null && root.activeSelf;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Text;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,7 @@ namespace VN.UI
 {
     public class VNTypewriterUGUI : MonoBehaviour
     {
-        [SerializeField] private Text targetText;
+        [SerializeField] private TextMeshProUGUI targetText;
 
         [Header("Typing")]
         [Min(1f)] public float charsPerSecond = 35f;

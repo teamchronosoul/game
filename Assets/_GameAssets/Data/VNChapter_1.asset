@@ -1,0 +1,399 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4cdc04c1304297a6b2f060f917eb30, type: 3}
+  m_Name: VNChapter_1
+  m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
+  chapterId: chapter_01
+  steps:
+  - rid: 4444056884916519067
+  - rid: 4444056884916519031
+  - rid: 4444056884916519032
+  - rid: 4444056884916519035
+  - rid: 4444056884916519036
+  - rid: 4444056884916519038
+  - rid: 4444056884916519040
+  - rid: 4444056884916519041
+  - rid: 4444056884916519042
+  - rid: 4444056884916519055
+  - rid: 4444056884916519056
+  - rid: 4444056884916519058
+  - rid: 4444056884916519059
+  - rid: 4444056884916519060
+  - rid: 4444056884916519061
+  - rid: 4444056884916519062
+  - rid: 4444056890768883787
+  - rid: 4444056884916519043
+  - rid: 4444056884916519045
+  - rid: 4444056884916519046
+  - rid: 4444056884916519047
+  - rid: 4444056884916519048
+  - rid: 4444056884916519049
+  - rid: 4444056884916519064
+  references:
+    version: 2
+    RefIds:
+    - rid: 4444056884916519031
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_002
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: You step into your mentor's office and instantly spot an old floor-to-ceiling
+          bookcase packed with books in all the languages this world speaks.
+        addToLog: 1
+        nextStepId: step_003
+    - rid: 4444056884916519032
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_003
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Before you get a chance to study it, Shinrai invites you to take a
+          seat.
+        addToLog: 1
+        nextStepId: step_024
+    - rid: 4444056884916519035
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_004
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Greetings, scholar. I am pleased to welcome you to the Order of Labyrinth.
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519036
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_005
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'A faculty renowned for its thinkers and strategists, we take pride
+          in our academic achievements and the foresight that we provide to the academy. '
+        addToLog: 1
+        nextStepId: step_006
+    - rid: 4444056884916519038
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_006
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: You look at your mentor. He is serious and distant, but there's a hint
+          of pride in his voice.
+        addToLog: 1
+        nextStepId: step_007
+    - rid: 4444056884916519040
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_007
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: No wonder. Shinrai puts a lot of his time into making sure the faculty
+          stays at the top of Chronosoul's academic ratings.
+        addToLog: 1
+        nextStepId: step_008
+    - rid: 4444056884916519041
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_008
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Do you have any questions you would like to ask? Now is the perfect
+          time to do so.
+        addToLog: 1
+        nextStepId: step_009
+    - rid: 4444056884916519042
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_009
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Ask about the faculty
+          nextStepId: step_018
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Ask about Shinrai
+          nextStepId: step_010
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 4444056884916519043
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_018
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Can you tell me more about being a student of the Order of Labyrinth?
+        addToLog: 1
+        nextStepId: step_019
+    - rid: 4444056884916519045
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_019
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'Shinrai gives you a subtle nod of approval. '
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519046
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_020
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Here at the Order of Labyrinth, we value logic and discipline above
+          all.
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519047
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_021
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: If you wish to excel, you must work diligently whilst ensuring you
+          have sufficient time to rest.
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519048
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_022
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'Shinrai furrows his brow in disapproval. '
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519049
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_023
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: In other words, I shall NOT have students exhaust themselves in pursuit
+          of their ambitions.
+        addToLog: 1
+        nextStepId: step_016
+    - rid: 4444056884916519055
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_010
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Can you tell me a bit more about working with you?
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519056
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_011
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Shinrai raises an eyebrow. Did he not expect you to ask that?
+        addToLog: 1
+        nextStepId: step_012
+    - rid: 4444056884916519058
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_012
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'It is rarely that I am asked this question. '
+        addToLog: 1
+        nextStepId: step_013
+    - rid: 4444056884916519059
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_013
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'Well, I suppose I have to warn you. '
+        addToLog: 1
+        nextStepId: step_014
+    - rid: 4444056884916519060
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_014
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: I will ask much of you, but I will do so for your own benefit, as it
+          is my duty to bring forth your potential.
+        addToLog: 1
+        nextStepId: step_015
+    - rid: 4444056884916519061
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_015
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: I hope I have made myself clear.
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444056884916519062
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_016
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: You nod mulling over Shinrai's words.
+        addToLog: 1
+        nextStepId: step_017
+    - rid: 4444056884916519064
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_024
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 4444056884916519069
+        nextStepId: step_004
+    - rid: 4444056884916519067
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_001
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 4444056884916519068
+        nextStepId: step_002
+    - rid: 4444056884916519068
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: 1
+        crossfadeSeconds: 0.25
+    - rid: 4444056884916519069
+      type: {class: VNShowCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        characterId: Shinrai
+        slot: 0
+        pose: 0
+        emotion: 0
+        crossfadeSeconds: 0.2
+    - rid: 4444056890768883787
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_017
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Now that I have somewhat appeased your curiosity, there is something
+          else I wish to mention.
+        addToLog: 1
+        nextStepId: 

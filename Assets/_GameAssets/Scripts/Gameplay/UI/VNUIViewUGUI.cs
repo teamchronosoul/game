@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace VN.UI
 {
@@ -10,8 +12,16 @@ namespace VN.UI
 
         [Header("Dialogue UI")]
         [SerializeField] private GameObject dialogueRoot;
-        [SerializeField] private Text speakerNameText;
+
+        [Tooltip("Корневой объект плашки имени. Будет скрываться для Narrator.")]
+        [SerializeField] private GameObject speakerNameRoot;
+
+        [SerializeField] private TextMeshProUGUI speakerNameText;
         [SerializeField] private VNTypewriterUGUI typewriter;
+
+        [Header("Player")]
+        [Tooltip("Имя, которое будет показано вместо speakerId = YOU")]
+        [SerializeField] private string playerDisplayName = "Player";
 
         [Header("Background")]
         [SerializeField] private VNCrossfadeImageUGUI background;
@@ -40,6 +50,9 @@ namespace VN.UI
         [Header("Audio")]
         [SerializeField] private VNAudioController audioController;
 
+        private System.Action _typewriterFinishedHandler;
+        private System.Action<Vector2> _tapFeedbackHandler;
+
         private void OnEnable()
         {
             if (runner == null) return;
@@ -62,16 +75,26 @@ namespace VN.UI
             runner.OnSkipChanged += _ => RefreshButtons();
             runner.OnSkipAllowedChanged += _ => RefreshButtons();
 
-            runner.OnTapFeedback += pos => { if (tapFx != null) tapFx.Spawn(pos); };
+            _tapFeedbackHandler = pos =>
+            {
+                if (tapFx != null)
+                    tapFx.Spawn(pos);
+            };
+            runner.OnTapFeedback += _tapFeedbackHandler;
 
             if (typewriter != null)
-                typewriter.OnFinished += () => runner.NotifyLineRevealFinished();
+            {
+                _typewriterFinishedHandler = () => runner.NotifyLineRevealFinished();
+                typewriter.OnFinished += _typewriterFinishedHandler;
+            }
 
             WireButtons();
             RefreshButtons();
 
             if (logPanel != null) logPanel.Hide();
             if (choicePanel != null) choicePanel.Hide();
+
+            SetSpeakerPlateVisible(false);
         }
 
         private void OnDisable()
@@ -92,10 +115,11 @@ namespace VN.UI
             runner.OnMusicStop -= OnMusicStop;
             runner.OnSfxPlay -= OnSfx;
 
-            runner.OnTapFeedback -= pos => { if (tapFx != null) tapFx.Spawn(pos); };
+            if (_tapFeedbackHandler != null)
+                runner.OnTapFeedback -= _tapFeedbackHandler;
 
-            if (typewriter != null)
-                typewriter.OnFinished -= () => runner.NotifyLineRevealFinished();
+            if (typewriter != null && _typewriterFinishedHandler != null)
+                typewriter.OnFinished -= _typewriterFinishedHandler;
         }
 
         private void WireButtons()
@@ -105,7 +129,6 @@ namespace VN.UI
                 autoButton.onClick.RemoveAllListeners();
                 autoButton.onClick.AddListener(() =>
                 {
-                    // включение авто – действие игрока: выключаем skip
                     if (runner.SkipEnabled) runner.SetSkip(false);
                     runner.SetAuto(!runner.AutoEnabled);
                 });
@@ -116,7 +139,6 @@ namespace VN.UI
                 skipButton.onClick.RemoveAllListeners();
                 skipButton.onClick.AddListener(() =>
                 {
-                    // включение skip – действие игрока: выключаем auto
                     if (runner.AutoEnabled) runner.SetAuto(false);
                     runner.SetSkip(!runner.SkipEnabled);
                 });
@@ -166,22 +188,52 @@ namespace VN.UI
         private static void SetButtonState(Button btn, bool on)
         {
             if (btn == null) return;
+
             var colors = btn.colors;
-            colors.normalColor = on ? new Color(0.25f, 0.8f, 0.35f, 1f) : colors.normalColor;
+            colors.normalColor = on ? new Color(0.25f, 0.8f, 0.35f, 1f) : Color.white;
             btn.colors = colors;
         }
 
-        // -------- Runner events --------
-
         private void OnLineStarted(VN.VNRunner.VNLinePayload line)
         {
-            if (dialogueRoot != null) dialogueRoot.SetActive(true);
+            if (dialogueRoot != null)
+                dialogueRoot.SetActive(true);
+
+            string shownSpeakerName = ResolveShownSpeakerName(line);
+            bool showSpeakerPlate = !line.isNarrator && !string.IsNullOrWhiteSpace(shownSpeakerName);
+
+            SetSpeakerPlateVisible(showSpeakerPlate);
 
             if (speakerNameText != null)
-                speakerNameText.text = line.isNarrator ? "" : (string.IsNullOrWhiteSpace(line.speakerName) ? (line.speakerId ?? "") : line.speakerName);
+                speakerNameText.text = showSpeakerPlate ? shownSpeakerName : "";
 
             if (typewriter != null)
                 typewriter.Begin(line.text ?? "");
+        }
+
+        private string ResolveShownSpeakerName(VN.VNRunner.VNLinePayload line)
+        {
+            if (line.isNarrator)
+                return "";
+
+            string speakerId = (line.speakerId ?? "").Trim();
+            string speakerName = (line.speakerName ?? "").Trim();
+
+            if (string.Equals(speakerId, "YOU", System.StringComparison.OrdinalIgnoreCase))
+                return string.IsNullOrWhiteSpace(playerDisplayName) ? "You" : playerDisplayName;
+
+            if (!string.IsNullOrWhiteSpace(speakerName))
+                return speakerName;
+
+            return speakerId;
+        }
+
+        private void SetSpeakerPlateVisible(bool visible)
+        {
+            if (speakerNameRoot != null)
+                speakerNameRoot.SetActive(visible);
+            else if (speakerNameText != null)
+                speakerNameText.gameObject.SetActive(visible);
         }
 
         private void OnInstantReveal()
@@ -194,7 +246,7 @@ namespace VN.UI
 
         private void OnLineHidden()
         {
-            // оставляем панель, чтобы UI не "прыгало"
+            // Панель диалога оставляем, чтобы UI не прыгал
         }
 
         private void OnChoice(VN.VNRunner.VNChoicePayload payload)
@@ -235,8 +287,34 @@ namespace VN.UI
                 return;
             }
 
-            if (slot.crossfadeSeconds <= 0f) view.SetInstant(slot.sprite, true);
-            else view.Crossfade(slot.sprite, slot.crossfadeSeconds, true);
+            if (slot.crossfadeSeconds <= 0f)
+            {
+                view.SetInstant(slot.sprite, true);
+                ApplyNativeSize(view);
+            }
+            else
+            {
+                view.Crossfade(slot.sprite, slot.crossfadeSeconds, true);
+                StartCoroutine(ApplyNativeSizeNextFrame(view));
+            }
+        }
+
+        private void ApplyNativeSize(VNCrossfadeImageUGUI view)
+        {
+            if (view == null) return;
+
+            var images = view.GetComponentsInChildren<Image>(true);
+            for (int i = 0; i < images.Length; i++)
+            {
+                if (images[i] != null && images[i].sprite != null)
+                    images[i].SetNativeSize();
+            }
+        }
+
+        private IEnumerator ApplyNativeSizeNextFrame(VNCrossfadeImageUGUI view)
+        {
+            yield return null;
+            ApplyNativeSize(view);
         }
 
         private void OnMusicPlay(VN.VNRunner.VNMusicPayload m)

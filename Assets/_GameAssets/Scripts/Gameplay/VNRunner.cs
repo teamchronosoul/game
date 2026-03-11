@@ -20,7 +20,7 @@ namespace VN
         [SerializeField] private float autoPunctuationExtraSeconds = 0.25f;
 
         [Header("Skip")]
-        [SerializeField] private float skipStepFrameDelay = 0f; // 0 = следующий кадр, можно 0.01f для визуального "пульса"
+        [SerializeField] private float skipStepFrameDelay = 0f;
 
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
@@ -28,7 +28,6 @@ namespace VN
 
         public VNState State => _state;
 
-        // --- Events (под uGUI) ---
         public event Action<VNLinePayload> OnLineStarted;
         public event Action OnRequestInstantReveal;
         public event Action OnLineHidden;
@@ -138,8 +137,6 @@ namespace VN
             }
         }
 
-        // -------- Public API --------
-
         public void StartNew(string chapterId)
         {
             StopInternal();
@@ -186,7 +183,6 @@ namespace VN
         {
             OnTapFeedback?.Invoke(screenPosition);
 
-            // Любое взаимодействие игрока выключает Auto/Skip
             if (AutoEnabled) SetAuto(false);
             if (SkipEnabled) SetSkip(false);
 
@@ -228,8 +224,10 @@ namespace VN
             var opt = _currentChoiceStep.options[optionIndex];
 
             if (opt.effects != null)
+            {
                 for (int i = 0; i < opt.effects.Count; i++)
                     ApplyVarOp(opt.effects[i]);
+            }
 
             var next = Norm(opt.nextStepId);
             if (string.IsNullOrEmpty(next)) return;
@@ -242,8 +240,6 @@ namespace VN
             _state.currentStepApplied = false;
             VNAutosave.Save(_state);
         }
-
-        // -------- Loop --------
 
         private IEnumerator MainLoop()
         {
@@ -260,13 +256,13 @@ namespace VN
 
                 if (step is VNIfStep iff)
                 {
-                    yield return HandleIfStep(iff);
+                    yield return HandleIfStep(chapter, index, iff);
                     continue;
                 }
 
                 if (step is VNLineStep line)
                 {
-                    yield return HandleLineStep(line);
+                    yield return HandleLineStep(chapter, index, line);
                     continue;
                 }
 
@@ -278,7 +274,7 @@ namespace VN
 
                 if (step is VNCommandStep cmdStep)
                 {
-                    yield return HandleCommandStep(cmdStep);
+                    yield return HandleCommandStep(chapter, index, cmdStep);
                     continue;
                 }
 
@@ -295,22 +291,18 @@ namespace VN
             }
         }
 
-        private IEnumerator HandleIfStep(VNIfStep iff)
+        private IEnumerator HandleIfStep(VNChapter chapter, int index, VNIfStep iff)
         {
             bool result = EvaluateConditions(iff);
-            string target = result ? Norm(iff.trueStepId) : Norm(iff.falseStepId);
+            string explicitTarget = result ? Norm(iff.trueStepId) : Norm(iff.falseStepId);
 
-            if (!string.IsNullOrWhiteSpace(target))
+            if (TryAdvanceToExplicitOrFallback(chapter, index, explicitTarget))
             {
-                _state.stepId = target;
-                _state.currentStepApplied = false;
-                VNAutosave.Save(_state);
                 yield return null;
                 yield break;
             }
 
-            AdvanceToNextStep();
-            yield return null;
+            yield break;
         }
 
         private bool EvaluateConditions(VNIfStep iff)
@@ -318,8 +310,8 @@ namespace VN
             if (iff.conditions == null || iff.conditions.Count == 0) return true;
 
             bool requireAll = iff.requireAll;
-
             bool anyTrue = false;
+
             for (int i = 0; i < iff.conditions.Count; i++)
             {
                 var c = iff.conditions[i];
@@ -333,7 +325,7 @@ namespace VN
                 anyTrue |= ok;
             }
 
-            return requireAll ? true : anyTrue;
+            return requireAll || anyTrue;
         }
 
         private bool EvaluateSingleCondition(VNCondition c)
@@ -353,6 +345,7 @@ namespace VN
                         _ => false
                     };
                 }
+
                 case VNConditionValueType.Int:
                 {
                     int v = _state.GetInt(key, 0);
@@ -368,6 +361,7 @@ namespace VN
                         _ => false
                     };
                 }
+
                 case VNConditionValueType.String:
                 {
                     string v = _state.GetString(key, "");
@@ -386,7 +380,7 @@ namespace VN
             return false;
         }
 
-        private IEnumerator HandleLineStep(VNLineStep line)
+        private IEnumerator HandleLineStep(VNChapter chapter, int index, VNLineStep line)
         {
             _advanceRequested = false;
             _interruptWaitRequested = false;
@@ -412,7 +406,6 @@ namespace VN
 
             _lineRevealCompleted = false;
 
-            // Skip: сам прогоняет, без кликов
             if (SkipEnabled && SkipAllowed)
             {
                 OnRequestInstantReveal?.Invoke();
@@ -421,12 +414,11 @@ namespace VN
                 if (skipStepFrameDelay <= 0f) yield return null;
                 else yield return new WaitForSeconds(skipStepFrameDelay);
 
-                AdvanceToNextStep();
+                AdvanceToNextStep(chapter, index, line.nextStepId);
                 OnLineHidden?.Invoke();
                 yield break;
             }
 
-            // Manual / Auto
             bool stopAutoHere = IsStopAutoHere(line) || _autoStopDueToNewCharacterThisStep;
 
             if (AutoEnabled && !stopAutoHere)
@@ -450,13 +442,12 @@ namespace VN
                 yield return new WaitUntil(() => _lineRevealCompleted);
             }
 
-            AdvanceToNextStep();
+            AdvanceToNextStep(chapter, index, line.nextStepId);
             OnLineHidden?.Invoke();
         }
 
         private IEnumerator HandleChoiceStep(VNChoiceStep choice)
         {
-            // Выбор всегда останавливает skip
             if (SkipEnabled) SetSkip(false);
 
             _choiceWaiting = true;
@@ -468,7 +459,7 @@ namespace VN
             var payload = new VNChoicePayload
             {
                 stepId = _state.stepId,
-                options = (choice.options != null) ? choice.options.ToArray() : Array.Empty<VNChoiceOption>()
+                options = choice.options != null ? choice.options.ToArray() : Array.Empty<VNChoiceOption>()
             };
 
             OnChoicePresented?.Invoke(payload);
@@ -477,7 +468,7 @@ namespace VN
                 yield return null;
         }
 
-        private IEnumerator HandleCommandStep(VNCommandStep cmdStep)
+        private IEnumerator HandleCommandStep(VNChapter chapter, int index, VNCommandStep cmdStep)
         {
             _advanceRequested = false;
             _interruptWaitRequested = false;
@@ -491,17 +482,15 @@ namespace VN
                 VNAutosave.Save(_state);
             }
 
-            // Skip: команды выполняются и сразу дальше, Wait – прерывается
             if (SkipEnabled && SkipAllowed)
             {
                 if (skipStepFrameDelay <= 0f) yield return null;
                 else yield return new WaitForSeconds(skipStepFrameDelay);
 
-                AdvanceToNextStep();
+                AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
                 yield break;
             }
 
-            // Wait
             if (cmdStep.command is VNWaitCommand waitCmd)
             {
                 float t = Mathf.Max(0f, waitCmd.seconds);
@@ -514,22 +503,20 @@ namespace VN
                     yield return null;
                 }
 
-                AdvanceToNextStep();
+                AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
                 yield break;
             }
 
-            // Gate/stopAuto: ждём клика
             if (stopAutoHere)
             {
                 while (!_advanceRequested)
                     yield return null;
 
-                AdvanceToNextStep();
+                AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
                 yield break;
             }
 
-            // Остальные команды – мгновенно
-            AdvanceToNextStep();
+            AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
             yield return null;
         }
 
@@ -547,8 +534,6 @@ namespace VN
 
             yield return null;
         }
-
-        // -------- Apply helpers --------
 
         private void ApplySkipAllowedForStep(VNChapterStep step)
         {
@@ -592,20 +577,7 @@ namespace VN
 
                 case VNShowCharacterCommand show:
                 {
-                    var slotState = _state.GetSlot(show.slot);
-                    bool wasEmpty = !slotState.visible || string.IsNullOrWhiteSpace(slotState.characterId);
-
-                    slotState.visible = true;
-                    slotState.characterId = Norm(show.characterId);
-                    slotState.pose = show.pose;
-                    slotState.emotion = show.emotion;
-
-                    EmitSlot(show.slot, show.characterId, show.pose, show.emotion, true, show.crossfadeSeconds, wasEmpty);
-
-                    // Auto – обязательная остановка на новом персонаже
-                    if (wasEmpty && AutoEnabled)
-                        stopAutoHere = true;
-
+                    ShowOnlyCharacter(show.slot, show.characterId, show.pose, show.emotion, show.crossfadeSeconds, ref stopAutoHere);
                     break;
                 }
 
@@ -664,50 +636,168 @@ namespace VN
         {
             if (project == null || project.characterDatabase == null) return;
             if (string.IsNullOrWhiteSpace(speakerId)) return;
+            if (!autoShowSpeakerIfMissing) return;
+
+            _state.EnsureSlots();
+
+            int visibleCount = 0;
+            int visibleIndex = -1;
 
             for (int i = 0; i < _state.slots.Count; i++)
             {
                 var s = _state.slots[i];
-                if (!s.visible) continue;
-                if (string.Equals(s.characterId, speakerId, StringComparison.Ordinal))
+                if (!s.visible || string.IsNullOrWhiteSpace(s.characterId))
+                    continue;
+
+                visibleCount++;
+                visibleIndex = i;
+            }
+
+            if (visibleCount == 1)
+            {
+                var current = _state.slots[visibleIndex];
+
+                if (string.Equals(current.characterId, speakerId, StringComparison.Ordinal))
                 {
-                    s.pose = pose;
-                    s.emotion = emotion;
-                    EmitSlot(s.slot, speakerId, pose, emotion, true, 0.2f, false);
+                    current.pose = pose;
+                    current.emotion = emotion;
+
+                    EmitSlot(current.slot, speakerId, pose, emotion, true, 0f, false);
                     return;
                 }
+
+                HideAllCharacters(0f);
+
+                var slotState = _state.GetSlot(current.slot);
+                slotState.visible = true;
+                slotState.characterId = speakerId;
+                slotState.pose = pose;
+                slotState.emotion = emotion;
+
+                EmitSlot(current.slot, speakerId, pose, emotion, true, 0.2f, true);
+
+                if (AutoEnabled)
+                    _autoStopDueToNewCharacterThisStep = true;
+
+                return;
             }
 
-            if (!autoShowSpeakerIfMissing) return;
+            if (visibleCount > 1)
+            {
+                var target = FindPreferredSingleSlot();
+                HideAllCharacters(0f);
 
-            var target = FindFirstEmptySlot(out bool hasEmpty);
-            if (!hasEmpty) return;
+                var slotState = _state.GetSlot(target);
+                slotState.visible = true;
+                slotState.characterId = speakerId;
+                slotState.pose = pose;
+                slotState.emotion = emotion;
 
-            var slotState = _state.GetSlot(target);
-            slotState.visible = true;
-            slotState.characterId = speakerId;
-            slotState.pose = pose;
-            slotState.emotion = emotion;
+                EmitSlot(target, speakerId, pose, emotion, true, 0.2f, true);
 
-            EmitSlot(target, speakerId, pose, emotion, true, 0.2f, true);
+                if (AutoEnabled)
+                    _autoStopDueToNewCharacterThisStep = true;
 
-            if (AutoEnabled)
-                _autoStopDueToNewCharacterThisStep = true;
+                return;
+            }
+
+            {
+                var target = FindPreferredSingleSlot();
+
+                var slotState = _state.GetSlot(target);
+                slotState.visible = true;
+                slotState.characterId = speakerId;
+                slotState.pose = pose;
+                slotState.emotion = emotion;
+
+                EmitSlot(target, speakerId, pose, emotion, true, 0.2f, true);
+
+                if (AutoEnabled)
+                    _autoStopDueToNewCharacterThisStep = true;
+            }
         }
 
-        private VNScreenSlot FindFirstEmptySlot(out bool found)
+        private void ShowOnlyCharacter(VNScreenSlot preferredSlot, string characterId, VNPose pose, VNEmotion emotion, float crossfadeSeconds, ref bool stopAutoHere)
         {
-            var order = new[] { VNScreenSlot.Center, VNScreenSlot.Left, VNScreenSlot.Right };
-            for (int i = 0; i < order.Length; i++)
+            characterId = Norm(characterId);
+            if (string.IsNullOrWhiteSpace(characterId))
+                return;
+
+            _state.EnsureSlots();
+
+            VNScreenSlot targetSlot = preferredSlot;
+            bool foundSameCharacter = false;
+
+            for (int i = 0; i < _state.slots.Count; i++)
             {
-                var s = _state.GetSlot(order[i]);
+                var s = _state.slots[i];
                 if (!s.visible || string.IsNullOrWhiteSpace(s.characterId))
+                    continue;
+
+                if (string.Equals(s.characterId, characterId, StringComparison.Ordinal))
                 {
-                    found = true;
-                    return order[i];
+                    targetSlot = s.slot;
+                    foundSameCharacter = true;
+                    break;
                 }
             }
-            found = false;
+
+            for (int i = 0; i < _state.slots.Count; i++)
+            {
+                var s = _state.slots[i];
+                bool isTarget = s.slot == targetSlot;
+
+                if (!isTarget && s.visible)
+                {
+                    s.visible = false;
+                    s.characterId = null;
+                    s.pose = VNPose.Default;
+                    s.emotion = VNEmotion.Neutral;
+
+                    EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, 0f, false);
+                }
+            }
+
+            var targetState = _state.GetSlot(targetSlot);
+            bool wasSameCharacterAlreadyVisible =
+                targetState.visible &&
+                string.Equals(targetState.characterId, characterId, StringComparison.Ordinal);
+
+            targetState.visible = true;
+            targetState.characterId = characterId;
+            targetState.pose = pose;
+            targetState.emotion = emotion;
+
+            float emitFade = wasSameCharacterAlreadyVisible ? 0f : Mathf.Max(0f, crossfadeSeconds);
+            bool isNewCharacter = !wasSameCharacterAlreadyVisible;
+
+            EmitSlot(targetSlot, characterId, pose, emotion, true, emitFade, isNewCharacter);
+
+            if (isNewCharacter && AutoEnabled)
+                stopAutoHere = true;
+        }
+
+        private void HideAllCharacters(float fadeSeconds)
+        {
+            _state.EnsureSlots();
+
+            for (int i = 0; i < _state.slots.Count; i++)
+            {
+                var s = _state.slots[i];
+                if (!s.visible && string.IsNullOrWhiteSpace(s.characterId))
+                    continue;
+
+                s.visible = false;
+                s.characterId = null;
+                s.pose = VNPose.Default;
+                s.emotion = VNEmotion.Neutral;
+
+                EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, fadeSeconds, false);
+            }
+        }
+
+        private VNScreenSlot FindPreferredSingleSlot()
+        {
             return VNScreenSlot.Center;
         }
 
@@ -778,8 +868,23 @@ namespace VN
                 EmitMusic(_state.musicId, 0f, true);
 
             _state.EnsureSlots();
-            foreach (var s in _state.slots)
-                EmitSlot(s.slot, s.characterId, s.pose, s.emotion, s.visible, 0f, false);
+
+            bool alreadyOneVisible = false;
+            for (int i = 0; i < _state.slots.Count; i++)
+            {
+                var s = _state.slots[i];
+                bool shouldShow = s.visible && !string.IsNullOrWhiteSpace(s.characterId);
+
+                if (shouldShow && !alreadyOneVisible)
+                {
+                    alreadyOneVisible = true;
+                    EmitSlot(s.slot, s.characterId, s.pose, s.emotion, true, 0f, false);
+                }
+                else
+                {
+                    EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, 0f, false);
+                }
+            }
         }
 
         private void EmitBackground(string backgroundId, float crossfade)
@@ -851,24 +956,63 @@ namespace VN
                 OnSfxPlay?.Invoke(clip);
         }
 
-        private void AdvanceToNextStep()
+        private void AdvanceToNextStep(VNChapter chapter, int currentIndex, string explicitNextStepId)
         {
-            if (!TryResolveChapter(out var chapter)) return;
-            if (!chapter.TryGetStepIndex(_state.stepId, out int index)) return;
-
-            int nextIndex = index + 1;
-            if (nextIndex >= chapter.steps.Count) return;
-
-            var next = chapter.steps[nextIndex];
-            if (next == null || string.IsNullOrWhiteSpace(next.id)) return;
-
-            _state.stepId = next.id;
-            _state.currentStepApplied = false;
-            VNAutosave.Save(_state);
+            if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitNextStepId, out string nextId))
+            {
+                _state.stepId = nextId;
+                _state.currentStepApplied = false;
+                VNAutosave.Save(_state);
+            }
 
             _advanceRequested = false;
             _interruptWaitRequested = false;
             _lineRevealCompleted = false;
+        }
+
+        private bool TryAdvanceToExplicitOrFallback(VNChapter chapter, int currentIndex, string explicitTargetStepId)
+        {
+            if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitTargetStepId, out string nextId))
+            {
+                _state.stepId = nextId;
+                _state.currentStepApplied = false;
+                VNAutosave.Save(_state);
+
+                _advanceRequested = false;
+                _interruptWaitRequested = false;
+                _lineRevealCompleted = false;
+                return true;
+            }
+
+            _advanceRequested = false;
+            _interruptWaitRequested = false;
+            _lineRevealCompleted = false;
+            return false;
+        }
+
+        private bool TryResolveExplicitOrLinearNext(VNChapter chapter, int currentIndex, string explicitTargetStepId, out string resolvedStepId)
+        {
+            resolvedStepId = null;
+            if (chapter == null || chapter.steps == null) return false;
+
+            string explicitId = Norm(explicitTargetStepId);
+            if (!string.IsNullOrEmpty(explicitId))
+            {
+                if (chapter.TryGetStepIndex(explicitId, out _))
+                {
+                    resolvedStepId = explicitId;
+                    return true;
+                }
+            }
+
+            int nextIndex = currentIndex + 1;
+            if (nextIndex < 0 || nextIndex >= chapter.steps.Count) return false;
+
+            var next = chapter.steps[nextIndex];
+            if (next == null || string.IsNullOrWhiteSpace(next.id)) return false;
+
+            resolvedStepId = next.id.Trim();
+            return true;
         }
 
         private float ComputeAutoDelay(string text)
@@ -895,7 +1039,7 @@ namespace VN
 
             while (elapsed < t)
             {
-                if (!AutoEnabled) break; // пользователь взаимодействовал – auto отключён
+                if (!AutoEnabled) break;
                 elapsed += Time.deltaTime;
                 yield return null;
             }

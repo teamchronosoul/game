@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e678761d62d745ef9c53f74c85d3e410, type: 3}
+  m_Name: VNAssetDatabase
+  m_EditorClassIdentifier: Assembly-CSharp::VN.VNAssetDatabase
+  backgrounds:
+  - id: 1
+    asset: {fileID: -8593865114822522149, guid: f21c4a06170633e4191be3b725557319, type: 3}
+  - id: "\u043A\u043E\u043C\u043D\u0430\u0442\u0430"
+    asset: {fileID: 3637920166256152383, guid: 92b08b282243475488f0ada0dc0bc0ed, type: 3}
+  music: []
+  sfx: []

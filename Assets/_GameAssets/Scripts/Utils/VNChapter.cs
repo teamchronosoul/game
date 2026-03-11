@@ -75,6 +75,8 @@ namespace VN
         public string text;
 
         public bool addToLog = true;
+        public string nextStepId;
+
     }
 
     [Serializable]
@@ -102,6 +104,8 @@ namespace VN
     public class VNCommandStep : VNChapterStep
     {
         [SerializeReference] public VNCommand command;
+        public string nextStepId;
+
     }
 
     [Serializable]
