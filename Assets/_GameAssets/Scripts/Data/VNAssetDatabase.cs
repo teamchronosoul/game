@@ -21,11 +21,18 @@ namespace VN
             public AudioClip asset;
         }
 
+        [Header("Backgrounds")]
         public List<SpriteEntry> backgrounds = new();
+
+        [Header("Artifacts")]
+        public List<SpriteEntry> artifacts = new();
+
+        [Header("Audio")]
         public List<AudioEntry> music = new();
         public List<AudioEntry> sfx = new();
 
         private readonly Dictionary<string, Sprite> _bg = new(StringComparer.Ordinal);
+        private readonly Dictionary<string, Sprite> _artifacts = new(StringComparer.Ordinal);
         private readonly Dictionary<string, AudioClip> _msc = new(StringComparer.Ordinal);
         private readonly Dictionary<string, AudioClip> _sfx = new(StringComparer.Ordinal);
 
@@ -39,6 +46,15 @@ namespace VN
             id = Normalize(id);
             if (string.IsNullOrEmpty(id)) return false;
             return _bg.TryGetValue(id, out sprite) && sprite != null;
+        }
+
+        public bool TryGetArtifact(string id, out Sprite sprite)
+        {
+            RebuildIfNeeded();
+            sprite = null;
+            id = Normalize(id);
+            if (string.IsNullOrEmpty(id)) return false;
+            return _artifacts.TryGetValue(id, out sprite) && sprite != null;
         }
 
         public bool TryGetMusic(string id, out AudioClip clip)
@@ -61,17 +77,19 @@ namespace VN
 
         private void RebuildIfNeeded()
         {
-            if (_bg.Count == 0 && (backgrounds.Count > 0 || music.Count > 0 || sfx.Count > 0))
+            if (_bg.Count == 0 && (backgrounds.Count > 0 || artifacts.Count > 0 || music.Count > 0 || sfx.Count > 0))
                 Rebuild();
         }
 
         private void Rebuild()
         {
             _bg.Clear();
+            _artifacts.Clear();
             _msc.Clear();
             _sfx.Clear();
 
             Build(backgrounds, _bg);
+            Build(artifacts, _artifacts);
             Build(music, _msc);
             Build(sfx, _sfx);
         }

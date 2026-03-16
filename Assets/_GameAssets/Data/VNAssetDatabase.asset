@@ -17,5 +17,14 @@ MonoBehaviour:
     asset: {fileID: -8593865114822522149, guid: f21c4a06170633e4191be3b725557319, type: 3}
   - id: "\u043A\u043E\u043C\u043D\u0430\u0442\u0430"
     asset: {fileID: 3637920166256152383, guid: 92b08b282243475488f0ada0dc0bc0ed, type: 3}
+  artifacts:
+  - id: card
+    asset: {fileID: 5189691121816951081, guid: 473b45676c482004987f6b8cf23d2344, type: 3}
+  - id: scale
+    asset: {fileID: 80999701281533196, guid: e117e9e5f50f3e045ba1a1ffd9aeed19, type: 3}
+  - id: ball
+    asset: {fileID: 6758584801078253068, guid: 6208a02d049f5d948a1b60a89013cf11, type: 3}
+  - id: scarf
+    asset: {fileID: 705414602977048699, guid: db5e52974731d14439439c517c3311a1, type: 3}
   music: []
   sfx: []

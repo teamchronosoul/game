@@ -42,6 +42,8 @@ namespace VN
         public event Action<float> OnMusicStop;
         public event Action<AudioClip> OnSfxPlay;
 
+        public event Action<VNArtifactPayload> OnArtifactShown;
+
         public event Action<bool> OnAutoChanged;
         public event Action<bool> OnSkipChanged;
         public event Action<bool> OnSkipAllowedChanged;
@@ -104,6 +106,20 @@ namespace VN
             public bool loop;
         }
 
+        [Serializable]
+        public struct VNArtifactPayload
+        {
+            public string artifactId;
+            public Sprite sprite;
+
+            public float dimAlpha;
+            public float fadeInSeconds;
+            public float scaleUpSeconds;
+            public float scaleSettleSeconds;
+            public float holdSeconds;
+            public float fadeOutSeconds;
+        }
+
         private VNState _state = new();
 
         private Coroutine _loop;
@@ -116,6 +132,8 @@ namespace VN
         private VNChoiceStep _currentChoiceStep;
 
         private bool _autoStopDueToNewCharacterThisStep;
+
+        private bool _artifactWaiting;
 
         private void Awake()
         {
@@ -186,7 +204,7 @@ namespace VN
             if (AutoEnabled) SetAuto(false);
             if (SkipEnabled) SetSkip(false);
 
-            if (_choiceWaiting) return;
+            if (_choiceWaiting || _artifactWaiting) return;
 
             if (!_lineRevealCompleted)
             {
@@ -214,6 +232,8 @@ namespace VN
         }
 
         public void NotifyLineRevealFinished() => _lineRevealCompleted = true;
+
+        public void NotifyArtifactPresentationFinished() => _artifactWaiting = false;
 
         public void Choose(int optionIndex)
         {
@@ -482,6 +502,17 @@ namespace VN
                 VNAutosave.Save(_state);
             }
 
+            if (cmdStep.command is VNGiveArtifactCommand)
+            {
+                if (SkipEnabled) SetSkip(false);
+
+                while (_artifactWaiting)
+                    yield return null;
+
+                AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
+                yield break;
+            }
+
             if (SkipEnabled && SkipAllowed)
             {
                 if (skipStepFrameDelay <= 0f) yield return null;
@@ -561,13 +592,16 @@ namespace VN
             if (step is VNCommandStep cs && cs.command is VNGateCommand gate && gate.gateStopsAuto)
                 stop = true;
 
+            if (step is VNCommandStep art && art.command is VNGiveArtifactCommand)
+                stop = true;
+
             return stop;
         }
 
         private void ApplyCommand(VNCommand command, ref bool stopAutoHere)
         {
             if (command == null) return;
-
+            Debug.Log(command == null ? "[VN] command NULL" : "[VN] command type = " + command.GetType().Name);
             switch (command)
             {
                 case VNSetBackgroundCommand bg:
@@ -629,7 +663,53 @@ namespace VN
 
                 case VNWaitCommand:
                     break;
+
+                case VNGiveArtifactCommand give:
+                    Debug.Log("[VN] VNGiveArtifactCommand CASE HIT");
+                    EmitArtifact(give);
+                    stopAutoHere = true;
+                    break;
             }
+        }
+
+        private void EmitArtifact(VNGiveArtifactCommand cmd)
+        {
+            string artifactId = Norm(cmd.artifactId);
+            Sprite sprite = null;
+
+            Debug.Log("[VN] EmitArtifact called");
+            Debug.Log("[VN] artifactId = " + artifactId);
+            Debug.Log("[VN] project null = " + (project == null));
+            Debug.Log("[VN] assetDatabase null = " + (project == null || project.assetDatabase == null));
+
+            if (!string.IsNullOrWhiteSpace(artifactId) && project.assetDatabase != null)
+                project.assetDatabase.TryGetArtifact(artifactId, out sprite);
+
+            Debug.Log("[VN] sprite found = " + (sprite != null));
+            Debug.Log("[VN] OnArtifactShown listeners = " + (OnArtifactShown != null));
+
+            if (sprite == null || OnArtifactShown == null)
+            {
+                Debug.LogWarning("[VN] Artifact show aborted");
+                _artifactWaiting = false;
+                return;
+            }
+
+            _artifactWaiting = true;
+
+            OnArtifactShown?.Invoke(new VNArtifactPayload
+            {
+                artifactId = artifactId,
+                sprite = sprite,
+                dimAlpha = Mathf.Clamp01(cmd.dimAlpha),
+                fadeInSeconds = Mathf.Max(0f, cmd.fadeInSeconds),
+                scaleUpSeconds = Mathf.Max(0f, cmd.scaleUpSeconds),
+                scaleSettleSeconds = Mathf.Max(0f, cmd.scaleSettleSeconds),
+                holdSeconds = Mathf.Max(0f, cmd.holdSeconds),
+                fadeOutSeconds = Mathf.Max(0f, cmd.fadeOutSeconds)
+            });
+
+            Debug.Log("[VN] OnArtifactShown invoked");
         }
 
         private void AutoApplySpeakerPoseEmotion(string speakerId, VNPose pose, VNEmotion emotion)
@@ -1059,6 +1139,8 @@ namespace VN
 
             _choiceWaiting = false;
             _currentChoiceStep = null;
+            _artifactWaiting = false;
+
             OnChoiceHidden?.Invoke();
             OnLineHidden?.Invoke();
         }

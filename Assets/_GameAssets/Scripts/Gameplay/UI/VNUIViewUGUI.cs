@@ -95,6 +95,9 @@ namespace VN.UI
             if (choicePanel != null) choicePanel.Hide();
 
             SetSpeakerPlateVisible(false);
+
+            if (dialogueRoot != null)
+                dialogueRoot.SetActive(true);
         }
 
         private void OnDisable()
@@ -251,6 +254,9 @@ namespace VN.UI
 
         private void OnChoice(VN.VNRunner.VNChoicePayload payload)
         {
+            if (dialogueRoot != null)
+                dialogueRoot.SetActive(false);
+
             if (choicePanel != null)
                 choicePanel.Show(payload, idx => runner.Choose(idx));
         }
@@ -259,6 +265,9 @@ namespace VN.UI
         {
             if (choicePanel != null)
                 choicePanel.Hide();
+
+            if (dialogueRoot != null)
+                dialogueRoot.SetActive(true);
         }
 
         private void OnBackground(VN.VNRunner.VNBackgroundPayload bg)

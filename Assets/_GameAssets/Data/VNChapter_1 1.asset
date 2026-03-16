@@ -39,6 +39,7 @@ MonoBehaviour:
   - rid: 4444056890768883856
   - rid: 4444056890768883857
   - rid: 4444056890768883858
+  - rid: 4444056962972778563
   references:
     version: 2
     RefIds:
@@ -428,5 +429,19 @@ MonoBehaviour:
         sfxId: 
         text: "\u0422\u044B \u0437\u0430\u0447\u0435\u043C \u0432\u0441\u0435\u0445
           \u043E\u0431\u0438\u0436\u0430\u0435\u0448\u044C"
+        addToLog: 1
+        nextStepId: d500210a569641ada05837fd7273589c
+    - rid: 4444056962972778563
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: d500210a569641ada05837fd7273589c
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: "\u0413\u043E\u0440\u0438\u043B\u043B\u0430"
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: "\u041F\u043E\u0448\u0435\u043B \u043D\u0430\u0445\u0443\u0439"
         addToLog: 1
         nextStepId: 

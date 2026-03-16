@@ -114,7 +114,19 @@ namespace VN
         public string backgroundId;
         [Min(0f)] public float crossfadeSeconds = 0.25f;
     }
+    [Serializable]
+    public class VNGiveArtifactCommand : VNCommand
+    {
+        public string artifactId;
 
+        [Header("Animation")]
+        public float dimAlpha = 0.65f;
+        public float fadeInSeconds = 0.2f;
+        public float scaleUpSeconds = 0.2f;
+        public float scaleSettleSeconds = 0.12f;
+        public float holdSeconds = 0.8f;
+        public float fadeOutSeconds = 0.2f;
+    }
     [Serializable]
     public class VNShowCharacterCommand : VNCommand
     {

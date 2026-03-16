@@ -37,6 +37,7 @@ MonoBehaviour:
   - rid: 4444056937922035788
   - rid: 4444056937922035789
   - rid: 4444056937922035790
+  - rid: 4444057049864077312
   - rid: 4444056937922035791
   - rid: 4444056937922035792
   - rid: 4444056937922035797
@@ -55,6 +56,7 @@ MonoBehaviour:
   - rid: 4444056937922035810
   - rid: 4444056937922035811
   - rid: 4444056937922035812
+  - rid: 4444057049864077315
   - rid: 4444056937922035813
   - rid: 4444056937922035814
   - rid: 4444056937922035815
@@ -75,6 +77,7 @@ MonoBehaviour:
   - rid: 4444056937922035833
   - rid: 4444056937922035834
   - rid: 4444056937922035835
+  - rid: 4444057049864077326
   - rid: 4444056937922035836
   - rid: 4444056937922035837
   - rid: 4444056937922035838
@@ -105,6 +108,7 @@ MonoBehaviour:
   - rid: 4444056937922035911
   - rid: 4444056937922035912
   - rid: 4444056937922035913
+  - rid: 4444057049864077333
   - rid: 4444056937922035914
   - rid: 4444056937922035915
   - rid: 4444056937922035916
@@ -156,7 +160,7 @@ MonoBehaviour:
       type: {class: VNShowCharacterCommand, ns: VN, asm: Assembly-CSharp}
       data:
         characterId: Lumis
-        slot: 0
+        slot: 1
         pose: 0
         emotion: 0
         crossfadeSeconds: 0.2
@@ -471,11 +475,11 @@ MonoBehaviour:
           then shines a ray of light on the sphere and a tiny eye appears within
           it. \n"
         addToLog: 1
-        nextStepId: 
+        nextStepId: step_024
     - rid: 4444056937922035791
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: step_024
+        id: step_025
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -485,11 +489,11 @@ MonoBehaviour:
         sfxId: 
         text: 'This is the eye of the Labyrinth. It sees one''s true intentions. '
         addToLog: 1
-        nextStepId: step_025
+        nextStepId: step_026
     - rid: 4444056937922035792
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: step_025
+        id: step_026
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -503,25 +507,25 @@ MonoBehaviour:
     - rid: 4444056937922035797
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 96d5e482f9c4414f99abc97c0b076fa5
+        id: step_027
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: To be unjust.
-          nextStepId: 1ffbc8265e3a4613be4e7beb20875167
+          nextStepId: step_028
           kind: 0
           premiumPrice: 0
           effects: []
         - text: To have no mercy for others.
-          nextStepId: 1ffbc8265e3a4613be4e7beb20875167
+          nextStepId: step_028
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035798
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 1ffbc8265e3a4613be4e7beb20875167
+        id: step_028
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -534,11 +538,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: 14135ef00796413ab94c8d75ece08646
+        nextStepId: step_029
     - rid: 4444056937922035799
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 14135ef00796413ab94c8d75ece08646
+        id: step_029
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -548,11 +552,11 @@ MonoBehaviour:
         sfxId: 
         text: This will be it from me. Good luck, scholar.
         addToLog: 1
-        nextStepId: dad628b7f7bf41e9b7a1596b95f27b16
+        nextStepId: step_030
     - rid: 4444056937922035800
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: fb117d54478240578443525b9aff2b06
+        id: step_031
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -563,11 +567,11 @@ MonoBehaviour:
         text: 'Shinrai swings his cloak and vanishes. However, he is instantly replaced
           by a tall man with hair the color of moonlight. '
         addToLog: 1
-        nextStepId: f8eb1f3629504b268e2be678576068b3
+        nextStepId: step_032
     - rid: 4444056937922035801
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 85de1a9956a444b9a584d2cb5d4a1683
+        id: step_033
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -583,7 +587,7 @@ MonoBehaviour:
     - rid: 4444056937922035803
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 99bf83e119a64b56a201b6be26916d31
+        id: step_034
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -597,25 +601,25 @@ MonoBehaviour:
     - rid: 4444056937922035804
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: ebd89ad7147846f782e8967ba1ab3933
+        id: step_035
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: Very carefully and thoroughly. I like to think it through.
-          nextStepId: 54954069b361444f963cc7c910ea602d
+          nextStepId: step_036
           kind: 0
           premiumPrice: 0
           effects: []
         - text: Rather spontaneously. It comes naturally to me.
-          nextStepId: 54954069b361444f963cc7c910ea602d
+          nextStepId: step_036
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035805
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 54954069b361444f963cc7c910ea602d
+        id: step_036
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -631,7 +635,7 @@ MonoBehaviour:
     - rid: 4444056937922035806
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 383ca55610874eb0bcf806d387c13594
+        id: step_037
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -642,11 +646,11 @@ MonoBehaviour:
         text: It is important that we know ourselves, precious soul, much like we
           try to understand our fellow scholars.
         addToLog: 1
-        nextStepId: e8d4bd8230a24590918883b21e09fcf3
+        nextStepId: step_038
     - rid: 4444056937922035807
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: e8d4bd8230a24590918883b21e09fcf3
+        id: step_038
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -656,29 +660,29 @@ MonoBehaviour:
         sfxId: 
         text: At a party with fellow magicians you like to...
         addToLog: 1
-        nextStepId: a5eb1c49c6964ae98113e09b937a4360
+        nextStepId: step_039
     - rid: 4444056937922035809
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: a5eb1c49c6964ae98113e09b937a4360
+        id: step_039
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: Talk to many people, including those I don't know yet.
-          nextStepId: 05674824e3bc40258727216b3ae91379
+          nextStepId: step_040
           kind: 0
           premiumPrice: 0
           effects: []
         - text: Interact with a few people I know well.
-          nextStepId: 05674824e3bc40258727216b3ae91379
+          nextStepId: step_040
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035810
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 05674824e3bc40258727216b3ae91379
+        id: step_040
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -689,11 +693,11 @@ MonoBehaviour:
         text: I see what you mean. And now, for the final question! Lumis, I might
           require your assistance.
         addToLog: 1
-        nextStepId: a72de031dcc8483bb87a68cba769ced7
+        nextStepId: step_041
     - rid: 4444056937922035811
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: a72de031dcc8483bb87a68cba769ced7
+        id: step_041
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -707,7 +711,7 @@ MonoBehaviour:
     - rid: 4444056937922035812
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: fa8aa4b296644903b7e7be3c4d900fec
+        id: step_042
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -718,11 +722,11 @@ MonoBehaviour:
         text: "Kensui takes off his scarf, with Lumis grasping one end and Kensui
           the other, they gently cover you with it. \n"
         addToLog: 1
-        nextStepId: 
+        nextStepId: step_043
     - rid: 4444056937922035813
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 884776f3b8ea47a988527b8795a49658
+        id: step_044
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -734,11 +738,11 @@ MonoBehaviour:
           drifting among the stars! Your mind feels crystal clear as you hear a familiar
           voice echo through this wonderful illusion.
         addToLog: 1
-        nextStepId: eb993259dc5a4d29a9601579190a2c0b
+        nextStepId: step_045
     - rid: 4444056937922035814
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: eb993259dc5a4d29a9601579190a2c0b
+        id: step_045
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -751,11 +755,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: eea8eaf1ec1746de95066855053e255e
+        nextStepId: step_046
     - rid: 4444056937922035815
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: eea8eaf1ec1746de95066855053e255e
+        id: step_046
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -766,17 +770,17 @@ MonoBehaviour:
         text: 'Thank you for answering all of my questions. I hope to see you again
           in the near future! '
         addToLog: 1
-        nextStepId: 94af26fdd7ed4df993998517b0959767
+        nextStepId: step_047
     - rid: 4444056937922035818
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 94af26fdd7ed4df993998517b0959767
+        id: step_047
         label: 
         disableSkip: 0
         stopAuto: 0
         command:
           rid: 4444056937922035820
-        nextStepId: dcf102c99e6143f0b2d01be4382dac6a
+        nextStepId: step_048
     - rid: 4444056937922035820
       type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -785,7 +789,7 @@ MonoBehaviour:
     - rid: 4444056937922035821
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: dcf102c99e6143f0b2d01be4382dac6a
+        id: step_048
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -802,7 +806,7 @@ MonoBehaviour:
     - rid: 4444056937922035822
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: e60187e035e94d3892823d931304cc77
+        id: step_049
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -816,7 +820,7 @@ MonoBehaviour:
     - rid: 4444056937922035823
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 498bd0b34ff54631b8b87b1ddb0dba24
+        id: step_050
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -829,11 +833,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: 00883d5ea7494331b5e4fd2b6a58585d
+        nextStepId: step_051
     - rid: 4444056937922035824
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: ba8b1ded55914c51bc80209b35e64851
+        id: step_052
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -849,7 +853,7 @@ MonoBehaviour:
     - rid: 4444056937922035825
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: a4340abda254473c8e077344bfc93b87
+        id: step_053
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -859,29 +863,29 @@ MonoBehaviour:
         sfxId: 
         text: You're in charge of younger sentinels. It is harder for you to...
         addToLog: 1
-        nextStepId: 0050a3bcbdf448d98369a61b9c636dd6
+        nextStepId: step_054
     - rid: 4444056937922035826
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 0050a3bcbdf448d98369a61b9c636dd6
+        id: step_054
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: Identify with others.
-          nextStepId: e7ef0681a54e4cc9af99a09a1816483c
+          nextStepId: step_055
           kind: 0
           premiumPrice: 0
           effects: []
         - text: Make the most of what others can offer.
-          nextStepId: e7ef0681a54e4cc9af99a09a1816483c
+          nextStepId: step_055
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035827
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: e7ef0681a54e4cc9af99a09a1816483c
+        id: step_055
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -895,7 +899,7 @@ MonoBehaviour:
     - rid: 4444056937922035828
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 0a798fe315624c669226c7f449cc6f1f
+        id: step_056
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -905,29 +909,29 @@ MonoBehaviour:
         sfxId: 
         text: 'In a new team you normally... '
         addToLog: 1
-        nextStepId: 59c82d7f2e9942c790a55ea8509af016
+        nextStepId: step_057
     - rid: 4444056937922035829
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 59c82d7f2e9942c790a55ea8509af016
+        id: step_057
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: Start the conversation yourself.
-          nextStepId: f234fc4cc72a4b449f776953fbcbe2de
+          nextStepId: step_058
           kind: 0
           premiumPrice: 0
           effects: []
         - text: Wait to be approached by others.
-          nextStepId: f234fc4cc72a4b449f776953fbcbe2de
+          nextStepId: step_058
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035830
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: f234fc4cc72a4b449f776953fbcbe2de
+        id: step_058
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -937,11 +941,11 @@ MonoBehaviour:
         sfxId: 
         text: Fair. Now to the final question. Lumis?
         addToLog: 1
-        nextStepId: eb8493a942404a76ac7095bb538163db
+        nextStepId: step_059
     - rid: 4444056937922035831
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: eb8493a942404a76ac7095bb538163db
+        id: step_059
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -951,11 +955,11 @@ MonoBehaviour:
         sfxId: 
         text: Commander.
         addToLog: 1
-        nextStepId: 194fbf0e63234024b8ee85525555c4b8
+        nextStepId: step_060
     - rid: 4444056937922035832
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 194fbf0e63234024b8ee85525555c4b8
+        id: step_060
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -965,11 +969,11 @@ MonoBehaviour:
         sfxId: 
         text: "You watch Lumis place a golden hourglass into Kaitora's hands. \n"
         addToLog: 1
-        nextStepId: e1b6d0fee04a431ba30e8ac4236e2305
+        nextStepId: step_061
     - rid: 4444056937922035833
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: e1b6d0fee04a431ba30e8ac4236e2305
+        id: step_061
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -979,11 +983,11 @@ MonoBehaviour:
         sfxId: 
         text: Woah! It's heavy!
         addToLog: 1
-        nextStepId: d470d3bdaf3945898814781cc5730b1b
+        nextStepId: step_062
     - rid: 4444056937922035834
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: d470d3bdaf3945898814781cc5730b1b
+        id: step_062
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -993,11 +997,11 @@ MonoBehaviour:
         sfxId: 
         text: 'So is the weight of time. '
         addToLog: 1
-        nextStepId: 7654eafc220645899d14a4b8f7778c72
+        nextStepId: step_064
     - rid: 4444056937922035835
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 7654eafc220645899d14a4b8f7778c72
+        id: step_063
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1009,11 +1013,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: 095ab6fd2b8744f78317443996562c3b
+        nextStepId: step_065
     - rid: 4444056937922035836
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 095ab6fd2b8744f78317443996562c3b
+        id: step_065
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1024,11 +1028,11 @@ MonoBehaviour:
         text: 'We use this hourglass to time our practices and to remind ourselves
           that nothing is eternal. '
         addToLog: 1
-        nextStepId: de4167ae337d4a67bacf3a41614f016c
+        nextStepId: step_066
     - rid: 4444056937922035837
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: de4167ae337d4a67bacf3a41614f016c
+        id: step_066
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1041,11 +1045,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: a4e93e87e9f64e60a7798726589b802f
+        nextStepId: step_067
     - rid: 4444056937922035838
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: a4e93e87e9f64e60a7798726589b802f
+        id: step_067
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1055,11 +1059,11 @@ MonoBehaviour:
         sfxId: 
         text: Now, tell me what your perspective on time is.
         addToLog: 1
-        nextStepId: d2d4cada830d41e59a7bfb57673d3f31
+        nextStepId: step_068
     - rid: 4444056937922035839
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: d2d4cada830d41e59a7bfb57673d3f31
+        id: step_068
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1069,29 +1073,29 @@ MonoBehaviour:
         sfxId: 
         text: When it comes to life events, one should...
         addToLog: 1
-        nextStepId: a8587a9cd29c4f3abb8d16a894ec5c8c
+        nextStepId: step_069
     - rid: 4444056937922035844
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: a8587a9cd29c4f3abb8d16a894ec5c8c
+        id: step_069
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: Try to choose and plan them carefully.
-          nextStepId: f5ecd5ec7d264e1881a31df712822a64
+          nextStepId: step_070
           kind: 0
           premiumPrice: 0
           effects: []
         - text: Let them happen randomly and by chance.
-          nextStepId: f5ecd5ec7d264e1881a31df712822a64
+          nextStepId: step_070
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035845
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: f5ecd5ec7d264e1881a31df712822a64
+        id: step_070
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1104,11 +1108,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: de3e3dc58a8548c68278ef1ab8714a09
+        nextStepId: step_071
     - rid: 4444056937922035846
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: de3e3dc58a8548c68278ef1ab8714a09
+        id: step_071
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1118,11 +1122,11 @@ MonoBehaviour:
         sfxId: 
         text: This is a sign of luck! I'm sure of it.
         addToLog: 1
-        nextStepId: 405f9ba8a7d24b629a9a7202a884f3dd
+        nextStepId: step_072
     - rid: 4444056937922035847
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: b38f426ce77044dca3f0f71c712b7d2f
+        id: step_073
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1132,11 +1136,11 @@ MonoBehaviour:
         sfxId: 
         text: Master Hinato! You're already here?
         addToLog: 1
-        nextStepId: 8cd1478921dc4cacbacdeb3dcb68b3d1
+        nextStepId: step_074
     - rid: 4444056937922035848
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 8cd1478921dc4cacbacdeb3dcb68b3d1
+        id: step_074
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1147,11 +1151,11 @@ MonoBehaviour:
         text: You're just in time. We have finished. Scholar, I wish you best of
           luck.
         addToLog: 1
-        nextStepId: 0a97506085a34b51a7266b3cfa531bca
+        nextStepId: step_075
     - rid: 4444056937922035849
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 88be12c6de5e47028df7441c329cd688
+        id: step_076
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1165,11 +1169,11 @@ MonoBehaviour:
 
 '
         addToLog: 1
-        nextStepId: da05628ea5b045a1b8abf1c3b33e6669
+        nextStepId: step_077
     - rid: 4444056937922035850
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 44777667d1c649e5a41876e276d27a82
+        id: step_078
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1179,11 +1183,11 @@ MonoBehaviour:
         sfxId: 
         text: Master Hinato of the Guild of the Flow at your service.
         addToLog: 1
-        nextStepId: 10b704a2597c4868bcb180f4388f1e07
+        nextStepId: step_079
     - rid: 4444056937922035867
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: f8eb1f3629504b268e2be678576068b3
+        id: step_032
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1193,7 +1197,7 @@ MonoBehaviour:
     - rid: 4444056937922035870
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: dad628b7f7bf41e9b7a1596b95f27b16
+        id: step_030
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1216,7 +1220,7 @@ MonoBehaviour:
     - rid: 4444056937922035875
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 00883d5ea7494331b5e4fd2b6a58585d
+        id: step_051
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1234,13 +1238,13 @@ MonoBehaviour:
     - rid: 4444056937922035878
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 0a97506085a34b51a7266b3cfa531bca
+        id: step_075
         label: 
         disableSkip: 0
         stopAuto: 0
         command:
           rid: 4444056937922035880
-        nextStepId: 88be12c6de5e47028df7441c329cd688
+        nextStepId: step_076
     - rid: 4444056937922035880
       type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1249,13 +1253,13 @@ MonoBehaviour:
     - rid: 4444056937922035881
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: da05628ea5b045a1b8abf1c3b33e6669
+        id: step_077
         label: 
         disableSkip: 0
         stopAuto: 0
         command:
           rid: 4444056937922035883
-        nextStepId: 44777667d1c649e5a41876e276d27a82
+        nextStepId: step_078
     - rid: 4444056937922035883
       type: {class: VNShowCharacterCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1267,7 +1271,7 @@ MonoBehaviour:
     - rid: 4444056937922035889
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 405f9ba8a7d24b629a9a7202a884f3dd
+        id: step_072
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1278,11 +1282,11 @@ MonoBehaviour:
         text: Oh, I love that old trick with the petals! Kaitora's really just a
           hopeless romantic at heart.
         addToLog: 1
-        nextStepId: b38f426ce77044dca3f0f71c712b7d2f
+        nextStepId: step_073
     - rid: 4444056937922035892
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 10b704a2597c4868bcb180f4388f1e07
+        id: step_079
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1297,7 +1301,7 @@ MonoBehaviour:
     - rid: 4444056937922035893
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: ef7284d3bce04e879549f93207a0fc4d
+        id: step_080
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1311,25 +1315,25 @@ MonoBehaviour:
     - rid: 4444056937922035896
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: c8df9113415f4f728eea3dc4fa425e26
+        id: step_081
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: I'm more organized, than playful.
-          nextStepId: 8eb91c3b4a854860bc0eeb810c9f9ef2
+          nextStepId: step_082
           kind: 0
           premiumPrice: 0
           effects: []
         - text: ' I''m more playful, than organized. '
-          nextStepId: 8eb91c3b4a854860bc0eeb810c9f9ef2
+          nextStepId: step_082
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035897
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 8eb91c3b4a854860bc0eeb810c9f9ef2
+        id: step_082
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1339,11 +1343,11 @@ MonoBehaviour:
         sfxId: 
         text: Hold on! I'm writing that down. Just kidding. My memory's impeccable.
         addToLog: 1
-        nextStepId: 0eabfacdc43d4e2a81b03971b87fc5c9
+        nextStepId: step_083
     - rid: 4444056937922035902
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 0eabfacdc43d4e2a81b03971b87fc5c9
+        id: step_083
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1358,7 +1362,7 @@ MonoBehaviour:
     - rid: 4444056937922035903
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 22ccc12316c946628a04064073341518
+        id: step_084
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1368,29 +1372,29 @@ MonoBehaviour:
         sfxId: 
         text: What does your ideal weekend look like?
         addToLog: 1
-        nextStepId: 26703e08e2574211ba5e52862655239e
+        nextStepId: step_085
     - rid: 4444056937922035904
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 26703e08e2574211ba5e52862655239e
+        id: step_085
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: Hanging out with friends. It really boosts my energy!
-          nextStepId: 1bf0b5b640e146b8821b74f58d838783
+          nextStepId: step_086
           kind: 0
           premiumPrice: 0
           effects: []
         - text: 'Staying in, doing my favorite things, so I can recharge. '
-          nextStepId: 1bf0b5b640e146b8821b74f58d838783
+          nextStepId: step_086
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035905
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 1bf0b5b640e146b8821b74f58d838783
+        id: step_086
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1400,11 +1404,11 @@ MonoBehaviour:
         sfxId: 
         text: Nice one. And I got all my answers! I guess, we can call it a day...
         addToLog: 1
-        nextStepId: cbfa21a984714d718e2d0eaab9b51bf9
+        nextStepId: step_087
     - rid: 4444056937922035906
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: cbfa21a984714d718e2d0eaab9b51bf9
+        id: step_087
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1415,11 +1419,11 @@ MonoBehaviour:
         text: Master Hinato! Are you sure you don't have any more questions for our
           candidate?
         addToLog: 1
-        nextStepId: 5cd68ff4052e42458de8fa25c83cd414
+        nextStepId: step_088
     - rid: 4444056937922035907
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 5cd68ff4052e42458de8fa25c83cd414
+        id: step_088
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1429,11 +1433,11 @@ MonoBehaviour:
         sfxId: 
         text: Hinato winks mischievously at Lumis.
         addToLog: 1
-        nextStepId: f2859bf565d1444b9a21debad5243c39
+        nextStepId: step_089
     - rid: 4444056937922035908
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: f2859bf565d1444b9a21debad5243c39
+        id: step_089
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1444,11 +1448,11 @@ MonoBehaviour:
         text: Ah, you're adorable, little Lumis! What's the point of asking questions
           if we can just feel it? If we vibe, we vibe. You know what I'm saying?
         addToLog: 1
-        nextStepId: 8fdef6028f6d412dab71e216e71f8d4b
+        nextStepId: step_090
     - rid: 4444056937922035909
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 8fdef6028f6d412dab71e216e71f8d4b
+        id: step_090
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1460,11 +1464,11 @@ MonoBehaviour:
           Hinato laughs, and you join in because his laughter\u2019s just so contagious.
           He then turns to you."
         addToLog: 1
-        nextStepId: d96b191969904aa29597ad6d53671eae
+        nextStepId: step_091
     - rid: 4444056937922035910
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: d96b191969904aa29597ad6d53671eae
+        id: step_091
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1478,25 +1482,25 @@ MonoBehaviour:
     - rid: 4444056937922035911
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 46118ce254354fa58852880db292d5e8
+        id: step_092
         label: 
         disableSkip: 0
         stopAuto: 0
         options:
         - text: I'm having a blast! It was nice to meet all the mentors.
-          nextStepId: de15aee0cb104fe384bcbb14977c1955
+          nextStepId: step_093
           kind: 0
           premiumPrice: 0
           effects: []
         - text: I'm dying to know the results!
-          nextStepId: de15aee0cb104fe384bcbb14977c1955
+          nextStepId: step_093
           kind: 0
           premiumPrice: 0
           effects: []
     - rid: 4444056937922035912
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: de15aee0cb104fe384bcbb14977c1955
+        id: step_093
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1506,11 +1510,11 @@ MonoBehaviour:
         sfxId: 
         text: Awesome. Now look! There's something in your sleeve!
         addToLog: 1
-        nextStepId: 6701444107944a748f46d620bee67292
+        nextStepId: step_094
     - rid: 4444056937922035913
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 6701444107944a748f46d620bee67292
+        id: step_094
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1523,11 +1527,11 @@ MonoBehaviour:
           into the air. You can hear Hinato's voice speak to you, even though he's
           no longer there.
         addToLog: 1
-        nextStepId: 831b1bdb67554d5a9bf8079d5996c13b
+        nextStepId: step_095
     - rid: 4444056937922035914
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 831b1bdb67554d5a9bf8079d5996c13b
+        id: step_096
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1537,11 +1541,11 @@ MonoBehaviour:
         sfxId: 
         text: Keep that flame burning, little spark!
         addToLog: 1
-        nextStepId: f4608323737040809cd8e13c61d7e12e
+        nextStepId: step_097
     - rid: 4444056937922035915
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: f4608323737040809cd8e13c61d7e12e
+        id: step_097
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1551,11 +1555,11 @@ MonoBehaviour:
         sfxId: 
         text: Uh... that was fun, right?
         addToLog: 1
-        nextStepId: 919a4ca549b84044a34c134a071787a3
+        nextStepId: step_098
     - rid: 4444056937922035916
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 919a4ca549b84044a34c134a071787a3
+        id: step_098
         label: 
         disableSkip: 0
         stopAuto: 0
@@ -1567,11 +1571,91 @@ MonoBehaviour:
           sorting test. Let's see what you've discovered about yourself and which
           faculty you belong to!
         addToLog: 1
-        nextStepId: 0b4de8e34e754c53af4317c7df37f5f8
+        nextStepId: step_099
     - rid: 4444056937922035917
       type: {class: VNEndStep, ns: VN, asm: Assembly-CSharp}
       data:
-        id: 0b4de8e34e754c53af4317c7df37f5f8
+        id: step_099
         label: 
         disableSkip: 0
         stopAuto: 0
+    - rid: 4444057049864077312
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_024
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 4444057049864077314
+        nextStepId: step_025
+    - rid: 4444057049864077314
+      type: {class: VNGiveArtifactCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        artifactId: ball
+        dimAlpha: 0.65
+        fadeInSeconds: 0.2
+        scaleUpSeconds: 0.2
+        scaleSettleSeconds: 0.12
+        holdSeconds: 0.8
+        fadeOutSeconds: 0.2
+    - rid: 4444057049864077315
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_043
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 4444057049864077317
+        nextStepId: 
+    - rid: 4444057049864077317
+      type: {class: VNGiveArtifactCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        artifactId: scarf
+        dimAlpha: 0.65
+        fadeInSeconds: 0.2
+        scaleUpSeconds: 0.2
+        scaleSettleSeconds: 0.12
+        holdSeconds: 0.8
+        fadeOutSeconds: 0.2
+    - rid: 4444057049864077326
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_064
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 4444057049864077328
+        nextStepId: step_063
+    - rid: 4444057049864077328
+      type: {class: VNGiveArtifactCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        artifactId: scale
+        dimAlpha: 0.65
+        fadeInSeconds: 0.2
+        scaleUpSeconds: 0.2
+        scaleSettleSeconds: 0.12
+        holdSeconds: 0.8
+        fadeOutSeconds: 0.2
+    - rid: 4444057049864077333
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: step_095
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 4444057049864077335
+        nextStepId: step_096
+    - rid: 4444057049864077335
+      type: {class: VNGiveArtifactCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        artifactId: card
+        dimAlpha: 0.65
+        fadeInSeconds: 0.2
+        scaleUpSeconds: 0.2
+        scaleSettleSeconds: 0.12
+        holdSeconds: 0.8
+        fadeOutSeconds: 0.2
