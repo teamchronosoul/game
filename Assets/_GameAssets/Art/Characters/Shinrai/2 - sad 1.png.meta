@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: aea25abcdaac93a4495a3b769e4449f0
+guid: ac9ccf2601d5ae34b87dd98c5716766c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1400142809080000350
-    second: Lumis_0
+      213: -3923664744760834983
+    second: 2 - sad 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lumis_0
+      name: 2 - sad 1_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 2
-        width: 661
-        height: 747
+        x: 0
+        y: 0
+        width: 1056
+        height: 1708
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5fe702777e4e6310800000000000000
-      internalID: 1400142809080000350
+      spriteID: 9548ecef3b75c89c0800000000000000
+      internalID: -3923664744760834983
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Lumis_0: 1400142809080000350
+      2 - sad 1_0: -3923664744760834983
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

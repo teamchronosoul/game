@@ -1,4 +1,5 @@
-﻿#if UNITY_EDITOR
+﻿
+#if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,9 @@ namespace VN.Editor
         private readonly Dictionary<int, int> _incomingRefs = new();
         private readonly HashSet<int> _danglingFromSteps = new();
         private readonly Dictionary<int, float> _subtreeWidthCache = new();
+        private readonly HashSet<string> _duplicateStepIds = new HashSet<string>(StringComparer.Ordinal);
+        private readonly HashSet<int> _stepsWithMissingId = new();
+        private readonly List<Texture2D> _styleTextures = new();
 
         private DragNodeState _dragNode;
         private ConnectDragState _connectDrag;
@@ -175,11 +179,13 @@ namespace VN.Editor
         private void OnDisable()
         {
             SaveLayoutState();
+            ClearStyleTextures();
         }
 
         private void OnDestroy()
         {
             SaveLayoutState();
+            ClearStyleTextures();
         }
 
         private void EnsureStyles()
@@ -224,13 +230,35 @@ namespace VN.Editor
             _nodeDangerStyle.normal.textColor = Color.white;
         }
 
-        private static Texture2D MakeTex(Color color)
+        private Texture2D MakeTex(Color color)
         {
             var tex = new Texture2D(1, 1);
             tex.hideFlags = HideFlags.HideAndDontSave;
             tex.SetPixel(0, 0, color);
             tex.Apply();
+            _styleTextures.Add(tex);
             return tex;
+        }
+
+        private void ClearStyleTextures()
+        {
+            if (_styleTextures.Count == 0)
+                return;
+
+            for (int i = 0; i < _styleTextures.Count; i++)
+            {
+                if (_styleTextures[i] != null)
+                    DestroyImmediate(_styleTextures[i]);
+            }
+
+            _styleTextures.Clear();
+            _nodeStyle = null;
+            _nodeSelectedStyle = null;
+            _nodeMultiSelectedStyle = null;
+            _nodeWarningStyle = null;
+            _nodeDangerStyle = null;
+            _badgeStyle = null;
+            _miniStyle = null;
         }
 
         private void OnGUI()
@@ -283,6 +311,8 @@ namespace VN.Editor
                 SaveLayoutState(prevChapter);
                 _selectedStepIndex = -1;
                 _multiSelection.Clear();
+                _graphScroll = Vector2.zero;
+                _rightScroll = Vector2.zero;
                 LoadLayoutState();
             }
 
@@ -444,7 +474,7 @@ namespace VN.Editor
         {
             if (stepIndex == _selectedStepIndex) return _nodeSelectedStyle;
             if (_multiSelection.Contains(stepIndex)) return _nodeMultiSelectedStyle;
-            if (IsDangling(stepIndex) || IsUnreachable(stepIndex)) return _nodeDangerStyle;
+            if (HasMissingId(stepIndex) || HasDuplicateId(stepIndex) || IsDangling(stepIndex) || IsUnreachable(stepIndex)) return _nodeDangerStyle;
             if (IsOrphan(stepIndex)) return _nodeWarningStyle;
             return _nodeStyle;
         }
@@ -472,6 +502,18 @@ namespace VN.Editor
             {
                 DrawBadge(new Rect(x, y, 62, 14), "ORPHAN", new Color(0.72f, 0.52f, 0.15f, 1f));
                 x += 68;
+            }
+
+            if (HasMissingId(node.stepIndex))
+            {
+                DrawBadge(new Rect(x, y, 72, 14), "NO ID", new Color(0.68f, 0.18f, 0.18f, 1f));
+                x += 78;
+            }
+
+            if (HasDuplicateId(node.stepIndex))
+            {
+                DrawBadge(new Rect(x, y, 64, 14), "DUP ID", new Color(0.68f, 0.18f, 0.18f, 1f));
+                x += 70;
             }
 
             if (IsDangling(node.stepIndex))
@@ -624,23 +666,24 @@ namespace VN.Editor
                 if (clickedNode != null)
                 {
                     bool additive = evt.control || evt.command;
+
+                    if (additive && _multiSelection.Contains(clickedNode.stepIndex))
+                    {
+                        _multiSelection.Remove(clickedNode.stepIndex);
+                        _selectedStepIndex = _multiSelection.Count > 0 ? _multiSelection.Min() : -1;
+                        _dragNode.active = false;
+                        GUI.FocusControl(null);
+                        Repaint();
+                        evt.Use();
+                        return;
+                    }
+
                     if (!additive)
                         _multiSelection.Clear();
 
-                    if (additive)
-                    {
-                        if (_multiSelection.Contains(clickedNode.stepIndex))
-                            _multiSelection.Remove(clickedNode.stepIndex);
-                        else
-                            _multiSelection.Add(clickedNode.stepIndex);
-                    }
-                    else
-                    {
-                        _selectedStepIndex = clickedNode.stepIndex;
-                        _multiSelection.Add(clickedNode.stepIndex);
-                    }
-
+                    _multiSelection.Add(clickedNode.stepIndex);
                     _selectedStepIndex = clickedNode.stepIndex;
+
                     _dragNode.active = true;
                     _dragNode.stepIndex = clickedNode.stepIndex;
                     _dragNode.mouseOffset = mouseCanvas - clickedNode.rect.position;
@@ -662,6 +705,8 @@ namespace VN.Editor
 
                 GUI.FocusControl(null);
                 Repaint();
+                evt.Use();
+                return;
             }
 
             if (evt.type == EventType.MouseDrag && evt.button == 0)
@@ -707,6 +752,7 @@ namespace VN.Editor
                     _selectionRect.currentCanvas = mouseCanvas;
                     Repaint();
                     evt.Use();
+                    return;
                 }
             }
 
@@ -734,18 +780,25 @@ namespace VN.Editor
                 if (_selectionRect != null && _selectionRect.active)
                 {
                     Rect sel = _selectionRect.Rect;
+                    int lastHit = -1;
+
                     foreach (var node in _nodes)
                     {
-                        if (sel.Overlaps(node.rect))
-                            _multiSelection.Add(node.stepIndex);
+                        if (!sel.Overlaps(node.rect))
+                            continue;
+
+                        _multiSelection.Add(node.stepIndex);
+                        lastHit = node.stepIndex;
                     }
 
-                    if (_multiSelection.Count > 0)
-                        _selectedStepIndex = _multiSelection.Last();
+                    _selectedStepIndex = lastHit >= 0
+                        ? lastHit
+                        : (_multiSelection.Count > 0 ? _multiSelection.Min() : -1);
 
                     _selectionRect.active = false;
                     Repaint();
                     evt.Use();
+                    return;
                 }
 
                 if (_dragNode != null)
@@ -865,6 +918,87 @@ namespace VN.Editor
             return null;
         }
 
+        private void EnsureStepsList()
+        {
+            if (_chapter != null && _chapter.steps == null)
+                _chapter.steps = new List<VNChapterStep>();
+        }
+
+        private static string NormalizeId(string id)
+        {
+            return string.IsNullOrWhiteSpace(id) ? "" : id.Trim();
+        }
+
+        private string EnsureStepHasId(VNChapterStep step)
+        {
+            if (step == null) return "";
+
+            string normalized = NormalizeId(step.id);
+            if (!string.IsNullOrEmpty(normalized))
+            {
+                step.id = normalized;
+                return normalized;
+            }
+
+            string generated;
+            do
+            {
+                generated = Guid.NewGuid().ToString("N");
+            }
+            while (_stepIndexById.ContainsKey(generated));
+
+            step.id = generated;
+            return generated;
+        }
+
+        private string GetStepIdAt(int index)
+        {
+            if (_chapter?.steps == null) return "";
+            if (index < 0 || index >= _chapter.steps.Count) return "";
+            return NormalizeId(_chapter.steps[index]?.id);
+        }
+
+        private string GetResolvedLinearNextId(int stepIndex)
+        {
+            if (_chapter?.steps == null) return "";
+
+            int? nextIndex = ResolveTargetForStep(stepIndex);
+            return nextIndex.HasValue ? GetStepIdAt(nextIndex.Value) : "";
+        }
+
+        private int? ResolveTargetForStep(int stepIndex)
+        {
+            if (_chapter?.steps == null) return null;
+            if (stepIndex < 0 || stepIndex >= _chapter.steps.Count) return null;
+
+            var step = _chapter.steps[stepIndex];
+            if (step == null) return null;
+
+            return step switch
+            {
+                VNLineStep line => ResolveExplicitOrLinearNext(stepIndex, line.nextStepId),
+                VNCommandStep cmd => ResolveExplicitOrLinearNext(stepIndex, cmd.nextStepId),
+                VNJumpStep jump => ResolveStepId(jump.targetStepId),
+                _ => ResolveLinearNext(stepIndex)
+            };
+        }
+
+        private static void SetLinearNext(VNChapterStep step, string nextId)
+        {
+            string normalized = NormalizeId(nextId);
+
+            switch (step)
+            {
+                case VNLineStep line:
+                    line.nextStepId = normalized;
+                    break;
+
+                case VNCommandStep cmd:
+                    cmd.nextStepId = normalized;
+                    break;
+            }
+        }
+
         private void RememberManualPosition(GraphNode node)
         {
             if (node?.step == null || string.IsNullOrWhiteSpace(node.step.id)) return;
@@ -879,6 +1013,8 @@ namespace VN.Editor
 
         private void AutoLayoutGraph()
         {
+            EnsureStepsList();
+
             if (_chapter?.steps == null || _chapter.steps.Count == 0)
                 return;
 
@@ -1079,6 +1215,10 @@ namespace VN.Editor
             _reachableSteps.Clear();
             _incomingRefs.Clear();
             _danglingFromSteps.Clear();
+            _duplicateStepIds.Clear();
+            _stepsWithMissingId.Clear();
+
+            EnsureStepsList();
 
             if (_chapter?.steps == null)
             {
@@ -1089,8 +1229,22 @@ namespace VN.Editor
             for (int i = 0; i < _chapter.steps.Count; i++)
             {
                 var s = _chapter.steps[i];
-                if (s != null && !string.IsNullOrWhiteSpace(s.id))
-                    _stepIndexById[s.id] = i;
+                if (s == null)
+                    continue;
+
+                string id = NormalizeId(s.id);
+                s.id = id;
+
+                if (string.IsNullOrEmpty(id))
+                {
+                    _stepsWithMissingId.Add(i);
+                    continue;
+                }
+
+                if (_stepIndexById.ContainsKey(id))
+                    _duplicateStepIds.Add(id);
+
+                _stepIndexById[id] = i;
             }
 
             AnalyzeGraphProblems();
@@ -1377,6 +1531,9 @@ namespace VN.Editor
                     for (int i = 0; i < showCount; i++)
                     {
                         var opt = choice.options[i];
+                        if (opt == null)
+                            continue;
+
                         string label = string.IsNullOrWhiteSpace(opt.text) ? $"option {i + 1}" : $"option: {Trim(opt.text)}";
 
                         result.Add(new EdgeInfo
@@ -1486,13 +1643,23 @@ namespace VN.Editor
 
         private int? ResolveStepId(string id)
         {
-            if (string.IsNullOrWhiteSpace(id)) return null;
-            return _stepIndexById.TryGetValue(id, out var idx) ? idx : null;
+            string normalized = NormalizeId(id);
+            if (string.IsNullOrEmpty(normalized)) return null;
+            return _stepIndexById.TryGetValue(normalized, out var idx) ? idx : null;
         }
 
         private bool IsUnreachable(int stepIndex) => !_reachableSteps.Contains(stepIndex);
         private bool IsOrphan(int stepIndex) => stepIndex != 0 && _incomingRefs.TryGetValue(stepIndex, out var c) && c == 0;
         private bool IsDangling(int stepIndex) => _danglingFromSteps.Contains(stepIndex);
+        private bool HasMissingId(int stepIndex) => _stepsWithMissingId.Contains(stepIndex);
+        private bool HasDuplicateId(int stepIndex)
+        {
+            if (_chapter?.steps == null || stepIndex < 0 || stepIndex >= _chapter.steps.Count)
+                return false;
+
+            string id = NormalizeId(_chapter.steps[stepIndex]?.id);
+            return !string.IsNullOrEmpty(id) && _duplicateStepIds.Contains(id);
+        }
 
         private bool PassFilter(VNChapterStep s)
         {
@@ -1571,6 +1738,12 @@ namespace VN.Editor
 
         private void DrawStepWarnings(int stepIndex)
         {
+            if (HasMissingId(stepIndex))
+                EditorGUILayout.HelpBox("This step has an empty id. References and layout persistence may break until the id is filled.", MessageType.Error);
+
+            if (HasDuplicateId(stepIndex))
+                EditorGUILayout.HelpBox("This step id is duplicated. All links by id may resolve to the wrong node until ids become unique.", MessageType.Error);
+
             if (IsDangling(stepIndex))
                 EditorGUILayout.HelpBox("This step has one or more broken/dangling outgoing links.", MessageType.Error);
 
@@ -1692,7 +1865,7 @@ namespace VN.Editor
 
             Undo.RecordObject(_chapter, "Connect VN Steps");
 
-            string targetId = _chapter.steps[targetStepIndex].id;
+            string targetId = EnsureStepHasId(_chapter.steps[targetStepIndex]);
             var step = _chapter.steps[port.stepIndex];
 
             switch (port.kind)
@@ -1753,6 +1926,8 @@ namespace VN.Editor
         {
             if (_chapter == null) return -1;
 
+            EnsureStepsList();
+
             Undo.RecordObject(_chapter, "Add VN Step");
             var step = CreateStepInstance(type);
             _chapter.steps.Add(step);
@@ -1773,11 +1948,27 @@ namespace VN.Editor
         private int InsertAfterInternal(int stepIndex, Type type)
         {
             if (_chapter == null) return -1;
+
+            EnsureStepsList();
+
             if (stepIndex < 0 || stepIndex >= _chapter.steps.Count) return -1;
 
             Undo.RecordObject(_chapter, "Insert VN Step");
+
+            var parent = _chapter.steps[stepIndex];
+            string oldNextId = GetResolvedLinearNextId(stepIndex);
+
             var step = CreateStepInstance(type);
             _chapter.steps.Insert(stepIndex + 1, step);
+
+            if (parent is VNLineStep || parent is VNCommandStep)
+            {
+                SetLinearNext(parent, step.id);
+
+                if (step is VNLineStep || step is VNCommandStep)
+                    SetLinearNext(step, oldNextId);
+            }
+
             EditorUtility.SetDirty(_chapter);
             return stepIndex + 1;
         }
@@ -1785,15 +1976,38 @@ namespace VN.Editor
         private void AddChildStep(Type type)
         {
             if (_chapter == null) return;
+
+            EnsureStepsList();
+
             if (_selectedStepIndex < 0 || _selectedStepIndex >= _chapter.steps.Count) return;
 
+            var parent = _chapter.steps[_selectedStepIndex];
+            if (parent == null)
+                return;
+
+            if (parent is VNEndStep)
+            {
+                EditorUtility.DisplayDialog("Add Child", "End step has no outgoing child slot. Use Insert After instead.", "OK");
+                return;
+            }
+
+            if (parent is VNIfStep preIf &&
+                !string.IsNullOrWhiteSpace(preIf.trueStepId) &&
+                !string.IsNullOrWhiteSpace(preIf.falseStepId))
+            {
+                EditorUtility.DisplayDialog("Add Child", "If step already has both True and False targets. Use drag connection or Insert After.", "OK");
+                return;
+            }
+
             Undo.RecordObject(_chapter, "Add VN Child Step");
+
+            string oldLinearNextId = GetResolvedLinearNextId(_selectedStepIndex);
 
             int insertIndex = _selectedStepIndex + 1;
             var newStep = CreateStepInstance(type);
             _chapter.steps.Insert(insertIndex, newStep);
 
-            var parent = _chapter.steps[_selectedStepIndex];
+            bool linked = false;
 
             switch (parent)
             {
@@ -1804,29 +2018,45 @@ namespace VN.Editor
                         text = "Новый вариант",
                         nextStepId = newStep.id
                     });
+                    linked = true;
                     break;
 
                 case VNIfStep iff:
                     if (string.IsNullOrWhiteSpace(iff.trueStepId))
+                    {
                         iff.trueStepId = newStep.id;
+                        linked = true;
+                    }
                     else if (string.IsNullOrWhiteSpace(iff.falseStepId))
+                    {
                         iff.falseStepId = newStep.id;
+                        linked = true;
+                    }
                     break;
 
                 case VNJumpStep jump:
+                {
+                    string oldTargetId = NormalizeId(jump.targetStepId);
                     jump.targetStepId = newStep.id;
-                    break;
+                    linked = true;
 
-                case VNLineStep line:
-                    if (string.IsNullOrWhiteSpace(line.nextStepId))
-                        line.nextStepId = newStep.id;
+                    if ((newStep is VNLineStep || newStep is VNCommandStep) && !string.IsNullOrEmpty(oldTargetId))
+                        SetLinearNext(newStep, oldTargetId);
                     break;
+                }
 
-                case VNCommandStep cmd:
-                    if (string.IsNullOrWhiteSpace(cmd.nextStepId))
-                        cmd.nextStepId = newStep.id;
+                case VNLineStep:
+                case VNCommandStep:
+                    SetLinearNext(parent, newStep.id);
+                    linked = true;
+
+                    if (newStep is VNLineStep || newStep is VNCommandStep)
+                        SetLinearNext(newStep, oldLinearNextId);
                     break;
             }
+
+            if (!linked)
+                Debug.LogWarning("VNChapterEditorWindow: child step was inserted, but parent had no free child slot to connect.");
 
             EditorUtility.SetDirty(_chapter);
             _selectedStepIndex = insertIndex;
@@ -1851,6 +2081,9 @@ namespace VN.Editor
         private void SetSelectedAsFirst()
         {
             if (_chapter == null) return;
+
+            EnsureStepsList();
+
             if (_selectedStepIndex <= 0 || _selectedStepIndex >= _chapter.steps.Count) return;
 
             Undo.RecordObject(_chapter, "Set VN Step As First");
@@ -1879,35 +2112,42 @@ namespace VN.Editor
 
             Undo.RecordObject(_chapter, "Delete VN Step(s)");
 
-            var idsToDelete = _multiSelection
+            var validIndices = _multiSelection
                 .Where(i => i >= 0 && i < _chapter.steps.Count)
-                .Select(i => _chapter.steps[i]?.id)
+                .Distinct()
+                .ToList();
+
+            if (validIndices.Count == 0)
+                return;
+
+            var idsToDelete = validIndices
+                .Select(i => NormalizeId(_chapter.steps[i]?.id))
                 .Where(id => !string.IsNullOrWhiteSpace(id))
-                .ToHashSet();
+                .ToHashSet(StringComparer.Ordinal);
 
             foreach (var s in _chapter.steps)
             {
                 if (s == null) continue;
 
-                if (s is VNLineStep l && idsToDelete.Contains(l.nextStepId))
+                if (s is VNLineStep l && idsToDelete.Contains(NormalizeId(l.nextStepId)))
                     l.nextStepId = "";
 
-                if (s is VNCommandStep cmd && idsToDelete.Contains(cmd.nextStepId))
+                if (s is VNCommandStep cmd && idsToDelete.Contains(NormalizeId(cmd.nextStepId)))
                     cmd.nextStepId = "";
 
-                if (s is VNJumpStep j && idsToDelete.Contains(j.targetStepId))
+                if (s is VNJumpStep j && idsToDelete.Contains(NormalizeId(j.targetStepId)))
                     j.targetStepId = "";
 
                 if (s is VNIfStep iff)
                 {
-                    if (idsToDelete.Contains(iff.trueStepId)) iff.trueStepId = "";
-                    if (idsToDelete.Contains(iff.falseStepId)) iff.falseStepId = "";
+                    if (idsToDelete.Contains(NormalizeId(iff.trueStepId))) iff.trueStepId = "";
+                    if (idsToDelete.Contains(NormalizeId(iff.falseStepId))) iff.falseStepId = "";
                 }
 
                 if (s is VNChoiceStep c && c.options != null)
                 {
                     foreach (var o in c.options)
-                        if (o != null && idsToDelete.Contains(o.nextStepId))
+                        if (o != null && idsToDelete.Contains(NormalizeId(o.nextStepId)))
                             o.nextStepId = "";
                 }
             }
@@ -1915,7 +2155,7 @@ namespace VN.Editor
             foreach (var id in idsToDelete)
                 _manualNodePositions.Remove(id);
 
-            foreach (int index in _multiSelection.OrderByDescending(i => i))
+            foreach (int index in validIndices.OrderByDescending(i => i))
                 if (index >= 0 && index < _chapter.steps.Count)
                     _chapter.steps.RemoveAt(index);
 
@@ -1929,6 +2169,8 @@ namespace VN.Editor
 
         private void RenumberStepIdsSequential()
         {
+            EnsureStepsList();
+
             if (_chapter == null || _chapter.steps == null || _chapter.steps.Count == 0)
                 return;
 
@@ -2019,6 +2261,7 @@ namespace VN.Editor
             var stepProp = stepsProp.GetArrayElementAtIndex(stepIndex);
 
             var runtime = _chapter.steps[stepIndex];
+            string oldId = NormalizeId(runtime?.id);
 
             EditorGUILayout.LabelField(runtime.GetType().Name, EditorStyles.boldLabel);
 
@@ -2071,14 +2314,30 @@ namespace VN.Editor
                 EditorGUILayout.HelpBox("EndStep – конец главы.", MessageType.None);
             }
 
-            so.ApplyModifiedProperties();
-            EditorUtility.SetDirty(_chapter);
-            SaveLayoutState();
+            if (so.ApplyModifiedProperties())
+            {
+                string newId = NormalizeId(_chapter.steps[stepIndex]?.id);
+                if (!string.Equals(oldId, newId, StringComparison.Ordinal))
+                {
+                    if (!string.IsNullOrEmpty(oldId) && _manualNodePositions.TryGetValue(oldId, out var pos))
+                    {
+                        _manualNodePositions.Remove(oldId);
+                        if (!string.IsNullOrEmpty(newId))
+                            _manualNodePositions[newId] = pos;
+                    }
+                }
+
+                EditorUtility.SetDirty(_chapter);
+                RebuildGraph(forceAutoLayout: false);
+                SaveLayoutState();
+            }
         }
 
         private void DrawChoice(SerializedProperty stepProp, string selfId)
         {
             var optionsProp = stepProp.FindPropertyRelative("options");
+            if (optionsProp == null)
+                return;
 
             if (GUILayout.Button("+ Option", GUILayout.Width(110)))
                 optionsProp.arraySize += 1;
@@ -2143,6 +2402,9 @@ namespace VN.Editor
             EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("requireAll"));
 
             var condProp = stepProp.FindPropertyRelative("conditions");
+            if (condProp == null)
+                return;
+
             if (GUILayout.Button("+ Condition", GUILayout.Width(120)))
                 condProp.arraySize += 1;
 
@@ -2387,9 +2649,11 @@ namespace VN.Editor
                 var refs = BuildStepRefs(excludeSelfId);
                 var m = new GenericMenu();
 
+                string currentId = NormalizeId(idProp.stringValue);
+
                 if (allowEmptyLinear)
                 {
-                    m.AddItem(new GUIContent("(Next by order)"), string.IsNullOrEmpty(idProp.stringValue), () =>
+                    m.AddItem(new GUIContent("(Next by order)"), string.IsNullOrEmpty(currentId), () =>
                     {
                         idProp.stringValue = "";
                         idProp.serializedObject.ApplyModifiedProperties();
@@ -2400,9 +2664,10 @@ namespace VN.Editor
 
                 foreach (var r in refs)
                 {
-                    m.AddItem(new GUIContent(r), idProp.stringValue == ExtractId(r), () =>
+                    string targetId = ExtractId(r);
+                    m.AddItem(new GUIContent(r), currentId == targetId, () =>
                     {
-                        idProp.stringValue = ExtractId(r);
+                        idProp.stringValue = targetId;
                         idProp.serializedObject.ApplyModifiedProperties();
                         EditorUtility.SetDirty(_chapter);
                     });
@@ -2417,15 +2682,20 @@ namespace VN.Editor
             var list = new List<string>();
             if (_chapter?.steps == null) return list;
 
+            string exclude = NormalizeId(excludeSelfId);
+
             for (int i = 0; i < _chapter.steps.Count; i++)
             {
                 var s = _chapter.steps[i];
-                if (s == null || string.IsNullOrWhiteSpace(s.id)) continue;
-                if (!string.IsNullOrEmpty(excludeSelfId) && s.id == excludeSelfId) continue;
+                string id = NormalizeId(s?.id);
+
+                if (s == null || string.IsNullOrWhiteSpace(id)) continue;
+                if (!string.IsNullOrEmpty(exclude) && id == exclude) continue;
 
                 string label = string.IsNullOrWhiteSpace(s.label) ? ShortPreview(s) : s.label.Trim();
-                string id6 = s.id.Length >= 6 ? s.id.Substring(0, 6) : s.id;
-                list.Add($"{i:000}  {label}  ({id6}|{s.id})");
+                string id6 = id.Length >= 6 ? id.Substring(0, 6) : id;
+                string duplicateMark = _duplicateStepIds.Contains(id) ? " [DUP]" : "";
+                list.Add($"{i:000}  {label}{duplicateMark}  ({id6}|{id})");
             }
 
             return list;
@@ -2550,9 +2820,13 @@ namespace VN.Editor
 
             foreach (var kv in _manualNodePositions)
             {
+                string stepId = NormalizeId(kv.Key);
+                if (string.IsNullOrEmpty(stepId))
+                    continue;
+
                 data.entries.Add(new LayoutEntry
                 {
-                    stepId = kv.Key,
+                    stepId = stepId,
                     pos = kv.Value
                 });
             }
@@ -2565,6 +2839,8 @@ namespace VN.Editor
         private void LoadLayoutState()
         {
             _manualNodePositions.Clear();
+            _zoom = 1f;
+            _graphScroll = Vector2.zero;
 
             string key = GetLayoutPrefsKey();
             if (string.IsNullOrEmpty(key))
@@ -2593,14 +2869,16 @@ namespace VN.Editor
                 {
                     foreach (var e in data.entries)
                     {
-                        if (e == null || string.IsNullOrWhiteSpace(e.stepId)) continue;
-                        _manualNodePositions[e.stepId] = e.pos;
+                        string stepId = NormalizeId(e?.stepId);
+                        if (string.IsNullOrWhiteSpace(stepId)) continue;
+                        _manualNodePositions[stepId] = e.pos;
                     }
                 }
             }
             catch
             {
                 _zoom = 1f;
+                _graphScroll = Vector2.zero;
             }
         }
 
@@ -2690,6 +2968,8 @@ namespace VN.Editor
             _multiSelection.Clear();
             _manualNodePositions.Clear();
             _zoom = 1f;
+            _graphScroll = Vector2.zero;
+            _rightScroll = Vector2.zero;
 
             LoadLayoutState();
             RebuildGraph(forceAutoLayout: true);

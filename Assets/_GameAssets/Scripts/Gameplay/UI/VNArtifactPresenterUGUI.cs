@@ -19,6 +19,12 @@ namespace VN.UI
         [SerializeField] private Image artifactImage;
         [SerializeField] private RectTransform artifactTransform;
 
+        [Header("Character slots to hide")]
+        [SerializeField] private VNCrossfadeImageUGUI leftSlot;
+        [SerializeField] private VNCrossfadeImageUGUI centerSlot;
+        [SerializeField] private VNCrossfadeImageUGUI rightSlot;
+        [SerializeField] private float hideCharactersFadeSeconds = 0.2f;
+
         private Coroutine _routine;
 
         private void Awake()
@@ -61,8 +67,29 @@ namespace VN.UI
             if (_routine != null)
                 StopCoroutine(_routine);
 
+            HideAllCharacters();
+
             _routine = StartCoroutine(PlayRoutine(payload));
             Debug.Log("[VN] Artifact shown received: " + payload.artifactId);
+        }
+
+        private void HideAllCharacters()
+        {
+            float fade = Mathf.Max(0f, hideCharactersFadeSeconds);
+
+            HideSlot(leftSlot, fade);
+            HideSlot(centerSlot, fade);
+            HideSlot(rightSlot, fade);
+        }
+
+        private void HideSlot(VNCrossfadeImageUGUI slot, float fade)
+        {
+            if (slot == null) return;
+
+            if (fade <= 0f)
+                slot.SetInstant(null, false);
+            else
+                slot.Crossfade(null, fade, false);
         }
 
         private IEnumerator PlayRoutine(VN.VNRunner.VNArtifactPayload payload)

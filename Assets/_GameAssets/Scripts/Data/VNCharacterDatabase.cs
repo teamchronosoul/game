@@ -24,6 +24,9 @@ namespace VN
             [Tooltip("Отображаемое имя в UI. Пример: 'Анна'")]
             public string displayName;
 
+            [Tooltip("Дефолтная позиция появления персонажа при автоматическом показе во время реплики")]
+            public VNScreenSlot defaultScreenSlot = VNScreenSlot.Center;
+
             [Tooltip("Таблица: Pose×Emotion -> Sprite")]
             public List<PoseEmotionSprite> sprites = new List<PoseEmotionSprite>();
         }
@@ -71,6 +74,17 @@ namespace VN
             return true;
         }
 
+        public bool TryGetDefaultScreenSlot(string characterId, out VNScreenSlot slot)
+        {
+            slot = VNScreenSlot.Center;
+
+            if (!TryGetCharacter(characterId, out var ch))
+                return false;
+
+            slot = ch.defaultScreenSlot;
+            return true;
+        }
+
         public bool TryGetSprite(string characterId, VNPose pose, VNEmotion emotion, out Sprite sprite)
         {
             RebuildCacheIfNeeded();
@@ -79,11 +93,20 @@ namespace VN
             characterId = NormalizeId(characterId);
             if (string.IsNullOrEmpty(characterId)) return false;
 
-            if (_spriteMap.TryGetValue(characterId, out var map))
-            {
-                map.TryGetValue(new PoseEmotionKey(pose, emotion), out sprite);
-                return sprite != null;
-            }
+            if (!_spriteMap.TryGetValue(characterId, out var map))
+                return false;
+
+            if (map.TryGetValue(new PoseEmotionKey(pose, emotion), out sprite) && sprite != null)
+                return true;
+
+            if (map.TryGetValue(new PoseEmotionKey(pose, VNEmotion.Neutral), out sprite) && sprite != null)
+                return true;
+
+            if (map.TryGetValue(new PoseEmotionKey(VNPose.Default, emotion), out sprite) && sprite != null)
+                return true;
+
+            if (map.TryGetValue(new PoseEmotionKey(VNPose.Default, VNEmotion.Neutral), out sprite) && sprite != null)
+                return true;
 
             return false;
         }
@@ -108,7 +131,7 @@ namespace VN
                 var id = NormalizeId(ch.id);
                 if (string.IsNullOrEmpty(id)) continue;
 
-                if (_byId.ContainsKey(id)) continue; // первый выигрывает
+                if (_byId.ContainsKey(id)) continue;
 
                 _byId[id] = ch;
 

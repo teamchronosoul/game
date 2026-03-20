@@ -22,6 +22,9 @@ namespace VN
         [Header("Skip")]
         [SerializeField] private float skipStepFrameDelay = 0f;
 
+        [Header("Character auto show")]
+        [SerializeField] private float autoSpeakerCrossfadeSeconds = 0.2f;
+
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
         public bool SkipAllowed { get; private set; } = true;
@@ -601,7 +604,7 @@ namespace VN
         private void ApplyCommand(VNCommand command, ref bool stopAutoHere)
         {
             if (command == null) return;
-            Debug.Log(command == null ? "[VN] command NULL" : "[VN] command type = " + command.GetType().Name);
+
             switch (command)
             {
                 case VNSetBackgroundCommand bg:
@@ -610,10 +613,8 @@ namespace VN
                     break;
 
                 case VNShowCharacterCommand show:
-                {
                     ShowOnlyCharacter(show.slot, show.characterId, show.pose, show.emotion, show.crossfadeSeconds, ref stopAutoHere);
                     break;
-                }
 
                 case VNHideCharacterCommand hide:
                 {
@@ -665,7 +666,6 @@ namespace VN
                     break;
 
                 case VNGiveArtifactCommand give:
-                    Debug.Log("[VN] VNGiveArtifactCommand CASE HIT");
                     EmitArtifact(give);
                     stopAutoHere = true;
                     break;
@@ -677,20 +677,11 @@ namespace VN
             string artifactId = Norm(cmd.artifactId);
             Sprite sprite = null;
 
-            Debug.Log("[VN] EmitArtifact called");
-            Debug.Log("[VN] artifactId = " + artifactId);
-            Debug.Log("[VN] project null = " + (project == null));
-            Debug.Log("[VN] assetDatabase null = " + (project == null || project.assetDatabase == null));
-
             if (!string.IsNullOrWhiteSpace(artifactId) && project.assetDatabase != null)
                 project.assetDatabase.TryGetArtifact(artifactId, out sprite);
 
-            Debug.Log("[VN] sprite found = " + (sprite != null));
-            Debug.Log("[VN] OnArtifactShown listeners = " + (OnArtifactShown != null));
-
             if (sprite == null || OnArtifactShown == null)
             {
-                Debug.LogWarning("[VN] Artifact show aborted");
                 _artifactWaiting = false;
                 return;
             }
@@ -708,8 +699,6 @@ namespace VN
                 holdSeconds = Mathf.Max(0f, cmd.holdSeconds),
                 fadeOutSeconds = Mathf.Max(0f, cmd.fadeOutSeconds)
             });
-
-            Debug.Log("[VN] OnArtifactShown invoked");
         }
 
         private void AutoApplySpeakerPoseEmotion(string speakerId, VNPose pose, VNEmotion emotion)
@@ -718,10 +707,11 @@ namespace VN
             if (string.IsNullOrWhiteSpace(speakerId)) return;
             if (!autoShowSpeakerIfMissing) return;
 
+            speakerId = Norm(speakerId);
             _state.EnsureSlots();
 
-            int visibleCount = 0;
-            int visibleIndex = -1;
+            float fade = Mathf.Max(0f, autoSpeakerCrossfadeSeconds);
+            VNScreenSlot targetSlot = FindPreferredSingleSlot(speakerId);
 
             for (int i = 0; i < _state.slots.Count; i++)
             {
@@ -729,72 +719,40 @@ namespace VN
                 if (!s.visible || string.IsNullOrWhiteSpace(s.characterId))
                     continue;
 
-                visibleCount++;
-                visibleIndex = i;
-            }
-
-            if (visibleCount == 1)
-            {
-                var current = _state.slots[visibleIndex];
-
-                if (string.Equals(current.characterId, speakerId, StringComparison.Ordinal))
+                if (string.Equals(s.characterId, speakerId, StringComparison.Ordinal))
                 {
-                    current.pose = pose;
-                    current.emotion = emotion;
+                    s.pose = pose;
+                    s.emotion = emotion;
 
-                    EmitSlot(current.slot, speakerId, pose, emotion, true, 0f, false);
+                    EmitSlot(s.slot, speakerId, pose, emotion, true, 0f, false);
                     return;
                 }
-
-                HideAllCharacters(0f);
-
-                var slotState = _state.GetSlot(current.slot);
-                slotState.visible = true;
-                slotState.characterId = speakerId;
-                slotState.pose = pose;
-                slotState.emotion = emotion;
-
-                EmitSlot(current.slot, speakerId, pose, emotion, true, 0.2f, true);
-
-                if (AutoEnabled)
-                    _autoStopDueToNewCharacterThisStep = true;
-
-                return;
             }
 
-            if (visibleCount > 1)
+            for (int i = 0; i < _state.slots.Count; i++)
             {
-                var target = FindPreferredSingleSlot();
-                HideAllCharacters(0f);
+                var s = _state.slots[i];
+                if (!s.visible && string.IsNullOrWhiteSpace(s.characterId))
+                    continue;
 
-                var slotState = _state.GetSlot(target);
-                slotState.visible = true;
-                slotState.characterId = speakerId;
-                slotState.pose = pose;
-                slotState.emotion = emotion;
+                s.visible = false;
+                s.characterId = null;
+                s.pose = VNPose.Default;
+                s.emotion = VNEmotion.Neutral;
 
-                EmitSlot(target, speakerId, pose, emotion, true, 0.2f, true);
-
-                if (AutoEnabled)
-                    _autoStopDueToNewCharacterThisStep = true;
-
-                return;
+                EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, fade, false);
             }
 
-            {
-                var target = FindPreferredSingleSlot();
+            var targetState = _state.GetSlot(targetSlot);
+            targetState.visible = true;
+            targetState.characterId = speakerId;
+            targetState.pose = pose;
+            targetState.emotion = emotion;
 
-                var slotState = _state.GetSlot(target);
-                slotState.visible = true;
-                slotState.characterId = speakerId;
-                slotState.pose = pose;
-                slotState.emotion = emotion;
+            EmitSlot(targetSlot, speakerId, pose, emotion, true, fade, true);
 
-                EmitSlot(target, speakerId, pose, emotion, true, 0.2f, true);
-
-                if (AutoEnabled)
-                    _autoStopDueToNewCharacterThisStep = true;
-            }
+            if (AutoEnabled)
+                _autoStopDueToNewCharacterThisStep = true;
         }
 
         private void ShowOnlyCharacter(VNScreenSlot preferredSlot, string characterId, VNPose pose, VNEmotion emotion, float crossfadeSeconds, ref bool stopAutoHere)
@@ -805,8 +763,8 @@ namespace VN
 
             _state.EnsureSlots();
 
+            float fade = Mathf.Max(0f, crossfadeSeconds);
             VNScreenSlot targetSlot = preferredSlot;
-            bool foundSameCharacter = false;
 
             for (int i = 0; i < _state.slots.Count; i++)
             {
@@ -817,7 +775,6 @@ namespace VN
                 if (string.Equals(s.characterId, characterId, StringComparison.Ordinal))
                 {
                     targetSlot = s.slot;
-                    foundSameCharacter = true;
                     break;
                 }
             }
@@ -834,7 +791,7 @@ namespace VN
                     s.pose = VNPose.Default;
                     s.emotion = VNEmotion.Neutral;
 
-                    EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, 0f, false);
+                    EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, fade, false);
                 }
             }
 
@@ -848,7 +805,7 @@ namespace VN
             targetState.pose = pose;
             targetState.emotion = emotion;
 
-            float emitFade = wasSameCharacterAlreadyVisible ? 0f : Mathf.Max(0f, crossfadeSeconds);
+            float emitFade = wasSameCharacterAlreadyVisible ? 0f : fade;
             bool isNewCharacter = !wasSameCharacterAlreadyVisible;
 
             EmitSlot(targetSlot, characterId, pose, emotion, true, emitFade, isNewCharacter);
@@ -876,8 +833,15 @@ namespace VN
             }
         }
 
-        private VNScreenSlot FindPreferredSingleSlot()
+        private VNScreenSlot FindPreferredSingleSlot(string characterId)
         {
+            if (project != null &&
+                project.characterDatabase != null &&
+                project.characterDatabase.TryGetDefaultScreenSlot(characterId, out var slot))
+            {
+                return slot;
+            }
+
             return VNScreenSlot.Center;
         }
 

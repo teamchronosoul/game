@@ -23,6 +23,7 @@ MonoBehaviour:
   - rid: 4444056912327082065
   - rid: 4444056912327082056
   - rid: 4444056912327082067
+  - rid: 4444057140391575626
   - rid: 4444056912327082068
   - rid: 4444056912327082069
   - rid: 4444056912327082070
@@ -30,6 +31,7 @@ MonoBehaviour:
   - rid: 4444056937922035779
   - rid: 4444056937922035780
   - rid: 4444056937922035782
+  - rid: 4444057140391575632
   - rid: 4444056937922035784
   - rid: 4444056937922035785
   - rid: 4444056937922035786
@@ -47,6 +49,7 @@ MonoBehaviour:
   - rid: 4444056937922035800
   - rid: 4444056937922035867
   - rid: 4444056937922035801
+  - rid: 4444057140391575633
   - rid: 4444056937922035803
   - rid: 4444056937922035804
   - rid: 4444056937922035805
@@ -59,13 +62,17 @@ MonoBehaviour:
   - rid: 4444057049864077315
   - rid: 4444056937922035813
   - rid: 4444056937922035814
+  - rid: 4444057140391575637
+  - rid: 4444057140391575635
   - rid: 4444056937922035815
   - rid: 4444056937922035818
   - rid: 4444056937922035821
+  - rid: 4444057140391575641
   - rid: 4444056937922035822
   - rid: 4444056937922035823
   - rid: 4444056937922035875
   - rid: 4444056937922035824
+  - rid: 4444057140391575642
   - rid: 4444056937922035825
   - rid: 4444056937922035826
   - rid: 4444056937922035827
@@ -90,9 +97,11 @@ MonoBehaviour:
   - rid: 4444056937922035848
   - rid: 4444056937922035878
   - rid: 4444056937922035849
+  - rid: 4444057140391575643
   - rid: 4444056937922035881
   - rid: 4444056937922035850
   - rid: 4444056937922035892
+  - rid: 4444057140391575644
   - rid: 4444056937922035893
   - rid: 4444056937922035896
   - rid: 4444056937922035897
@@ -103,16 +112,22 @@ MonoBehaviour:
   - rid: 4444056937922035906
   - rid: 4444056937922035907
   - rid: 4444056937922035908
+  - rid: 4444057140391575645
   - rid: 4444056937922035909
+  - rid: 4444057140391575646
   - rid: 4444056937922035910
   - rid: 4444056937922035911
   - rid: 4444056937922035912
   - rid: 4444056937922035913
   - rid: 4444057049864077333
+  - rid: 4444057140391575647
   - rid: 4444056937922035914
   - rid: 4444056937922035915
   - rid: 4444056937922035916
+  - rid: 4444057140391575648
   - rid: 4444056937922035917
+  - rid: 4444057140391575638
+  - rid: 4444057140391575640
   references:
     version: 2
     RefIds:
@@ -258,10 +273,9 @@ MonoBehaviour:
         emotion: 0
         sfxId: 
         text: 'I got you. You''re going to meet a mentor from each of the 4 faculties
-          of the Magical Academy. Each mentor will ask you three questions. By the
-          end of the test, you''ll know which faculty you''re in! '
+          of the Magical Academy. '
         addToLog: 1
-        nextStepId: 
+        nextStepId: 8dceac9f4cf8419189a50630c5dc20eb
     - rid: 4444056912327082068
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -366,11 +380,10 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: I see. I have to warn you. Studying at the Academy is no easy endeavor.
-          You must be prepared to apply your brilliant mind whenever it is required.
-          So let us see how you reason.
+        text: 'I see. I have to warn you. Studying at the Academy is no easy endeavor.
+          You must be prepared to apply your brilliant mind whenever it is required. '
         addToLog: 1
-        nextStepId: step_017
+        nextStepId: 2bf053f5fe8d405488cc49fbcbb0dc77
     - rid: 4444056937922035784
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -579,11 +592,10 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: 'Greetings to you, curious soul. I am Kensui of the Temple of the Everveil.
-          And I would like to learn more about you.Take a deep breath and let your
-          spirit speak for you. '
+        text: Greetings to you, curious soul. I am Kensui of the Temple of the Everveil.
+          And I would like to learn more about you.
         addToLog: 1
-        nextStepId: 
+        nextStepId: 3d734b74572244ab99a761c97133c356
     - rid: 4444056937922035803
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -720,7 +732,7 @@ MonoBehaviour:
         emotion: 0
         sfxId: 
         text: "Kensui takes off his scarf, with Lumis grasping one end and Kensui
-          the other, they gently cover you with it. \n"
+          the other, they gently cover you with it. \n\n"
         addToLog: 1
         nextStepId: step_043
     - rid: 4444056937922035813
@@ -738,7 +750,7 @@ MonoBehaviour:
           drifting among the stars! Your mind feels crystal clear as you hear a familiar
           voice echo through this wonderful illusion.
         addToLog: 1
-        nextStepId: step_045
+        nextStepId: 2c85ebca960b4ac7bf864459bf4970c5
     - rid: 4444056937922035814
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -797,12 +809,9 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: 'A man in an amber uniform appears beside Kensui. He nods at you and
-          Kensui, and Kensui smiles at him calmly before he vanishes into the fog.
-
-'
+        text: "A man in an golden uniform appears beside Kensui. \n"
         addToLog: 1
-        nextStepId: 
+        nextStepId: e78f2c18d4ed4534bba4d31c3a1c8b4b
     - rid: 4444056937922035822
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -846,10 +855,9 @@ MonoBehaviour:
         emotion: 0
         sfxId: 
         text: Good day. The Legion of Sentinels are the Academy's loyal servants
-          and its primary line of defence. Let's see if you're one of us.That is,
-          if you have what it takes.
+          and its primary line of defence. Let's see if you're one of us.
         addToLog: 1
-        nextStepId: 
+        nextStepId: ee59ccc835b74817a1639a0f818ce5ca
     - rid: 4444056937922035825
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1163,13 +1171,10 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: 'A giant shield appears in the air, concealing Kaitora behind it. When
-          the shield disappears, Kaitora is gone too. Hinato bows to you, a mischievous
-          grin flickering on his lips.
-
-'
+        text: "A giant shield appears in the air, concealing Kaitora behind it. When
+          the shield disappears, Kaitora is gone too. \n"
         addToLog: 1
-        nextStepId: step_077
+        nextStepId: 6d9679a6c428498b886964099f665e11
     - rid: 4444056937922035850
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1294,10 +1299,10 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: One thing about us, is we turn every strong feeling into magic. I mean,
-          how cool is that? Now, let's see if we vibe.
+        text: 'One thing about us, is we turn every strong feeling into magic. I
+          mean, how cool is that? '
         addToLog: 1
-        nextStepId: 
+        nextStepId: bbcf9b7d68a74fa9adf7a6734d225869
     - rid: 4444056937922035893
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1446,9 +1451,9 @@ MonoBehaviour:
         emotion: 0
         sfxId: 
         text: Ah, you're adorable, little Lumis! What's the point of asking questions
-          if we can just feel it? If we vibe, we vibe. You know what I'm saying?
+          if we can just feel it?
         addToLog: 1
-        nextStepId: step_090
+        nextStepId: e23edfbcec7849f0a59a9a3d16fb50ea
     - rid: 4444056937922035909
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1464,7 +1469,7 @@ MonoBehaviour:
           Hinato laughs, and you join in because his laughter\u2019s just so contagious.
           He then turns to you."
         addToLog: 1
-        nextStepId: step_091
+        nextStepId: 478ffc1ca18d462eb30f151455b0a035
     - rid: 4444056937922035910
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1522,10 +1527,9 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: You pull a card with a heart drawn on it out of your sleeve. It then
+        text: 'You pull a card with a heart drawn on it out of your sleeve. It then
           bursts into flames in your hands so you let go of it and watch it vanish
-          into the air. You can hear Hinato's voice speak to you, even though he's
-          no longer there.
+          into the air. '
         addToLog: 1
         nextStepId: step_095
     - rid: 4444056937922035914
@@ -1567,11 +1571,10 @@ MonoBehaviour:
         pose: 0
         emotion: 0
         sfxId: 
-        text: And now it's time for you to find out the results of your magic personality
-          sorting test. Let's see what you've discovered about yourself and which
-          faculty you belong to!
+        text: 'And now it''s time for you to find out the results of your magic personality
+          sorting test. '
         addToLog: 1
-        nextStepId: step_099
+        nextStepId: 38f634d454bf4d6f9877a43f1f7afae9
     - rid: 4444056937922035917
       type: {class: VNEndStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1597,7 +1600,7 @@ MonoBehaviour:
         fadeInSeconds: 0.2
         scaleUpSeconds: 0.2
         scaleSettleSeconds: 0.12
-        holdSeconds: 0.8
+        holdSeconds: 1.2
         fadeOutSeconds: 0.2
     - rid: 4444057049864077315
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
@@ -1648,7 +1651,7 @@ MonoBehaviour:
         stopAuto: 0
         command:
           rid: 4444057049864077335
-        nextStepId: step_096
+        nextStepId: a30530eecdc74c94a4ffdc410d88fb5b
     - rid: 4444057049864077335
       type: {class: VNGiveArtifactCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1659,3 +1662,223 @@ MonoBehaviour:
         scaleSettleSeconds: 0.12
         holdSeconds: 0.8
         fadeOutSeconds: 0.2
+    - rid: 4444057140391575626
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 8dceac9f4cf8419189a50630c5dc20eb
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Lumis
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'Each mentor will ask you three questions. By the end of the test,
+          you''ll know which faculty you''re in! '
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444057140391575632
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 2bf053f5fe8d405488cc49fbcbb0dc77
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: So let us see how you reason.
+        addToLog: 1
+        nextStepId: step_017
+    - rid: 4444057140391575633
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 3d734b74572244ab99a761c97133c356
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'Take a deep breath and let your spirit speak for you. '
+        addToLog: 1
+        nextStepId: step_034
+    - rid: 4444057140391575635
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: be9400c7c19e4f379774106ddbe6c8eb
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: 'The fact that I have a strong sense of reality. '
+          nextStepId: step_045
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: My vivid imagination.
+          nextStepId: step_045
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 4444057140391575637
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 2c85ebca960b4ac7bf864459bf4970c5
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: What do you appreciate more in yourself?
+        addToLog: 1
+        nextStepId: be9400c7c19e4f379774106ddbe6c8eb
+    - rid: 4444057140391575638
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: c80f54e546b1403f8d2811f40c5d24ee
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444057140391575640
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 4be40c26a7e34320a7f017c8523cdd46
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 
+        addToLog: 1
+        nextStepId: 
+    - rid: 4444057140391575641
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: e78f2c18d4ed4534bba4d31c3a1c8b4b
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: 'He nods at you and Kensui, and Kensui smiles at him calmly before
+          he vanishes into the fog.
+
+'
+        addToLog: 1
+        nextStepId: step_049
+    - rid: 4444057140391575642
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: ee59ccc835b74817a1639a0f818ce5ca
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: That is, if you have what it takes.
+        addToLog: 1
+        nextStepId: step_053
+    - rid: 4444057140391575643
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 6d9679a6c428498b886964099f665e11
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Hinato bows to you, a mischievous grin flickering on his lips.
+        addToLog: 1
+        nextStepId: step_077
+    - rid: 4444057140391575644
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: bbcf9b7d68a74fa9adf7a6734d225869
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Now, let's see if we vibe.
+        addToLog: 1
+        nextStepId: step_080
+    - rid: 4444057140391575645
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: e23edfbcec7849f0a59a9a3d16fb50ea
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: If we vibe, we vibe. You know what I'm saying?
+        addToLog: 1
+        nextStepId: step_090
+    - rid: 4444057140391575646
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 478ffc1ca18d462eb30f151455b0a035
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: He then turns to you.
+        addToLog: 1
+        nextStepId: step_091
+    - rid: 4444057140391575647
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: a30530eecdc74c94a4ffdc410d88fb5b
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: You can hear Hinato's voice speak to you, even though he's no longer
+          there.
+        addToLog: 1
+        nextStepId: step_096
+    - rid: 4444057140391575648
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 38f634d454bf4d6f9877a43f1f7afae9
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        sfxId: 
+        text: Let's see what you've discovered about yourself and which faculty you
+          belong to!
+        addToLog: 1
+        nextStepId: step_099
