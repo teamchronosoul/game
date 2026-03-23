@@ -25,7 +25,20 @@ namespace VN.UI
         [SerializeField] private VNCrossfadeImageUGUI rightSlot;
         [SerializeField] private float hideCharactersFadeSeconds = 0.2f;
 
+        [Header("Artifact vibration")]
+        [SerializeField] private bool useVibration = true;
+        [SerializeField] [Min(0f)] private float vibrationPositionAmplitude = 6f;
+        [SerializeField] [Min(0f)] private float vibrationRotationAmplitude = 1.25f;
+        [SerializeField] [Min(0f)] private float vibrationFrequency = 22f;
+        [SerializeField] [Range(0f, 1f)] private float vibrationStrengthOnFadeIn = 0.35f;
+        [SerializeField] [Range(0f, 1f)] private float vibrationStrengthOnScale = 0.6f;
+        [SerializeField] [Range(0f, 1f)] private float vibrationStrengthOnHold = 1f;
+        [SerializeField] [Range(0f, 1f)] private float vibrationStrengthOnFadeOut = 0.45f;
+
         private Coroutine _routine;
+
+        private Vector2 _baseAnchoredPosition;
+        private Quaternion _baseLocalRotation;
 
         private void Awake()
         {
@@ -47,7 +60,11 @@ namespace VN.UI
             }
 
             if (artifactTransform != null)
+            {
+                _baseAnchoredPosition = artifactTransform.anchoredPosition;
+                _baseLocalRotation = artifactTransform.localRotation;
                 artifactTransform.localScale = Vector3.zero;
+            }
         }
 
         private void OnEnable()
@@ -67,6 +84,7 @@ namespace VN.UI
             if (_routine != null)
                 StopCoroutine(_routine);
 
+            ResetArtifactVibration();
             HideAllCharacters();
 
             _routine = StartCoroutine(PlayRoutine(payload));
@@ -105,8 +123,13 @@ namespace VN.UI
             }
 
             if (artifactTransform != null)
+            {
+                _baseAnchoredPosition = artifactTransform.anchoredPosition;
+                _baseLocalRotation = artifactTransform.localRotation;
                 artifactTransform.localScale = Vector3.zero;
+            }
 
+            ResetArtifactVibration();
             SetDimAlpha(0f);
             SetArtifactAlpha(0f);
 
@@ -121,8 +144,11 @@ namespace VN.UI
             {
                 t += Time.deltaTime;
                 float k = Mathf.Clamp01(t / fadeIn);
+
                 SetDimAlpha(payload.dimAlpha * k);
                 SetArtifactAlpha(k);
+                ApplyArtifactVibration(vibrationStrengthOnFadeIn * k);
+
                 yield return null;
             }
 
@@ -134,7 +160,10 @@ namespace VN.UI
             {
                 t += Time.deltaTime;
                 float k = Mathf.Clamp01(t / scaleUp);
+
                 SetArtifactScale(Vector3.LerpUnclamped(Vector3.zero, Vector3.one * 1.2f, k));
+                ApplyArtifactVibration(vibrationStrengthOnScale);
+
                 yield return null;
             }
 
@@ -145,33 +174,74 @@ namespace VN.UI
             {
                 t += Time.deltaTime;
                 float k = Mathf.Clamp01(t / settle);
+
                 SetArtifactScale(Vector3.LerpUnclamped(Vector3.one * 1.2f, Vector3.one, k));
+                ApplyArtifactVibration(Mathf.Lerp(vibrationStrengthOnScale, vibrationStrengthOnHold, k));
+
                 yield return null;
             }
 
             SetArtifactScale(Vector3.one);
 
             if (hold > 0f)
-                yield return new WaitForSeconds(hold);
+            {
+                t = 0f;
+                while (t < hold)
+                {
+                    t += Time.deltaTime;
+                    ApplyArtifactVibration(vibrationStrengthOnHold);
+                    yield return null;
+                }
+            }
 
             t = 0f;
             while (t < fadeOut)
             {
                 t += Time.deltaTime;
                 float k = Mathf.Clamp01(t / fadeOut);
+
                 SetDimAlpha(Mathf.Lerp(payload.dimAlpha, 0f, k));
                 SetArtifactAlpha(Mathf.Lerp(1f, 0f, k));
+                ApplyArtifactVibration(Mathf.Lerp(vibrationStrengthOnFadeOut, 0f, k));
+
                 yield return null;
             }
 
             SetDimAlpha(0f);
             SetArtifactAlpha(0f);
+            ResetArtifactVibration();
 
             if (root != null)
                 root.SetActive(false);
 
             runner?.NotifyArtifactPresentationFinished();
             _routine = null;
+        }
+
+        private void ApplyArtifactVibration(float strength)
+        {
+            if (!useVibration || artifactTransform == null || strength <= 0f)
+            {
+                ResetArtifactVibration();
+                return;
+            }
+
+            float time = Time.unscaledTime * vibrationFrequency;
+
+            float posX = (Mathf.PerlinNoise(time, 11.37f) * 2f - 1f) * vibrationPositionAmplitude * strength;
+            float posY = (Mathf.PerlinNoise(19.83f, time) * 2f - 1f) * vibrationPositionAmplitude * strength;
+            float rotZ = (Mathf.PerlinNoise(time, 47.12f) * 2f - 1f) * vibrationRotationAmplitude * strength;
+
+            artifactTransform.anchoredPosition = _baseAnchoredPosition + new Vector2(posX, posY);
+            artifactTransform.localRotation = _baseLocalRotation * Quaternion.Euler(0f, 0f, rotZ);
+        }
+
+        private void ResetArtifactVibration()
+        {
+            if (artifactTransform == null) return;
+
+            artifactTransform.anchoredPosition = _baseAnchoredPosition;
+            artifactTransform.localRotation = _baseLocalRotation;
         }
 
         private void SetDimAlpha(float a)

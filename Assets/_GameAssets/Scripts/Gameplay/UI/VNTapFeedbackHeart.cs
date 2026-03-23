@@ -22,8 +22,9 @@ namespace VN.UI
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRoot, screenPosition, null, out var local);
             rt.anchoredPosition = local;
-
+            
             img.gameObject.SetActive(true);
+            Sound.PlaySFX("tap");
             StartCoroutine(CoAnim(img));
         }
 

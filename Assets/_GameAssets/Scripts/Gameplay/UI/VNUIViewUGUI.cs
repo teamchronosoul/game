@@ -329,7 +329,15 @@ namespace VN.UI
         private void OnMusicPlay(VN.VNRunner.VNMusicPayload m)
         {
             if (audioController == null) return;
-            audioController.PlayMusic(m.clip, m.fadeInSeconds, m.loop);
+
+            if (m.clip != null)
+            {
+                audioController.PlayMusic(m.clip, m.fadeInSeconds, m.loop);
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(m.musicId))
+                audioController.PlayMusic(m.musicId, m.fadeInSeconds, m.loop);
         }
 
         private void OnMusicStop(float fadeOut)

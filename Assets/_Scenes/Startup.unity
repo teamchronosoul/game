@@ -4316,7 +4316,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a4e9a3470b4d20843fc485e5eaefe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - key: background_music_intro_test
+    clip: {fileID: 8300000, guid: fa33d246a30e8aa48a95184e6eb2eefc, type: 3}
+  - key: click
+    clip: {fileID: 8300000, guid: 57ffc02a8e201394eab16cdc4ae104af, type: 3}
+  - key: tap
+    clip: {fileID: 8300000, guid: 4e7721584ddef9e4e9f69ff474cecbcc, type: 3}
 --- !u!114 &2223241241140177498
 MonoBehaviour:
   m_ObjectHideFlags: 0
