@@ -114,6 +114,16 @@ namespace VN
         public string backgroundId;
         [Min(0f)] public float crossfadeSeconds = 0.25f;
     }
+    
+    [System.Serializable]
+    public class VNMbtiAnswerCommand : VNCommand
+    {
+        public VNMbtiLetter letter;
+    }
+    [System.Serializable]
+    public class VNResolveMbtiCommand : VNCommand
+    {
+    }
     [Serializable]
     public class VNGiveArtifactCommand : VNCommand
     {

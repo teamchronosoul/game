@@ -15,11 +15,11 @@ MonoBehaviour:
   backgrounds:
   - id: 1
     asset: {fileID: -8593865114822522149, guid: f21c4a06170633e4191be3b725557319, type: 3}
-  - id: "\u043A\u043E\u043C\u043D\u0430\u0442\u0430"
-    asset: {fileID: 3637920166256152383, guid: 92b08b282243475488f0ada0dc0bc0ed, type: 3}
   artifacts:
-  - id: card
-    asset: {fileID: 21300000, guid: 473b45676c482004987f6b8cf23d2344, type: 3}
+  - id: card0
+    asset: {fileID: 21300000, guid: aa97dc45a2aeaad46bec354dff87b9a2, type: 3}
+  - id: card1
+    asset: {fileID: 21300000, guid: 23d48552dc7b509469c3dbbe5d4be7fb, type: 3}
   - id: scale
     asset: {fileID: 21300000, guid: e117e9e5f50f3e045ba1a1ffd9aeed19, type: 3}
   - id: ball

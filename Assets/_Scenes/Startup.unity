@@ -4304,6 +4304,8 @@ MonoBehaviour:
   sounds: {fileID: 2186359623144661386}
   _music: {fileID: 1527485016}
   _sfx: {fileID: 1893400716}
+  musicVolume: 0.1
+  sfxVolume: 0.2
 --- !u!114 &2186359623144661386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4321,6 +4323,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fa33d246a30e8aa48a95184e6eb2eefc, type: 3}
   - key: click
     clip: {fileID: 8300000, guid: 57ffc02a8e201394eab16cdc4ae104af, type: 3}
+  - key: fire_card_Hinato
+    clip: {fileID: 8300000, guid: 9796baae79b66214db993facf3d1aeab, type: 3}
   - key: tap
     clip: {fileID: 8300000, guid: 4e7721584ddef9e4e9f69ff474cecbcc, type: 3}
 --- !u!114 &2223241241140177498

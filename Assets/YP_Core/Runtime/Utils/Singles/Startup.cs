@@ -43,7 +43,7 @@ namespace YP
 
             if (allInitialized)
             {
-                SceneManager.LoadScene(1);
+                VN.VNSceneLoader.Load("Main");
                 loaded = true;
                 onLoaded?.Invoke();
             }

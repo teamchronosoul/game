@@ -19,35 +19,35 @@ MonoBehaviour:
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: -3267501778394122946, guid: 4507341bd2d6ed74b83c6a2581d24a05, type: 3}
+      sprite: {fileID: 21300000, guid: 4507341bd2d6ed74b83c6a2581d24a05, type: 3}
   - id: Lumis
     displayName: Lumis
     defaultScreenSlot: 1
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 6915036122205813541, guid: c2fbc2700cd7ace4cb2ea7842447c5ae, type: 3}
+      sprite: {fileID: 21300000, guid: c2fbc2700cd7ace4cb2ea7842447c5ae, type: 3}
   - id: Kensui
     displayName: Kensui
     defaultScreenSlot: 0
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 5730582293445449014, guid: 2cb67386ba34af84eaea88f311561da9, type: 3}
+      sprite: {fileID: 21300000, guid: 2cb67386ba34af84eaea88f311561da9, type: 3}
   - id: Kaitora
     displayName: Kaitora
     defaultScreenSlot: 0
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 980382946053249801, guid: d591e16682b68dd4c81f94444297924c, type: 3}
+      sprite: {fileID: 21300000, guid: d591e16682b68dd4c81f94444297924c, type: 3}
   - id: Hinato
     displayName: Hinato
     defaultScreenSlot: 0
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 3191368755569544091, guid: ccec1305fd5fcf5409a145fd0a48416b, type: 3}
+      sprite: {fileID: 21300000, guid: ccec1305fd5fcf5409a145fd0a48416b, type: 3}
   - id: ????
     displayName: ????
     defaultScreenSlot: 1
@@ -56,24 +56,3 @@ MonoBehaviour:
     displayName: You
     defaultScreenSlot: 1
     sprites: []
-  - id: "\u0425\u043E\u0437\u044F\u0438\u043D"
-    displayName: "\u0425\u043E\u0437\u044F\u0438\u043D"
-    defaultScreenSlot: 1
-    sprites:
-    - pose: 0
-      emotion: 0
-      sprite: {fileID: 175045280634748276, guid: 906cf99184ed60043a911f96d1635175, type: 3}
-  - id: "\u0411\u0430\u043D\u0430\u043D"
-    displayName: "\u0411\u0430\u043D\u0430\u043D"
-    defaultScreenSlot: 1
-    sprites:
-    - pose: 0
-      emotion: 0
-      sprite: {fileID: 4298448253483459388, guid: 2c47220eb6344cb4f9402f1ff531fec1, type: 3}
-  - id: "\u0413\u043E\u0440\u0438\u043B\u043B\u0430"
-    displayName: "\u0413\u043E\u0440\u0438\u043B\u043B\u0430"
-    defaultScreenSlot: 1
-    sprites:
-    - pose: 0
-      emotion: 0
-      sprite: {fileID: -4589246329914201413, guid: 75f1cfd8d04d7fb48968176e2e91fdce, type: 3}

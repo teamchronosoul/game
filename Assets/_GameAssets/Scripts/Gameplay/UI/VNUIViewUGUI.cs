@@ -346,10 +346,18 @@ namespace VN.UI
             audioController.StopMusic(fadeOut);
         }
 
-        private void OnSfx(AudioClip clip)
+        private void OnSfx(VN.VNRunner.VNSfxPayload sfx)
         {
             if (audioController == null) return;
-            audioController.PlaySfx(clip);
+
+            if (sfx.clip != null)
+            {
+                audioController.PlaySfx(sfx.clip);
+                return;
+            }
+
+            if (!string.IsNullOrWhiteSpace(sfx.sfxId))
+                audioController.PlaySfx(sfx.sfxId);
         }
     }
 }

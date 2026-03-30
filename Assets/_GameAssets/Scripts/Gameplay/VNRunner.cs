@@ -21,7 +21,8 @@ namespace VN
 
         [Header("Skip")]
         [SerializeField] private float skipStepFrameDelay = 0f;
-
+        [SerializeField] private VNMbtiState mbti = new VNMbtiState();
+        public VNMbtiState Mbti => mbti;
         [Header("Character auto show")]
         [SerializeField] private float autoSpeakerCrossfadeSeconds = 0.2f;
 
@@ -43,8 +44,7 @@ namespace VN
 
         public event Action<VNMusicPayload> OnMusicPlay;
         public event Action<float> OnMusicStop;
-        public event Action<AudioClip> OnSfxPlay;
-
+        public event Action<VNSfxPayload> OnSfxPlay;
         public event Action<VNArtifactPayload> OnArtifactShown;
 
         public event Action<bool> OnAutoChanged;
@@ -108,7 +108,12 @@ namespace VN
             public float fadeInSeconds;
             public bool loop;
         }
-
+        [Serializable]
+        public struct VNSfxPayload
+        {
+            public string sfxId;
+            public AudioClip clip;
+        }
         [Serializable]
         public struct VNArtifactPayload
         {
@@ -547,6 +552,10 @@ namespace VN
                     yield return null;
 
                 AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
+
+                if (cmdStep.command is VNResolveMbtiCommand)
+                    OnLineHidden?.Invoke();
+
                 yield break;
             }
 
@@ -639,9 +648,20 @@ namespace VN
                     break;
 
                 case VNPlaySfxCommand s:
-                    EmitSfx(s.sfxId);
+                    EmitSfx(Norm(s.sfxId));
                     break;
-
+                
+                case VNMbtiAnswerCommand mbtiCmd:
+                    ApplyMbtiAnswer(mbtiCmd.letter);
+                    break;
+                
+                case VNResolveMbtiCommand _:
+                    ResolveMbtiResult();
+                    ShowMbtiResultLine();
+                    stopAutoHere = true;
+                    if (SkipEnabled) SetSkip(false);
+                    break;
+                
                 case VNSetBoolVarCommand vb:
                     _state.SetBool(vb.key, vb.value);
                     break;
@@ -832,7 +852,23 @@ namespace VN
                 EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, fadeSeconds, false);
             }
         }
+        private void ShowMbtiResultLine()
+        {
+            _advanceRequested = false;
+            _interruptWaitRequested = false;
+            _lineRevealCompleted = false;
 
+            OnLineStarted?.Invoke(new VNLinePayload
+            {
+                speakerId = null,
+                speakerName = "",
+                isNarrator = true,
+                pose = VNPose.Default,
+                emotion = VNEmotion.Neutral,
+                sfxId = null,
+                text = $"<color={mbti.ResultColorHex}>{mbti.ResultType}</color>"
+            });
+        }
         private VNScreenSlot FindPreferredSingleSlot(string characterId)
         {
             if (project != null &&
@@ -996,8 +1032,16 @@ namespace VN
             sfxId = Norm(sfxId);
             if (string.IsNullOrWhiteSpace(sfxId)) return;
 
-            if (project.assetDatabase != null && project.assetDatabase.TryGetSfx(sfxId, out var clip))
-                OnSfxPlay?.Invoke(clip);
+            AudioClip clip = null;
+
+            if (project.assetDatabase != null)
+                project.assetDatabase.TryGetSfx(sfxId, out clip);
+
+            OnSfxPlay?.Invoke(new VNSfxPayload
+            {
+                sfxId = sfxId,
+                clip = clip
+            });
         }
 
         private void AdvanceToNextStep(VNChapter chapter, int currentIndex, string explicitNextStepId)
@@ -1033,7 +1077,40 @@ namespace VN
             _lineRevealCompleted = false;
             return false;
         }
+        private void ResolveMbtiResult()
+        {
+            char ei = mbti.E >= mbti.I ? 'E' : 'I';
+            char sn = mbti.S >= mbti.N ? 'S' : 'N';
+            char tf = mbti.T >= mbti.F ? 'T' : 'F';
+            char jp = mbti.J >= mbti.P ? 'J' : 'P';
 
+            mbti.ResultType = $"{ei}{sn}{tf}{jp}";
+
+            if (sn == 'N' && tf == 'T')
+            {
+                mbti.ArchetypeId = "Logics";
+                mbti.ArchetypeName = "Логики";
+                mbti.ResultColorHex = "#4A8BFF";
+            }
+            else if (sn == 'N' && tf == 'F')
+            {
+                mbti.ArchetypeId = "Diplomats";
+                mbti.ArchetypeName = "Дипломаты";
+                mbti.ResultColorHex = "#41B86A";
+            }
+            else if (sn == 'S' && jp == 'J')
+            {
+                mbti.ArchetypeId = "Defenders";
+                mbti.ArchetypeName = "Защитники";
+                mbti.ResultColorHex = "#E7C64A";
+            }
+            else // S + P
+            {
+                mbti.ArchetypeId = "Seekers";
+                mbti.ArchetypeName = "Искатели";
+                mbti.ResultColorHex = "#E25555";
+            }
+        }
         private bool TryResolveExplicitOrLinearNext(VNChapter chapter, int currentIndex, string explicitTargetStepId, out string resolvedStepId)
         {
             resolvedStepId = null;
@@ -1088,7 +1165,20 @@ namespace VN
                 yield return null;
             }
         }
-
+        private void ApplyMbtiAnswer(VNMbtiLetter letter)
+        {
+            switch (letter)
+            {
+                case VNMbtiLetter.E: mbti.E++; break;
+                case VNMbtiLetter.I: mbti.I++; break;
+                case VNMbtiLetter.S: mbti.S++; break;
+                case VNMbtiLetter.N: mbti.N++; break;
+                case VNMbtiLetter.T: mbti.T++; break;
+                case VNMbtiLetter.F: mbti.F++; break;
+                case VNMbtiLetter.J: mbti.J++; break;
+                case VNMbtiLetter.P: mbti.P++; break;
+            }
+        }
         private bool TryResolveChapter(out VNChapter chapter)
         {
             chapter = null;

@@ -32,5 +32,13 @@ namespace VN.UI
 
             Sound.PlaySFX(clip);
         }
+
+        public void PlaySfx(string sfxKey)
+        {
+            if (string.IsNullOrWhiteSpace(sfxKey))
+                return;
+
+            Sound.PlaySFX(sfxKey);
+        }
     }
 }

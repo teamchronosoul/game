@@ -23,4 +23,9 @@
         Center = 1,
         Right = 2,
     }
+    
+    public enum VNMbtiLetter
+    {
+        E, I, S, N, T, F, J, P
+    }
 }

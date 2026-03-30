@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 75f1cfd8d04d7fb48968176e2e91fdce
+guid: 5ce861b32b42f64499e5830eee487e8e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4589246329914201413
-    second: gorilla_0
+      213: -111974154554346046
+    second: ui 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gorilla_0
+      name: ui 1_0
       rect:
         serializedVersion: 2
-        x: 141
+        x: 1
         y: 0
-        width: 159
-        height: 438
+        width: 978
+        height: 75
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bbae2be17c8bf40c0800000000000000
-      internalID: -4589246329914201413
+      spriteID: 2c573c58910327ef0800000000000000
+      internalID: -111974154554346046
       vertices: []
       indices: 
       edges: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gorilla_0: -4589246329914201413
+      ui 1_0: -111974154554346046
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
