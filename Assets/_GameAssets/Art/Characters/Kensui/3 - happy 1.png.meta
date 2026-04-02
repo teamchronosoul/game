@@ -134,8 +134,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1011
-        height: 1708
+        width: 897
+        height: 1771
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,10 +154,10 @@ TextureImporter:
       name: 3 - happy 1_1
       rect:
         serializedVersion: 2
-        x: 789
-        y: 1161
-        width: 232
-        height: 224
+        x: 659
+        y: 1181
+        width: 250
+        height: 241
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

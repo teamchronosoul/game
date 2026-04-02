@@ -19,7 +19,25 @@ MonoBehaviour:
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 21300000, guid: 4507341bd2d6ed74b83c6a2581d24a05, type: 3}
+      sprite: {fileID: 21300000, guid: 10d0328476144aa4e8fbe8939c11e36b, type: 3}
+    - pose: 0
+      emotion: 1
+      sprite: {fileID: 21300000, guid: 8df4585335fdbd247b5103e8ab33fb17, type: 3}
+    - pose: 0
+      emotion: 2
+      sprite: {fileID: 21300000, guid: ac9ccf2601d5ae34b87dd98c5716766c, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: 487533cb0d7e3104b96230cf8d0b8319, type: 3}
+    - pose: 0
+      emotion: 4
+      sprite: {fileID: 21300000, guid: a4c094a85298c274f9ee61afbfa643e5, type: 3}
+    - pose: 0
+      emotion: 5
+      sprite: {fileID: 21300000, guid: a4c094a85298c274f9ee61afbfa643e5, type: 3}
+    - pose: 0
+      emotion: 6
+      sprite: {fileID: 21300000, guid: 34a51a5b35ef99747922bc543164292d, type: 3}
   - id: Lumis
     displayName: Lumis
     defaultScreenSlot: 1
@@ -27,13 +45,49 @@ MonoBehaviour:
     - pose: 0
       emotion: 0
       sprite: {fileID: 21300000, guid: c2fbc2700cd7ace4cb2ea7842447c5ae, type: 3}
+    - pose: 0
+      emotion: 1
+      sprite: {fileID: 21300000, guid: c7ec9fef15ddf8a48a56e130ea2cdcd4, type: 3}
+    - pose: 0
+      emotion: 2
+      sprite: {fileID: 21300000, guid: 38c26d89cbf710a438f67c3ad1dfc1ef, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: 8c871f1431b5dd64e9f09a0b25b7ae87, type: 3}
+    - pose: 0
+      emotion: 4
+      sprite: {fileID: 21300000, guid: 2023b96480bb61b4b8ab44b23faf04b0, type: 3}
+    - pose: 0
+      emotion: 5
+      sprite: {fileID: 21300000, guid: dbff3592aec2ae049a872ceac4fc1e62, type: 3}
+    - pose: 0
+      emotion: 6
+      sprite: {fileID: 21300000, guid: 53430ffb89290d349aeb6fa7f3e2b4ce, type: 3}
   - id: Kensui
     displayName: Kensui
     defaultScreenSlot: 0
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 21300000, guid: 2cb67386ba34af84eaea88f311561da9, type: 3}
+      sprite: {fileID: 21300000, guid: a4b9eda7158288e479f6d7c077aaa637, type: 3}
+    - pose: 0
+      emotion: 1
+      sprite: {fileID: 21300000, guid: ee55c3d05b33e104ca8906e906e67e3d, type: 3}
+    - pose: 0
+      emotion: 2
+      sprite: {fileID: 21300000, guid: 3deef86c1a75d0f46996198c218cd3f1, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: c5623d591a087e14f80814a53b7fa9f6, type: 3}
+    - pose: 0
+      emotion: 4
+      sprite: {fileID: 21300000, guid: c23d08fe97f7a5c478771f2e7107412d, type: 3}
+    - pose: 0
+      emotion: 5
+      sprite: {fileID: 21300000, guid: c479b0f1bc8b861498f620a2db8a6755, type: 3}
+    - pose: 0
+      emotion: 6
+      sprite: {fileID: 21300000, guid: c55ca8602d8bd4a4eacfd1ea9882ee9d, type: 3}
   - id: Kaitora
     displayName: Kaitora
     defaultScreenSlot: 0
@@ -41,13 +95,49 @@ MonoBehaviour:
     - pose: 0
       emotion: 0
       sprite: {fileID: 21300000, guid: d591e16682b68dd4c81f94444297924c, type: 3}
+    - pose: 0
+      emotion: 1
+      sprite: {fileID: 21300000, guid: a03798f602ee97842971f51386565f2c, type: 3}
+    - pose: 0
+      emotion: 2
+      sprite: {fileID: 21300000, guid: e5ac680031d833340b2061832a96dd6e, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: 282568770b6ad6d45b2d853165b6ae0b, type: 3}
+    - pose: 0
+      emotion: 4
+      sprite: {fileID: 21300000, guid: 200c6e8d34ae7c54da0cd2e82522ebdc, type: 3}
+    - pose: 0
+      emotion: 5
+      sprite: {fileID: 21300000, guid: f29b3ed87795f894ba7d1161fb8eb953, type: 3}
+    - pose: 0
+      emotion: 6
+      sprite: {fileID: 21300000, guid: 1cc2ec143fd3df242b4221cf0bd123cc, type: 3}
   - id: Hinato
     displayName: Hinato
     defaultScreenSlot: 0
     sprites:
     - pose: 0
       emotion: 0
-      sprite: {fileID: 21300000, guid: ccec1305fd5fcf5409a145fd0a48416b, type: 3}
+      sprite: {fileID: 21300000, guid: fba1b833ff77d314d9f1d7880395d177, type: 3}
+    - pose: 0
+      emotion: 1
+      sprite: {fileID: 21300000, guid: 5843b5c460db3b24aad40fa647b19fcb, type: 3}
+    - pose: 0
+      emotion: 2
+      sprite: {fileID: 21300000, guid: c538dc933d87b784da0f6ffb4a05067f, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: 7a33e93288548da49a73dc2d6df4cb75, type: 3}
+    - pose: 0
+      emotion: 4
+      sprite: {fileID: 21300000, guid: 7c4571b849f65a34f9454cb2dde9767e, type: 3}
+    - pose: 0
+      emotion: 5
+      sprite: {fileID: 21300000, guid: 324ec185ea2c12c46b47f0fd686be8b4, type: 3}
+    - pose: 0
+      emotion: 6
+      sprite: {fileID: 21300000, guid: 24025b3d152c55743af709416f98ebda, type: 3}
   - id: ????
     displayName: ????
     defaultScreenSlot: 1

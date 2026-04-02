@@ -25,7 +25,8 @@ namespace VN
         public VNMbtiState Mbti => mbti;
         [Header("Character auto show")]
         [SerializeField] private float autoSpeakerCrossfadeSeconds = 0.2f;
-
+        [Header("VFX")]
+        [SerializeField] private VNVfxPlayer vfxPlayer;
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
         public bool SkipAllowed { get; private set; } = true;
@@ -505,7 +506,16 @@ namespace VN
 
             if (!_state.currentStepApplied)
             {
-                ApplyCommand(cmdStep.command, ref stopAutoHere);
+                if (cmdStep.command is VNVfxCommand vfxCommand)
+                {
+                    bool shouldWaitForVfx = vfxCommand.waitUntilFinished && !(SkipEnabled && SkipAllowed);
+                    yield return StartCoroutine(HandleVfxCommand(vfxCommand, shouldWaitForVfx));
+                }
+                else
+                {
+                    ApplyCommand(cmdStep.command, ref stopAutoHere);
+                }
+
                 _state.currentStepApplied = true;
                 VNAutosave.Save(_state);
             }
@@ -646,7 +656,7 @@ namespace VN
                     _state.musicId = null;
                     OnMusicStop?.Invoke(stop.fadeOutSeconds);
                     break;
-
+                    
                 case VNPlaySfxCommand s:
                     EmitSfx(Norm(s.sfxId));
                     break;
@@ -654,7 +664,7 @@ namespace VN
                 case VNMbtiAnswerCommand mbtiCmd:
                     ApplyMbtiAnswer(mbtiCmd.letter);
                     break;
-                
+               
                 case VNResolveMbtiCommand _:
                     ResolveMbtiResult();
                     ShowMbtiResultLine();
@@ -691,7 +701,55 @@ namespace VN
                     break;
             }
         }
+        private IEnumerator HandleVfxCommand(VNVfxCommand command, bool waitUntilFinished)
+        {
+            if (command == null)
+                yield break;
 
+            if (project == null)
+            {
+                Debug.LogWarning("[VN] Can't play VFX: project is null.");
+                yield break;
+            }
+
+            if (vfxPlayer == null)
+            {
+                Debug.LogWarning("[VN] Can't play VFX: VNVfxPlayer is not assigned.");
+                yield break;
+            }
+
+            if (string.IsNullOrWhiteSpace(command.vfxId))
+            {
+                Debug.LogWarning("[VN] Can't play VFX: empty vfxId.");
+                yield break;
+            }
+
+            if (project.assetDatabase == null)
+            {
+                Debug.LogWarning("[VN] Can't play VFX: assetDatabase is null.");
+                yield break;
+            }
+
+            if (!project.assetDatabase.TryGetVfx(command.vfxId, out var definition))
+            {
+                Debug.LogWarning($"[VN] Can't play VFX: id '{command.vfxId}' not found in project database.");
+                yield break;
+            }
+
+            var handle = vfxPlayer.Play(
+                definition,
+                command.anchorId,
+                command.localOffset,
+                command.scale,
+                command.lifetimeOverride
+            );
+
+            if (waitUntilFinished && handle != null)
+            {
+                while (!handle.IsFinished)
+                    yield return null;
+            }
+        }
         private void EmitArtifact(VNGiveArtifactCommand cmd)
         {
             string artifactId = Norm(cmd.artifactId);

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using CandyCoded.HapticFeedback;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -132,7 +133,8 @@ namespace VN.UI
             ResetArtifactVibration();
             SetDimAlpha(0f);
             SetArtifactAlpha(0f);
-
+            HapticFeedback.HeavyFeedback();
+            
             float fadeIn = Mathf.Max(0.0001f, payload.fadeInSeconds);
             float scaleUp = Mathf.Max(0.0001f, payload.scaleUpSeconds);
             float settle = Mathf.Max(0.0001f, payload.scaleSettleSeconds);

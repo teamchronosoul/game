@@ -8,6 +8,8 @@
         Sad = 2,
         Angry = 3,
         Surprised = 4,
+        Smile = 5, 
+        Special  = 6,
     }
 
     public enum VNPose
