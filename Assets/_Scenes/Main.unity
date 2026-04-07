@@ -1596,6 +1596,10 @@ MonoBehaviour:
   vibrationStrengthOnScale: 0.3
   vibrationStrengthOnHold: 0.5
   vibrationStrengthOnFadeOut: 0.2
+  useHaptic: 1
+  hapticPulseCount: 4
+  hapticPulseInterval: 0.08
+  useHeavyHaptic: 0
 --- !u!114 &887321017
 MonoBehaviour:
   m_ObjectHideFlags: 0

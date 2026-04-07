@@ -2342,7 +2342,7 @@ MonoBehaviour:
       data:
         vfxId: flower
         anchorId: center
-        localOffset: {x: 0, y: 0, z: 0}
+        localOffset: {x: -2, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
         waitUntilFinished: 0
@@ -2361,7 +2361,7 @@ MonoBehaviour:
       data:
         vfxId: gold_leafs
         anchorId: center
-        localOffset: {x: 0, y: 0, z: 0}
+        localOffset: {x: -2, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
         waitUntilFinished: 0
@@ -2380,7 +2380,7 @@ MonoBehaviour:
       data:
         vfxId: red_leafs
         anchorId: center
-        localOffset: {x: 0, y: 0, z: 0}
+        localOffset: {x: -2, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
         waitUntilFinished: 0

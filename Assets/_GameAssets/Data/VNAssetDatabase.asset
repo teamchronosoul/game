@@ -31,13 +31,13 @@ MonoBehaviour:
   vfx:
   - id: snow
     prefab: {fileID: 4923469801378391415, guid: 88482a96dce539e449059e35912741f6, type: 3}
-    lifetime: 2.4
+    lifetime: 3.6
   - id: flower
     prefab: {fileID: 3275565036141208059, guid: 3cde12f22377a7741854b049431b8310, type: 3}
-    lifetime: 2.4
+    lifetime: 3.6
   - id: gold_leafs
     prefab: {fileID: 1530020902173837461, guid: 64ee50786384c2845b06effe4a972a01, type: 3}
-    lifetime: 2.4
+    lifetime: 3.6
   - id: red_leafs
     prefab: {fileID: 1500451494704532191, guid: 32f15231e19756f4c9c54d9bb5bf70de, type: 3}
-    lifetime: 2.4
+    lifetime: 3.6

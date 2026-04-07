@@ -590,10 +590,7 @@ namespace VN
 
         private void ApplySkipAllowedForStep(VNChapterStep step)
         {
-            bool allowed = true;
-
-            if (step.disableSkip)
-                allowed = false;
+            bool allowed = !step.disableSkip;
 
             if (step is VNCommandStep cs && cs.command is VNGateCommand gate && gate.gateDisablesSkip)
                 allowed = false;
@@ -741,7 +738,8 @@ namespace VN
                 command.anchorId,
                 command.localOffset,
                 command.scale,
-                command.lifetimeOverride
+                command.lifetimeOverride,
+                command.softStopSecondsOverride
             );
 
             if (waitUntilFinished && handle != null)

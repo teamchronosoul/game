@@ -42,7 +42,8 @@ namespace VN
             string anchorId,
             Vector3 localOffset,
             float scale = 1f,
-            float lifetimeOverride = -1f)
+            float lifetimeOverride = -1f,
+            float softStopSecondsOverride = -1f)
         {
             if (definition == null || definition.prefab == null)
             {
@@ -59,19 +60,23 @@ namespace VN
             instance.transform.localPosition = localOffset;
             instance.transform.localRotation = Quaternion.identity;
             instance.transform.localScale *= Mathf.Max(0.01f, scale);
-            
             instancesRoot.GetComponent<UIParticle>().RefreshParticles();
+
             RestartEffects(instance);
 
             float resolvedLifetime = lifetimeOverride > 0f
                 ? lifetimeOverride
                 : definition.ResolveLifetime();
 
+            float resolvedSoftStop = softStopSecondsOverride >= 0f
+                ? softStopSecondsOverride
+                : Mathf.Max(0f, definition.softStopSeconds);
+
             var handle = instance.GetComponent<VNVfxRuntimeHandle>();
             if (handle == null)
                 handle = instance.AddComponent<VNVfxRuntimeHandle>();
 
-            handle.Initialize(resolvedLifetime, true);
+            handle.Initialize(resolvedLifetime, resolvedSoftStop, true);
             return handle;
         }
 

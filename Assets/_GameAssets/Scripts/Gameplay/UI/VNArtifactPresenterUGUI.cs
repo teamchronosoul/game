@@ -36,7 +36,14 @@ namespace VN.UI
         [SerializeField] [Range(0f, 1f)] private float vibrationStrengthOnHold = 1f;
         [SerializeField] [Range(0f, 1f)] private float vibrationStrengthOnFadeOut = 0.45f;
 
+        [Header("Artifact haptic")]
+        [SerializeField] private bool useHaptic = true;
+        [SerializeField] [Min(1)] private int hapticPulseCount = 4;
+        [SerializeField] [Min(0.01f)] private float hapticPulseInterval = 0.08f;
+        [SerializeField] private bool useHeavyHaptic = false;
+
         private Coroutine _routine;
+        private Coroutine _hapticRoutine;
 
         private Vector2 _baseAnchoredPosition;
         private Quaternion _baseLocalRotation;
@@ -78,6 +85,8 @@ namespace VN.UI
         {
             if (runner != null)
                 runner.OnArtifactShown -= HandleArtifactShown;
+
+            StopHapticRoutine();
         }
 
         private void HandleArtifactShown(VN.VNRunner.VNArtifactPayload payload)
@@ -85,6 +94,7 @@ namespace VN.UI
             if (_routine != null)
                 StopCoroutine(_routine);
 
+            StopHapticRoutine();
             ResetArtifactVibration();
             HideAllCharacters();
 
@@ -130,11 +140,11 @@ namespace VN.UI
                 artifactTransform.localScale = Vector3.zero;
             }
 
+            StopHapticRoutine();
             ResetArtifactVibration();
             SetDimAlpha(0f);
             SetArtifactAlpha(0f);
-            HapticFeedback.HeavyFeedback();
-            
+
             float fadeIn = Mathf.Max(0.0001f, payload.fadeInSeconds);
             float scaleUp = Mathf.Max(0.0001f, payload.scaleUpSeconds);
             float settle = Mathf.Max(0.0001f, payload.scaleSettleSeconds);
@@ -185,6 +195,8 @@ namespace VN.UI
 
             SetArtifactScale(Vector3.one);
 
+            StartExtendedHaptic();
+
             if (hold > 0f)
             {
                 t = 0f;
@@ -212,12 +224,60 @@ namespace VN.UI
             SetDimAlpha(0f);
             SetArtifactAlpha(0f);
             ResetArtifactVibration();
+            StopHapticRoutine();
 
             if (root != null)
                 root.SetActive(false);
 
             runner?.NotifyArtifactPresentationFinished();
             _routine = null;
+        }
+
+        private void StartExtendedHaptic()
+        {
+            if (!useHaptic)
+                return;
+
+            StopHapticRoutine();
+            _hapticRoutine = StartCoroutine(PlayExtendedHapticRoutine());
+        }
+
+        private void StopHapticRoutine()
+        {
+            if (_hapticRoutine != null)
+            {
+                StopCoroutine(_hapticRoutine);
+                _hapticRoutine = null;
+            }
+        }
+
+        private IEnumerator PlayExtendedHapticRoutine()
+        {
+            int count = Mathf.Max(1, hapticPulseCount);
+            float interval = Mathf.Max(0.01f, hapticPulseInterval);
+
+            for (int i = 0; i < count; i++)
+            {
+                TriggerHapticPulse();
+
+                if (i < count - 1)
+                    yield return new WaitForSecondsRealtime(interval);
+            }
+
+            _hapticRoutine = null;
+        }
+
+        private void TriggerHapticPulse()
+        {
+            if (!useHaptic)
+                return;
+
+#if UNITY_IOS || UNITY_ANDROID
+            if (useHeavyHaptic)
+                HapticFeedback.HeavyFeedback();
+            else
+                HapticFeedback.LightFeedback();
+#endif
         }
 
         private void ApplyArtifactVibration(float strength)

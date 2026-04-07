@@ -15,13 +15,16 @@ namespace VN
         }
 
         [Serializable]
-        public class VNVfxDefinition
+        public sealed class VNVfxDefinition
         {
             public string id;
             public GameObject prefab;
 
-            [Tooltip("Если > 0, инстанс живет это время. Если <= 0, попытаемся вычислить по ParticleSystem")]
+            [Tooltip("Если > 0, VFX активно играет это время. Потом эмиссия останавливается и начинается мягкое затухание.")]
             public float lifetime = -1f;
+
+            [Tooltip("Сколько секунд дать VFX на мягкое затухание после остановки эмиссии")]
+            public float softStopSeconds = 0.8f;
 
             public float ResolveLifetime()
             {

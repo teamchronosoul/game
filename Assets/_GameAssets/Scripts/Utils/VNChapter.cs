@@ -112,18 +112,17 @@ namespace VN
     {
         [Header("VFX")]
         public string vfxId;
-
-        [Tooltip("Точка спавна: left / center / right / speaker / any custom id")]
         public string anchorId = "center";
-
-        [Tooltip("Локальное смещение относительно anchor")]
         public Vector3 localOffset = Vector3.zero;
 
         [Min(0.01f)]
         public float scale = 1f;
 
-        [Tooltip("Если > 0, время жизни будет взято отсюда. Иначе из definition")]
+        [Tooltip("Если > 0, время активной игры будет взято отсюда")]
         public float lifetimeOverride = -1f;
+
+        [Tooltip("Если >= 0, переопределяет softStopSeconds из definition")]
+        public float softStopSecondsOverride = -1f;
 
         [Tooltip("Если включено, VN будет ждать завершения эффекта")]
         public bool waitUntilFinished = false;
