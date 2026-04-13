@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b1f83aa39741d78f2da616013e2a9e, type: 3}
+  m_Name: Archetype_Blue
+  m_EditorClassIdentifier: Assembly-CSharp::ArchetypeData
+  archetypeId: Logics
+  displayName: "\u041B\u043E\u0433\u0438\u043A\u0438"
+  colorHex: '#4A8BFF'
+  mentorSprite: {fileID: 21300000, guid: 63a20a2efe8660645a0759f420d59374, type: 3}
+  mentorIdSprite: {fileID: 21300000, guid: 4d2ba29716ba64b4382c4a6d6deda4fd, type: 3}
+  mirrorSprite: {fileID: 21300000, guid: d03b9a7053f2e96449206b35362269cf, type: 3}
+  narratives: []

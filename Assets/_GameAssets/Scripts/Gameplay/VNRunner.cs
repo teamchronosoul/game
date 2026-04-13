@@ -27,6 +27,8 @@ namespace VN
         [SerializeField] private float autoSpeakerCrossfadeSeconds = 0.2f;
         [Header("VFX")]
         [SerializeField] private VNVfxPlayer vfxPlayer;
+        [Header("UI")]
+        [SerializeField] private GameObject mainMenuRoot;
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
         public bool SkipAllowed { get; private set; } = true;
@@ -314,7 +316,9 @@ namespace VN
                 }
 
                 if (step is VNEndStep)
-                    yield break;
+                {
+                    ShowMainMenu();
+                }
 
                 yield break;
             }
@@ -666,6 +670,8 @@ namespace VN
                     ResolveMbtiResult();
                     ShowMbtiResultLine();
                     stopAutoHere = true;
+                    _state.mbti = mbti;
+                    VNAutosave.Save(_state);
                     if (SkipEnabled) SetSkip(false);
                     break;
                 
@@ -1241,7 +1247,13 @@ namespace VN
             if (project == null) return false;
             return project.TryGetChapter(_state.chapterId, out chapter);
         }
+        private void ShowMainMenu()
+        {
+            StopInternal();
 
+            if (mainMenuRoot != null)
+                mainMenuRoot.SetActive(true);
+        }
         private void StopInternal()
         {
             if (_loop != null) StopCoroutine(_loop);

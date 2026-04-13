@@ -11,7 +11,7 @@ namespace VN
         public string stepId;
 
         public bool currentStepApplied;
-
+        public VNMbtiState mbti = new VNMbtiState();
         public string backgroundId;
         public string musicId;
 
@@ -55,7 +55,7 @@ namespace VN
             chapterId = null;
             stepId = null;
             currentStepApplied = false;
-
+           
             backgroundId = null;
             musicId = null;
 
