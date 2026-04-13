@@ -6,34 +6,32 @@ namespace VN
 {
     public class VNRunner : MonoBehaviour
     {
-        [Header("Project")]
-        [SerializeField] private VNProjectDatabase project;
+        [Header("Project")] [SerializeField] private VNProjectDatabase project;
 
-        [Header("Startup")]
-        [SerializeField] private string startChapterId = "chapter_01";
+        [Header("Startup")] [SerializeField] private string startChapterId = "chapter_01";
         [SerializeField] private bool autoLoadAutosaveOnStart = true;
         [SerializeField] private bool autoShowSpeakerIfMissing = true;
 
-        [Header("Auto timing (delay after line reveal)")]
-        [SerializeField] private float autoBaseDelaySeconds = 0.8f;
+        [Header("Auto timing (delay after line reveal)")] [SerializeField]
+        private float autoBaseDelaySeconds = 0.8f;
+
         [SerializeField] private float autoPerCharacterSeconds = 0.03f;
         [SerializeField] private float autoPunctuationExtraSeconds = 0.25f;
 
-        [Header("Skip")]
-        [SerializeField] private float skipStepFrameDelay = 0f;
-        [SerializeField] private VNMbtiState mbti = new VNMbtiState();
+        [Header("Skip")] [SerializeField] private float skipStepFrameDelay;
+        [SerializeField] private VNMbtiState mbti = new();
         public VNMbtiState Mbti => mbti;
-        [Header("Character auto show")]
-        [SerializeField] private float autoSpeakerCrossfadeSeconds = 0.2f;
-        [Header("VFX")]
-        [SerializeField] private VNVfxPlayer vfxPlayer;
-        [Header("UI")]
-        [SerializeField] private GameObject mainMenuRoot;
+
+        [Header("Character auto show")] [SerializeField]
+        private float autoSpeakerCrossfadeSeconds = 0.2f;
+
+        [Header("VFX")] [SerializeField] private VNVfxPlayer vfxPlayer;
+        [Header("UI")] [SerializeField] private GameObject mainMenuRoot;
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
         public bool SkipAllowed { get; private set; } = true;
 
-        public VNState State => _state;
+        public VNState State { get; private set; } = new();
 
         public event Action<VNLinePayload> OnLineStarted;
         public event Action OnRequestInstantReveal;
@@ -111,12 +109,14 @@ namespace VN
             public float fadeInSeconds;
             public bool loop;
         }
+
         [Serializable]
         public struct VNSfxPayload
         {
             public string sfxId;
             public AudioClip clip;
         }
+
         [Serializable]
         public struct VNArtifactPayload
         {
@@ -131,13 +131,13 @@ namespace VN
             public float fadeOutSeconds;
         }
 
-        private VNState _state = new();
-
         private Coroutine _loop;
 
         private bool _lineRevealCompleted;
         private bool _advanceRequested;
         private bool _interruptWaitRequested;
+        private bool _modalOpen;
+        private string _presentedPlayerName = "Player";
 
         private bool _choiceWaiting;
         private VNChoiceStep _currentChoiceStep;
@@ -148,7 +148,7 @@ namespace VN
 
         private void Awake()
         {
-            _state.EnsureSlots();
+            State.EnsureSlots();
         }
 
         private void Start()
@@ -157,7 +157,7 @@ namespace VN
 
             if (autoLoadAutosaveOnStart && VNAutosave.TryLoad(out var loaded))
             {
-                _state = loaded;
+                State = loaded;
                 ResumeFromState();
             }
             else
@@ -170,10 +170,11 @@ namespace VN
         {
             StopInternal();
 
-            _state.ResetAll();
-            _state.chapterId = chapterId;
-            _state.currentStepApplied = false;
-
+            State.ResetAll();
+            State.chapterId = chapterId;
+            State.currentStepApplied = false;
+            State.currentStepLogged = false;
+            
             AutoEnabled = false;
             SkipEnabled = false;
             SkipAllowed = true;
@@ -184,9 +185,9 @@ namespace VN
             var first = ch.steps[0];
             if (first == null || string.IsNullOrWhiteSpace(first.id)) return;
 
-            _state.stepId = first.id;
-            _state.currentStepApplied = false;
-            VNAutosave.Save(_state);
+            State.stepId = first.id;
+            State.currentStepApplied = false;
+            VNAutosave.Save(State);
 
             _loop = StartCoroutine(MainLoop());
         }
@@ -196,7 +197,7 @@ namespace VN
             StopInternal();
 
             if (!TryResolveChapter(out _)) return;
-            if (string.IsNullOrWhiteSpace(_state.stepId)) return;
+            if (string.IsNullOrWhiteSpace(State.stepId)) return;
 
             EmitFullScreenState();
             _loop = StartCoroutine(MainLoop());
@@ -210,6 +211,9 @@ namespace VN
 
         public void Tap(Vector2 screenPosition)
         {
+            if (_modalOpen)
+                return;
+
             OnTapFeedback?.Invoke(screenPosition);
 
             if (AutoEnabled) SetAuto(false);
@@ -242,23 +246,30 @@ namespace VN
             OnSkipChanged?.Invoke(SkipEnabled);
         }
 
-        public void NotifyLineRevealFinished() => _lineRevealCompleted = true;
+        public void NotifyLineRevealFinished()
+        {
+            _lineRevealCompleted = true;
+        }
 
-        public void NotifyArtifactPresentationFinished() => _artifactWaiting = false;
+        public void NotifyArtifactPresentationFinished()
+        {
+            _artifactWaiting = false;
+        }
 
         public void Choose(int optionIndex)
         {
+            if (_modalOpen) return;
             if (!_choiceWaiting || _currentChoiceStep == null) return;
             if (_currentChoiceStep.options == null) return;
             if (optionIndex < 0 || optionIndex >= _currentChoiceStep.options.Count) return;
 
             var opt = _currentChoiceStep.options[optionIndex];
 
+            AddChoiceToLog(opt.text);
+
             if (opt.effects != null)
-            {
-                for (int i = 0; i < opt.effects.Count; i++)
+                for (var i = 0; i < opt.effects.Count; i++)
                     ApplyVarOp(opt.effects[i]);
-            }
 
             var next = Norm(opt.nextStepId);
             if (string.IsNullOrEmpty(next)) return;
@@ -267,9 +278,10 @@ namespace VN
             _currentChoiceStep = null;
             OnChoiceHidden?.Invoke();
 
-            _state.stepId = next;
-            _state.currentStepApplied = false;
-            VNAutosave.Save(_state);
+            State.stepId = next;
+            State.currentStepApplied = false;
+            State.currentStepLogged = false;
+            VNAutosave.Save(State);
         }
 
         private IEnumerator MainLoop()
@@ -277,7 +289,7 @@ namespace VN
             while (true)
             {
                 if (!TryResolveChapter(out var chapter)) yield break;
-                if (!chapter.TryGetStepIndex(_state.stepId, out int index)) yield break;
+                if (!chapter.TryGetStepIndex(State.stepId, out var index)) yield break;
 
                 var step = chapter.GetStepAt(index);
                 if (step == null) yield break;
@@ -315,10 +327,7 @@ namespace VN
                     continue;
                 }
 
-                if (step is VNEndStep)
-                {
-                    ShowMainMenu();
-                }
+                if (step is VNEndStep) ShowMainMenu();
 
                 yield break;
             }
@@ -326,8 +335,8 @@ namespace VN
 
         private IEnumerator HandleIfStep(VNChapter chapter, int index, VNIfStep iff)
         {
-            bool result = EvaluateConditions(iff);
-            string explicitTarget = result ? Norm(iff.trueStepId) : Norm(iff.falseStepId);
+            var result = EvaluateConditions(iff);
+            var explicitTarget = result ? Norm(iff.trueStepId) : Norm(iff.falseStepId);
 
             if (TryAdvanceToExplicitOrFallback(chapter, index, explicitTarget))
             {
@@ -342,15 +351,15 @@ namespace VN
         {
             if (iff.conditions == null || iff.conditions.Count == 0) return true;
 
-            bool requireAll = iff.requireAll;
-            bool anyTrue = false;
+            var requireAll = iff.requireAll;
+            var anyTrue = false;
 
-            for (int i = 0; i < iff.conditions.Count; i++)
+            for (var i = 0; i < iff.conditions.Count; i++)
             {
                 var c = iff.conditions[i];
                 if (c == null) continue;
 
-                bool ok = EvaluateSingleCondition(c);
+                var ok = EvaluateSingleCondition(c);
 
                 if (requireAll && !ok) return false;
                 if (!requireAll && ok) return true;
@@ -363,14 +372,14 @@ namespace VN
 
         private bool EvaluateSingleCondition(VNCondition c)
         {
-            string key = Norm(c.key);
+            var key = Norm(c.key);
 
             switch (c.type)
             {
                 case VNConditionValueType.Bool:
                 {
-                    bool v = _state.GetBool(key, false);
-                    bool t = c.boolValue;
+                    var v = State.GetBool(key);
+                    var t = c.boolValue;
                     return c.op switch
                     {
                         VNConditionOp.Equals => v == t,
@@ -381,8 +390,8 @@ namespace VN
 
                 case VNConditionValueType.Int:
                 {
-                    int v = _state.GetInt(key, 0);
-                    int t = c.intValue;
+                    var v = State.GetInt(key);
+                    var t = c.intValue;
                     return c.op switch
                     {
                         VNConditionOp.Equals => v == t,
@@ -397,14 +406,16 @@ namespace VN
 
                 case VNConditionValueType.String:
                 {
-                    string v = _state.GetString(key, "");
-                    string t = c.stringValue ?? "";
+                    var v = State.GetString(key);
+                    var t = c.stringValue ?? "";
                     return c.op switch
                     {
                         VNConditionOp.Equals => string.Equals(v, t, StringComparison.Ordinal),
                         VNConditionOp.NotEquals => !string.Equals(v, t, StringComparison.Ordinal),
-                        VNConditionOp.Contains => !string.IsNullOrEmpty(t) && (v?.IndexOf(t, StringComparison.Ordinal) ?? -1) >= 0,
-                        VNConditionOp.NotContains => string.IsNullOrEmpty(t) || (v?.IndexOf(t, StringComparison.Ordinal) ?? -1) < 0,
+                        VNConditionOp.Contains => !string.IsNullOrEmpty(t) &&
+                                                  (v?.IndexOf(t, StringComparison.Ordinal) ?? -1) >= 0,
+                        VNConditionOp.NotContains => string.IsNullOrEmpty(t) ||
+                                                     (v?.IndexOf(t, StringComparison.Ordinal) ?? -1) < 0,
                         _ => false
                     };
                 }
@@ -419,19 +430,16 @@ namespace VN
             _interruptWaitRequested = false;
             _autoStopDueToNewCharacterThisStep = false;
 
-            if (!_state.currentStepApplied)
+            if (!State.currentStepApplied)
             {
                 if (!string.IsNullOrWhiteSpace(line.speakerId))
                     AutoApplySpeakerPoseEmotion(Norm(line.speakerId), line.pose, line.emotion);
 
-                if (line.addToLog)
-                    AddToLog(line);
-
                 if (!string.IsNullOrWhiteSpace(line.sfxId))
                     EmitSfx(Norm(line.sfxId));
 
-                _state.currentStepApplied = true;
-                VNAutosave.Save(_state);
+                State.currentStepApplied = true;
+                VNAutosave.Save(State);
             }
 
             var payload = BuildLinePayload(line);
@@ -439,11 +447,30 @@ namespace VN
 
             _lineRevealCompleted = false;
 
+            while (!_lineRevealCompleted)
+            {
+                if (_modalOpen)
+                {
+                    yield return null;
+                    continue;
+                }
+
+                if (SkipEnabled && SkipAllowed)
+                {
+                    OnRequestInstantReveal?.Invoke();
+                    _lineRevealCompleted = true;
+                    break;
+                }
+
+                yield return null;
+            }
+
+            AddToLogAfterReveal(line);
+
+            var stopAutoHere = IsStopAutoHere(line) || _autoStopDueToNewCharacterThisStep;
+
             if (SkipEnabled && SkipAllowed)
             {
-                OnRequestInstantReveal?.Invoke();
-                _lineRevealCompleted = true;
-
                 if (skipStepFrameDelay <= 0f) yield return null;
                 else yield return new WaitForSeconds(skipStepFrameDelay);
 
@@ -452,27 +479,33 @@ namespace VN
                 yield break;
             }
 
-            bool stopAutoHere = IsStopAutoHere(line) || _autoStopDueToNewCharacterThisStep;
-
             if (AutoEnabled && !stopAutoHere)
             {
-                yield return new WaitUntil(() => _lineRevealCompleted);
-
-                float delay = ComputeAutoDelay(payload.text);
+                var delay = ComputeAutoDelay(payload.text);
                 yield return WaitAutoOrUserInterrupt(delay);
 
-                if (AutoEnabled) _advanceRequested = true;
+                if (AutoEnabled && !_modalOpen)
+                    _advanceRequested = true;
             }
             else
             {
                 while (!_advanceRequested)
+                {
+                    if (_modalOpen)
+                    {
+                        yield return null;
+                        continue;
+                    }
+
                     yield return null;
+                }
             }
 
             if (_advanceRequested && !_lineRevealCompleted)
             {
                 OnRequestInstantReveal?.Invoke();
                 yield return new WaitUntil(() => _lineRevealCompleted);
+                AddToLogAfterReveal(line);
             }
 
             AdvanceToNextStep(chapter, index, line.nextStepId);
@@ -486,19 +519,27 @@ namespace VN
             _choiceWaiting = true;
             _currentChoiceStep = choice;
 
-            _state.currentStepApplied = true;
-            VNAutosave.Save(_state);
+            State.currentStepApplied = true;
+            VNAutosave.Save(State);
 
             var payload = new VNChoicePayload
             {
-                stepId = _state.stepId,
+                stepId = State.stepId,
                 options = choice.options != null ? choice.options.ToArray() : Array.Empty<VNChoiceOption>()
             };
 
             OnChoicePresented?.Invoke(payload);
 
             while (_choiceWaiting)
+            {
+                if (_modalOpen)
+                {
+                    yield return null;
+                    continue;
+                }
+
                 yield return null;
+            }
         }
 
         private IEnumerator HandleCommandStep(VNChapter chapter, int index, VNCommandStep cmdStep)
@@ -506,13 +547,13 @@ namespace VN
             _advanceRequested = false;
             _interruptWaitRequested = false;
 
-            bool stopAutoHere = IsStopAutoHere(cmdStep);
+            var stopAutoHere = IsStopAutoHere(cmdStep);
 
-            if (!_state.currentStepApplied)
+            if (!State.currentStepApplied)
             {
                 if (cmdStep.command is VNVfxCommand vfxCommand)
                 {
-                    bool shouldWaitForVfx = vfxCommand.waitUntilFinished && !(SkipEnabled && SkipAllowed);
+                    var shouldWaitForVfx = vfxCommand.waitUntilFinished && !(SkipEnabled && SkipAllowed);
                     yield return StartCoroutine(HandleVfxCommand(vfxCommand, shouldWaitForVfx));
                 }
                 else
@@ -520,8 +561,8 @@ namespace VN
                     ApplyCommand(cmdStep.command, ref stopAutoHere);
                 }
 
-                _state.currentStepApplied = true;
-                VNAutosave.Save(_state);
+                State.currentStepApplied = true;
+                VNAutosave.Save(State);
             }
 
             if (cmdStep.command is VNGiveArtifactCommand)
@@ -529,7 +570,15 @@ namespace VN
                 if (SkipEnabled) SetSkip(false);
 
                 while (_artifactWaiting)
+                {
+                    if (_modalOpen)
+                    {
+                        yield return null;
+                        continue;
+                    }
+
                     yield return null;
+                }
 
                 AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
                 yield break;
@@ -546,11 +595,17 @@ namespace VN
 
             if (cmdStep.command is VNWaitCommand waitCmd)
             {
-                float t = Mathf.Max(0f, waitCmd.seconds);
-                float elapsed = 0f;
+                var t = Mathf.Max(0f, waitCmd.seconds);
+                var elapsed = 0f;
 
                 while (elapsed < t)
                 {
+                    if (_modalOpen)
+                    {
+                        yield return null;
+                        continue;
+                    }
+
                     if (_interruptWaitRequested) break;
                     elapsed += Time.deltaTime;
                     yield return null;
@@ -563,7 +618,15 @@ namespace VN
             if (stopAutoHere)
             {
                 while (!_advanceRequested)
+                {
+                    if (_modalOpen)
+                    {
+                        yield return null;
+                        continue;
+                    }
+
                     yield return null;
+                }
 
                 AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
 
@@ -579,22 +642,22 @@ namespace VN
 
         private IEnumerator HandleJumpStep(VNJumpStep jump)
         {
-            _state.currentStepApplied = true;
-            VNAutosave.Save(_state);
+            State.currentStepApplied = true;
+            VNAutosave.Save(State);
 
             var target = Norm(jump.targetStepId);
             if (string.IsNullOrEmpty(target)) yield break;
 
-            _state.stepId = target;
-            _state.currentStepApplied = false;
-            VNAutosave.Save(_state);
+            State.stepId = target;
+            State.currentStepApplied = false;
+            VNAutosave.Save(State);
 
             yield return null;
         }
 
         private void ApplySkipAllowedForStep(VNChapterStep step)
         {
-            bool allowed = !step.disableSkip;
+            var allowed = !step.disableSkip;
 
             if (step is VNCommandStep cs && cs.command is VNGateCommand gate && gate.gateDisablesSkip)
                 allowed = false;
@@ -608,7 +671,7 @@ namespace VN
 
         private bool IsStopAutoHere(VNChapterStep step)
         {
-            bool stop = step.stopAuto;
+            var stop = step.stopAuto;
 
             if (step is VNChoiceStep) stop = true;
 
@@ -628,17 +691,18 @@ namespace VN
             switch (command)
             {
                 case VNSetBackgroundCommand bg:
-                    _state.backgroundId = Norm(bg.backgroundId);
+                    State.backgroundId = Norm(bg.backgroundId);
                     EmitBackground(bg.backgroundId, bg.crossfadeSeconds);
                     break;
 
                 case VNShowCharacterCommand show:
-                    ShowOnlyCharacter(show.slot, show.characterId, show.pose, show.emotion, show.crossfadeSeconds, ref stopAutoHere);
+                    ShowOnlyCharacter(show.slot, show.characterId, show.pose, show.emotion, show.crossfadeSeconds,
+                        ref stopAutoHere);
                     break;
 
                 case VNHideCharacterCommand hide:
                 {
-                    var slotState = _state.GetSlot(hide.slot);
+                    var slotState = State.GetSlot(hide.slot);
                     slotState.visible = false;
                     slotState.characterId = null;
                     slotState.pose = VNPose.Default;
@@ -649,46 +713,46 @@ namespace VN
                 }
 
                 case VNPlayMusicCommand m:
-                    _state.musicId = Norm(m.musicId);
+                    State.musicId = Norm(m.musicId);
                     EmitMusic(m.musicId, m.fadeInSeconds, m.loop);
                     break;
 
                 case VNStopMusicCommand stop:
-                    _state.musicId = null;
+                    State.musicId = null;
                     OnMusicStop?.Invoke(stop.fadeOutSeconds);
                     break;
-                    
+
                 case VNPlaySfxCommand s:
                     EmitSfx(Norm(s.sfxId));
                     break;
-                
+
                 case VNMbtiAnswerCommand mbtiCmd:
                     ApplyMbtiAnswer(mbtiCmd.letter);
                     break;
-               
+
                 case VNResolveMbtiCommand _:
                     ResolveMbtiResult();
                     ShowMbtiResultLine();
                     stopAutoHere = true;
-                    _state.mbti = mbti;
-                    VNAutosave.Save(_state);
+                    State.mbti = mbti;
+                    VNAutosave.Save(State);
                     if (SkipEnabled) SetSkip(false);
                     break;
-                
+
                 case VNSetBoolVarCommand vb:
-                    _state.SetBool(vb.key, vb.value);
+                    State.SetBool(vb.key, vb.value);
                     break;
 
                 case VNSetIntVarCommand vi:
-                    _state.SetInt(vi.key, vi.value);
+                    State.SetInt(vi.key, vi.value);
                     break;
 
                 case VNAddIntVarCommand ai:
-                    _state.AddInt(ai.key, ai.delta);
+                    State.AddInt(ai.key, ai.delta);
                     break;
 
                 case VNSetStringVarCommand vs:
-                    _state.SetString(vs.key, vs.value);
+                    State.SetString(vs.key, vs.value);
                     break;
 
                 case VNGateCommand gate:
@@ -704,6 +768,7 @@ namespace VN
                     break;
             }
         }
+
         private IEnumerator HandleVfxCommand(VNVfxCommand command, bool waitUntilFinished)
         {
             if (command == null)
@@ -749,14 +814,13 @@ namespace VN
             );
 
             if (waitUntilFinished && handle != null)
-            {
                 while (!handle.IsFinished)
                     yield return null;
-            }
         }
+
         private void EmitArtifact(VNGiveArtifactCommand cmd)
         {
-            string artifactId = Norm(cmd.artifactId);
+            var artifactId = Norm(cmd.artifactId);
             Sprite sprite = null;
 
             if (!string.IsNullOrWhiteSpace(artifactId) && project.assetDatabase != null)
@@ -790,14 +854,14 @@ namespace VN
             if (!autoShowSpeakerIfMissing) return;
 
             speakerId = Norm(speakerId);
-            _state.EnsureSlots();
+            State.EnsureSlots();
 
-            float fade = Mathf.Max(0f, autoSpeakerCrossfadeSeconds);
-            VNScreenSlot targetSlot = FindPreferredSingleSlot(speakerId);
+            var fade = Mathf.Max(0f, autoSpeakerCrossfadeSeconds);
+            var targetSlot = FindPreferredSingleSlot(speakerId);
 
-            for (int i = 0; i < _state.slots.Count; i++)
+            for (var i = 0; i < State.slots.Count; i++)
             {
-                var s = _state.slots[i];
+                var s = State.slots[i];
                 if (!s.visible || string.IsNullOrWhiteSpace(s.characterId))
                     continue;
 
@@ -811,9 +875,9 @@ namespace VN
                 }
             }
 
-            for (int i = 0; i < _state.slots.Count; i++)
+            for (var i = 0; i < State.slots.Count; i++)
             {
-                var s = _state.slots[i];
+                var s = State.slots[i];
                 if (!s.visible && string.IsNullOrWhiteSpace(s.characterId))
                     continue;
 
@@ -825,7 +889,7 @@ namespace VN
                 EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, fade, false);
             }
 
-            var targetState = _state.GetSlot(targetSlot);
+            var targetState = State.GetSlot(targetSlot);
             targetState.visible = true;
             targetState.characterId = speakerId;
             targetState.pose = pose;
@@ -837,20 +901,21 @@ namespace VN
                 _autoStopDueToNewCharacterThisStep = true;
         }
 
-        private void ShowOnlyCharacter(VNScreenSlot preferredSlot, string characterId, VNPose pose, VNEmotion emotion, float crossfadeSeconds, ref bool stopAutoHere)
+        private void ShowOnlyCharacter(VNScreenSlot preferredSlot, string characterId, VNPose pose, VNEmotion emotion,
+            float crossfadeSeconds, ref bool stopAutoHere)
         {
             characterId = Norm(characterId);
             if (string.IsNullOrWhiteSpace(characterId))
                 return;
 
-            _state.EnsureSlots();
+            State.EnsureSlots();
 
-            float fade = Mathf.Max(0f, crossfadeSeconds);
-            VNScreenSlot targetSlot = preferredSlot;
+            var fade = Mathf.Max(0f, crossfadeSeconds);
+            var targetSlot = preferredSlot;
 
-            for (int i = 0; i < _state.slots.Count; i++)
+            for (var i = 0; i < State.slots.Count; i++)
             {
-                var s = _state.slots[i];
+                var s = State.slots[i];
                 if (!s.visible || string.IsNullOrWhiteSpace(s.characterId))
                     continue;
 
@@ -861,10 +926,10 @@ namespace VN
                 }
             }
 
-            for (int i = 0; i < _state.slots.Count; i++)
+            for (var i = 0; i < State.slots.Count; i++)
             {
-                var s = _state.slots[i];
-                bool isTarget = s.slot == targetSlot;
+                var s = State.slots[i];
+                var isTarget = s.slot == targetSlot;
 
                 if (!isTarget && s.visible)
                 {
@@ -877,8 +942,8 @@ namespace VN
                 }
             }
 
-            var targetState = _state.GetSlot(targetSlot);
-            bool wasSameCharacterAlreadyVisible =
+            var targetState = State.GetSlot(targetSlot);
+            var wasSameCharacterAlreadyVisible =
                 targetState.visible &&
                 string.Equals(targetState.characterId, characterId, StringComparison.Ordinal);
 
@@ -887,8 +952,8 @@ namespace VN
             targetState.pose = pose;
             targetState.emotion = emotion;
 
-            float emitFade = wasSameCharacterAlreadyVisible ? 0f : fade;
-            bool isNewCharacter = !wasSameCharacterAlreadyVisible;
+            var emitFade = wasSameCharacterAlreadyVisible ? 0f : fade;
+            var isNewCharacter = !wasSameCharacterAlreadyVisible;
 
             EmitSlot(targetSlot, characterId, pose, emotion, true, emitFade, isNewCharacter);
 
@@ -898,11 +963,11 @@ namespace VN
 
         private void HideAllCharacters(float fadeSeconds)
         {
-            _state.EnsureSlots();
+            State.EnsureSlots();
 
-            for (int i = 0; i < _state.slots.Count; i++)
+            for (var i = 0; i < State.slots.Count; i++)
             {
-                var s = _state.slots[i];
+                var s = State.slots[i];
                 if (!s.visible && string.IsNullOrWhiteSpace(s.characterId))
                     continue;
 
@@ -914,6 +979,7 @@ namespace VN
                 EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, fadeSeconds, false);
             }
         }
+
         private void ShowMbtiResultLine()
         {
             _advanceRequested = false;
@@ -931,34 +997,17 @@ namespace VN
                 text = $"<color={mbti.ResultColorHex}>{mbti.ResultType}</color>"
             });
         }
+
         private VNScreenSlot FindPreferredSingleSlot(string characterId)
         {
             if (project != null &&
                 project.characterDatabase != null &&
                 project.characterDatabase.TryGetDefaultScreenSlot(characterId, out var slot))
-            {
                 return slot;
-            }
 
             return VNScreenSlot.Center;
         }
-
-        private void AddToLog(VNLineStep line)
-        {
-            string speakerId = Norm(line.speakerId);
-            string speakerName = "";
-
-            if (!string.IsNullOrWhiteSpace(speakerId) && project.characterDatabase != null)
-                project.characterDatabase.TryGetDisplayName(speakerId, out speakerName);
-
-            _state.log.Add(new VNState.LogEntry
-            {
-                speakerId = speakerId,
-                speakerName = speakerName ?? "",
-                text = line.text ?? ""
-            });
-        }
-
+        
         private void ApplyVarOp(VNVarOp op)
         {
             if (op == null) return;
@@ -966,16 +1015,16 @@ namespace VN
             switch (op.type)
             {
                 case VNVarOpType.SetBool:
-                    _state.SetBool(op.key, op.boolValue);
+                    State.SetBool(op.key, op.boolValue);
                     break;
                 case VNVarOpType.SetInt:
-                    _state.SetInt(op.key, op.intValue);
+                    State.SetInt(op.key, op.intValue);
                     break;
                 case VNVarOpType.AddInt:
-                    _state.AddInt(op.key, op.intValue);
+                    State.AddInt(op.key, op.intValue);
                     break;
                 case VNVarOpType.SetString:
-                    _state.SetString(op.key, op.stringValue);
+                    State.SetString(op.key, op.stringValue);
                     break;
             }
         }
@@ -983,9 +1032,9 @@ namespace VN
         private VNLinePayload BuildLinePayload(VNLineStep line)
         {
             var speakerId = Norm(line.speakerId);
-            bool isNarrator = string.IsNullOrWhiteSpace(speakerId);
+            var isNarrator = string.IsNullOrWhiteSpace(speakerId);
 
-            string speakerName = "";
+            var speakerName = "";
             if (!isNarrator && project.characterDatabase != null)
                 project.characterDatabase.TryGetDisplayName(speakerId, out speakerName);
 
@@ -1003,19 +1052,19 @@ namespace VN
 
         private void EmitFullScreenState()
         {
-            if (!string.IsNullOrWhiteSpace(_state.backgroundId))
-                EmitBackground(_state.backgroundId, 0f);
+            if (!string.IsNullOrWhiteSpace(State.backgroundId))
+                EmitBackground(State.backgroundId, 0f);
 
-            if (!string.IsNullOrWhiteSpace(_state.musicId))
-                EmitMusic(_state.musicId, 0f, true);
+            if (!string.IsNullOrWhiteSpace(State.musicId))
+                EmitMusic(State.musicId, 0f, true);
 
-            _state.EnsureSlots();
+            State.EnsureSlots();
 
-            bool alreadyOneVisible = false;
-            for (int i = 0; i < _state.slots.Count; i++)
+            var alreadyOneVisible = false;
+            for (var i = 0; i < State.slots.Count; i++)
             {
-                var s = _state.slots[i];
-                bool shouldShow = s.visible && !string.IsNullOrWhiteSpace(s.characterId);
+                var s = State.slots[i];
+                var shouldShow = s.visible && !string.IsNullOrWhiteSpace(s.characterId);
 
                 if (shouldShow && !alreadyOneVisible)
                 {
@@ -1045,11 +1094,12 @@ namespace VN
             });
         }
 
-        private void EmitSlot(VNScreenSlot slot, string characterId, VNPose pose, VNEmotion emotion, bool visible, float crossfade, bool isNewCharacter)
+        private void EmitSlot(VNScreenSlot slot, string characterId, VNPose pose, VNEmotion emotion, bool visible,
+            float crossfade, bool isNewCharacter)
         {
             characterId = Norm(characterId);
 
-            string name = "";
+            var name = "";
             Sprite sprite = null;
 
             if (visible && !string.IsNullOrWhiteSpace(characterId) && project.characterDatabase != null)
@@ -1110,9 +1160,10 @@ namespace VN
         {
             if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitNextStepId, out string nextId))
             {
-                _state.stepId = nextId;
-                _state.currentStepApplied = false;
-                VNAutosave.Save(_state);
+                State.stepId = nextId;
+                State.currentStepApplied = false;
+                State.currentStepLogged = false;
+                VNAutosave.Save(State);
             }
 
             _advanceRequested = false;
@@ -1124,9 +1175,10 @@ namespace VN
         {
             if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitTargetStepId, out string nextId))
             {
-                _state.stepId = nextId;
-                _state.currentStepApplied = false;
-                VNAutosave.Save(_state);
+                State.stepId = nextId;
+                State.currentStepApplied = false;
+                State.currentStepLogged = false;
+                VNAutosave.Save(State);
 
                 _advanceRequested = false;
                 _interruptWaitRequested = false;
@@ -1139,12 +1191,13 @@ namespace VN
             _lineRevealCompleted = false;
             return false;
         }
+
         private void ResolveMbtiResult()
         {
-            char ei = mbti.E >= mbti.I ? 'E' : 'I';
-            char sn = mbti.S >= mbti.N ? 'S' : 'N';
-            char tf = mbti.T >= mbti.F ? 'T' : 'F';
-            char jp = mbti.J >= mbti.P ? 'J' : 'P';
+            var ei = mbti.E >= mbti.I ? 'E' : 'I';
+            var sn = mbti.S >= mbti.N ? 'S' : 'N';
+            var tf = mbti.T >= mbti.F ? 'T' : 'F';
+            var jp = mbti.J >= mbti.P ? 'J' : 'P';
 
             mbti.ResultType = $"{ei}{sn}{tf}{jp}";
 
@@ -1173,22 +1226,22 @@ namespace VN
                 mbti.ResultColorHex = "#E25555";
             }
         }
-        private bool TryResolveExplicitOrLinearNext(VNChapter chapter, int currentIndex, string explicitTargetStepId, out string resolvedStepId)
+
+        private bool TryResolveExplicitOrLinearNext(VNChapter chapter, int currentIndex, string explicitTargetStepId,
+            out string resolvedStepId)
         {
             resolvedStepId = null;
             if (chapter == null || chapter.steps == null) return false;
 
-            string explicitId = Norm(explicitTargetStepId);
+            var explicitId = Norm(explicitTargetStepId);
             if (!string.IsNullOrEmpty(explicitId))
-            {
                 if (chapter.TryGetStepIndex(explicitId, out _))
                 {
                     resolvedStepId = explicitId;
                     return true;
                 }
-            }
 
-            int nextIndex = currentIndex + 1;
+            var nextIndex = currentIndex + 1;
             if (nextIndex < 0 || nextIndex >= chapter.steps.Count) return false;
 
             var next = chapter.steps[nextIndex];
@@ -1201,17 +1254,17 @@ namespace VN
         private float ComputeAutoDelay(string text)
         {
             text ??= "";
-            int chars = text.Length;
-            int punct = 0;
+            var chars = text.Length;
+            var punct = 0;
 
-            for (int i = 0; i < text.Length; i++)
+            for (var i = 0; i < text.Length; i++)
             {
-                char c = text[i];
+                var c = text[i];
                 if (c == '.' || c == '!' || c == '?' || c == ',' || c == ';' || c == ':')
                     punct++;
             }
 
-            float delay = autoBaseDelaySeconds + chars * autoPerCharacterSeconds + punct * autoPunctuationExtraSeconds;
+            var delay = autoBaseDelaySeconds + chars * autoPerCharacterSeconds + punct * autoPunctuationExtraSeconds;
             return Mathf.Max(0f, delay);
         }
 
@@ -1222,11 +1275,19 @@ namespace VN
 
             while (elapsed < t)
             {
+                if (_modalOpen)
+                {
+                    yield return null;
+                    continue;
+                }
+
                 if (!AutoEnabled) break;
+
                 elapsed += Time.deltaTime;
                 yield return null;
             }
         }
+
         private void ApplyMbtiAnswer(VNMbtiLetter letter)
         {
             switch (letter)
@@ -1241,12 +1302,14 @@ namespace VN
                 case VNMbtiLetter.P: mbti.P++; break;
             }
         }
+
         private bool TryResolveChapter(out VNChapter chapter)
         {
             chapter = null;
             if (project == null) return false;
-            return project.TryGetChapter(_state.chapterId, out chapter);
+            return project.TryGetChapter(State.chapterId, out chapter);
         }
+
         private void ShowMainMenu()
         {
             StopInternal();
@@ -1254,6 +1317,7 @@ namespace VN
             if (mainMenuRoot != null)
                 mainMenuRoot.SetActive(true);
         }
+
         private void StopInternal()
         {
             if (_loop != null) StopCoroutine(_loop);
@@ -1267,6 +1331,61 @@ namespace VN
             OnLineHidden?.Invoke();
         }
 
-        private static string Norm(string s) => string.IsNullOrWhiteSpace(s) ? null : s.Trim();
+        private static string Norm(string s)
+        {
+            return string.IsNullOrWhiteSpace(s) ? null : s.Trim();
+        }
+
+        public void SetModalOpen(bool value)
+        {
+            _modalOpen = value;
+        }
+
+        public void SetPresentedPlayerName(string value)
+        {
+            _presentedPlayerName = string.IsNullOrWhiteSpace(value) ? "Player" : value.Trim();
+        }
+
+        private string GetPresentedPlayerName()
+        {
+            return string.IsNullOrWhiteSpace(_presentedPlayerName) ? "Player" : _presentedPlayerName;
+        }
+
+        private void AddChoiceToLog(string choiceText)
+        {
+            if (string.IsNullOrWhiteSpace(choiceText))
+                return;
+
+            State.log.Add(new VNState.LogEntry
+            {
+                speakerId = "YOU",
+                speakerName = GetPresentedPlayerName(),
+                text = choiceText
+            });
+        }
+
+        private void AddToLogAfterReveal(VNLineStep line)
+        {
+            if (line == null || !line.addToLog || State.currentStepLogged)
+                return;
+
+            var speakerId = Norm(line.speakerId);
+            var speakerName = "";
+
+            if (string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase))
+                speakerName = GetPresentedPlayerName();
+            else if (!string.IsNullOrWhiteSpace(speakerId) && project.characterDatabase != null)
+                project.characterDatabase.TryGetDisplayName(speakerId, out speakerName);
+
+            State.log.Add(new VNState.LogEntry
+            {
+                speakerId = speakerId,
+                speakerName = speakerName ?? "",
+                text = line.text ?? ""
+            });
+
+            State.currentStepLogged = true;
+            VNAutosave.Save(State);
+        }
     }
 }

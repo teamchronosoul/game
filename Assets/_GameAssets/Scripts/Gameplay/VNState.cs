@@ -9,7 +9,8 @@ namespace VN
     {
         public string chapterId;
         public string stepId;
-
+        public bool currentStepLogged;
+        
         public bool currentStepApplied;
         public VNMbtiState mbti = new VNMbtiState();
         public string backgroundId;
@@ -55,7 +56,8 @@ namespace VN
             chapterId = null;
             stepId = null;
             currentStepApplied = false;
-           
+            currentStepLogged = false;
+            
             backgroundId = null;
             musicId = null;
 

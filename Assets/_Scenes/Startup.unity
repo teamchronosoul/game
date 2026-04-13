@@ -4325,6 +4325,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 57ffc02a8e201394eab16cdc4ae104af, type: 3}
   - key: fire_card_Hinato
     clip: {fileID: 8300000, guid: 9796baae79b66214db993facf3d1aeab, type: 3}
+  - key: home_page
+    clip: {fileID: 8300000, guid: 1209eb7109f6be94990f35cac1ed4496, type: 3}
   - key: tap
     clip: {fileID: 8300000, guid: 4e7721584ddef9e4e9f69ff474cecbcc, type: 3}
 --- !u!114 &2223241241140177498

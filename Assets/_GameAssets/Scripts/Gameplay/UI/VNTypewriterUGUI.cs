@@ -3,7 +3,6 @@ using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace VN.UI
 {
@@ -13,9 +12,11 @@ namespace VN.UI
 
         [Header("Typing")]
         [Min(1f)] public float charsPerSecond = 35f;
-        [Min(0f)] public float punctuationPauseSeconds = 0.03f; // небольшая пауза при .,!?
+        [Min(0f)] public float punctuationPauseSeconds = 0.03f;
 
         public event Action OnFinished;
+
+        public bool IsPlaying => _co != null;
 
         private Coroutine _co;
         private string _full;
@@ -25,20 +26,30 @@ namespace VN.UI
             _full = fullText ?? "";
             StopTyping();
 
-            if (targetText != null) targetText.text = "";
+            if (targetText != null)
+                targetText.text = "";
+
             _co = StartCoroutine(CoType());
         }
 
         public void RevealInstant()
         {
+            bool wasPlaying = _co != null;
+
             StopTyping();
-            if (targetText != null) targetText.text = _full ?? "";
-            OnFinished?.Invoke();
+
+            if (targetText != null)
+                targetText.text = _full ?? "";
+
+            if (wasPlaying)
+                OnFinished?.Invoke();
         }
 
         public void StopTyping()
         {
-            if (_co != null) StopCoroutine(_co);
+            if (_co != null)
+                StopCoroutine(_co);
+
             _co = null;
         }
 
@@ -54,15 +65,17 @@ namespace VN.UI
             {
                 char c = s[i];
 
-                // RichText tag: копируем целиком без задержки
                 if (c == '<')
                 {
                     int end = s.IndexOf('>', i);
                     if (end >= 0)
                     {
-                        sb.Append(s, i, (end - i + 1));
+                        sb.Append(s, i, end - i + 1);
                         i = end + 1;
-                        if (targetText != null) targetText.text = sb.ToString();
+
+                        if (targetText != null)
+                            targetText.text = sb.ToString();
+
                         yield return null;
                         continue;
                     }
@@ -71,12 +84,16 @@ namespace VN.UI
                 sb.Append(c);
                 i++;
 
-                if (targetText != null) targetText.text = sb.ToString();
+                if (targetText != null)
+                    targetText.text = sb.ToString();
 
                 float wait = delayPerChar;
 
-                if (punctuationPauseSeconds > 0f && (c == '.' || c == '!' || c == '?' || c == ',' || c == ';' || c == ':'))
+                if (punctuationPauseSeconds > 0f &&
+                    (c == '.' || c == '!' || c == '?' || c == ',' || c == ';' || c == ':'))
+                {
                     wait += punctuationPauseSeconds;
+                }
 
                 yield return new WaitForSeconds(wait);
             }

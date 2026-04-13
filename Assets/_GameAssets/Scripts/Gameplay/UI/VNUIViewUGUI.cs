@@ -53,6 +53,8 @@ namespace VN.UI
         private System.Action _typewriterFinishedHandler;
         private System.Action<Vector2> _tapFeedbackHandler;
 
+        private bool _isLogOpen;
+
         private void OnEnable()
         {
             if (runner == null) return;
@@ -74,10 +76,11 @@ namespace VN.UI
             runner.OnAutoChanged += _ => RefreshButtons();
             runner.OnSkipChanged += _ => RefreshButtons();
             runner.OnSkipAllowedChanged += _ => RefreshButtons();
-
+            runner.SetPresentedPlayerName(GetPlayerDisplayName());
+            
             _tapFeedbackHandler = pos =>
             {
-                if (tapFx != null)
+                if (tapFx != null && !_isLogOpen)
                     tapFx.Spawn(pos);
             };
             runner.OnTapFeedback += _tapFeedbackHandler;
@@ -88,41 +91,68 @@ namespace VN.UI
                 typewriter.OnFinished += _typewriterFinishedHandler;
             }
 
-            WireButtons();
-            RefreshButtons();
+            if (logPanel != null)
+                logPanel.HideImmediate();
 
-            if (logPanel != null) logPanel.Hide();
-            if (choicePanel != null) choicePanel.Hide();
+            if (choicePanel != null)
+                choicePanel.Hide();
+
+            _isLogOpen = false;
+            runner.SetModalOpen(false);
 
             SetSpeakerPlateVisible(false);
 
             if (dialogueRoot != null)
                 dialogueRoot.SetActive(true);
+
+            WireButtons();
+            RefreshButtons();
         }
 
         private void OnDisable()
         {
-            if (runner == null) return;
+            if (runner != null)
+            {
+                runner.OnLineStarted -= OnLineStarted;
+                runner.OnRequestInstantReveal -= OnInstantReveal;
+                runner.OnLineHidden -= OnLineHidden;
 
-            runner.OnLineStarted -= OnLineStarted;
-            runner.OnRequestInstantReveal -= OnInstantReveal;
-            runner.OnLineHidden -= OnLineHidden;
+                runner.OnChoicePresented -= OnChoice;
+                runner.OnChoiceHidden -= OnChoiceHidden;
 
-            runner.OnChoicePresented -= OnChoice;
-            runner.OnChoiceHidden -= OnChoiceHidden;
+                runner.OnBackgroundChanged -= OnBackground;
+                runner.OnSlotChanged -= OnSlot;
 
-            runner.OnBackgroundChanged -= OnBackground;
-            runner.OnSlotChanged -= OnSlot;
+                runner.OnMusicPlay -= OnMusicPlay;
+                runner.OnMusicStop -= OnMusicStop;
+                runner.OnSfxPlay -= OnSfx;
 
-            runner.OnMusicPlay -= OnMusicPlay;
-            runner.OnMusicStop -= OnMusicStop;
-            runner.OnSfxPlay -= OnSfx;
+                if (_tapFeedbackHandler != null)
+                    runner.OnTapFeedback -= _tapFeedbackHandler;
 
-            if (_tapFeedbackHandler != null)
-                runner.OnTapFeedback -= _tapFeedbackHandler;
+                runner.SetModalOpen(false);
+            }
 
             if (typewriter != null && _typewriterFinishedHandler != null)
                 typewriter.OnFinished -= _typewriterFinishedHandler;
+
+            _isLogOpen = false;
+
+            if (logPanel != null)
+                logPanel.HideImmediate();
+        }
+
+        public void SetPlayerDisplayName(string value)
+        {
+            playerDisplayName = string.IsNullOrWhiteSpace(value) ? "Player" : value.Trim();
+
+            if (runner != null)
+                runner.SetPresentedPlayerName(playerDisplayName);
+        }
+
+        public string GetPlayerDisplayName()
+        {
+            return string.IsNullOrWhiteSpace(playerDisplayName) ? "Player" : playerDisplayName;
         }
 
         private void WireButtons()
@@ -132,6 +162,8 @@ namespace VN.UI
                 autoButton.onClick.RemoveAllListeners();
                 autoButton.onClick.AddListener(() =>
                 {
+                    if (_isLogOpen) return;
+
                     if (runner.SkipEnabled) runner.SetSkip(false);
                     runner.SetAuto(!runner.AutoEnabled);
                 });
@@ -142,6 +174,8 @@ namespace VN.UI
                 skipButton.onClick.RemoveAllListeners();
                 skipButton.onClick.AddListener(() =>
                 {
+                    if (_isLogOpen) return;
+
                     if (runner.AutoEnabled) runner.SetAuto(false);
                     runner.SetSkip(!runner.SkipEnabled);
                 });
@@ -150,42 +184,78 @@ namespace VN.UI
             if (logButton != null)
             {
                 logButton.onClick.RemoveAllListeners();
-                logButton.onClick.AddListener(() =>
-                {
-                    if (logPanel == null) return;
-                    logPanel.Show(runner.State.log);
-                });
+                logButton.onClick.AddListener(() => SetLogOpen(true));
             }
 
             if (closeLogButton != null)
             {
                 closeLogButton.onClick.RemoveAllListeners();
-                closeLogButton.onClick.AddListener(() =>
-                {
-                    if (logPanel != null) logPanel.Hide();
-                });
+                closeLogButton.onClick.AddListener(() => SetLogOpen(false));
             }
-
+            
             if (resetAutosaveButton != null)
             {
                 resetAutosaveButton.onClick.RemoveAllListeners();
                 resetAutosaveButton.onClick.AddListener(() =>
                 {
+                    SetLogOpen(false);
                     runner.DeleteAutosaveAndRestart();
                 });
             }
         }
 
+        private void SetLogOpen(bool open)
+        {
+            if (runner == null || logPanel == null)
+                return;
+
+            if (_isLogOpen == open)
+                return;
+
+            if (open)
+            {
+                if (typewriter != null && typewriter.IsPlaying)
+                    typewriter.RevealInstant();
+
+                if (runner.AutoEnabled)
+                    runner.SetAuto(false);
+
+                if (runner.SkipEnabled)
+                    runner.SetSkip(false);
+
+                _isLogOpen = true;
+                runner.SetModalOpen(true);
+                logPanel.Show(runner.State.log);
+            }
+            else
+            {
+                _isLogOpen = false;
+                logPanel.HideImmediate();
+                runner.SetModalOpen(false);
+            }
+
+            RefreshButtons();
+        }
+
         private void RefreshButtons()
         {
+            if (runner == null)
+                return;
+
             if (autoButton != null)
                 SetButtonState(autoButton, runner.AutoEnabled);
 
             if (skipButton != null)
             {
-                skipButton.interactable = runner.SkipAllowed;
+                skipButton.interactable = runner.SkipAllowed && !_isLogOpen;
                 SetButtonState(skipButton, runner.SkipEnabled && runner.SkipAllowed);
             }
+
+            if (logButton != null)
+                logButton.interactable = !_isLogOpen;
+
+            if (closeLogButton != null)
+                closeLogButton.interactable = _isLogOpen;
         }
 
         private static void SetButtonState(Button btn, bool on)
@@ -223,7 +293,7 @@ namespace VN.UI
             string speakerName = (line.speakerName ?? "").Trim();
 
             if (string.Equals(speakerId, "YOU", System.StringComparison.OrdinalIgnoreCase))
-                return string.IsNullOrWhiteSpace(playerDisplayName) ? "You" : playerDisplayName;
+                return GetPlayerDisplayName();
 
             if (!string.IsNullOrWhiteSpace(speakerName))
                 return speakerName;
@@ -241,6 +311,9 @@ namespace VN.UI
 
         private void OnInstantReveal()
         {
+            if (_isLogOpen)
+                return;
+
             if (typewriter != null)
                 typewriter.RevealInstant();
             else
@@ -249,7 +322,6 @@ namespace VN.UI
 
         private void OnLineHidden()
         {
-            // Панель диалога оставляем, чтобы UI не прыгал
         }
 
         private void OnChoice(VN.VNRunner.VNChoicePayload payload)
@@ -274,8 +346,10 @@ namespace VN.UI
         {
             if (background == null) return;
 
-            if (bg.crossfadeSeconds <= 0f) background.SetInstant(bg.sprite, bg.sprite != null);
-            else background.Crossfade(bg.sprite, bg.crossfadeSeconds, bg.sprite != null);
+            if (bg.crossfadeSeconds <= 0f)
+                background.SetInstant(bg.sprite, bg.sprite != null);
+            else
+                background.Crossfade(bg.sprite, bg.crossfadeSeconds, bg.sprite != null);
         }
 
         private void OnSlot(VN.VNRunner.VNSlotPayload slot)
