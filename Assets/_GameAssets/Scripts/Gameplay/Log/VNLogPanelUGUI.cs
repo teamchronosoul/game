@@ -13,7 +13,8 @@ namespace VN.UI
         [SerializeField] private VNLogEntryItemUGUI entryPrefab;
         [SerializeField] private bool scrollToLatestOnShow = true;
         [SerializeField] private float extraHeightPerEntry = 300f;
-
+        [SerializeField] private GameObject blur;
+        
         private readonly List<VNLogEntryItemUGUI> _spawned = new();
         private Coroutine _scrollRoutine;
         private float _baseContentHeight;
@@ -28,11 +29,12 @@ namespace VN.UI
 
         public void Show(IReadOnlyList<VN.VNState.LogEntry> entries)
         {
+            blur.SetActive(true);
             if (root != null)
                 root.SetActive(true);
             else
                 gameObject.SetActive(true);
-
+            
             Rebuild(entries);
 
             if (scrollToLatestOnShow)
@@ -51,6 +53,8 @@ namespace VN.UI
                 root.SetActive(false);
             else
                 gameObject.SetActive(false);
+            
+            blur.SetActive(false);
         }
 
         private void Rebuild(IReadOnlyList<VN.VNState.LogEntry> entries)

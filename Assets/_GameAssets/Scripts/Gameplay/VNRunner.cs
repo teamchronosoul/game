@@ -1313,7 +1313,7 @@ namespace VN
         private void ShowMainMenu()
         {
             StopInternal();
-
+            Sound.PlayMusic("home_page", true);
             if (mainMenuRoot != null)
                 mainMenuRoot.SetActive(true);
         }

@@ -15,6 +15,5 @@ MonoBehaviour:
   characterDatabase: {fileID: 11400000, guid: e97d136f74102bd48b197e9166e6541e, type: 2}
   assetDatabase: {fileID: 11400000, guid: 421b7f5f50280a04e9e54808887f034c, type: 2}
   chapters:
-  - {fileID: 11400000, guid: 512c5e74929992348ad54c8444acfb20, type: 2}
-  - {fileID: 11400000, guid: 8e5b51843daaa884bb9f6bd9ba9f1495, type: 2}
   - {fileID: 11400000, guid: 7ec6b0a47a3f2f74084f36d50dd1d123, type: 2}
+  - {fileID: 11400000, guid: e2e7be65c4bb2fa4b98a800ecba8214f, type: 2}

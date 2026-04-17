@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98f591bf4afb4d34ad9db31efcc3eecb, type: 3}
+  m_Name: VNGoogleSheetChapterImporter
+  m_EditorClassIdentifier: Assembly-CSharp::VN.VNGoogleSheetChapterImporter
+  chapters:
+  - tableKey: chapter_1
+    chapter: {fileID: 11400000, guid: e2e7be65c4bb2fa4b98a800ecba8214f, type: 2}
+    chapterIdOverride: 
+    firstDataRow: 1
+    speakerColumn: 0
+    emotionColumn: 1
+    flowColumn: 2
+    firstChoiceColumn: 3
+    appendEndStep: 1
+  speakerAliases: []
+  narratorAliases:
+  - Narrator
+  - narrator
+  - "\u041D\u0430\u0440\u0440\u0430\u0442\u043E\u0440"
+  - "\u0410\u0432\u0442\u043E\u0440"
+  - '-'
+  characterDatabase: {fileID: 11400000, guid: e97d136f74102bd48b197e9166e6541e, type: 2}
+  autoFindCharacterDatabasesInProject: 1
+  matchSpeakerByCharacterId: 1
+  matchSpeakerByDisplayName: 1
+  logWarnings: 1

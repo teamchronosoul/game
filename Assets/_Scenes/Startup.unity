@@ -3942,12 +3942,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _requestDataBeforeStart: 0
   _tables:
-  - _key: localization_main
-    _webId: 1rhgqTfbEu7VChnK1HTlhM5VSY7Hf2r8WdMrJlAVU3Y8
-    _gid: 194265088
+  - _key: chapter_1
+    _webId: 1L9_hpjhV5Yq5Y_W_7hzZPnTRt_ZiRS5UyjQ-2x8KQFo
+    _gid: 0
   _loadables:
-  - {fileID: 11400000, guid: 59251e4e0228aa44eb90cba41ce8bef3, type: 2}
-  _openTable: localization_main
+  - {fileID: 11400000, guid: 42d9537c399a30547aa065df29f9df48, type: 2}
+  _openTable: chapter_1
 --- !u!114 &1019924933469146634
 MonoBehaviour:
   m_ObjectHideFlags: 0
