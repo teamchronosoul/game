@@ -15,6 +15,22 @@ MonoBehaviour:
   backgrounds:
   - id: 1
     asset: {fileID: -8593865114822522149, guid: f21c4a06170633e4191be3b725557319, type: 3}
+  - id: EXT. ARCHERY RANGE - DAY
+    asset: {fileID: 21300000, guid: 2e490cd520f819c479845f181a5f8016, type: 3}
+  - id: EXT. KENSUI'S ZEN GARDEN - DAY
+    asset: {fileID: 21300000, guid: c95817dc7a2d098448436a6605c13270, type: 3}
+  - id: EXT. SCHOOL YARD - DAY
+    asset: {fileID: 21300000, guid: 87d9b23ae5630054f887568575f76a28, type: 3}
+  - id: EXT. STARRY SKY- NIGHT
+    asset: {fileID: 21300000, guid: ddb771a1304a27344847598fd09bdae7, type: 3}
+  - id: INT. CLASSROOM - DAY
+    asset: {fileID: 21300000, guid: ec73d263840cb684ab00dea725fc45fe, type: 3}
+  - id: INT. HINATO'S OFFICE - DAY
+    asset: {fileID: 21300000, guid: 278261530d32bad40b26b0425c83f7a4, type: 3}
+  - id: INT. ROOM AT THE DORM -DAY
+    asset: {fileID: 21300000, guid: f2bbf6e0f1d718c459c021c14e55313b, type: 3}
+  - id: INT. SHINRAI'S OFFICE - DAY
+    asset: {fileID: 21300000, guid: 39b7f9cc51de7cf44a4b1c3f0d10865a, type: 3}
   artifacts:
   - id: card0
     asset: {fileID: 21300000, guid: aa97dc45a2aeaad46bec354dff87b9a2, type: 3}
@@ -32,12 +48,16 @@ MonoBehaviour:
   - id: snow
     prefab: {fileID: 4923469801378391415, guid: 88482a96dce539e449059e35912741f6, type: 3}
     lifetime: 3.6
+    softStopSeconds: 0.8
   - id: flower
     prefab: {fileID: 3275565036141208059, guid: 3cde12f22377a7741854b049431b8310, type: 3}
     lifetime: 3.6
+    softStopSeconds: 0.8
   - id: gold_leafs
     prefab: {fileID: 1530020902173837461, guid: 64ee50786384c2845b06effe4a972a01, type: 3}
     lifetime: 3.6
+    softStopSeconds: 0.8
   - id: red_leafs
     prefab: {fileID: 1500451494704532191, guid: 32f15231e19756f4c9c54d9bb5bf70de, type: 3}
     lifetime: 3.6
+    softStopSeconds: 0.8

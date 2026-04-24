@@ -329,6 +329,13 @@ namespace VN
                 while (row < endRowExclusive)
                 {
                     string flowText = GetCell(row, flowCol);
+
+                    if (IsIgnoredRowMarker(flowText))
+                    {
+                        row++;
+                        continue;
+                    }
+
                     List<int> choiceColumns = CollectChoiceColumns(row, choiceStartCol);
 
                     bool hasText = !string.IsNullOrWhiteSpace(flowText);
@@ -424,15 +431,18 @@ namespace VN
 
                 return result;
             }
-
+            private static bool IsIgnoredRowMarker(string value)
+            {
+                return string.Equals(NormalizeText(value), "-", StringComparison.Ordinal);
+            }
             private VNLineStep CreateLineStep(int row, int flowCol, string text, int variantIndex, int variantCount)
             {
                 string rawSpeaker = GetVariantCell(row, (int)binding.speakerColumn, variantIndex, variantCount);
                 string rawEmotion = GetVariantCell(row, (int)binding.emotionColumn, variantIndex, variantCount);
 
                 string speakerId = NormalizeSpeaker(rawSpeaker);
-                VNEmotion emotion = ParseEmotion(rawEmotion, row);
-
+                VNEmotion emotion = ParseEmotion(rawEmotion, speakerId, row);
+                
                 return new VNLineStep
                 {
                     id = MakeStepId("line", row, flowCol),
@@ -589,12 +599,15 @@ namespace VN
                 return rawSpeaker;
             }
 
-            private VNEmotion ParseEmotion(string rawEmotion, int row)
+            private VNEmotion ParseEmotion(string rawEmotion, string speakerId, int row)
             {
                 rawEmotion = NormalizeText(rawEmotion);
 
                 if (string.IsNullOrWhiteSpace(rawEmotion))
                     return VNEmotion.Neutral;
+
+                if (IsPlayerThoughtsEmotion(rawEmotion, speakerId))
+                    return VNEmotion.Thoughts;
 
                 if (TryParseEnumFlexible(rawEmotion, out VNEmotion parsed))
                     return parsed;
@@ -603,6 +616,12 @@ namespace VN
                     $"[{binding.tableKey}] Unknown emotion '{rawEmotion}' at row {row + 1}. Fallback to Neutral.");
 
                 return VNEmotion.Neutral;
+            }
+
+            private static bool IsPlayerThoughtsEmotion(string rawEmotion, string speakerId)
+            {
+                return string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase)
+                       && NormalizeEnumToken(rawEmotion) == "thoughts";
             }
 
             private string GetVariantCell(int row, int col, int variantIndex, int variantCount)

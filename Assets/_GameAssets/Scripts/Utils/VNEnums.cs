@@ -10,6 +10,7 @@
         Surprised = 4,
         Smile = 5, 
         Special  = 6,
+        Thoughts = 7
     }
 
     public enum VNPose

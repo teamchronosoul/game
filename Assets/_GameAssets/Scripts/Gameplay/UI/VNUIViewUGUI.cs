@@ -281,13 +281,16 @@ namespace VN.UI
                 speakerNameText.text = showSpeakerPlate ? shownSpeakerName : "";
 
             if (typewriter != null)
-                typewriter.Begin(line.text ?? "");
+                typewriter.Begin(BuildShownLineText(line));
         }
 
         private string ResolveShownSpeakerName(VN.VNRunner.VNLinePayload line)
         {
             if (line.isNarrator)
                 return "";
+
+            if (!line.showSpeakerName)
+                return "???";
 
             string speakerId = (line.speakerId ?? "").Trim();
             string speakerName = (line.speakerName ?? "").Trim();
@@ -432,6 +435,34 @@ namespace VN.UI
 
             if (!string.IsNullOrWhiteSpace(sfx.sfxId))
                 audioController.PlaySfx(sfx.sfxId);
+        }
+        
+        private string BuildShownLineText(VN.VNRunner.VNLinePayload line)
+        {
+            var text = line.text ?? "";
+
+            if (IsPlayerThoughtsLine(line))
+                return WrapItalic(text);
+
+            return text;
+        }
+
+        private static bool IsPlayerThoughtsLine(VN.VNRunner.VNLinePayload line)
+        {
+            return string.Equals(line.speakerId, "YOU", System.StringComparison.OrdinalIgnoreCase)
+                   && line.emotion.ToString().Equals("Thoughts", System.StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static string WrapItalic(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            if (text.StartsWith("<i>", System.StringComparison.OrdinalIgnoreCase) &&
+                text.EndsWith("</i>", System.StringComparison.OrdinalIgnoreCase))
+                return text;
+
+            return $"<i>{text}</i>";
         }
     }
 }

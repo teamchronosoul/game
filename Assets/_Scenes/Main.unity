@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &80617699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1975,7 +1975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &651665145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2223,9 +2223,9 @@ MonoBehaviour:
   m_Texture: {fileID: 2800000, guid: 3614da45afb78364daceb68bf299440f, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
+    x: 0.0029126108
     y: 0
-    width: 1
+    width: 0.9941748
     height: 1
 --- !u!114 &662781904
 MonoBehaviour:
@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VN.VNRunner
   project: {fileID: 11400000, guid: 9877a25ea2147454db8a92fa29d545cb, type: 2}
-  startChapterId: chapter_testing
+  startChapterId: VNChapter_1_Hinato
   autoLoadAutosaveOnStart: 0
   autoShowSpeakerIfMissing: 1
   autoBaseDelaySeconds: 0.8
@@ -2625,7 +2625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &876305469
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4323,7 +4323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
-  m_Padding: {x: -15, y: 55, z: -21.48, w: -51}
+  m_Padding: {x: -15, y: 0, z: -21.48, w: -51}
   m_Softness: {x: 0, y: 0}
 --- !u!114 &1522215009
 MonoBehaviour:
@@ -4889,7 +4889,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1721849399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6009,7 +6009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2002058536
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6207,7 +6207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2008597999
 RectTransform:
   m_ObjectHideFlags: 0

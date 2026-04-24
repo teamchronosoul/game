@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: VNGoogleSheetChapterImporter
   m_EditorClassIdentifier: Assembly-CSharp::VN.VNGoogleSheetChapterImporter
   chapters:
-  - tableKey: chapter_1
+  - tableKey: VNChapter_1_Shinrai
     chapter: {fileID: 11400000, guid: e2e7be65c4bb2fa4b98a800ecba8214f, type: 2}
+    chapterIdOverride: 
+    firstDataRow: 1
+    speakerColumn: 0
+    emotionColumn: 1
+    flowColumn: 2
+    firstChoiceColumn: 3
+    appendEndStep: 1
+  - tableKey: VNChapter_1_Kensui
+    chapter: {fileID: 11400000, guid: 02a6023705b7c864198b5c1cf5cf4aea, type: 2}
     chapterIdOverride: 
     firstDataRow: 1
     speakerColumn: 0

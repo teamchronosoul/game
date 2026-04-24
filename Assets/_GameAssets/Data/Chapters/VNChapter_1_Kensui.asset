@@ -1,0 +1,3873 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4cdc04c1304297a6b2f060f917eb30, type: 3}
+  m_Name: VNChapter_1_Kensui
+  m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
+  chapterId: VNChapter_1_Kensui
+  steps:
+  - rid: 9129764570494403263
+  - rid: 9129764570494403265
+  - rid: 9129764567614751725
+  - rid: 9129764567614751726
+  - rid: 9129764567614751727
+  - rid: 9129764567614751728
+  - rid: 9129764567614751729
+  - rid: 9129764567614751730
+  - rid: 9129764567614751731
+  - rid: 9129764567614751732
+  - rid: 9129764567614751733
+  - rid: 9129764567614751734
+  - rid: 9129764567614751735
+  - rid: 9129764567614751736
+  - rid: 9129764567614751737
+  - rid: 9129764567614751738
+  - rid: 9129764567614751739
+  - rid: 9129764567614751740
+  - rid: 9129764567614751741
+  - rid: 9129764567614751742
+  - rid: 9129764567614751743
+  - rid: 9129764570494402560
+  - rid: 9129764570494402561
+  - rid: 9129764570494402562
+  - rid: 9129764570494402563
+  - rid: 9129764570494402564
+  - rid: 9129764570494402565
+  - rid: 9129764570494402566
+  - rid: 9129764570494402567
+  - rid: 9129764570494402568
+  - rid: 9129764570494402569
+  - rid: 9129764570494402570
+  - rid: 9129764570494402571
+  - rid: 9129764570494402572
+  - rid: 9129764570494402573
+  - rid: 9129764570494402574
+  - rid: 9129764570494402575
+  - rid: 9129764570494402576
+  - rid: 9129764570494402577
+  - rid: 9129764570494402578
+  - rid: 9129764570494402579
+  - rid: 9129764570494402580
+  - rid: 9129764570494402581
+  - rid: 9129764570494402582
+  - rid: 9129764570494402583
+  - rid: 9129764570494402584
+  - rid: 9129764570494402585
+  - rid: 9129764570494402586
+  - rid: 9129764570494402587
+  - rid: 9129764570494402588
+  - rid: 9129764570494402589
+  - rid: 9129764570494402590
+  - rid: 9129764570494402591
+  - rid: 9129764570494402592
+  - rid: 9129764570494402593
+  - rid: 9129764570494402594
+  - rid: 9129764570494402595
+  - rid: 9129764570494402596
+  - rid: 9129764570494402597
+  - rid: 9129764570494402598
+  - rid: 9129764570494402599
+  - rid: 9129764570494402600
+  - rid: 9129764570494402601
+  - rid: 9129764570494402602
+  - rid: 9129764570494402603
+  - rid: 9129764570494402604
+  - rid: 9129764570494402605
+  - rid: 9129764570494402606
+  - rid: 9129764570494402607
+  - rid: 9129764570494402608
+  - rid: 9129764570494402609
+  - rid: 9129764570494402610
+  - rid: 9129764570494402611
+  - rid: 9129764570494402612
+  - rid: 9129764570494402613
+  - rid: 9129764570494402614
+  - rid: 9129764570494402615
+  - rid: 9129764570494402616
+  - rid: 9129764570494402617
+  - rid: 9129764570494402618
+  - rid: 9129764570494402619
+  - rid: 9129764570494402620
+  - rid: 9129764570494402621
+  - rid: 9129764570494402622
+  - rid: 9129764570494402623
+  - rid: 9129764570494402624
+  - rid: 9129764570494402625
+  - rid: 9129764570494402626
+  - rid: 9129764570494402627
+  - rid: 9129764570494402628
+  - rid: 9129764570494402629
+  - rid: 9129764570494402630
+  - rid: 9129764570494402631
+  - rid: 9129764570494402632
+  - rid: 9129764570494402633
+  - rid: 9129764570494402634
+  - rid: 9129764570494402635
+  - rid: 9129764570494402636
+  - rid: 9129764570494402637
+  - rid: 9129764570494402638
+  - rid: 9129764570494402639
+  - rid: 9129764570494402640
+  - rid: 9129764570494402641
+  - rid: 9129764570494402642
+  - rid: 9129764570494402643
+  - rid: 9129764570494402644
+  - rid: 9129764570494402645
+  - rid: 9129764570494402646
+  - rid: 9129764570494402647
+  - rid: 9129764570494402648
+  - rid: 9129764570494402649
+  - rid: 9129764570494402650
+  - rid: 9129764570494402651
+  - rid: 9129764570494402652
+  - rid: 9129764570494402653
+  - rid: 9129764570494402654
+  - rid: 9129764570494402655
+  - rid: 9129764570494402656
+  - rid: 9129764570494402657
+  - rid: 9129764570494402658
+  - rid: 9129764570494402659
+  - rid: 9129764570494402660
+  - rid: 9129764570494402661
+  - rid: 9129764570494402662
+  - rid: 9129764570494402663
+  - rid: 9129764570494402664
+  - rid: 9129764570494402665
+  - rid: 9129764570494402666
+  - rid: 9129764570494402667
+  - rid: 9129764570494402668
+  - rid: 9129764570494402669
+  - rid: 9129764570494402670
+  - rid: 9129764570494402671
+  - rid: 9129764570494402672
+  - rid: 9129764570494402673
+  - rid: 9129764570494402674
+  - rid: 9129764570494402675
+  - rid: 9129764570494402676
+  - rid: 9129764570494402677
+  - rid: 9129764570494402678
+  - rid: 9129764570494402679
+  - rid: 9129764570494402680
+  - rid: 9129764570494402681
+  - rid: 9129764570494402682
+  - rid: 9129764570494402683
+  - rid: 9129764570494402684
+  - rid: 9129764570494402685
+  - rid: 9129764570494402686
+  - rid: 9129764570494402687
+  - rid: 9129764570494402688
+  - rid: 9129764570494402689
+  - rid: 9129764570494402690
+  - rid: 9129764570494402691
+  - rid: 9129764570494402692
+  - rid: 9129764570494402693
+  - rid: 9129764570494402694
+  - rid: 9129764570494402695
+  - rid: 9129764570494402696
+  - rid: 9129764570494402697
+  - rid: 9129764570494402698
+  - rid: 9129764570494402699
+  - rid: 9129764570494402700
+  - rid: 9129764570494402701
+  - rid: 9129764570494402702
+  - rid: 9129764570494402703
+  - rid: 9129764570494402704
+  - rid: 9129764570494402705
+  - rid: 9129764570494402706
+  - rid: 9129764570494402707
+  - rid: 9129764570494402708
+  - rid: 9129764570494402709
+  - rid: 9129764570494402710
+  - rid: 9129764570494402711
+  - rid: 9129764570494402712
+  - rid: 9129764570494402713
+  - rid: 9129764570494402714
+  - rid: 9129764570494402715
+  - rid: 9129764570494402716
+  - rid: 9129764570494402717
+  - rid: 9129764570494402718
+  - rid: 9129764570494402719
+  - rid: 9129764570494402720
+  - rid: 9129764570494402721
+  - rid: 9129764570494402722
+  - rid: 9129764570494402723
+  - rid: 9129764570494402724
+  - rid: 9129764570494402725
+  - rid: 9129764570494402726
+  - rid: 9129764570494402727
+  - rid: 9129764570494402728
+  - rid: 9129764570494402729
+  - rid: 9129764570494402730
+  - rid: 9129764570494402731
+  - rid: 9129764570494402732
+  - rid: 9129764570494402733
+  - rid: 9129764570494402734
+  - rid: 9129764570494402735
+  - rid: 9129764570494402736
+  - rid: 9129764570494402737
+  - rid: 9129764570494402738
+  - rid: 9129764570494402739
+  - rid: 9129764570494402740
+  - rid: 9129764570494402741
+  - rid: 9129764570494402742
+  - rid: 9129764570494402743
+  - rid: 9129764570494402744
+  - rid: 9129764570494402745
+  - rid: 9129764570494402746
+  - rid: 9129764570494402747
+  - rid: 9129764570494402748
+  - rid: 9129764570494402749
+  - rid: 9129764570494402750
+  - rid: 9129764570494402751
+  - rid: 9129764570494402752
+  - rid: 9129764570494402753
+  - rid: 9129764570494402754
+  - rid: 9129764570494402755
+  - rid: 9129764570494402756
+  - rid: 9129764570494402757
+  - rid: 9129764570494402758
+  - rid: 9129764570494402759
+  - rid: 9129764570494402760
+  - rid: 9129764570494402761
+  - rid: 9129764570494402762
+  - rid: 9129764570494402763
+  - rid: 9129764570494402764
+  - rid: 9129764570494402765
+  - rid: 9129764570494402766
+  - rid: 9129764570494402767
+  - rid: 9129764570494402768
+  - rid: 9129764570494402769
+  - rid: 9129764570494402770
+  references:
+    version: 2
+    RefIds:
+    - rid: 9129764567614751725
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r003_c03
+        label: "R3 C3 Narrator: You step into a peaceful sunlit \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You step into a peaceful sunlit garden where every little detail was
+          purposefully arranged by someone's careful hand.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r004_c03
+    - rid: 9129764567614751726
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r004_c03
+        label: "R4 C3 Narrator: A silver scale standing on a roc\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: A silver scale standing on a rock grabs your attention. Within its
+          pans you find small stones engraved with symbols that you've never seen
+          before.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r005_c03
+    - rid: 9129764567614751727
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r005_c03
+        label: "R5 C3 Kensui: These symbols represent the elem\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: These symbols represent the elements of this world and beyond.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r006_c03
+    - rid: 9129764567614751728
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r006_c03
+        label: "R6 C3 Narrator: Your mentor is standing behind y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Your mentor is standing behind you, his silver hair softly lit by the
+          sun. He speaks to you once more, his voice a gentle springtime melody.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r007_c03
+    - rid: 9129764567614751729
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r007_c03
+        label: "R7 C3 Kensui: Welcome to the Temple of the Eve\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Welcome to the Temple of the Everveil, precious soul. I hope the academy
+          and our community will soon become your new home.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r008_c03
+    - rid: 9129764567614751730
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r008_c03
+        label: "R8 C3 Kensui: I'd like you to know that if you\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I'd like you to know that if you encounter any difficulties, you are
+          always welcome to seek my assistance.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r009_c03
+    - rid: 9129764567614751731
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r009_c03
+        label: Choice R9 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Thank him for the warm welcome
+          nextStepId: vnchapter_1_kensui_line_r010_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Ask about the faculty
+          nextStepId: vnchapter_1_kensui_line_r010_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614751732
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r016_c03
+        label: "R16 C3 Narrator: Kensui points at the silver scal\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui points at the silver scale that you were studying earlier.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r017_c03
+    - rid: 9129764567614751733
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r017_c03
+        label: "R17 C3 Kensui: I see you've taken an interest i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I see you've taken an interest in this old scale of mine.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r018_c03
+    - rid: 9129764567614751734
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r018_c03
+        label: "R18 C3 Kensui: I believe, it is important to we\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I believe, it is important to weigh all the factors carefully before
+          reaching a decision... especially given the complexities of the modern
+          world.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r019_c03
+    - rid: 9129764567614751735
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r019_c03
+        label: "R19 C3 Narrator: Kensui says the last sentence mo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui says the last sentence more softly, almost as if speaking to
+          himself.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r020_c03
+    - rid: 9129764567614751736
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r020_c03
+        label: "R20 C3 Narrator: Although he looks calm on the su\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Although he looks calm on the surface, you notice the corner of his
+          mouth twitch a little.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r021_c03
+    - rid: 9129764567614751737
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r021_c03
+        label: "R21 C3 You: He must be talking about recent \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: He must be talking about recent rumors of demons lurking in a small
+          town near the academy.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r022_c03
+    - rid: 9129764567614751738
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r022_c03
+        label: Choice R22 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Ask about the rumors
+          nextStepId: vnchapter_1_kensui_line_r023_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Reassure him
+          nextStepId: vnchapter_1_kensui_line_r023_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614751739
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r024_c03
+        label: 'R24 C3 Narrative: Kensui lets out a soft laugh.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Narrative
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui lets out a soft laugh.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r025_c03
+    - rid: 9129764567614751740
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r025_c03
+        label: Choice R25 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: I am indeed. You are very perceptive, dear soul.
+          nextStepId: vnchapter_1_kensui_line_r026_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: I like your attitude, dear soul! And yes, you are absolutely right.
+            Source willing, we will handle everything in its own time.
+          nextStepId: vnchapter_1_kensui_line_r026_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614751741
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r026_c03
+        label: 'R26 C3 Narrator: Kensui looks thoughtful.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui looks thoughtful.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r027_c03
+    - rid: 9129764567614751742
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r027_c03
+        label: "R27 C3 Kensui: For the first time in hundreds o\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: For the first time in hundreds of years, demons openly appeared on
+          magic-neutral territories.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r028_c03
+    - rid: 9129764567614751743
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r028_c03
+        label: "R28 C3 Kensui: There was an energy shift in the\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: There was an energy shift in the Tear. I'd like you to be aware of
+          that.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r029_c03
+    - rid: 9129764570494402560
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r029_c03
+        label: "R29 C3 Kensui: I would also like you to be care\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I would also like you to be careful and let me or other mentors know
+          if you notice anything suspicious.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r030_c03
+    - rid: 9129764570494402561
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r030_c03
+        label: "R30 C3 Narrative: You nod. Kensui smiles at you bu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Narrative
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You nod. Kensui smiles at you but his smile doesn't quite reach his
+          eyes.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r031_c03
+    - rid: 9129764570494402562
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r031_c03
+        label: "R31 C3 Kensui: I wish I didn't have to tell you\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I wish I didn't have to tell you all this on your first day at the
+          academy, but such is our Fate.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r032_c03
+    - rid: 9129764570494402563
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r032_c03
+        label: "R32 C3 Kensui: And here, at Temple of the Everv\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: And here, at Temple of the Everveil we look Fate in the eyes. Calmly,
+          peacefully. We let her speak her mind to us and we listen.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r033_c03
+    - rid: 9129764570494402564
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r033_c03
+        label: "R33 C3 Narrator: Kensui smiles at you once again \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui smiles at you once again and this time the universe itself smiles
+          with him through his eyes.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r034_c03
+    - rid: 9129764570494402565
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r034_c03
+        label: "R34 C3 Kensui: I shall let you go now. Your fir\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I shall let you go now. Your first class with Teacher Shinrai is about
+          to start.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r035_c03
+    - rid: 9129764570494402566
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r035_c03
+        label: 'R35 C3 Kensui: We shall speak again soon.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: We shall speak again soon.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r037_c03
+    - rid: 9129764570494402567
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r037_c03
+        label: "R37 C3 Narrator: You're crossing one of the acade\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You're crossing one of the academy's endless gardens on your way to
+          your first class when you hear someone shout.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r038_c03
+    - rid: 9129764570494402568
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r038_c03
+        label: 'R38 C3 ???: Enough! Let me go already!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ???
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Enough! Let me go already!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r039_c03
+    - rid: 9129764570494402569
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r039_c03
+        label: "R39 C3 Bully: No one's holding you here. Or ar\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: No one's holding you here. Or are you too dumb to see that?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r040_c03
+    - rid: 9129764570494402570
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r040_c03
+        label: "R40 C3 Narrator: You hurry in the direction where\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You hurry in the direction where the voices come from and see a girl
+          surrounded by a group of older boys.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r041_c03
+    - rid: 9129764570494402571
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r041_c03
+        label: "R41 C3 Bully: We just want to know how you got\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: We just want to know how you got in. Can you answer that simple question?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r042_c03
+    - rid: 9129764570494402572
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r042_c03
+        label: "R42 C3 ???: What do you mean? I passed the e\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ???
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: What do you mean? I passed the exams and then got sorted into my faculty,
+          just like you all did!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r043_c03
+    - rid: 9129764570494402573
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r043_c03
+        label: "R43 C3 Bully: Nah, you're lying to us. A small\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Nah, you're lying to us. A small-town bumpkin like you wouldn't make
+          it to the academy.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r044_c03
+    - rid: 9129764570494402574
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r044_c03
+        label: 'R44 C3 Bully: You got no magic in you.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: You got no magic in you.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r045_c03
+    - rid: 9129764570494402575
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r045_c03
+        label: "R45 C3 ???: I have magic in me! Just because\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ???
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: I have magic in me! Just because I was born far from the Tear, doesn't
+          mean I can't be a battle mage.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r046_c03
+    - rid: 9129764570494402576
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r046_c03
+        label: "R46 C3 Bully: How about you prove it to us, hu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: How about you prove it to us, huh?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r047_c03
+    - rid: 9129764570494402577
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r047_c03
+        label: "R47 C3 ???: I... can't... there's too much p\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ???
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I... can't... there's too much pressure...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r048_c03
+    - rid: 9129764570494402578
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r048_c03
+        label: "R48 C3 ???: And I don't have to prove anythi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ???
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: And I don't have to prove anything to you!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r049_c03
+    - rid: 9129764570494402579
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r049_c03
+        label: "R49 C3 Narrator: The girl is trying to show that \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The girl is trying to show that she's not scared, but her trembling
+          hands give her away. This is when you decide to step in.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r050_c03
+    - rid: 9129764570494402580
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r050_c03
+        label: Choice R50 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Appeal to student rights
+          nextStepId: vnchapter_1_kensui_line_r051_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Appeal to their better nature
+          nextStepId: vnchapter_1_kensui_line_r051_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Make fun of them
+          nextStepId: vnchapter_1_kensui_line_r051_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: D - Achiever, E - Confidant, F - Jester
+          nextStepId: vnchapter_1_kensui_line_r054_c07
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494402581
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r057_c03
+        label: "R57 C3 Narrator: The bully who told Kenji off com\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bully who told Kenji off comes closer to you and looks you right
+          in the eye.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r058_c03
+    - rid: 9129764570494402582
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r058_c03
+        label: 'R58 C3 Bully: You know her?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You know her?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r059_c03
+    - rid: 9129764570494402583
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r059_c03
+        label: "R59 C3 Narrator: You answer without hesitation. Y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You answer without hesitation. You can't back down now.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r060_c03
+    - rid: 9129764570494402584
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r060_c03
+        label: 'R60 C3 You: Yes, I do.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yes, I do.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r061_c03
+    - rid: 9129764570494402585
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r061_c03
+        label: 'R61 C3 Bully: She''s not who you think she is.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: She's not who you think she is.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r062_c03
+    - rid: 9129764570494402586
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r062_c03
+        label: "R62 C3 Narrator: The bully turns around and start\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bully turns around and starts walking, his friends join him. Kenji
+          looks back a couple of times, clearly troubled by a guilty conscience.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r063_c03
+    - rid: 9129764570494402587
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r063_c03
+        label: "R63 C3 Narrator: The girl lets out a deep sigh. T\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The girl lets out a deep sigh. Then she extends her hand in your direction.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r064_c03
+    - rid: 9129764570494402588
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r064_c03
+        label: "R64 C3 Yuzuri: Thank you for helping me out! I \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Thank you for helping me out! I knew I'd get bullied for where I'm
+          from, but I didn't think it would happen on my first day at the academy!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r065_c03
+    - rid: 9129764570494402589
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r065_c03
+        label: "R65 C3 Yuzuri: Oopsie! I forgot to introduce my\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Oopsie! I forgot to introduce myself. I can't believe this happened
+          again! My name's Yuzuri.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r066_c03
+    - rid: 9129764570494402590
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r066_c03
+        label: "R66 C3 Narrator: You shake Yuzuri's hand and intr\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You shake Yuzuri's hand and introduce yourself.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r067_c03
+    - rid: 9129764570494402591
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r067_c03
+        label: "R67 C3 Yuzuri: Oooh! You're Teacher Kensui's me\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: Oooh! You're Teacher Kensui's mentee, aren't you. Woah, you're a lucky
+          one!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r068_c03
+    - rid: 9129764570494402592
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r068_c03
+        label: "R68 C3 Narrator: Suddenly her face lights up with\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly her face lights up with a cheeky smile.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r069_c03
+    - rid: 9129764570494402593
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r069_c03
+        label: "R69 C3 Yuzuri: I heard that Teacher Kensui is t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: I heard that Teacher Kensui is the oldest of all the mentors. I heard
+          that he's even older than Lumis!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r070_c03
+    - rid: 9129764570494402594
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r070_c03
+        label: "R70 C3 Yuzuri: Can you believe that? I mean, he\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Can you believe that? I mean, he looks so young and handsome!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r071_c03
+    - rid: 9129764570494402595
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r071_c03
+        label: Choice R71 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Listen to more Kensui gossip
+          nextStepId: vnchapter_1_kensui_line_r072_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: No, that's quite enough
+          nextStepId: vnchapter_1_kensui_line_r072_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494402596
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r074_c03
+        label: "R74 C3 Yuzuri: Sorry, I love to gossip! I hope \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Sorry, I love to gossip! I hope this doesn't bother you too much!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r075_c03
+    - rid: 9129764570494402597
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r075_c03
+        label: "R75 C3 Narrator: You laugh and Yuzuri breathes a \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You laugh and Yuzuri breathes a sigh of relief. You remind her it's
+          time to go to your first class.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r076_c03
+    - rid: 9129764570494402598
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r076_c03
+        label: "R76 C3 Yuzuri: Oh, right! You're so right. It's\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Oh, right! You're so right. It's Shinrai's class too, so we can't be
+          late!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r077_c03
+    - rid: 9129764570494402599
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r077_c03
+        label: "R77 C3 Narrator: Together, you start walking towa\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Together, you start walking towards the building where your first class
+          is about to begin.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r078_c03
+    - rid: 9129764570494402600
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r078_c03
+        label: "R78 C3 Yuzuri: But you know what, as much as I \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: But you know what, as much as I love and respect Shinrai, it is Teacher
+          Kensui that I absolutely adore!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r079_c03
+    - rid: 9129764570494402601
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r079_c03
+        label: "R79 C3 Yuzuri: We're so lucky to have his semin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: We're so lucky to have his seminar later today! I can't wait!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r080_c03
+    - rid: 9129764570494402602
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r080_c03
+        label: "R80 C3 Narrator: As you come near the building, Y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: As you come near the building, Yuzuri glances back a couple of times,
+          looking rather nervous.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r081_c03
+    - rid: 9129764570494402603
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r081_c03
+        label: 'R81 C3 Yuzuri: So as I was saying...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: So as I was saying...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r082_c03
+    - rid: 9129764570494402604
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r082_c03
+        label: "R82 C3 Narrator: Her voice trails off as she look\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Her voice trails off as she looks back again. You feel the urge to...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r083_c03
+    - rid: 9129764570494402605
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r083_c03
+        label: Choice R83 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Tell her she's safe
+          nextStepId: vnchapter_1_kensui_line_r084_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Ask her how she's doing
+          nextStepId: vnchapter_1_kensui_line_r084_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494402606
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r086_c03
+        label: "R86 C3 Narrator: Her lips curl into a weak smile \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Her lips curl into a weak smile as she starts walking again.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r087_c03
+    - rid: 9129764570494402607
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r087_c03
+        label: "R87 C3 Narrator: Suddenly, you notice some strang\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly, you notice some strange movement right where Yuzuri is walking.
+          It's almost like her shadow has peeled away and vanished into the unknown.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r088_c03
+    - rid: 9129764570494402608
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r088_c03
+        label: "R88 C3 Narrator: You blink and look at Yuzuri. Sh\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You blink and look at Yuzuri. She's holding the front door for you,
+          her shadow right where it's supposed to be.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r089_c03
+    - rid: 9129764570494402609
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r089_c03
+        label: "R89 C3 You: I must be imagining things. I ne\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I must be imagining things. I need to start going to bed earlier.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r091_c03
+    - rid: 9129764570494402610
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r091_c03
+        label: "R91 C3 Narrator: Shinrai is standing in front of \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai is standing in front of a long chalkboard with his eyes closed.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r092_c03
+    - rid: 9129764570494402611
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r092_c03
+        label: "R92 C3 You: I wonder what he's thinking abou\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I wonder what he's thinking about.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r093_c03
+    - rid: 9129764570494402612
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r093_c03
+        label: "R93 C3 Narrator: Yuzuri whispers to you as if she\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri whispers to you as if she's just read your mind.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r094_c03
+    - rid: 9129764570494402613
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r094_c03
+        label: "R94 C3 Yuzuri: Teacher Shinrai is getting ready\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher Shinrai is getting ready for the class. He likes to make sure
+          nothing breaks his concentration during his lectures.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r095_c03
+    - rid: 9129764570494402614
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r095_c03
+        label: "R95 C3 Narrator: You take your seats in the front\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take your seats in the front row and wait for the classroom to
+          fill up with students.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r096_c03
+    - rid: 9129764570494402615
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r096_c03
+        label: "R96 C3 Narrator: Shinrai calmly nods at the audie\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai calmly nods at the audience, and this is all it takes for the
+          students to fall silent.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r097_c03
+    - rid: 9129764570494402616
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r097_c03
+        label: "R97 C3 Shinrai: Welcome to the Art of Magic Stra\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Welcome to the Art of Magic Strategy.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r098_c03
+    - rid: 9129764570494402617
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r098_c03
+        label: "R98 C3 Shinrai: As I am sure you already know be\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: As I am sure you already know being able to stay focused is essential
+          to every magician.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r099_c03
+    - rid: 9129764570494402618
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r099_c03
+        label: 'R99 C3 Yuzuri: Did he forget to say hello?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Did he forget to say hello?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r100_c03
+    - rid: 9129764570494402619
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r100_c03
+        label: "R100 C3 Narrator: Yuzuri murmurs to herself so qui\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri murmurs to herself so quietly you can barely make out the words.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r101_c03
+    - rid: 9129764570494402620
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r101_c03
+        label: "R101 C3 Narrator: And yet this is enough to catch \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: And yet this is enough to catch Shinrai's attention. He turns in your
+          direction, his gaze cold as ice.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r102_c03
+    - rid: 9129764570494402621
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r102_c03
+        label: "R102 C3 Shinrai: In fact, one day it could even s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: In fact, one day it could even save your life.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r103_c03
+    - rid: 9129764570494402622
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r103_c03
+        label: "R103 C3 You: He's looking at us. I have to do\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: He's looking at us. I have to do something!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r104_c03
+    - rid: 9129764570494402623
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r104_c03
+        label: Choice R104 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Ask Shinrai a question
+          nextStepId: vnchapter_1_kensui_line_r105_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Try to lighten the mood
+          nextStepId: vnchapter_1_kensui_line_r105_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Take notes vigorously
+          nextStepId: vnchapter_1_kensui_line_r105_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: D - Confidant, E - Jester, F - Achiever. D - Shinrai +1
+          nextStepId: vnchapter_1_kensui_line_r113_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494402624
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r113_c03
+        label: 'R113 C3 Narrator: Shinrai addresses his audience.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai addresses his audience.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r114_c03
+    - rid: 9129764570494402625
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r114_c03
+        label: 'R114 C3 Shinrai: I suggest we start practicing.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I suggest we start practicing.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r115_c03
+    - rid: 9129764570494402626
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r115_c03
+        label: "R115 C3 Shinrai: You are going to learn an invisi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You are going to learn an invisibility spell that keeps you unseen
+          as long as you maintain concentration.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r116_c03
+    - rid: 9129764570494402627
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r116_c03
+        label: "R116 C3 Narrator: You hear an excited murmur in th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You hear an excited murmur in the audience.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r117_c03
+    - rid: 9129764570494402628
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r117_c03
+        label: "R117 C3 Shinrai: I am going to show you just once\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: I am going to show you just once.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r118_c03
+    - rid: 9129764570494402629
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r118_c03
+        label: "R118 C3 Narrator: Shinrai says the spell out loud \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai says the spell out loud and makes a couple of simple movements
+          with his hands.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r119_c03
+    - rid: 9129764570494402630
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r119_c03
+        label: "R119 C3 Shinrai: Now, the important part. Master \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Now, the important part. Master up your concentration and become unseen.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r120_c03
+    - rid: 9129764570494402631
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r120_c03
+        label: "R120 C3 Narrator: He disappears but you can still \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He disappears but you can still hear his voice.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r121_c03
+    - rid: 9129764570494402632
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r121_c03
+        label: 'R121 C3 ...: You may now start to practice.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ...
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You may now start to practice.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r122_c03
+    - rid: 9129764570494402633
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r122_c03
+        label: "R122 C3 Narrator: Murmurs and laughter fill the cl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Murmurs and laughter fill the classroom as students start working on
+          the spell.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r123_c03
+    - rid: 9129764570494402634
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r123_c03
+        label: "R123 C3 Narrator: You say the incantation and try \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You say the incantation and try to recreate the gestures that Shinrai
+          demonstrated to you earlier.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r124_c03
+    - rid: 9129764570494402635
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r124_c03
+        label: 'R124 C3 You: Now, focus!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Now, focus!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r125_c03
+    - rid: 9129764570494402636
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r125_c03
+        label: "R125 C3 Narrator: You close your eyes tight and fo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You close your eyes tight and focus your mind and energy on your will
+          to become invisible.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r126_c03
+    - rid: 9129764570494402637
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r126_c03
+        label: "R126 C3 Narrator: A moment later you hear Yuzuri's\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: A moment later you hear Yuzuri's voice. She sounds very impressed.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r127_c03
+    - rid: 9129764570494402638
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r127_c03
+        label: "R127 C3 Yuzuri: You did it! I can't see you! I c\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: You did it! I can't see you! I can't believe you really did it!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r128_c03
+    - rid: 9129764570494402639
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r128_c03
+        label: "R128 C3 Narrator: You concentrate on her voice and\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You concentrate on her voice and slowly open your eyes. Yuzuri is looking
+          right at you.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r129_c03
+    - rid: 9129764570494402640
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r129_c03
+        label: "R129 C3 Yuzuri: You were amazing! You close your\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: You were amazing! You close your eyes and woosh... suddenly you're
+          gone!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r130_c03
+    - rid: 9129764570494402641
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r130_c03
+        label: "R130 C3 You: Thanks! What about you, Yuzuri? \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Thanks! What about you, Yuzuri? Have you tried the invisibility spell?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r131_c03
+    - rid: 9129764570494402642
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r131_c03
+        label: "R131 C3 Narrator: Yuzuri lowers her eyes and shake\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri lowers her eyes and shakes her head in dismay.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r132_c03
+    - rid: 9129764570494402643
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r132_c03
+        label: "R132 C3 Yuzuri: I tried but something's just not\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I tried but something's just not working. I guess today's not a good
+          day for magic...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r133_c03
+    - rid: 9129764570494402644
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r133_c03
+        label: Choice R133 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Reassure Yuzuri
+          nextStepId: vnchapter_1_kensui_line_r134_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Suggest you try again together
+          nextStepId: vnchapter_1_kensui_line_r134_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494402645
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r137_c03
+        label: "R137 C3 Narrator: Yuzuri takes a deep breath and y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri takes a deep breath and you give her a reassuring nod. She closes
+          her eyes and...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r138_c03
+    - rid: 9129764570494402646
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r138_c03
+        label: 'R138 C3 Narrator: Nothing happens.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Nothing happens.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r139_c03
+    - rid: 9129764570494402647
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r139_c03
+        label: "R139 C3 Yuzuri: I... I think maybe the boys were\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: I... I think maybe the boys were right. I have no magic left in me
+          ...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r140_c03
+    - rid: 9129764570494402648
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r140_c03
+        label: "R140 C3 Shinrai: You have enough magic energy to \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You have enough magic energy to cast this spell.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r141_c03
+    - rid: 9129764570494402649
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r141_c03
+        label: "R141 C3 Narrator: Shinrai is now standing behind Y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai is now standing behind Yuzuri, calm and strict - a perfect
+          reflection of cool mind and confidence.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r142_c03
+    - rid: 9129764570494402650
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r142_c03
+        label: "R142 C3 Shinrai: What you lack, however, is conce\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What you lack, however, is concentration.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r143_c03
+    - rid: 9129764570494402651
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r143_c03
+        label: "R143 C3 Narrator: Yuzuri's eyes widen as she looks\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri's eyes widen as she looks at the dean of the Order of Labyrinth.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r144_c03
+    - rid: 9129764570494402652
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r144_c03
+        label: 'R144 C3 Yuzuri: You mean...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: You mean...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r145_c03
+    - rid: 9129764570494402653
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r145_c03
+        label: "R145 C3 Shinrai: Your mind is elsewhere and that \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Your mind is elsewhere and that is not good enough.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r146_c03
+    - rid: 9129764570494402654
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r146_c03
+        label: "R146 C3 Shinrai: In other words, you should be in\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: In other words, you should be in control of your thoughts rather than
+          allowing them to control you.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r147_c03
+    - rid: 9129764570494402655
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r147_c03
+        label: "R147 C3 Narrator: Yuzuri looks down, her cheeks fl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri looks down, her cheeks flushing as she tries to speak.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r148_c03
+    - rid: 9129764570494402656
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r148_c03
+        label: "R148 C3 Yuzuri: I... yes, Teacher. I-I understan\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I... yes, Teacher. I-I understand...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r149_c03
+    - rid: 9129764570494402657
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r149_c03
+        label: "R149 C3 You: Teacher Shinrai isn't wrong, but\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher Shinrai isn't wrong, but poor Yuzuri seems too embarrassed
+          to even speak!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r150_c03
+    - rid: 9129764570494402658
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r150_c03
+        label: 'R150 C3 You: I have to help her.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I have to help her.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r151_c03
+    - rid: 9129764570494402659
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r151_c03
+        label: 'R151 C3 Narrator: PAID CHOICE'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: PAID CHOICE
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r151_c03
+    - rid: 9129764570494402660
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r151_c03
+        label: Choice R151 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Help Yuzuri and impress Shinrai with your magic
+          nextStepId: vnchapter_1_kensui_line_r152_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Tell Shinrai Yuzuri's uncomfortable
+          nextStepId: vnchapter_1_kensui_line_r153_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494402661
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r179_c03
+        label: "R179 C3 Narrator: Shinrai turns back to Yuzuri. Hi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai turns back to Yuzuri. His voice is firm and distant but there
+          is no anger or discontent in it.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r180_c03
+    - rid: 9129764570494402662
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r180_c03
+        label: "R180 C3 Shinrai: There is something I would like \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: There is something I would like you to understand.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r181_c03
+    - rid: 9129764570494402663
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r181_c03
+        label: "R181 C3 Shinrai: It is essential that students of\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It is essential that students of Chronosoul learn to detach themselves
+          from anything that is troubling them during their practice.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r182_c03
+    - rid: 9129764570494402664
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r182_c03
+        label: "R182 C3 Shinrai: This is how you become invincibl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: This is how you become invincible.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r183_c03
+    - rid: 9129764570494402665
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r183_c03
+        label: "R183 C3 Narrator: He nods at you and Yuzuri and wa\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He nods at you and Yuzuri and walks off to the other end of the classroom
+          before you get a chance to reply.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r184_c03
+    - rid: 9129764570494402666
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r184_c03
+        label: "R184 C3 Narrator: Yuzuri looks at you, her eyes fu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri looks at you, her eyes full of gratitude.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r185_c03
+    - rid: 9129764570494402667
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r185_c03
+        label: "R185 C3 Yuzuri: Thank you for helping me out aga\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Thank you for helping me out again! I got so embarrassed I couldn't
+          say a word.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r186_c03
+    - rid: 9129764570494402668
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r186_c03
+        label: "R186 C3 You: That's okay, Yuzuri. Shinrai is \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's okay, Yuzuri. Shinrai is quite intense, but I'm sure he means
+          us well.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r187_c03
+    - rid: 9129764570494402669
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r187_c03
+        label: "R187 C3 Narrator: Yuzuri lets out a gentle laugh a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri lets out a gentle laugh and you smile too.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r188_c03
+    - rid: 9129764570494402670
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r188_c03
+        label: "R188 C3 Narrator: You lock eyes with her and... ca\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lock eyes with her and... can't believe what you're seeing.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r189_c03
+    - rid: 9129764570494402671
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r189_c03
+        label: "R189 C3 Narrator: Yuzuri's whole body is enveloped\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Yuzuri's whole body is enveloped in dark shadowy flames. Her facial
+          features aren't visible now, as everything\u2019s just a shadow."
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r190_c03
+    - rid: 9129764570494402672
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r190_c03
+        label: "R190 C3 Narrator: You cover your mouth so you don\u2019\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "You cover your mouth so you don\u2019t scream."
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r191_c03
+    - rid: 9129764570494402673
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r191_c03
+        label: "R191 C3 You: What is this? Is this real? Shou\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: What is this? Is this real? Should I call for help?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_end
+    - rid: 9129764570494402674
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r152_c04
+        label: "R152 C4 Narrator: You instantly think of a way to \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You instantly think of a way to catch Shinrai's eye and steer him away
+          from Yuzuri.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r153_c04
+    - rid: 9129764570494402675
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r153_c04
+        label: "R153 C4 You: To be in control of our thoughts\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: To be in control of our thoughts...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r154_c04
+    - rid: 9129764570494402676
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r154_c04
+        label: "R154 C4 You: I wonder if we can quiet our tho\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I wonder if we can quiet our thoughts so much that we can hear what
+          other people are thinking?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r155_c04
+    - rid: 9129764570494402677
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r155_c04
+        label: "R155 C4 Narrator: Shinrai moves somewhat closer to\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai moves somewhat closer to you. You can hear Yuzuri breathe out
+          in relief.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r156_c04
+    - rid: 9129764570494402678
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r156_c04
+        label: 'R156 C4 Shinrai: Why do you ask that?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Why do you ask that?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r157_c04
+    - rid: 9129764570494402679
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r157_c04
+        label: "R157 C4 You: I think I got him interested. We\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I think I got him interested. Well, sort of. Now, to the good part.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r158_c04
+    - rid: 9129764570494402680
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r158_c04
+        label: "R158 C4 Narrator: Your meet Shinrai's piercing gaz\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Your meet Shinrai's piercing gaze.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r159_c04
+    - rid: 9129764570494402681
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r159_c04
+        label: "R159 C4 You: I thought it would be interestin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I thought it would be interesting to take the focus practice to a new
+          level.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r160_c04
+    - rid: 9129764570494402682
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r160_c04
+        label: "R160 C4 Narrator: Shinrai's lips curl into a half \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai's lips curl into a half smile, his eyes glisten as he looks
+          at you.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r161_c04
+    - rid: 9129764570494402683
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r161_c04
+        label: "R161 C4 Shinrai: Are you asking me for a challeng\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you asking me for a challenge?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r162_c04
+    - rid: 9129764570494402684
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r162_c04
+        label: "R162 C4 Narrator: You nod, trying your best to hid\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You nod, trying your best to hide how worried you are.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r163_c04
+    - rid: 9129764570494402685
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r163_c04
+        label: 'R163 C4 Shinrai: Very well.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Very well.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r164_c04
+    - rid: 9129764570494402686
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r164_c04
+        label: "R164 C4 Narrator: Shinrai's eyes meet yours and su\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai's eyes meet yours and suddenly his deep ocean blue eyes are
+          the only thing you can see. Or, rather, the only thing you care to see.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r165_c04
+    - rid: 9129764570494402687
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r165_c04
+        label: 'R165 C4 Narrator: His voice echoes in your mind.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: His voice echoes in your mind.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r166_c04
+    - rid: 9129764570494402688
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r166_c04
+        label: 'R166 C4 Shinrai: I''ll let you see into my mind.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I'll let you see into my mind.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r167_c04
+    - rid: 9129764570494402689
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r167_c04
+        label: "R167 C4 Shinrai: Look me in the eyes and quiet yo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Look me in the eyes and quiet your thoughts.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r168_c04
+    - rid: 9129764570494402690
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r168_c04
+        label: "R168 C4 Narrator: You take a deep breath, focusing\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take a deep breath, focusing on Shinrai's gaze.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r169_c04
+    - rid: 9129764570494402691
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r169_c04
+        label: "R169 C4 Narrator: Suddenly you're standing on the \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly you're standing on the balcony of Shinrai's office.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r170_c04
+    - rid: 9129764570494402692
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r170_c04
+        label: "R170 C4 Narrator: Shinrai is here too. He is takin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai is here too. He is taking in the view - the academy gardens
+          blanketed in snow.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r171_c04
+    - rid: 9129764570494402693
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r171_c04
+        label: "R171 C4 Narrator: It is snowing but you don't feel\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It is snowing but you don't feel the cold.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r172_c04
+    - rid: 9129764570494402694
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r172_c04
+        label: "R172 C4 Shinrai: It is so calm here in winter, li\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It is so calm here in winter, like the whole world is asleep.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r173_c04
+    - rid: 9129764570494402695
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r173_c04
+        label: "R173 C4 Narrator: Shinrai turns to you, his gaze s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai turns to you, his gaze seems a lot less cold than you're used
+          to...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r174_c04
+    - rid: 9129764570494402696
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r174_c04
+        label: "R174 C4 Shinrai: Be careful. The blizzard is comi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Be careful. The blizzard is coming.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r175_c04
+    - rid: 9129764570494402697
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r175_c04
+        label: "R175 C4 Narrator: The snowfall intensifies, the co\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The snowfall intensifies, the cold wind blows in your face and you
+          close your eyes involuntarily.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r176_c04
+    - rid: 9129764570494402698
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r176_c04
+        label: "R176 C4 Narrator: When you open them again, you're\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: When you open them again, you're back in the classroom.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r177_c04
+    - rid: 9129764570494402699
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r177_c04
+        label: "R177 C4 Narrator: Shinrai acknowledges you with a \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai acknowledges you with a cold nod.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r178_c04
+    - rid: 9129764570494402700
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r178_c04
+        label: 'R178 C4 Shinrai: I hope you are satisfied.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I hope you are satisfied.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r179_c03
+    - rid: 9129764570494402701
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r153_c05
+        label: "R153 C5 You: Teacher, I think she got your me\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher, I think she got your message.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r154_c05
+    - rid: 9129764570494402702
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r154_c05
+        label: "R154 C5 You: In fact, I think Yuzuri might ne\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: In fact, I think Yuzuri might need a moment if that's okay.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r155_c05
+    - rid: 9129764570494402703
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r155_c05
+        label: 'R155 C5 Narrator: Shinrai raises an eyebrow.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai raises an eyebrow.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r156_c05
+    - rid: 9129764570494402704
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r156_c05
+        label: "R156 C5 Shinrai: Are you suggesting that I am bei\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you suggesting that I am being overly assertive?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r158_c05
+    - rid: 9129764570494402705
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r158_c05
+        label: "R158 C5 Narrator: Both you and Yuzuri shake your h\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Both you and Yuzuri shake your heads vigorously.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r159_c05
+    - rid: 9129764570494402706
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r159_c05
+        label: 'R159 C5 You: That''s not what I...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's not what I...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r179_c03
+    - rid: 9129764570494402707
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r134_c04
+        label: "R134 C4 You: It's okay, Yuzuri! You're doing \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It's okay, Yuzuri! You're doing fine.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r135_c04
+    - rid: 9129764570494402708
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r135_c04
+        label: "R135 C4 You: Some tasks might be more challen\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Some tasks might be more challenging than others, but it doesn't mean
+          you can't do them.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r136_c04
+    - rid: 9129764570494402709
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r136_c04
+        label: "R136 C4 Yuzuri: You're so right! And a good frie\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: You're so right! And a good friend too.You know what, I'm ready to
+          try again!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r137_c03
+    - rid: 9129764570494402710
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r134_c05
+        label: "R134 C5 You: How about we give it another go,\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: How about we give it another go, but this time we do it together!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r135_c05
+    - rid: 9129764570494402711
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r135_c05
+        label: "R135 C5 Narrator: Yuzuri blinks a few times, clear\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri blinks a few times, clearly surprised by your suggestion. Then
+          she smiles at you.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r136_c05
+    - rid: 9129764570494402712
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r136_c05
+        label: "R136 C5 Yuzuri: That's very kind of you. Okay, I\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: That's very kind of you. Okay, I think I'm ready to try again.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r137_c03
+    - rid: 9129764570494402713
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r105_c04
+        label: "R105 C4 Narrator: You throw your hand in the air a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You throw your hand in the air and calmly meet Shinrai's gaze.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r106_c04
+    - rid: 9129764570494402714
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r106_c04
+        label: "R106 C4 You: Teacher, when you say focus, do \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher, when you say focus, do you mean controlling our attention
+          or our magical energy?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r107_c04
+    - rid: 9129764570494402715
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r107_c04
+        label: "R107 C4 Narrator: Shinrai's eyes glisten in the da\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai's eyes glisten in the dark of the classroom.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r108_c04
+    - rid: 9129764570494402716
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r108_c04
+        label: "R108 C4 Shinrai: This is, indeed, a good question\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: This is, indeed, a good question.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r109_c04
+    - rid: 9129764570494402717
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r109_c04
+        label: "R109 C4 Narrator: You almost let out a sigh of rel\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You almost let out a sigh of relief. Wait, why is he still looking
+          at you?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r111_c04
+    - rid: 9129764570494402718
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r111_c04
+        label: 'R111 C4 Shinrai: And the answer is both.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: And the answer is both.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r112_c04
+    - rid: 9129764570494402719
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r112_c04
+        label: 'R112 C4 Shinrai: And so much more than that.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: And so much more than that.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r113_c03
+    - rid: 9129764570494402720
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r105_c05
+        label: "R105 C5 Narrator: You flash an awkward smile at Sh\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You flash an awkward smile at Shinrai.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r106_c05
+    - rid: 9129764570494402721
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r106_c05
+        label: "R106 C5 You: Save our lives? That\u2019s just a hy\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Save our lives? That\u2019s just a hypothetical, right?"
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r107_c05
+    - rid: 9129764570494402722
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r107_c05
+        label: "R107 C5 Narrator: You can hear Yuzuri shuffle nerv\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You can hear Yuzuri shuffle nervously in her seat. Shinrai looks you
+          right in the eyes.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r108_c05
+    - rid: 9129764570494402723
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r108_c05
+        label: "R108 C5 Shinrai: As you will come to understand i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: As you will come to understand in my classes, what is hypothetical
+          today may easily become part of our reality tomorrow.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r109_c05
+    - rid: 9129764570494402724
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r109_c05
+        label: "R109 C5 Narrator: You lower your gaze briefly as y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lower your gaze briefly as you hear students behind you whisper
+          to each other.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r111_c05
+    - rid: 9129764570494402725
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r111_c05
+        label: "R111 C5 Shinrai: The sooner you learn it, the bet\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: The sooner you learn it, the better.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r113_c03
+    - rid: 9129764570494402726
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r105_c06
+        label: "R105 C6 Narrator: You pick up your pen and start n\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You pick up your pen and start noting down everything you've heard
+          in this lecture so far.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r106_c06
+    - rid: 9129764570494402727
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r106_c06
+        label: 'R106 C6 You: A magician''s ability to focus...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: A magician's ability to focus...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r107_c06
+    - rid: 9129764570494402728
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r107_c06
+        label: "R107 C6 Narrator: You hear Shinrai's footsteps hea\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You hear Shinrai's footsteps heading in your direction and lift your
+          gaze to meet his.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r108_c06
+    - rid: 9129764570494402729
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r108_c06
+        label: "R108 C6 Shinrai: There is a more efficient way to\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: There is a more efficient way to do this.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r109_c06
+    - rid: 9129764570494402730
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r109_c06
+        label: "R109 C6 Narrator: Before you can answer, Shinrai s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Before you can answer, Shinrai subtly waves his hand and your pen slips
+          out of your grip.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r110_c06
+    - rid: 9129764570494402731
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r110_c06
+        label: "R110 C6 Narrator: Shinrai then looks at it briefly\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai then looks at it briefly, and the pen starts taking notes all
+          by itself.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r113_c03
+    - rid: 9129764570494402732
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r084_c04
+        label: "R84 C4 You: The bullies are gone, Yuzuri. Th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies are gone, Yuzuri. They won't bother you again. You're safe
+          now.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r085_c04
+    - rid: 9129764570494402733
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r085_c04
+        label: "R85 C4 Yuzuri: What? I... I really hope so. Tha\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: What? I... I really hope so. Thank you for standing up for me there.
+          I really appreciate that!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r086_c03
+    - rid: 9129764570494402734
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r084_c05
+        label: "R84 C5 You: Are you okay, Yuzuri? You look k\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you okay, Yuzuri? You look kind of nervous.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r085_c05
+    - rid: 9129764570494402735
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r085_c05
+        label: "R85 C5 Yuzuri: What? Yeah... sure, I'm good. I \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: What? Yeah... sure, I'm good. I thought I saw someone I met at the
+          dorm. But I was wrong.  No biggie.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r086_c03
+    - rid: 9129764570494402736
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r072_c04
+        label: "R72 C4 Narrator: Yuzuri drops her voice to a whis\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri drops her voice to a whisper.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r073_c04
+    - rid: 9129764570494402737
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r073_c04
+        label: "R73 C4 Yuzuri: Also, I heard that Kensui leaves\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Also, I heard that Kensui leaves the academy for his astral pilgrimage
+          once every couple of years, but no one ever knows because he leaves an
+          astral projection of himself in his place!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r074_c03
+    - rid: 9129764570494402738
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r072_c05
+        label: "R72 C5 Narrator: You look mildly annoyed, so Yuzu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You look mildly annoyed, so Yuzuri cuts herself off.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r073_c05
+    - rid: 9129764570494402739
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r073_c05
+        label: "R73 C5 Yuzuri: Okay. No more Teacher Kensui tal\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Okay. No more Teacher Kensui talk. Got it.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r074_c03
+    - rid: 9129764570494402740
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r051_c04
+        label: "R51 C4 You: I might be new here, but I'm pre\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "I might be new here, but I'm pretty sure bullying students over where
+          they come from goes against the academy\u2019s rules."
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r053_c04
+    - rid: 9129764570494402741
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r053_c04
+        label: "R53 C4 Narrator: The bullies turn to you, speechl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies turn to you, speechless for a moment. Then one of them
+          talks.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r054_c04
+    - rid: 9129764570494402742
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r054_c04
+        label: "R54 C4 Bully: Rule number 201 of the student c\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Rule number 201 of the student code of honor to be precise...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r055_c04
+    - rid: 9129764570494402743
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r055_c04
+        label: 'R55 C4 Bully: Shut up, Kenji!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Shut up, Kenji!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r056_c04
+    - rid: 9129764570494402744
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r056_c04
+        label: "R56 C4 Bully: What, Shinrai made me memorise t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What, Shinrai made me memorise the whole thing last year. If I didn't,
+          he'd get me expelled!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r057_c03
+    - rid: 9129764570494402745
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r051_c05
+        label: "R51 C5 You: Come on, guys. You can do better\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Come on, guys. You can do better than that. Don't you see, she's already
+          shaking?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r053_c05
+    - rid: 9129764570494402746
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r053_c05
+        label: "R53 C5 Narrator: The bullies turn to you, speechl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies turn to you, speechless for a moment. Then one of them
+          talks.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r054_c05
+    - rid: 9129764570494402747
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r054_c05
+        label: "R54 C5 Bully: What the heck did we do? We only\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What the heck did we do? We only asked her a couple of questions!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r055_c05
+    - rid: 9129764570494402748
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r055_c05
+        label: "R55 C5 Bully: Shut up, Kenji. You owe her no e\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Shut up, Kenji. You owe her no explanation.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r056_c05
+    - rid: 9129764570494402749
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r056_c05
+        label: "R56 C5 Bully: Okay then. I guess, you're right\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Okay then. I guess, you're right...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r057_c03
+    - rid: 9129764570494402750
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r051_c06
+        label: "R51 C6 You: Do my eyes deceive me? Because w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Do my eyes deceive me? Because what I'm seeing is three older boys
+          bullying their younger coursemate.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r052_c06
+    - rid: 9129764570494402751
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r052_c06
+        label: "R52 C6 You: I mean, what does that make them\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I mean, what does that make them?!
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r053_c06
+    - rid: 9129764570494402752
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r053_c06
+        label: "R53 C6 Narrator: The bullies turn to you, speechl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies turn to you, speechless for a moment. Then one of them
+          talks.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r054_c06
+    - rid: 9129764570494402753
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r054_c06
+        label: 'R54 C6 Bully: Idiots?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Idiots?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r055_c06
+    - rid: 9129764570494402754
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r055_c06
+        label: "R55 C6 Bully: Shut up, Kenji! She's just messi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Shut up, Kenji! She's just messing with us.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r056_c06
+    - rid: 9129764570494402755
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r056_c06
+        label: 'R56 C6 Bully: She''s kind of right though...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: She's kind of right though...
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r057_c03
+    - rid: 9129764570494402756
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r054_c07
+        label: 'R54 C7 Bully: Kenji'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kenji
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r055_c07
+    - rid: 9129764570494402757
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r055_c07
+        label: 'R55 C7 Bully: Sota'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Sota
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r056_c07
+    - rid: 9129764570494402758
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r056_c07
+        label: 'R56 C7 Bully: Kenji'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Bully
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kenji
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r057_c03
+    - rid: 9129764570494402759
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r023_c04
+        label: "R23 C4 You: Teacher, are you talking about r\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher, are you talking about rumors of demons showing up in a town
+          not far from the academy?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r024_c03
+    - rid: 9129764570494402760
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r023_c05
+        label: "R23 C5 You: I'm sure whatever's heading our \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I'm sure whatever's heading our way, we'll be able to handle it, won't
+          we Teacher?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r024_c03
+    - rid: 9129764570494402761
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r010_c04
+        label: "R10 C4 You: Thank you, Teacher. I really app\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Thank you, Teacher. I really appreciate your warm welcome.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r011_c04
+    - rid: 9129764570494402762
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r011_c04
+        label: "R11 C4 Narrator: You bow gracefully to your mento\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You bow gracefully to your mentor and he smiles at you warmly.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r012_c04
+    - rid: 9129764570494402763
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r012_c04
+        label: "R12 C4 Kensui: My pleasure. The academy may be \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: My pleasure. The academy may be founded on our knowledge and experience,
+          but it is our students who breathe life into it.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r013_c04
+    - rid: 9129764570494402764
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r013_c04
+        label: "R13 C4 Kensui: What matters to me is not only w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What matters to me is not only what you learn, but also how you feel
+          while you're learning.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r016_c03
+    - rid: 9129764570494402765
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r010_c05
+        label: "R10 C5 You: Can you tell me more about being\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Can you tell me more about being a student of Temple of the Everveil?
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r011_c05
+    - rid: 9129764570494402766
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r011_c05
+        label: 'R11 C5 Narrator: Kensui nods at you calmly.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui nods at you calmly.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r012_c05
+    - rid: 9129764570494402767
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r012_c05
+        label: "R12 C5 Kensui: With great pleasure. Temple of t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: With great pleasure. Temple of the Everveil is Chronosoul's inner sanctuary.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r013_c05
+    - rid: 9129764570494402768
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r013_c05
+        label: "R13 C5 Kensui: We explore spiritual growth, lea\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: We explore spiritual growth, learn to journey through our dreams, and
+          help maintain the balance between the worlds.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r014_c05
+    - rid: 9129764570494402769
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r014_c05
+        label: "R14 C5 Kensui: But most importantly, we learn t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: But most importantly, we learn to navigate our own souls so that others
+          may turn to us when seeking spiritual guidance.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r016_c03
+    - rid: 9129764570494402770
+      type: {class: VNEndStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_end
+        label: END
+        disableSkip: 0
+        stopAuto: 0
+    - rid: 9129764570494403263
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 98f1a2aa6cc54834aee2b66ca4cdd558
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764570494403264
+        nextStepId: 0685e045769c41a19a73644e0a04a440
+    - rid: 9129764570494403264
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: EXT. KENSUI'S ZEN GARDEN - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764570494403265
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 0685e045769c41a19a73644e0a04a440
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764570494403267
+        nextStepId: 
+    - rid: 9129764570494403267
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Kensui_intro
+        fadeInSeconds: 0.5
+        loop: 1

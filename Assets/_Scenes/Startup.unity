@@ -3942,12 +3942,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _requestDataBeforeStart: 0
   _tables:
-  - _key: chapter_1
+  - _key: VNChapter_1_Shinrai
     _webId: 1L9_hpjhV5Yq5Y_W_7hzZPnTRt_ZiRS5UyjQ-2x8KQFo
+    _gid: 0
+  - _key: VNChapter_1_Kensui
+    _webId: 1kaiR9f7X9kFkbL9c0g9cv5Ttg0SlSndMdfqkavmvkxg
+    _gid: 0
+  - _key: VNChapter_1_Kaitora
+    _webId: 1Noor6-_yDw4Vb5mCEaou000vfUSZH4gsaAxwazUexDM
+    _gid: 0
+  - _key: VNChapter_1_Hinato
+    _webId: 1i-W2qJswWHn1ohgxEjFpb2pmoF6jnqqsEBrUwwk8Abk
     _gid: 0
   _loadables:
   - {fileID: 11400000, guid: 42d9537c399a30547aa065df29f9df48, type: 2}
-  _openTable: chapter_1
+  _openTable: VNChapter_1_Shinrai
 --- !u!114 &1019924933469146634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4321,12 +4330,32 @@ MonoBehaviour:
   sounds:
   - key: background_music_intro_test
     clip: {fileID: 8300000, guid: fa33d246a30e8aa48a95184e6eb2eefc, type: 3}
+  - key: Bullies
+    clip: {fileID: 8300000, guid: c2d833fe692047044b7d0e4502413a1c, type: 3}
   - key: click
     clip: {fileID: 8300000, guid: 57ffc02a8e201394eab16cdc4ae104af, type: 3}
   - key: fire_card_Hinato
     clip: {fileID: 8300000, guid: 9796baae79b66214db993facf3d1aeab, type: 3}
+  - key: Hinato_intro
+    clip: {fileID: 8300000, guid: 38e48b0ff92d66b4cbff71326f613ee9, type: 3}
   - key: home_page
     clip: {fileID: 8300000, guid: 1209eb7109f6be94990f35cac1ed4496, type: 3}
+  - key: Kaitora_intro
+    clip: {fileID: 8300000, guid: 54b00a667a42c5347b30e9d93daa9449, type: 3}
+  - key: Kensui_intro
+    clip: {fileID: 8300000, guid: 11cc7b5225d511442969a3fe79f6a872, type: 3}
+  - key: School_Yard
+    clip: {fileID: 8300000, guid: 4c65334bad2269c4ab36b5608b018579, type: 3}
+  - key: Shadow
+    clip: {fileID: 8300000, guid: 1b1d2f5b04085ff4583ca99f6ff1c25a, type: 3}
+  - key: Shinrai_Balcony
+    clip: {fileID: 8300000, guid: 019663a045863d0429fff9ed18b3698b, type: 3}
+  - key: Shinrai_Class
+    clip: {fileID: 8300000, guid: f43a592baa4fb4d4c8f4642ac6c9d93e, type: 3}
+  - key: Shinrai_Impact
+    clip: {fileID: 8300000, guid: d39e7dd492832e846bf96e5c0e9e49f8, type: 3}
+  - key: Shinrai_intro
+    clip: {fileID: 8300000, guid: 11e84d0387a269141bd84fa7c4ac6f8f, type: 3}
   - key: tap
     clip: {fileID: 8300000, guid: 4e7721584ddef9e4e9f69ff474cecbcc, type: 3}
 --- !u!114 &2223241241140177498

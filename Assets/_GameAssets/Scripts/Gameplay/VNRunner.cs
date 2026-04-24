@@ -60,7 +60,8 @@ namespace VN
             public string speakerId;
             public string speakerName;
             public bool isNarrator;
-
+            public bool showSpeakerName;
+            
             public VNPose pose;
             public VNEmotion emotion;
 
@@ -1043,6 +1044,7 @@ namespace VN
                 speakerId = speakerId,
                 speakerName = speakerName ?? "",
                 isNarrator = isNarrator,
+                showSpeakerName = line.showSpeakerName,
                 pose = line.pose,
                 emotion = line.emotion,
                 sfxId = Norm(line.sfxId),
@@ -1372,20 +1374,51 @@ namespace VN
             var speakerId = Norm(line.speakerId);
             var speakerName = "";
 
-            if (string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase))
+            if (!line.showSpeakerName && !string.IsNullOrWhiteSpace(speakerId))
+            {
+                speakerName = "???";
+            }
+            else if (string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase))
+            {
                 speakerName = GetPresentedPlayerName();
+            }
             else if (!string.IsNullOrWhiteSpace(speakerId) && project.characterDatabase != null)
+            {
                 project.characterDatabase.TryGetDisplayName(speakerId, out speakerName);
+            }
+
+            var text = line.text ?? "";
+
+            if (IsPlayerThoughtsLine(speakerId, line.emotion))
+                text = WrapItalic(text);
 
             State.log.Add(new VNState.LogEntry
             {
                 speakerId = speakerId,
                 speakerName = speakerName ?? "",
-                text = line.text ?? ""
+                text = text
             });
 
             State.currentStepLogged = true;
             VNAutosave.Save(State);
+        }
+
+        private static bool IsPlayerThoughtsLine(string speakerId, VNEmotion emotion)
+        {
+            return string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase)
+                   && emotion == VNEmotion.Thoughts;
+        }
+
+        private static string WrapItalic(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            if (text.StartsWith("<i>", StringComparison.OrdinalIgnoreCase) &&
+                text.EndsWith("</i>", StringComparison.OrdinalIgnoreCase))
+                return text;
+
+            return $"<i>{text}</i>";
         }
     }
 }

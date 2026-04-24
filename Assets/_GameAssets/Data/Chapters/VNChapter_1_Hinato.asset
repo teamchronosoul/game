@@ -1,0 +1,4075 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4cdc04c1304297a6b2f060f917eb30, type: 3}
+  m_Name: VNChapter_1_Hinato
+  m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
+  chapterId: VNChapter_1_Hinato
+  steps:
+  - rid: 9129764567614751679
+  - rid: 9129764567614751681
+  - rid: 9129764567614750754
+  - rid: 9129764567614750755
+  - rid: 9129764567614750756
+  - rid: 9129764567614750757
+  - rid: 9129764567614750758
+  - rid: 9129764567614750759
+  - rid: 9129764567614750760
+  - rid: 9129764567614750761
+  - rid: 9129764567614750762
+  - rid: 9129764567614750763
+  - rid: 9129764567614750764
+  - rid: 9129764567614750765
+  - rid: 9129764567614750766
+  - rid: 9129764567614750767
+  - rid: 9129764567614750768
+  - rid: 9129764567614750769
+  - rid: 9129764567614750770
+  - rid: 9129764567614750771
+  - rid: 9129764567614750772
+  - rid: 9129764567614750773
+  - rid: 9129764567614750774
+  - rid: 9129764567614750775
+  - rid: 9129764567614750776
+  - rid: 9129764567614750777
+  - rid: 9129764567614750778
+  - rid: 9129764567614750779
+  - rid: 9129764567614750780
+  - rid: 9129764567614750781
+  - rid: 9129764567614750782
+  - rid: 9129764567614750783
+  - rid: 9129764567614750784
+  - rid: 9129764567614750785
+  - rid: 9129764567614750786
+  - rid: 9129764567614750787
+  - rid: 9129764567614750788
+  - rid: 9129764567614751684
+  - rid: 9129764567614751687
+  - rid: 9129764567614751689
+  - rid: 9129764567614750789
+  - rid: 9129764567614750790
+  - rid: 9129764567614750791
+  - rid: 9129764567614751692
+  - rid: 9129764567614750792
+  - rid: 9129764567614750793
+  - rid: 9129764567614750794
+  - rid: 9129764567614750795
+  - rid: 9129764567614750796
+  - rid: 9129764567614750797
+  - rid: 9129764567614750798
+  - rid: 9129764567614750799
+  - rid: 9129764567614750800
+  - rid: 9129764567614750801
+  - rid: 9129764567614750802
+  - rid: 9129764567614750803
+  - rid: 9129764567614750804
+  - rid: 9129764567614750805
+  - rid: 9129764567614750806
+  - rid: 9129764567614750807
+  - rid: 9129764567614750808
+  - rid: 9129764567614751695
+  - rid: 9129764567614750809
+  - rid: 9129764567614750810
+  - rid: 9129764567614750811
+  - rid: 9129764567614750812
+  - rid: 9129764567614750813
+  - rid: 9129764567614750814
+  - rid: 9129764567614750815
+  - rid: 9129764567614750816
+  - rid: 9129764567614750817
+  - rid: 9129764567614750818
+  - rid: 9129764567614750819
+  - rid: 9129764567614750820
+  - rid: 9129764567614750821
+  - rid: 9129764567614750822
+  - rid: 9129764567614750823
+  - rid: 9129764567614750824
+  - rid: 9129764567614750825
+  - rid: 9129764567614750826
+  - rid: 9129764567614750827
+  - rid: 9129764567614750828
+  - rid: 9129764567614750829
+  - rid: 9129764567614750830
+  - rid: 9129764567614751698
+  - rid: 9129764567614751700
+  - rid: 9129764567614750831
+  - rid: 9129764567614750832
+  - rid: 9129764567614750833
+  - rid: 9129764567614750834
+  - rid: 9129764567614750835
+  - rid: 9129764567614750836
+  - rid: 9129764567614750837
+  - rid: 9129764567614750838
+  - rid: 9129764567614750839
+  - rid: 9129764567614750840
+  - rid: 9129764567614750841
+  - rid: 9129764567614750842
+  - rid: 9129764567614750843
+  - rid: 9129764567614750844
+  - rid: 9129764567614750845
+  - rid: 9129764567614750846
+  - rid: 9129764567614750847
+  - rid: 9129764567614750848
+  - rid: 9129764567614750849
+  - rid: 9129764567614750850
+  - rid: 9129764567614750851
+  - rid: 9129764567614750852
+  - rid: 9129764567614750853
+  - rid: 9129764567614750854
+  - rid: 9129764567614750855
+  - rid: 9129764567614750856
+  - rid: 9129764567614750857
+  - rid: 9129764567614750858
+  - rid: 9129764567614750859
+  - rid: 9129764567614750860
+  - rid: 9129764567614750861
+  - rid: 9129764567614750862
+  - rid: 9129764567614750863
+  - rid: 9129764567614750864
+  - rid: 9129764567614750865
+  - rid: 9129764567614750866
+  - rid: 9129764567614750867
+  - rid: 9129764567614750868
+  - rid: 9129764567614750869
+  - rid: 9129764567614750870
+  - rid: 9129764567614750871
+  - rid: 9129764567614750872
+  - rid: 9129764567614750873
+  - rid: 9129764567614750874
+  - rid: 9129764567614750875
+  - rid: 9129764567614750876
+  - rid: 9129764567614750877
+  - rid: 9129764567614750878
+  - rid: 9129764567614750879
+  - rid: 9129764567614750880
+  - rid: 9129764567614750881
+  - rid: 9129764567614750882
+  - rid: 9129764567614750883
+  - rid: 9129764567614750884
+  - rid: 9129764567614750885
+  - rid: 9129764567614750886
+  - rid: 9129764567614750887
+  - rid: 9129764567614750888
+  - rid: 9129764567614750889
+  - rid: 9129764567614750890
+  - rid: 9129764567614750891
+  - rid: 9129764567614751703
+  - rid: 9129764567614750892
+  - rid: 9129764567614750893
+  - rid: 9129764567614750894
+  - rid: 9129764567614750895
+  - rid: 9129764567614750896
+  - rid: 9129764567614750897
+  - rid: 9129764567614750898
+  - rid: 9129764567614750899
+  - rid: 9129764567614750900
+  - rid: 9129764567614750901
+  - rid: 9129764567614750902
+  - rid: 9129764567614750903
+  - rid: 9129764567614750904
+  - rid: 9129764567614750905
+  - rid: 9129764567614750906
+  - rid: 9129764567614750907
+  - rid: 9129764567614750908
+  - rid: 9129764567614750909
+  - rid: 9129764567614750910
+  - rid: 9129764567614750911
+  - rid: 9129764567614750912
+  - rid: 9129764567614750913
+  - rid: 9129764567614750914
+  - rid: 9129764567614750915
+  - rid: 9129764567614750916
+  - rid: 9129764567614750917
+  - rid: 9129764567614750918
+  - rid: 9129764567614750919
+  - rid: 9129764567614750920
+  - rid: 9129764567614750921
+  - rid: 9129764567614750922
+  - rid: 9129764567614750923
+  - rid: 9129764567614750924
+  - rid: 9129764567614750925
+  - rid: 9129764567614750926
+  - rid: 9129764567614750927
+  - rid: 9129764567614750928
+  - rid: 9129764567614750929
+  - rid: 9129764567614750930
+  - rid: 9129764567614750931
+  - rid: 9129764567614750932
+  - rid: 9129764567614750933
+  - rid: 9129764567614750934
+  - rid: 9129764567614750935
+  - rid: 9129764567614750936
+  - rid: 9129764567614750937
+  - rid: 9129764567614750938
+  - rid: 9129764567614750939
+  - rid: 9129764567614750940
+  - rid: 9129764567614750941
+  - rid: 9129764567614750942
+  - rid: 9129764567614750943
+  - rid: 9129764567614750944
+  - rid: 9129764567614750945
+  - rid: 9129764567614750946
+  - rid: 9129764567614750947
+  - rid: 9129764567614750948
+  - rid: 9129764567614750949
+  - rid: 9129764567614750950
+  - rid: 9129764567614750951
+  - rid: 9129764567614750952
+  - rid: 9129764567614750953
+  - rid: 9129764567614750954
+  - rid: 9129764567614750955
+  - rid: 9129764567614750956
+  - rid: 9129764567614750957
+  - rid: 9129764567614750958
+  - rid: 9129764567614750959
+  - rid: 9129764567614750960
+  - rid: 9129764567614750961
+  - rid: 9129764567614750962
+  - rid: 9129764567614750963
+  - rid: 9129764567614750964
+  - rid: 9129764567614750965
+  - rid: 9129764567614750966
+  - rid: 9129764567614750967
+  - rid: 9129764567614750968
+  - rid: 9129764567614750969
+  - rid: 9129764567614750970
+  - rid: 9129764567614750971
+  - rid: 9129764567614750972
+  - rid: 9129764567614750973
+  - rid: 9129764567614750974
+  - rid: 9129764567614750975
+  - rid: 9129764567614750976
+  - rid: 9129764567614750980
+  - rid: 9129764567614750981
+  - rid: 9129764567614750982
+  - rid: 9129764567614750983
+  - rid: 9129764567614750984
+  - rid: 9129764567614750985
+  - rid: 9129764567614750986
+  - rid: 9129764567614750987
+  - rid: 9129764567614750988
+  - rid: 9129764567614750989
+  - rid: 9129764567614750990
+  - rid: 9129764567614750991
+  references:
+    version: 2
+    RefIds:
+    - rid: 9129764567614750754
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r003_c03
+        label: "R3 C3 Narrator: You knock on the door of your me\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You knock on the door of your mentor's office only to realize that
+          it's already open.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r004_c03
+    - rid: 9129764567614750755
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r004_c03
+        label: "R4 C3 Narrator: Inside you see books scattered a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Inside you see books scattered around the room, intricate pieces of
+          art from all over the magic world, and an old fireplace with a fire burning
+          in it.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r005_c03
+    - rid: 9129764567614750756
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r005_c03
+        label: "R5 C3 Narrator: What you don't see, is your ment\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What you don't see, is your mentor.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r006_c03
+    - rid: 9129764567614750757
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r006_c03
+        label: "R6 C3 You: Hmm. That's weird. Have I got th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Hmm. That's weird. Have I got the time wrong?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r007_c03
+    - rid: 9129764567614750758
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r007_c03
+        label: "R7 C3 Narrator: Suddenly you hear some noise com\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly you hear some noise coming from outside the window. The window
+          swings open and Hinato jumps through it.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r008_c03
+    - rid: 9129764567614750759
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r008_c03
+        label: "R8 C3 Hinato: Strike a light! I'd better fix t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Strike a light! I'd better fix that blasted ladder before it kills
+          me.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r009_c03
+    - rid: 9129764567614750760
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r009_c03
+        label: 'R9 C3 Narrator: He notices you.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He notices you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r010_c03
+    - rid: 9129764567614750761
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r010_c03
+        label: "R10 C3 Hinato: Oh, look who's here! Hi there, l\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Oh, look who's here! Hi there, little spark!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r011_c03
+    - rid: 9129764567614750762
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r011_c03
+        label: "R11 C3 Hinato: Sorry, I'm a bit late. I had tro\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Sorry, I'm a bit late. I had trouble climbing up that old ladder outside
+          the window.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r012_c03
+    - rid: 9129764567614750763
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r012_c03
+        label: "R12 C3 Narrator: Hinato clears his throat and sta\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato clears his throat and starts speaking with exaggerated solemnity.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r013_c03
+    - rid: 9129764567614750764
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r013_c03
+        label: "R13 C3 Hinato: I am pleased to welcome you to t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I am pleased to welcome you to the Guild of the Flow, scholar. I hope
+          you find your time with us productive and academically fulfilling.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r014_c03
+    - rid: 9129764567614750765
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r014_c03
+        label: "R14 C3 Narrator: Hinato bows to you, then lifts h\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato bows to you, then lifts his head and gives you the cheekiest
+          wink, all while still keeping a serious look on his face.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r015_c03
+    - rid: 9129764567614750766
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r015_c03
+        label: Choice R15 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Ask about the faculty
+          nextStepId: vnchapter_1_hinato_line_r016_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Ask if he always enters his office through the window
+          nextStepId: vnchapter_1_hinato_line_r016_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750767
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r021_c03
+        label: 'R21 C3 Narrator: Hinato leans on his desk.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato leans on his desk.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r022_c03
+    - rid: 9129764567614750768
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r022_c03
+        label: "R22 C3 Hinato: I'll be honest with you, little \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I'll be honest with you, little spark.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r023_c03
+    - rid: 9129764567614750769
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r023_c03
+        label: "R23 C3 Hinato: All I ever want my students to d\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: All I ever want my students to do is have a good time while exploring
+          themselves and their magical abilities.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r024_c03
+    - rid: 9129764567614750770
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r024_c03
+        label: "R24 C3 Hinato: However, as your mentor, I must \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: However, as your mentor, I must warn you about the situation outside
+          the academy and what might be heading our way.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r025_c03
+    - rid: 9129764567614750771
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r025_c03
+        label: 'R25 C3 Hinato: Do you see what I''m getting at?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Do you see what I'm getting at?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r026_c03
+    - rid: 9129764567614750772
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r026_c03
+        label: "R26 C3 You: He must be talking about recent \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: He must be talking about recent rumors of demons lurking in a small
+          town near the academy.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r027_c03
+    - rid: 9129764567614750773
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r027_c03
+        label: Choice R27 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Ask about the rumors
+          nextStepId: vnchapter_1_hinato_line_r028_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Say you're not afraid
+          nextStepId: vnchapter_1_hinato_line_r028_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750774
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r029_c03
+        label: "R29 C3 Narrative: Hinato strolls over to the firep\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Narrative
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato strolls over to the fireplace. He looks the most pensive you've
+          seen him so far.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r030_c03
+    - rid: 9129764567614750775
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r030_c03
+        label: Choice R30 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: If only these were rumors, little spark.
+          nextStepId: vnchapter_1_hinato_line_r031_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Adamant and fearless.Tell you what, I'm not surprised you got sorted
+            to my faculty.
+          nextStepId: vnchapter_1_hinato_line_r031_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750776
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r031_c03
+        label: "R31 C3 Narrator: Hinato stares at the fire and th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato stares at the fire and the flame sparks up in response to its
+          master's attention.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r032_c03
+    - rid: 9129764567614750777
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r032_c03
+        label: "R32 C3 Hinato: The thing about demons turning u\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "The thing about demons turning up in magic-neutral towns and villages
+          isn\u2019t so much that we might have to deal with them."
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r033_c03
+    - rid: 9129764567614750778
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r033_c03
+        label: "R33 C3 Hinato: It's the fact that they're tryin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It's the fact that they're trying to shake up the old order of things
+          that concerns us.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r034_c03
+    - rid: 9129764567614750779
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r034_c03
+        label: "R34 C3 Narrator: Hinato turns to you, his eyes gl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato turns to you, his eyes gleaming with tiny flames in them.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r035_c03
+    - rid: 9129764567614750780
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r035_c03
+        label: "R35 C3 Hinato: And you know what happens when t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: And you know what happens when the old ways are gone?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r036_c03
+    - rid: 9129764567614750781
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r036_c03
+        label: 'R36 C3 You: Chaos? Chaos happens?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Chaos? Chaos happens?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r037_c03
+    - rid: 9129764567614750782
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r037_c03
+        label: "R37 C3 Hinato: Exactly. We might be heading int\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Exactly. We might be heading into chaos that Chronosoul has never seen
+          before.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r038_c03
+    - rid: 9129764567614750783
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r038_c03
+        label: "R38 C3 Hinato: And if it comes to that, we'll h\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: And if it comes to that, we'll have to up our game, because no one
+          navigates chaos better than the Guild of the Flow.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r039_c03
+    - rid: 9129764567614750784
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r039_c03
+        label: "R39 C3 You: He sounds like a part of him wan\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: He sounds like a part of him wants this to happen...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r040_c03
+    - rid: 9129764567614750785
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r040_c03
+        label: "R40 C3 Narrator: Hinato looks at the clock hangin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Hinato looks at the clock hanging above the door.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r041_c03
+    - rid: 9129764567614750786
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r041_c03
+        label: "R41 C3 Hinato: Tear blast me! It's almost time \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Tear blast me! It's almost time for your class with Shinrai. I wouldn't
+          want to miss it, if I were you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r042_c03
+    - rid: 9129764567614750787
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r042_c03
+        label: "R42 C3 Hinato: Anyway, if you see something sus\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Anyway, if you see something suspicious and or a demon, let me know
+          and all that jazz.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r043_c03
+    - rid: 9129764567614750788
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r043_c03
+        label: 'R43 C3 Hinato: Talk to you soon! Enjoy today.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Talk to you soon! Enjoy today.
+        addToLog: 1
+        nextStepId: b28acb84849340e09e8ba5140a7ac601
+    - rid: 9129764567614750789
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r045_c03
+        label: "R45 C3 Narrator: You're crossing one of the acade\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You're crossing one of the academy's endless gardens on your way to
+          your first class when you hear someone shout.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r046_c03
+    - rid: 9129764567614750790
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r046_c03
+        label: 'R46 C3 ???: Enough! Let me go already!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: Enough! Let me go already!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r047_c03
+    - rid: 9129764567614750791
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r047_c03
+        label: "R47 C3 Bully: No one's holding you here. Or ar\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: No one's holding you here. Or are you too dumb to see that?
+        addToLog: 1
+        nextStepId: bbaea2ea31a74b9a8671d9daff82b32c
+    - rid: 9129764567614750792
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r048_c03
+        label: "R48 C3 Narrator: You hurry in the direction where\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You hurry in the direction where the voices come from and see a girl
+          surrounded by a group of older boys.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r049_c03
+    - rid: 9129764567614750793
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r049_c03
+        label: "R49 C3 Bully: We just want to know how you got\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: We just want to know how you got in. Can you answer that simple question?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r050_c03
+    - rid: 9129764567614750794
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r050_c03
+        label: "R50 C3 ???: What do you mean? I passed the e\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 0
+        sfxId: 
+        text: What do you mean? I passed the exams and then got sorted into my faculty,
+          just like you all did!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r051_c03
+    - rid: 9129764567614750795
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r051_c03
+        label: "R51 C3 Bully: Nah, you're lying to us. A small\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: Nah, you're lying to us. A small-town bumpkin like you wouldn't make
+          it to the academy.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r052_c03
+    - rid: 9129764567614750796
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r052_c03
+        label: 'R52 C3 Bully: You got no magic in you.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Aki
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: You got no magic in you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r053_c03
+    - rid: 9129764567614750797
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r053_c03
+        label: "R53 C3 ???: I have magic in me! Just because\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: I have magic in me! Just because I was born far from the Tear, doesn't
+          mean I can't be a battle mage.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r054_c03
+    - rid: 9129764567614750798
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r054_c03
+        label: "R54 C3 Bully: How about you prove it to us, hu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: How about you prove it to us, huh?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r055_c03
+    - rid: 9129764567614750799
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r055_c03
+        label: "R55 C3 ???: I... can't... there's too much p\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 0
+        sfxId: 
+        text: I... can't... there's too much pressure...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r056_c03
+    - rid: 9129764567614750800
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r056_c03
+        label: "R56 C3 ???: And I don't have to prove anythi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: And I don't have to prove anything to you!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r057_c03
+    - rid: 9129764567614750801
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r057_c03
+        label: "R57 C3 Narrator: The girl is trying to show that \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The girl is trying to show that she's not scared, but her trembling
+          hands give her away. This is when you decide to step in.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r058_c03
+    - rid: 9129764567614750802
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r058_c03
+        label: Choice R58 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Appeal to student rights
+          nextStepId: vnchapter_1_hinato_line_r059_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Appeal to their better nature
+          nextStepId: vnchapter_1_hinato_line_r059_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Make fun of them
+          nextStepId: vnchapter_1_hinato_line_r059_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750803
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r065_c03
+        label: "R65 C3 Narrator: The bully who told Kenji off com\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bully who told Kenji off comes closer to you and looks you right
+          in the eye.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r066_c03
+    - rid: 9129764567614750804
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r066_c03
+        label: 'R66 C3 Bully: You know her?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: You know her?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r067_c03
+    - rid: 9129764567614750805
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r067_c03
+        label: "R67 C3 Narrator: You answer without hesitation. Y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You answer without hesitation. You can't back down now.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r068_c03
+    - rid: 9129764567614750806
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r068_c03
+        label: 'R68 C3 You: Yes, I do.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yes, I do.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r069_c03
+    - rid: 9129764567614750807
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r069_c03
+        label: 'R69 C3 Bully: She''s not who you think she is.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: She's not who you think she is.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r070_c03
+    - rid: 9129764567614750808
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r070_c03
+        label: "R70 C3 Narrator: The bully turns around and start\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bully turns around and starts walking, his friends join him. Kenji
+          looks back a couple of times, clearly troubled by a guilty conscience.
+        addToLog: 1
+        nextStepId: 15452d141a4744d9a5fdee0a439255a4
+    - rid: 9129764567614750809
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r071_c03
+        label: "R71 C3 Narrator: The girl lets out a deep sigh. T\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The girl lets out a deep sigh. Then she extends her hand in your direction.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r072_c03
+    - rid: 9129764567614750810
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r072_c03
+        label: "R72 C3 Yuzuri: Thank you for helping me out! I \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: Thank you for helping me out! I knew I'd get bullied for where I'm
+          from, but I didn't think it would happen on my first day at the academy!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r073_c03
+    - rid: 9129764567614750811
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r073_c03
+        label: "R73 C3 Yuzuri: Oopsie! I forgot to introduce my\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Oopsie! I forgot to introduce myself. I can't believe this happened
+          again! My name's Yuzuri.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r074_c03
+    - rid: 9129764567614750812
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r074_c03
+        label: "R74 C3 Narrator: You shake Yuzuri's hand and intr\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You shake Yuzuri's hand and introduce yourself.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r075_c03
+    - rid: 9129764567614750813
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r075_c03
+        label: "R75 C3 Yuzuri: Oooh! You're Hinato's mentee too\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: Oooh! You're Hinato's mentee too! We're almost like siblings now! I'm
+          so excited for us!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r076_c03
+    - rid: 9129764567614750814
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r076_c03
+        label: "R76 C3 Narrator: Suddenly her face lights up with\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly her face lights up with a cheeky smile.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r077_c03
+    - rid: 9129764567614750815
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r077_c03
+        label: "R77 C3 Yuzuri: I heard that Hinato almost burnt\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: I heard that Hinato almost burnt the library down once when he was
+          trying out some new spells. Shinrai was fuming with rage! I wish I was
+          there to see that!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r078_c03
+    - rid: 9129764567614750816
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r078_c03
+        label: Choice R78 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Listen to more Hinato gossip
+          nextStepId: vnchapter_1_hinato_line_r079_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: No, that's quite enough
+          nextStepId: vnchapter_1_hinato_line_r079_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750817
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r081_c03
+        label: "R81 C3 Yuzuri: Sorry, I love to gossip! I hope \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Sorry, I love to gossip! I hope this doesn't bother you too much!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r082_c03
+    - rid: 9129764567614750818
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r082_c03
+        label: "R82 C3 Narrator: You laugh and Yuzuri breathes a \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You laugh and Yuzuri breathes a sigh of relief. You remind her it's
+          time to go to your first class.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r083_c03
+    - rid: 9129764567614750819
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r083_c03
+        label: "R83 C3 Yuzuri: Oh, right! You're so right. It's\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Oh, right! You're so right. It's Shinrai's class too, so we can't be
+          late!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r084_c03
+    - rid: 9129764567614750820
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r084_c03
+        label: "R84 C3 Narrator: Together, you start walking towa\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Together, you start walking towards the building where your first class
+          is about to begin.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r085_c03
+    - rid: 9129764567614750821
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r085_c03
+        label: "R85 C3 Yuzuri: But you know what, as much as I \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: But you know what, as much as I love and respect Shinrai, it is Teacher
+          Kensui that I absolutely adore!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r086_c03
+    - rid: 9129764567614750822
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r086_c03
+        label: "R86 C3 Yuzuri: We're so lucky to have his semin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: We're so lucky to have his seminar later today! I can't wait!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r087_c03
+    - rid: 9129764567614750823
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r087_c03
+        label: "R87 C3 Narrator: As you come near the building, Y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: As you come near the building, Yuzuri glances back a couple of times,
+          looking rather nervous.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r088_c03
+    - rid: 9129764567614750824
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r088_c03
+        label: 'R88 C3 Yuzuri: So as I was saying...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: So as I was saying...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r089_c03
+    - rid: 9129764567614750825
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r089_c03
+        label: "R89 C3 Narrator: Her voice trails off as she look\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Her voice trails off as she looks back again. You feel the urge to...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r090_c03
+    - rid: 9129764567614750826
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r090_c03
+        label: Choice R90 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Tell her she's safe
+          nextStepId: vnchapter_1_hinato_line_r091_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Ask her how she's doing
+          nextStepId: vnchapter_1_hinato_line_r091_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750827
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r093_c03
+        label: "R93 C3 Narrator: Her lips curl into a weak smile \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Her lips curl into a weak smile as she starts walking again.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r094_c03
+    - rid: 9129764567614750828
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r094_c03
+        label: "R94 C3 Narrator: Suddenly, you notice some strang\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly, you notice some strange movement right where Yuzuri is walking.
+          It's almost like her shadow has peeled away and vanished into the unknown.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r095_c03
+    - rid: 9129764567614750829
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r095_c03
+        label: "R95 C3 Narrator: You blink and look at Yuzuri. Sh\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You blink and look at Yuzuri. She's holding the front door for you,
+          her shadow right where it's supposed to be.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r096_c03
+    - rid: 9129764567614750830
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r096_c03
+        label: "R96 C3 You: I must be imagining things. I ne\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I must be imagining things. I need to start going to bed earlier.
+        addToLog: 1
+        nextStepId: 991b67183d6640f5a0d6a7eeb55106ba
+    - rid: 9129764567614750831
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r098_c03
+        label: "R98 C3 Narrator: Shinrai is standing in front of \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai is standing in front of a long chalkboard with his eyes closed.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r099_c03
+    - rid: 9129764567614750832
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r099_c03
+        label: "R99 C3 You: I wonder what he's thinking abou\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I wonder what he's thinking about.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r100_c03
+    - rid: 9129764567614750833
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r100_c03
+        label: "R100 C3 Narrator: Yuzuri whispers to you as if she\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri whispers to you as if she's just read your mind.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r101_c03
+    - rid: 9129764567614750834
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r101_c03
+        label: "R101 C3 Yuzuri: Teacher Shinrai is getting ready\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher Shinrai is getting ready for the class. He likes to make sure
+          nothing breaks his concentration during his lectures.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r102_c03
+    - rid: 9129764567614750835
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r102_c03
+        label: "R102 C3 Narrator: You take your seats in the front\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take your seats in the front row and wait for the classroom to
+          fill up with students.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r103_c03
+    - rid: 9129764567614750836
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r103_c03
+        label: "R103 C3 Narrator: Shinrai calmly nods at the audie\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai calmly nods at the audience, and this is all it takes for the
+          students to fall silent.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r104_c03
+    - rid: 9129764567614750837
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r104_c03
+        label: "R104 C3 Shinrai: Welcome to the Art of Magic Stra\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Welcome to the Art of Magic Strategy.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r105_c03
+    - rid: 9129764567614750838
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r105_c03
+        label: "R105 C3 Shinrai: As I am sure you already know be\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: As I am sure you already know being able to stay focused is essential
+          to every magician.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r106_c03
+    - rid: 9129764567614750839
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r106_c03
+        label: 'R106 C3 Yuzuri: Did he forget to say hello?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Did he forget to say hello?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r107_c03
+    - rid: 9129764567614750840
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r107_c03
+        label: "R107 C3 Narrator: Yuzuri murmurs to herself so qui\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri murmurs to herself so quietly you can barely make out the words.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r108_c03
+    - rid: 9129764567614750841
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r108_c03
+        label: "R108 C3 Narrator: And yet this is enough to catch \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: And yet this is enough to catch Shinrai's attention. He turns in your
+          direction, his gaze cold as ice.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r109_c03
+    - rid: 9129764567614750842
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r109_c03
+        label: "R109 C3 Shinrai: In fact, one day it could even s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: In fact, one day it could even save your life.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r110_c03
+    - rid: 9129764567614750843
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r110_c03
+        label: "R110 C3 You: He's looking at us. I have to do\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: He's looking at us. I have to do something!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r111_c03
+    - rid: 9129764567614750844
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r111_c03
+        label: Choice R111 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Ask Shinrai a question
+          nextStepId: vnchapter_1_hinato_line_r112_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Try to lighten the mood
+          nextStepId: vnchapter_1_hinato_line_r112_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Take notes vigorously
+          nextStepId: vnchapter_1_hinato_line_r112_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750845
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r120_c03
+        label: 'R120 C3 Narrator: Shinrai addresses his audience.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai addresses his audience.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r121_c03
+    - rid: 9129764567614750846
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r121_c03
+        label: 'R121 C3 Shinrai: I suggest we start practicing.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I suggest we start practicing.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r122_c03
+    - rid: 9129764567614750847
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r122_c03
+        label: "R122 C3 Shinrai: You are going to learn an invisi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You are going to learn an invisibility spell that keeps you unseen
+          as long as you maintain concentration.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r123_c03
+    - rid: 9129764567614750848
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r123_c03
+        label: "R123 C3 Narrator: You hear an excited murmur in th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You hear an excited murmur in the audience.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r124_c03
+    - rid: 9129764567614750849
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r124_c03
+        label: "R124 C3 Shinrai: I am going to show you just once\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: I am going to show you just once.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r125_c03
+    - rid: 9129764567614750850
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r125_c03
+        label: "R125 C3 Narrator: Shinrai says the spell out loud \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai says the spell out loud and makes a couple of simple movements
+          with his hands.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r126_c03
+    - rid: 9129764567614750851
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r126_c03
+        label: "R126 C3 Shinrai: Now, the important part. Master \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Now, the important part. Master up your concentration and become unseen.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r127_c03
+    - rid: 9129764567614750852
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r127_c03
+        label: "R127 C3 Narrator: He disappears but you can still \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He disappears but you can still hear his voice.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r128_c03
+    - rid: 9129764567614750853
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r128_c03
+        label: 'R128 C3 ...: You may now start to practice.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: ...
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You may now start to practice.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r129_c03
+    - rid: 9129764567614750854
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r129_c03
+        label: "R129 C3 Narrator: Murmurs and laughter fill the cl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Murmurs and laughter fill the classroom as students start working on
+          the spell.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r130_c03
+    - rid: 9129764567614750855
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r130_c03
+        label: "R130 C3 Narrator: You say the incantation and try \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You say the incantation and try to recreate the gestures that Shinrai
+          demonstrated to you earlier.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r131_c03
+    - rid: 9129764567614750856
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r131_c03
+        label: 'R131 C3 You: Now, focus!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Now, focus!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r132_c03
+    - rid: 9129764567614750857
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r132_c03
+        label: "R132 C3 Narrator: You close your eyes tight and fo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You close your eyes tight and focus your mind and energy on your will
+          to become invisible.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r133_c03
+    - rid: 9129764567614750858
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r133_c03
+        label: "R133 C3 Narrator: A moment later you hear Yuzuri's\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: A moment later you hear Yuzuri's voice. She sounds very impressed.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r134_c03
+    - rid: 9129764567614750859
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r134_c03
+        label: "R134 C3 Yuzuri: You did it! I can't see you! I c\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: You did it! I can't see you! I can't believe you really did it!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r135_c03
+    - rid: 9129764567614750860
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r135_c03
+        label: "R135 C3 Narrator: You concentrate on her voice and\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You concentrate on her voice and slowly open your eyes. Yuzuri is looking
+          right at you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r136_c03
+    - rid: 9129764567614750861
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r136_c03
+        label: "R136 C3 Yuzuri: You were amazing! You close your\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: You were amazing! You close your eyes and woosh... suddenly you're
+          gone!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r137_c03
+    - rid: 9129764567614750862
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r137_c03
+        label: "R137 C3 You: Thanks! What about you, Yuzuri? \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Thanks! What about you, Yuzuri? Have you tried the invisibility spell?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r138_c03
+    - rid: 9129764567614750863
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r138_c03
+        label: "R138 C3 Narrator: Yuzuri lowers her eyes and shake\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri lowers her eyes and shakes her head in dismay.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r139_c03
+    - rid: 9129764567614750864
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r139_c03
+        label: "R139 C3 Yuzuri: I tried but something's just not\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I tried but something's just not working. I guess today's not a good
+          day for magic...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r140_c03
+    - rid: 9129764567614750865
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r140_c03
+        label: Choice R140 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Reassure Yuzuri
+          nextStepId: vnchapter_1_hinato_line_r141_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Suggest you try again together
+          nextStepId: vnchapter_1_hinato_line_r141_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750866
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r144_c03
+        label: "R144 C3 Narrator: Yuzuri takes a deep breath and y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri takes a deep breath and you give her a reassuring nod. She closes
+          her eyes and...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r145_c03
+    - rid: 9129764567614750867
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r145_c03
+        label: 'R145 C3 Narrator: Nothing happens.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Nothing happens.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r146_c03
+    - rid: 9129764567614750868
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r146_c03
+        label: "R146 C3 Yuzuri: I... I think maybe the boys were\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: I... I think maybe the boys were right. I have no magic left in me
+          ...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r147_c03
+    - rid: 9129764567614750869
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r147_c03
+        label: "R147 C3 Shinrai: You have enough magic energy to \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You have enough magic energy to cast this spell.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r148_c03
+    - rid: 9129764567614750870
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r148_c03
+        label: "R148 C3 Narrator: Shinrai is now standing behind Y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai is now standing behind Yuzuri, calm and strict - a perfect
+          reflection of cool mind and confidence.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r149_c03
+    - rid: 9129764567614750871
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r149_c03
+        label: "R149 C3 Shinrai: What you lack, however, is conce\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What you lack, however, is concentration.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r150_c03
+    - rid: 9129764567614750872
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r150_c03
+        label: "R150 C3 Narrator: Yuzuri's eyes widen as she looks\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri's eyes widen as she looks at the dean of the Order of Labyrinth.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r151_c03
+    - rid: 9129764567614750873
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r151_c03
+        label: 'R151 C3 Yuzuri: You mean...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: You mean...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r152_c03
+    - rid: 9129764567614750874
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r152_c03
+        label: "R152 C3 Shinrai: Your mind is elsewhere and that \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Your mind is elsewhere and that is not good enough.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r153_c03
+    - rid: 9129764567614750875
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r153_c03
+        label: "R153 C3 Shinrai: In other words, you should be in\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: In other words, you should be in control of your thoughts rather than
+          allowing them to control you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r154_c03
+    - rid: 9129764567614750876
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r154_c03
+        label: "R154 C3 Narrator: Yuzuri looks down, her cheeks fl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri looks down, her cheeks flushing as she tries to speak.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r155_c03
+    - rid: 9129764567614750877
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r155_c03
+        label: "R155 C3 Yuzuri: I... yes, Teacher. I-I understan\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I... yes, Teacher. I-I understand...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r156_c03
+    - rid: 9129764567614750878
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r156_c03
+        label: "R156 C3 You: Teacher Shinrai isn't wrong, but\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher Shinrai isn't wrong, but poor Yuzuri seems too embarrassed
+          to even speak!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r157_c03
+    - rid: 9129764567614750879
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r157_c03
+        label: 'R157 C3 You: I have to help her.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I have to help her.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r158_c03
+    - rid: 9129764567614750880
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r158_c03
+        label: 'R158 C3 Narrator: PAID CHOICE'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: PAID CHOICE
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_choice_r158_c03
+    - rid: 9129764567614750881
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_choice_r158_c03
+        label: Choice R158 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Help Yuzuri and impress Shinrai with your magic
+          nextStepId: vnchapter_1_hinato_line_r159_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Tell Shinrai Yuzuri's uncomfortable
+          nextStepId: vnchapter_1_hinato_line_r160_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764567614750882
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r186_c03
+        label: "R186 C3 Narrator: Shinrai turns back to Yuzuri. Hi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai turns back to Yuzuri. His voice is firm and distant but there
+          is no anger or discontent in it.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r187_c03
+    - rid: 9129764567614750883
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r187_c03
+        label: "R187 C3 Shinrai: There is something I would like \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: There is something I would like you to understand.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r188_c03
+    - rid: 9129764567614750884
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r188_c03
+        label: "R188 C3 Shinrai: It is essential that students of\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It is essential that students of Chronosoul learn to detach themselves
+          from anything that is troubling them during their practice.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r189_c03
+    - rid: 9129764567614750885
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r189_c03
+        label: "R189 C3 Shinrai: This is how you become invincibl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: This is how you become invincible.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r190_c03
+    - rid: 9129764567614750886
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r190_c03
+        label: "R190 C3 Narrator: He nods at you and Yuzuri and wa\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He nods at you and Yuzuri and walks off to the other end of the classroom
+          before you get a chance to reply.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r191_c03
+    - rid: 9129764567614750887
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r191_c03
+        label: "R191 C3 Narrator: Yuzuri looks at you, her eyes fu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri looks at you, her eyes full of gratitude.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r192_c03
+    - rid: 9129764567614750888
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r192_c03
+        label: "R192 C3 Yuzuri: Thank you for helping me out aga\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Thank you for helping me out again! I got so embarrassed I couldn't
+          say a word.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r193_c03
+    - rid: 9129764567614750889
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r193_c03
+        label: "R193 C3 You: That's okay, Yuzuri. Shinrai is \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's okay, Yuzuri. Shinrai is quite intense, but I'm sure he means
+          us well.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r194_c03
+    - rid: 9129764567614750890
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r194_c03
+        label: "R194 C3 Narrator: Yuzuri lets out a gentle laugh a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri lets out a gentle laugh and you smile too.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r195_c03
+    - rid: 9129764567614750891
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r195_c03
+        label: "R195 C3 Narrator: You lock eyes with her and... ca\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lock eyes with her and... can't believe what you're seeing.
+        addToLog: 1
+        nextStepId: 1c6ba274d887436e95db4c8d2e6030a3
+    - rid: 9129764567614750892
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r196_c03
+        label: "R196 C3 Narrator: Yuzuri's whole body is enveloped\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Yuzuri's whole body is enveloped in dark shadowy flames. Her facial
+          features aren't visible now, as everything\u2019s just a shadow."
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r197_c03
+    - rid: 9129764567614750893
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r197_c03
+        label: "R197 C3 Narrator: You cover your mouth so you don\u2019\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "You cover your mouth so you don\u2019t scream."
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r198_c03
+    - rid: 9129764567614750894
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r198_c03
+        label: "R198 C3 You: What is this? Is this real? Shou\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: What is this? Is this real? Should I call for help?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_end
+    - rid: 9129764567614750895
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r159_c04
+        label: "R159 C4 Narrator: You instantly think of a way to \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You instantly think of a way to catch Shinrai's eye and steer him away
+          from Yuzuri.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r160_c04
+    - rid: 9129764567614750896
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r160_c04
+        label: "R160 C4 You: To be in control of our thoughts\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: To be in control of our thoughts...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r161_c04
+    - rid: 9129764567614750897
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r161_c04
+        label: "R161 C4 You: I wonder if we can quiet our tho\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I wonder if we can quiet our thoughts so much that we can hear what
+          other people are thinking?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r162_c04
+    - rid: 9129764567614750898
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r162_c04
+        label: "R162 C4 Narrator: Shinrai moves somewhat closer to\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai moves somewhat closer to you. You can hear Yuzuri breathe out
+          in relief.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r163_c04
+    - rid: 9129764567614750899
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r163_c04
+        label: 'R163 C4 Shinrai: Why do you ask that?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Why do you ask that?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r164_c04
+    - rid: 9129764567614750900
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r164_c04
+        label: "R164 C4 You: I think I got him interested. We\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I think I got him interested. Well, sort of. Now, to the good part.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r165_c04
+    - rid: 9129764567614750901
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r165_c04
+        label: "R165 C4 Narrator: Your meet Shinrai's piercing gaz\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Your meet Shinrai's piercing gaze.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r166_c04
+    - rid: 9129764567614750902
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r166_c04
+        label: "R166 C4 You: I thought it would be interestin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I thought it would be interesting to take the focus practice to a new
+          level.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r167_c04
+    - rid: 9129764567614750903
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r167_c04
+        label: "R167 C4 Narrator: Shinrai's lips curl into a half \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai's lips curl into a half smile, his eyes glisten as he looks
+          at you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r168_c04
+    - rid: 9129764567614750904
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r168_c04
+        label: "R168 C4 Shinrai: Are you asking me for a challeng\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you asking me for a challenge?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r169_c04
+    - rid: 9129764567614750905
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r169_c04
+        label: "R169 C4 Narrator: You nod, trying your best to hid\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You nod, trying your best to hide how worried you are.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r170_c04
+    - rid: 9129764567614750906
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r170_c04
+        label: 'R170 C4 Shinrai: Very well.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Very well.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r171_c04
+    - rid: 9129764567614750907
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r171_c04
+        label: "R171 C4 Narrator: Shinrai's eyes meet yours and su\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai's eyes meet yours and suddenly his deep ocean blue eyes are
+          the only thing you can see. Or, rather, the only thing you care to see.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r172_c04
+    - rid: 9129764567614750908
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r172_c04
+        label: 'R172 C4 Narrator: His voice echoes in your mind.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: His voice echoes in your mind.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r173_c04
+    - rid: 9129764567614750909
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r173_c04
+        label: 'R173 C4 Shinrai: I''ll let you see into my mind.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I'll let you see into my mind.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r174_c04
+    - rid: 9129764567614750910
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r174_c04
+        label: "R174 C4 Shinrai: Look me in the eyes and quiet yo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Look me in the eyes and quiet your thoughts.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r175_c04
+    - rid: 9129764567614750911
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r175_c04
+        label: "R175 C4 Narrator: You take a deep breath, focusing\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take a deep breath, focusing on Shinrai's gaze.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r176_c04
+    - rid: 9129764567614750912
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r176_c04
+        label: "R176 C4 Narrator: Suddenly you're standing on the \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly you're standing on the balcony of Shinrai's office.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r177_c04
+    - rid: 9129764567614750913
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r177_c04
+        label: "R177 C4 Narrator: Shinrai is here too. He is takin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai is here too. He is taking in the view - the academy gardens
+          blanketed in snow.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r178_c04
+    - rid: 9129764567614750914
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r178_c04
+        label: "R178 C4 Narrator: It is snowing but you don't feel\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It is snowing but you don't feel the cold.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r179_c04
+    - rid: 9129764567614750915
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r179_c04
+        label: "R179 C4 Shinrai: It is so calm here in winter, li\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It is so calm here in winter, like the whole world is asleep.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r180_c04
+    - rid: 9129764567614750916
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r180_c04
+        label: "R180 C4 Narrator: Shinrai turns to you, his gaze s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai turns to you, his gaze seems a lot less cold than you're used
+          to...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r181_c04
+    - rid: 9129764567614750917
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r181_c04
+        label: "R181 C4 Shinrai: Be careful. The blizzard is comi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Be careful. The blizzard is coming.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r182_c04
+    - rid: 9129764567614750918
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r182_c04
+        label: "R182 C4 Narrator: The snowfall intensifies, the co\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The snowfall intensifies, the cold wind blows in your face and you
+          close your eyes involuntarily.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r183_c04
+    - rid: 9129764567614750919
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r183_c04
+        label: "R183 C4 Narrator: When you open them again, you're\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: When you open them again, you're back in the classroom.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r184_c04
+    - rid: 9129764567614750920
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r184_c04
+        label: "R184 C4 Narrator: Shinrai acknowledges you with a \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai acknowledges you with a cold nod.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r185_c04
+    - rid: 9129764567614750921
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r185_c04
+        label: 'R185 C4 Shinrai: I hope you are satisfied.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I hope you are satisfied.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r186_c03
+    - rid: 9129764567614750922
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r160_c05
+        label: "R160 C5 You: Teacher, I think she got your me\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher, I think she got your message.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r161_c05
+    - rid: 9129764567614750923
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r161_c05
+        label: "R161 C5 You: In fact, I think Yuzuri might ne\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: In fact, I think Yuzuri might need a moment if that's okay.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r162_c05
+    - rid: 9129764567614750924
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r162_c05
+        label: 'R162 C5 Narrator: Shinrai raises an eyebrow.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai raises an eyebrow.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r163_c05
+    - rid: 9129764567614750925
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r163_c05
+        label: "R163 C5 Shinrai: Are you suggesting that I am bei\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you suggesting that I am being overly assertive?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r165_c05
+    - rid: 9129764567614750926
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r165_c05
+        label: "R165 C5 Narrator: Both you and Yuzuri shake your h\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Both you and Yuzuri shake your heads vigorously.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r166_c05
+    - rid: 9129764567614750927
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r166_c05
+        label: 'R166 C5 You: That''s not what I...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's not what I...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r186_c03
+    - rid: 9129764567614750928
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r141_c04
+        label: "R141 C4 You: It's okay, Yuzuri! You're doing \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It's okay, Yuzuri! You're doing fine.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r142_c04
+    - rid: 9129764567614750929
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r142_c04
+        label: "R142 C4 You: Some tasks might be more challen\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Some tasks might be more challenging than others, but it doesn't mean
+          you can't do them.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r143_c04
+    - rid: 9129764567614750930
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r143_c04
+        label: "R143 C4 Yuzuri: You're so right! And a good frie\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: You're so right! And a good friend too.You know what, I'm ready to
+          try again!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r144_c03
+    - rid: 9129764567614750931
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r141_c05
+        label: "R141 C5 You: How about we give it another go,\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: How about we give it another go, but this time we do it together!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r142_c05
+    - rid: 9129764567614750932
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r142_c05
+        label: "R142 C5 Narrator: Yuzuri blinks a few times, clear\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri blinks a few times, clearly surprised by your suggestion. Then
+          she smiles at you.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r143_c05
+    - rid: 9129764567614750933
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r143_c05
+        label: "R143 C5 Yuzuri: That's very kind of you. Okay, I\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: That's very kind of you. Okay, I think I'm ready to try again.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r144_c03
+    - rid: 9129764567614750934
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r112_c04
+        label: "R112 C4 Narrator: You throw your hand in the air a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You throw your hand in the air and calmly meet Shinrai's gaze.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r113_c04
+    - rid: 9129764567614750935
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r113_c04
+        label: "R113 C4 You: Teacher, when you say focus, do \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Teacher, when you say focus, do you mean controlling our attention
+          or our magical energy?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r114_c04
+    - rid: 9129764567614750936
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r114_c04
+        label: "R114 C4 Narrator: Shinrai's eyes glisten in the da\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai's eyes glisten in the dark of the classroom.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r115_c04
+    - rid: 9129764567614750937
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r115_c04
+        label: "R115 C4 Shinrai: This is, indeed, a good question\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: This is, indeed, a good question.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r116_c04
+    - rid: 9129764567614750938
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r116_c04
+        label: "R116 C4 Narrator: You almost let out a sigh of rel\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You almost let out a sigh of relief. Wait, why is he still looking
+          at you?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r118_c04
+    - rid: 9129764567614750939
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r118_c04
+        label: 'R118 C4 Shinrai: And the answer is both.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: And the answer is both.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r119_c04
+    - rid: 9129764567614750940
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r119_c04
+        label: 'R119 C4 Shinrai: And so much more than that.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: And so much more than that.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r120_c03
+    - rid: 9129764567614750941
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r112_c05
+        label: "R112 C5 Narrator: You flash an awkward smile at Sh\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You flash an awkward smile at Shinrai.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r113_c05
+    - rid: 9129764567614750942
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r113_c05
+        label: "R113 C5 You: Save our lives? That\u2019s just a hy\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Save our lives? That\u2019s just a hypothetical, right?"
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r114_c05
+    - rid: 9129764567614750943
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r114_c05
+        label: "R114 C5 Narrator: You can hear Yuzuri shuffle nerv\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You can hear Yuzuri shuffle nervously in her seat. Shinrai looks you
+          right in the eyes.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r115_c05
+    - rid: 9129764567614750944
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r115_c05
+        label: "R115 C5 Shinrai: As you will come to understand i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: As you will come to understand in my classes, what is hypothetical
+          today may easily become part of our reality tomorrow.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r116_c05
+    - rid: 9129764567614750945
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r116_c05
+        label: "R116 C5 Narrator: You lower your gaze briefly as y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lower your gaze briefly as you hear students behind you whisper
+          to each other.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r118_c05
+    - rid: 9129764567614750946
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r118_c05
+        label: "R118 C5 Shinrai: The sooner you learn it, the bet\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: The sooner you learn it, the better.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r120_c03
+    - rid: 9129764567614750947
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r112_c06
+        label: "R112 C6 Narrator: You pick up your pen and start n\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You pick up your pen and start noting down everything you've heard
+          in this lecture so far.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r113_c06
+    - rid: 9129764567614750948
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r113_c06
+        label: 'R113 C6 You: A magician''s ability to focus...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: A magician's ability to focus...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r114_c06
+    - rid: 9129764567614750949
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r114_c06
+        label: "R114 C6 Narrator: You hear Shinrai's footsteps hea\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You hear Shinrai's footsteps heading in your direction and lift your
+          gaze to meet his.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r115_c06
+    - rid: 9129764567614750950
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r115_c06
+        label: "R115 C6 Shinrai: There is a more efficient way to\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Shinrai
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: There is a more efficient way to do this.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r116_c06
+    - rid: 9129764567614750951
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r116_c06
+        label: "R116 C6 Narrator: Before you can answer, Shinrai s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Before you can answer, Shinrai subtly waves his hand and your pen slips
+          out of your grip.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r117_c06
+    - rid: 9129764567614750952
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r117_c06
+        label: "R117 C6 Narrator: Shinrai then looks at it briefly\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Shinrai then looks at it briefly, and the pen starts taking notes all
+          by itself.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r120_c03
+    - rid: 9129764567614750953
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r091_c04
+        label: "R91 C4 You: The bullies are gone, Yuzuri. Th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies are gone, Yuzuri. They won't bother you again. You're safe
+          now.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r092_c04
+    - rid: 9129764567614750954
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r092_c04
+        label: "R92 C4 Yuzuri: What? I... I really hope so. Tha\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: What? I... I really hope so. Thank you for standing up for me there.
+          I really appreciate that!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r093_c03
+    - rid: 9129764567614750955
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r091_c05
+        label: "R91 C5 You: Are you okay, Yuzuri? You look k\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you okay, Yuzuri? You look kind of nervous.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r092_c05
+    - rid: 9129764567614750956
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r092_c05
+        label: "R92 C5 Yuzuri: What? Yeah... sure, I'm good. I \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: What? Yeah... sure, I'm good. I thought I saw someone I met at the
+          dorm. But I was wrong.  No biggie.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r093_c03
+    - rid: 9129764567614750957
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r079_c04
+        label: "R79 C4 Narrator: Yuzuri drops her voice to a whis\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri drops her voice to a whisper.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r080_c04
+    - rid: 9129764567614750958
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r080_c04
+        label: "R80 C4 Yuzuri: Also, I heard that Hinato's fami\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Also, I heard that Hinato's family is actually crazy rich, and that
+          his dad was against him working at the academy full time. Can you imagine?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r081_c03
+    - rid: 9129764567614750959
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r079_c05
+        label: "R79 C5 Narrator: You look mildly annoyed, so Yuzu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You look mildly annoyed, so Yuzuri cuts herself off.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r080_c05
+    - rid: 9129764567614750960
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r080_c05
+        label: "R80 C5 Yuzuri: Okay. No more Hinato talk. Got i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Okay. No more Hinato talk. Got it.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r081_c03
+    - rid: 9129764567614750961
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r059_c04
+        label: "R59 C4 You: I might be new here, but I'm pre\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "I might be new here, but I'm pretty sure bullying students over where
+          they come from goes against the academy\u2019s rules."
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r061_c04
+    - rid: 9129764567614750962
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r061_c04
+        label: "R61 C4 Narrator: The bullies turn to you, speechl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies turn to you, speechless for a moment. Then one of them
+          talks.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r062_c04
+    - rid: 9129764567614750963
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r062_c04
+        label: "R62 C4 Bully: Rule number 201 of the student c\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: Rule number 201 of the student code of honor to be precise...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r063_c04
+    - rid: 9129764567614750964
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r063_c04
+        label: 'R63 C4 Bully: Shut up, Kenji!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: Shut up, Kenji!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r064_c04
+    - rid: 9129764567614750965
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r064_c04
+        label: "R64 C4 Bully: What, Shinrai made me memorise t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: What, Shinrai made me memorise the whole thing last year. If I didn't,
+          he'd get me expelled!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r065_c03
+    - rid: 9129764567614750966
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r059_c05
+        label: "R59 C5 You: Come on, guys. You can do better\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Come on, guys. You can do better than that. Don't you see, she's already
+          shaking?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r061_c05
+    - rid: 9129764567614750967
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r061_c05
+        label: "R61 C5 Narrator: The bullies turn to you, speechl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies turn to you, speechless for a moment. Then one of them
+          talks.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r062_c05
+    - rid: 9129764567614750968
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r062_c05
+        label: "R62 C5 Bully: What the heck did we do? We only\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: What the heck did we do? We only asked her a couple of questions!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r063_c05
+    - rid: 9129764567614750969
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r063_c05
+        label: "R63 C5 Bully: Shut up, Kenji. You owe her no e\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Shut up, Kenji. You owe her no explanation.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r064_c05
+    - rid: 9129764567614750970
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r064_c05
+        label: "R64 C5 Bully: Okay then. I guess, you're right\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: Okay then. I guess, you're right...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r065_c03
+    - rid: 9129764567614750971
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r059_c06
+        label: "R59 C6 You: Do my eyes deceive me? Because w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Do my eyes deceive me? Because what I'm seeing is three older boys
+          bullying their younger coursemate.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r060_c06
+    - rid: 9129764567614750972
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r060_c06
+        label: "R60 C6 You: I mean, what does that make them\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I mean, what does that make them?!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r061_c06
+    - rid: 9129764567614750973
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r061_c06
+        label: "R61 C6 Narrator: The bullies turn to you, speechl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The bullies turn to you, speechless for a moment. Then one of them
+          talks.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r062_c06
+    - rid: 9129764567614750974
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r062_c06
+        label: 'R62 C6 Bully: Idiots?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: Idiots?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r063_c06
+    - rid: 9129764567614750975
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r063_c06
+        label: "R63 C6 Bully: Shut up, Kenji! She's just messi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Sota
+        pose: 0
+        emotion: 3
+        showSpeakerName: 0
+        sfxId: 
+        text: Shut up, Kenji! She's just messing with us.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r064_c06
+    - rid: 9129764567614750976
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r064_c06
+        label: 'R64 C6 Bully: She''s kind of right though...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kenji
+        pose: 0
+        emotion: 0
+        showSpeakerName: 0
+        sfxId: 
+        text: She's kind of right though...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r065_c03
+    - rid: 9129764567614750980
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r028_c04
+        label: "R28 C4 You: Are you talking about rumors of \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you talking about rumors of demons showing up in a town not far
+          from the academy?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r029_c03
+    - rid: 9129764567614750981
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r028_c05
+        label: "R28 C5 You: I'm not afraid of those demons! \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I'm not afraid of those demons! I'm going to work hard so I could face
+          them in battle if I have to.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r029_c03
+    - rid: 9129764567614750982
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r016_c04
+        label: "R16 C4 You: Well, this is fun! Can you tell \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Well, this is fun! Can you tell me more about being a student of the
+          Guild of the Flow?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r017_c04
+    - rid: 9129764567614750983
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r017_c04
+        label: "R17 C4 Hinato: We're Chronosoul's everlasting e\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: We're Chronosoul's everlasting experiment. What others think or can't
+          even think of, we do.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r018_c04
+    - rid: 9129764567614750984
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r018_c04
+        label: "R18 C4 Hinato: I'd say the best favor you can d\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: I'd say the best favor you can do for yourself is trust your gut and
+          just... create.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r019_c04
+    - rid: 9129764567614750985
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r019_c04
+        label: "R19 C4 Hinato: Don't question yourself, don't t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Don't question yourself, don't try to make sense of it.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r020_c04
+    - rid: 9129764567614750986
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r020_c04
+        label: "R20 C4 Hinato: Trust the fire in you and you'll\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Trust the fire in you and you'll be golden!
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r021_c03
+    - rid: 9129764567614750987
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r016_c05
+        label: "R16 C5 You: Thanks! Can I just ask, do you a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Thanks! Can I just ask, do you always enter your office like that?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r017_c05
+    - rid: 9129764567614750988
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r017_c05
+        label: 'R17 C5 Hinato: Oh, you mean the window...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Oh, you mean the window...
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r018_c05
+    - rid: 9129764567614750989
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r018_c05
+        label: "R18 C5 Hinato: Only when I'm trying to escape a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Only when I'm trying to escape a boring conversation that involves
+          numbers and estimates.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r019_c05
+    - rid: 9129764567614750990
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_line_r019_c05
+        label: "R19 C5 Hinato: By the way, if you see Lumis, te\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Hinato
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: By the way, if you see Lumis, tell him you have no idea where I am,
+          would you?
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r021_c03
+    - rid: 9129764567614750991
+      type: {class: VNEndStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_hinato_end
+        label: END
+        disableSkip: 0
+        stopAuto: 0
+    - rid: 9129764567614751679
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: dafcab5161ae4f7c83d72767b3f06c4b
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751680
+        nextStepId: 17d6b9535c5b406c9096f00b78e57a09
+    - rid: 9129764567614751680
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: INT. HINATO'S OFFICE - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764567614751681
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 17d6b9535c5b406c9096f00b78e57a09
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751683
+        nextStepId: 
+    - rid: 9129764567614751683
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Hinato_intro
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764567614751684
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: b28acb84849340e09e8ba5140a7ac601
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751686
+        nextStepId: 69fed70d27bd414a91098aef81424ff9
+    - rid: 9129764567614751686
+      type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        slot: 0
+        fadeSeconds: 0.2
+    - rid: 9129764567614751687
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 69fed70d27bd414a91098aef81424ff9
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751688
+        nextStepId: a313d765ef154e6a9a5a63489a0c3514
+    - rid: 9129764567614751688
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: EXT. SCHOOL YARD - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764567614751689
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: a313d765ef154e6a9a5a63489a0c3514
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751691
+        nextStepId: vnchapter_1_hinato_line_r045_c03
+    - rid: 9129764567614751691
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: School_Yard
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764567614751692
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: bbaea2ea31a74b9a8671d9daff82b32c
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751694
+        nextStepId: vnchapter_1_hinato_line_r048_c03
+    - rid: 9129764567614751694
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Bullies
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764567614751695
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 15452d141a4744d9a5fdee0a439255a4
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751697
+        nextStepId: vnchapter_1_hinato_line_r071_c03
+    - rid: 9129764567614751697
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: School_Yard
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764567614751698
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 991b67183d6640f5a0d6a7eeb55106ba
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751699
+        nextStepId: c8091697f0ed4448bc471765354748f3
+    - rid: 9129764567614751699
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: INT. CLASSROOM - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764567614751700
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: c8091697f0ed4448bc471765354748f3
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751702
+        nextStepId: vnchapter_1_hinato_line_r098_c03
+    - rid: 9129764567614751702
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: 
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764567614751703
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 1c6ba274d887436e95db4c8d2e6030a3
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764567614751705
+        nextStepId: vnchapter_1_hinato_line_r196_c03
+    - rid: 9129764567614751705
+      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        sfxId: Shadow

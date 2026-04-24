@@ -2072,6 +2072,9 @@ namespace VN.Editor
             step.id = Guid.NewGuid().ToString("N");
             step.label = "";
 
+            if (step is VNLineStep line)
+                line.showSpeakerName = true;
+
             if (step is VNCommandStep cmd && cmd.command == null)
                 cmd.command = new VNSetBackgroundCommand();
 
@@ -2277,6 +2280,9 @@ namespace VN.Editor
                 DrawSpeakerDropdown(stepProp.FindPropertyRelative("speakerId"));
                 DrawProp(stepProp, "pose");
                 DrawProp(stepProp, "emotion");
+
+                DrawProp(stepProp, "showSpeakerName");
+
                 DrawSfxDropdown(stepProp.FindPropertyRelative("sfxId"));
                 DrawProp(stepProp, "text");
                 DrawProp(stepProp, "addToLog");

@@ -174,6 +174,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Greetings to you, young magician! Your magic personality test is about
           to start!
@@ -222,6 +223,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: You're standing in the middle of the mystery forest, mustering up your
           courage. You're about to become a student at ChronoSoul, the legendary
@@ -238,6 +240,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "The wondrous creature in front of you speaks again, glowing with warm
           light. \n"
@@ -253,6 +256,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: My name is Lumis. And I am here to ensure your test runs smoothly!
         addToLog: 1
@@ -267,6 +271,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Do you have any questions before we start?
         addToLog: 1
@@ -304,6 +309,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: 'I got you. You''re going to meet a mentor from each of the 4 faculties
           of the Magical Academy. '
@@ -319,6 +325,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Oh, look! Here's the first mentor!
         addToLog: 1
@@ -333,6 +340,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: A tall, pale man with a piercing, cold gaze appears before you.
         addToLog: 1
@@ -365,6 +373,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Good day to you. I am Shinrai, Dean of the Order of Labyrinth. And
           I DO NOT enjoy small talk, so let us get straight to the point. '
@@ -380,6 +389,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: What is your work routine like?
         addToLog: 1
@@ -412,6 +422,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'I see. I have to warn you. Studying at the Academy is no easy endeavor.
           You must be prepared to apply your brilliant mind whenever it is required. '
@@ -427,6 +438,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: How do you approach ordinary things?
         addToLog: 1
@@ -459,6 +471,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: ' Is that so?'
         addToLog: 1
@@ -473,6 +486,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: There is a hint of interest in Shinrai's intense gaze.
         addToLog: 1
@@ -487,6 +501,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: 'Well, let us proceed to a truly intriguing question. Lumis, please
           assist. '
@@ -502,6 +517,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Gladly!
         addToLog: 1
@@ -516,6 +532,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "Shinrai raises his hand, conjuring a small sphere in his palm. Lumis
           then shines a ray of light on the sphere and a tiny eye appears within
@@ -532,6 +549,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'This is the eye of the Labyrinth. It sees one''s true intentions. '
         addToLog: 1
@@ -546,6 +564,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Now tell me. Is it worse...
         addToLog: 1
@@ -578,6 +597,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'The eye in Shinrai''s palm blinks and shrinks itself until it''s no
           longer there. Shinrai nods at you politely.
@@ -595,6 +615,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: This will be it from me. Good luck, scholar.
         addToLog: 1
@@ -609,6 +630,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Shinrai swings his cloak and vanishes. However, he is instantly replaced
           by a tall man with hair the color of moonlight. '
@@ -624,6 +646,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Greetings to you, curious soul. '
         addToLog: 1
@@ -638,6 +661,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: How do you choose a spell you're going to cast?
         addToLog: 1
@@ -670,6 +694,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Kensui smiles at you and your heart immediately feels at peace.
 
@@ -686,6 +711,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: It is important that we know ourselves, precious soul, much like we
           try to understand our fellow scholars.
@@ -701,6 +727,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: At a party with fellow magicians you like to...
         addToLog: 1
@@ -733,6 +760,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: I see what you mean. And now, for the final question! Lumis, I might
           require your assistance.
@@ -748,6 +776,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: On it, master!
         addToLog: 1
@@ -762,6 +791,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "Kensui takes off his scarf, with Lumis grasping one end and Kensui
           the other, they gently cover you with it. \n\n"
@@ -777,6 +807,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: You catch Kensui's warm gaze one last time and suddenly realise you're
           drifting among the stars! Your mind feels crystal clear as you hear a familiar
@@ -793,6 +824,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Kensui''s scarf is back in his hands. He bows to you before he speaks
           again.
@@ -810,6 +842,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: 'Thank you for answering all of my questions. I hope to see you again
           in the near future! '
@@ -840,6 +873,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "A man in a golden uniform appears beside Kensui. \n"
         addToLog: 1
@@ -854,6 +888,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Allow me to introduce Commander Kaitora of the Legion of Sentinels!
         addToLog: 1
@@ -868,6 +903,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Commander Kaitora steps forward. Tall and lean, he exudes strength
           and confidence.
@@ -885,6 +921,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Good day. The Legion of Sentinels are the Academy's loyal servants
           and its primary line of defence. Let's see if you're one of us.
@@ -900,6 +937,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: You're in charge of younger sentinels. It is harder for you to...
         addToLog: 1
@@ -932,6 +970,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Got it. Sentinels tend to team up to achieve maximum efficiency.
         addToLog: 1
@@ -946,6 +985,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'In a new team you normally... '
         addToLog: 1
@@ -978,6 +1018,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: Fair. Now to the final question. Lumis?
         addToLog: 1
@@ -992,6 +1033,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Commander.
         addToLog: 1
@@ -1006,6 +1048,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "You watch Lumis place a golden hourglass into Kaitora's hands. \n"
         addToLog: 1
@@ -1020,6 +1063,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Woah! It's heavy!
         addToLog: 1
@@ -1034,6 +1078,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'So is the weight of time. '
         addToLog: 1
@@ -1048,6 +1093,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Kaitora turns back to you.
 
@@ -1064,6 +1110,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'We use this hourglass to time our practices and to remind ourselves
           that nothing is eternal. '
@@ -1079,6 +1126,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Kaitora flips the hourglass over and the sand starts to fall from
           the top chamber.
@@ -1096,6 +1144,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Now, tell me what your perspective on time is.
         addToLog: 1
@@ -1110,6 +1159,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: When it comes to life events, one should...
         addToLog: 1
@@ -1142,6 +1192,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Suddenly, a warm breeze blows, wrapping you up in a whirlwind of golden
           petals.
@@ -1159,6 +1210,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 1
+        showSpeakerName: 1
         sfxId: 
         text: This is a sign of luck! I'm sure of it.
         addToLog: 1
@@ -1173,6 +1225,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Master Hinato! You're already here?
         addToLog: 1
@@ -1187,6 +1240,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: You're just in time. We have finished. Scholar, I wish you best of
           luck.
@@ -1202,6 +1256,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "A giant shield appears in the air, concealing Kaitora behind it. When
           the shield disappears, Kaitora is gone too. \n"
@@ -1217,6 +1272,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: Master Hinato of the Guild of the Flow at your service.
         addToLog: 1
@@ -1312,9 +1368,10 @@ MonoBehaviour:
         label: 
         disableSkip: 0
         stopAuto: 0
-        speakerId: ????
+        speakerId: Hinato
         pose: 0
         emotion: 0
+        showSpeakerName: 0
         sfxId: 
         text: Oh, I love that old trick with the petals! Kaitora's really just a
           hopeless romantic at heart.
@@ -1330,6 +1387,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'One thing about us, is we turn every strong feeling into magic. I
           mean, how cool is that? '
@@ -1345,6 +1403,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Are you someone who is more organized or playful?
         addToLog: 1
@@ -1377,6 +1436,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Hold on! I'm writing that down. Just kidding. My memory's impeccable.
         addToLog: 1
@@ -1391,6 +1451,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: And this brings us to our next question. I swear, it's part of the
           assignment...
@@ -1406,6 +1467,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: What does your ideal weekend look like?
         addToLog: 1
@@ -1438,6 +1500,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Nice one. And I got all my answers! I guess, we can call it a day...
         addToLog: 1
@@ -1452,6 +1515,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: Master Hinato! Are you sure you don't have any more questions for our
           candidate?
@@ -1467,6 +1531,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Hinato winks mischievously at Lumis.
         addToLog: 1
@@ -1481,6 +1546,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 1
+        showSpeakerName: 1
         sfxId: 
         text: Ah, you're adorable, little Lumis! What's the point of asking questions
           if we can just feel it?
@@ -1496,6 +1562,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: "Lumis blinks, clearly not quite catching what his superior is saying.
           Hinato laughs, and you join in because his laughter\u2019s just so contagious."
@@ -1511,6 +1578,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: So, how are you doing?
         addToLog: 1
@@ -1543,6 +1611,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Awesome. Now look! There's something in your sleeve!
         addToLog: 1
@@ -1557,6 +1626,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'You pull a card with a heart drawn on it out of your sleeve. '
         addToLog: 1
@@ -1571,6 +1641,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: '"Keep that flame burning, little spark!"'
         addToLog: 1
@@ -1585,6 +1656,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: Uh... that was fun, right?
         addToLog: 1
@@ -1599,6 +1671,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'And now it''s time for you to find out the results of your magic personality
           sorting test. '
@@ -1701,6 +1774,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Each mentor will ask you three questions. By the end of the test,
           you''ll know which faculty you''re in! '
@@ -1716,6 +1790,7 @@ MonoBehaviour:
         speakerId: Shinrai
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: So let us see how you reason.
         addToLog: 1
@@ -1730,6 +1805,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'Take a deep breath and let your spirit speak for you. '
         addToLog: 1
@@ -1762,6 +1838,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: What do you appreciate more in yourself?
         addToLog: 1
@@ -1776,6 +1853,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'He nods at you and Kensui, and Kensui smiles at him calmly before
           he vanishes into the fog.
@@ -1793,6 +1871,7 @@ MonoBehaviour:
         speakerId: Kaitora
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: That is, if you have what it takes.
         addToLog: 1
@@ -1807,6 +1886,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: Hinato bows to you, a mischievous grin flickering on his lips.
         addToLog: 1
@@ -1821,6 +1901,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: Now, let's see if we vibe.
         addToLog: 1
@@ -1835,6 +1916,7 @@ MonoBehaviour:
         speakerId: Hinato
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: If we vibe, we vibe. You know what I'm saying?
         addToLog: 1
@@ -1849,6 +1931,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: He then turns to you.
         addToLog: 1
@@ -1863,6 +1946,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: You can hear Hinato's voice speak to you, even though he's no longer
           there.
@@ -1878,6 +1962,7 @@ MonoBehaviour:
         speakerId: Lumis
         pose: 0
         emotion: 5
+        showSpeakerName: 1
         sfxId: 
         text: Let's see what you've discovered about yourself and which faculty you
           belong to!
@@ -2292,6 +2377,7 @@ MonoBehaviour:
         speakerId: Kensui
         pose: 0
         emotion: 6
+        showSpeakerName: 1
         sfxId: 
         text: I am Kensui of the Temple of the Everveil. And I would like to learn
           more about you.
@@ -2322,6 +2408,7 @@ MonoBehaviour:
         speakerId: 
         pose: 0
         emotion: 0
+        showSpeakerName: 1
         sfxId: 
         text: 'It then bursts into flames in your hands so you let go of it and watch
           it vanish into the air. '
@@ -2345,6 +2432,7 @@ MonoBehaviour:
         localOffset: {x: -2, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
+        softStopSecondsOverride: -1
         waitUntilFinished: 0
     - rid: 9129764075475566803
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
@@ -2364,6 +2452,7 @@ MonoBehaviour:
         localOffset: {x: -2, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
+        softStopSecondsOverride: -1
         waitUntilFinished: 0
     - rid: 9129764075475566806
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
@@ -2383,6 +2472,7 @@ MonoBehaviour:
         localOffset: {x: -2, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
+        softStopSecondsOverride: -1
         waitUntilFinished: 0
     - rid: 9129764075475566817
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
@@ -2402,4 +2492,5 @@ MonoBehaviour:
         localOffset: {x: 0, y: 0, z: 0}
         scale: 1
         lifetimeOverride: -1
+        softStopSecondsOverride: -1
         waitUntilFinished: 0

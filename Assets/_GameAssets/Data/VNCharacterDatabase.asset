@@ -138,11 +138,62 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: 24025b3d152c55743af709416f98ebda, type: 3}
-  - id: ????
-    displayName: ????
-    defaultScreenSlot: 1
-    sprites: []
   - id: You
     displayName: You
     defaultScreenSlot: 1
     sprites: []
+  - id: Yuzuri
+    displayName: Yuzuri
+    defaultScreenSlot: 0
+    sprites:
+    - pose: 0
+      emotion: 0
+      sprite: {fileID: 21300000, guid: 48d4bb37b15bcce4a82078d1dc0a0711, type: 3}
+    - pose: 0
+      emotion: 1
+      sprite: {fileID: 21300000, guid: 5697e83ae2c0e524c8c3608c8e4981a9, type: 3}
+    - pose: 0
+      emotion: 2
+      sprite: {fileID: 21300000, guid: 8406a572266849248b66261d92587ed5, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: 9f6dddc413a3077429ad239d36e18fda, type: 3}
+    - pose: 0
+      emotion: 4
+      sprite: {fileID: 21300000, guid: c70a92815d71155498826c9cffe261d3, type: 3}
+    - pose: 0
+      emotion: 5
+      sprite: {fileID: 21300000, guid: 5bc2ee76bafda314bae35c6f8059437e, type: 3}
+    - pose: 0
+      emotion: 6
+      sprite: {fileID: 21300000, guid: d67de7cf6a93f9341a685ce379db0861, type: 3}
+  - id: Kenji
+    displayName: Kenji
+    defaultScreenSlot: 0
+    sprites:
+    - pose: 0
+      emotion: 0
+      sprite: {fileID: 21300000, guid: 16626a3fea49a3f47b026bb53ac865da, type: 3}
+    - pose: 0
+      emotion: 0
+      sprite: {fileID: 21300000, guid: 251ce4959b257024ba56dec70e509156, type: 3}
+  - id: Sota
+    displayName: Sota
+    defaultScreenSlot: 0
+    sprites:
+    - pose: 0
+      emotion: 0
+      sprite: {fileID: 21300000, guid: f18542adb3eaeb344950102ddbbe8e92, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: ad998dbca59dbd04aa713e99b11468f6, type: 3}
+  - id: 'Aki '
+    displayName: 'Aki '
+    defaultScreenSlot: 0
+    sprites:
+    - pose: 0
+      emotion: 0
+      sprite: {fileID: 21300000, guid: 977b5ec0b9683a14ba23fd877c64cd0c, type: 3}
+    - pose: 0
+      emotion: 3
+      sprite: {fileID: 21300000, guid: 6debd29b0c55917499855208e838cdd8, type: 3}

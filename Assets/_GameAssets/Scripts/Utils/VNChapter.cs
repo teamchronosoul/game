@@ -69,6 +69,9 @@ namespace VN
         public VNPose pose = VNPose.Default;
         public VNEmotion emotion = VNEmotion.Neutral;
 
+        [Tooltip("Если выключено, вместо имени говорящего будет показано ???")]
+        public bool showSpeakerName = true;
+
         public string sfxId;
 
         [TextArea(3, 12)]
@@ -76,7 +79,6 @@ namespace VN
 
         public bool addToLog = true;
         public string nextStepId;
-
     }
 
     [Serializable]
