@@ -14,242 +14,272 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
   chapterId: VNChapter_1_Kensui
   steps:
-  - rid: 9129764570494403263
-  - rid: 9129764570494403265
-  - rid: 9129764567614751725
-  - rid: 9129764567614751726
-  - rid: 9129764567614751727
-  - rid: 9129764567614751728
-  - rid: 9129764567614751729
-  - rid: 9129764567614751730
-  - rid: 9129764567614751731
-  - rid: 9129764567614751732
-  - rid: 9129764567614751733
-  - rid: 9129764567614751734
-  - rid: 9129764567614751735
-  - rid: 9129764567614751736
-  - rid: 9129764567614751737
-  - rid: 9129764567614751738
-  - rid: 9129764567614751739
-  - rid: 9129764567614751740
-  - rid: 9129764567614751741
-  - rid: 9129764567614751742
-  - rid: 9129764567614751743
-  - rid: 9129764570494402560
-  - rid: 9129764570494402561
-  - rid: 9129764570494402562
-  - rid: 9129764570494402563
-  - rid: 9129764570494402564
-  - rid: 9129764570494402565
-  - rid: 9129764570494402566
-  - rid: 9129764570494402567
-  - rid: 9129764570494402568
-  - rid: 9129764570494402569
-  - rid: 9129764570494402570
-  - rid: 9129764570494402571
-  - rid: 9129764570494402572
-  - rid: 9129764570494402573
-  - rid: 9129764570494402574
-  - rid: 9129764570494402575
-  - rid: 9129764570494402576
-  - rid: 9129764570494402577
-  - rid: 9129764570494402578
-  - rid: 9129764570494402579
-  - rid: 9129764570494402580
-  - rid: 9129764570494402581
-  - rid: 9129764570494402582
-  - rid: 9129764570494402583
-  - rid: 9129764570494402584
-  - rid: 9129764570494402585
-  - rid: 9129764570494402586
-  - rid: 9129764570494402587
-  - rid: 9129764570494402588
-  - rid: 9129764570494402589
-  - rid: 9129764570494402590
-  - rid: 9129764570494402591
-  - rid: 9129764570494402592
-  - rid: 9129764570494402593
-  - rid: 9129764570494402594
-  - rid: 9129764570494402595
-  - rid: 9129764570494402596
-  - rid: 9129764570494402597
-  - rid: 9129764570494402598
-  - rid: 9129764570494402599
-  - rid: 9129764570494402600
-  - rid: 9129764570494402601
-  - rid: 9129764570494402602
-  - rid: 9129764570494402603
-  - rid: 9129764570494402604
-  - rid: 9129764570494402605
-  - rid: 9129764570494402606
-  - rid: 9129764570494402607
-  - rid: 9129764570494402608
-  - rid: 9129764570494402609
-  - rid: 9129764570494402610
-  - rid: 9129764570494402611
-  - rid: 9129764570494402612
-  - rid: 9129764570494402613
-  - rid: 9129764570494402614
-  - rid: 9129764570494402615
-  - rid: 9129764570494402616
-  - rid: 9129764570494402617
-  - rid: 9129764570494402618
-  - rid: 9129764570494402619
-  - rid: 9129764570494402620
-  - rid: 9129764570494402621
-  - rid: 9129764570494402622
-  - rid: 9129764570494402623
-  - rid: 9129764570494402624
-  - rid: 9129764570494402625
-  - rid: 9129764570494402626
-  - rid: 9129764570494402627
-  - rid: 9129764570494402628
-  - rid: 9129764570494402629
-  - rid: 9129764570494402630
-  - rid: 9129764570494402631
-  - rid: 9129764570494402632
-  - rid: 9129764570494402633
-  - rid: 9129764570494402634
-  - rid: 9129764570494402635
-  - rid: 9129764570494402636
-  - rid: 9129764570494402637
-  - rid: 9129764570494402638
-  - rid: 9129764570494402639
-  - rid: 9129764570494402640
-  - rid: 9129764570494402641
-  - rid: 9129764570494402642
-  - rid: 9129764570494402643
-  - rid: 9129764570494402644
-  - rid: 9129764570494402645
-  - rid: 9129764570494402646
-  - rid: 9129764570494402647
-  - rid: 9129764570494402648
-  - rid: 9129764570494402649
-  - rid: 9129764570494402650
-  - rid: 9129764570494402651
-  - rid: 9129764570494402652
-  - rid: 9129764570494402653
-  - rid: 9129764570494402654
-  - rid: 9129764570494402655
-  - rid: 9129764570494402656
-  - rid: 9129764570494402657
-  - rid: 9129764570494402658
-  - rid: 9129764570494402659
-  - rid: 9129764570494402660
-  - rid: 9129764570494402661
-  - rid: 9129764570494402662
-  - rid: 9129764570494402663
-  - rid: 9129764570494402664
-  - rid: 9129764570494402665
-  - rid: 9129764570494402666
-  - rid: 9129764570494402667
-  - rid: 9129764570494402668
-  - rid: 9129764570494402669
-  - rid: 9129764570494402670
-  - rid: 9129764570494402671
-  - rid: 9129764570494402672
-  - rid: 9129764570494402673
-  - rid: 9129764570494402674
-  - rid: 9129764570494402675
-  - rid: 9129764570494402676
-  - rid: 9129764570494402677
-  - rid: 9129764570494402678
-  - rid: 9129764570494402679
-  - rid: 9129764570494402680
-  - rid: 9129764570494402681
-  - rid: 9129764570494402682
-  - rid: 9129764570494402683
-  - rid: 9129764570494402684
-  - rid: 9129764570494402685
-  - rid: 9129764570494402686
-  - rid: 9129764570494402687
-  - rid: 9129764570494402688
-  - rid: 9129764570494402689
-  - rid: 9129764570494402690
-  - rid: 9129764570494402691
-  - rid: 9129764570494402692
-  - rid: 9129764570494402693
-  - rid: 9129764570494402694
-  - rid: 9129764570494402695
-  - rid: 9129764570494402696
-  - rid: 9129764570494402697
-  - rid: 9129764570494402698
-  - rid: 9129764570494402699
-  - rid: 9129764570494402700
-  - rid: 9129764570494402701
-  - rid: 9129764570494402702
-  - rid: 9129764570494402703
-  - rid: 9129764570494402704
-  - rid: 9129764570494402705
-  - rid: 9129764570494402706
-  - rid: 9129764570494402707
-  - rid: 9129764570494402708
-  - rid: 9129764570494402709
-  - rid: 9129764570494402710
-  - rid: 9129764570494402711
-  - rid: 9129764570494402712
-  - rid: 9129764570494402713
-  - rid: 9129764570494402714
-  - rid: 9129764570494402715
-  - rid: 9129764570494402716
-  - rid: 9129764570494402717
-  - rid: 9129764570494402718
-  - rid: 9129764570494402719
-  - rid: 9129764570494402720
-  - rid: 9129764570494402721
-  - rid: 9129764570494402722
-  - rid: 9129764570494402723
-  - rid: 9129764570494402724
-  - rid: 9129764570494402725
-  - rid: 9129764570494402726
-  - rid: 9129764570494402727
-  - rid: 9129764570494402728
-  - rid: 9129764570494402729
-  - rid: 9129764570494402730
-  - rid: 9129764570494402731
-  - rid: 9129764570494402732
-  - rid: 9129764570494402733
-  - rid: 9129764570494402734
-  - rid: 9129764570494402735
-  - rid: 9129764570494402736
-  - rid: 9129764570494402737
-  - rid: 9129764570494402738
-  - rid: 9129764570494402739
-  - rid: 9129764570494402740
-  - rid: 9129764570494402741
-  - rid: 9129764570494402742
-  - rid: 9129764570494402743
-  - rid: 9129764570494402744
-  - rid: 9129764570494402745
-  - rid: 9129764570494402746
-  - rid: 9129764570494402747
-  - rid: 9129764570494402748
-  - rid: 9129764570494402749
-  - rid: 9129764570494402750
-  - rid: 9129764570494402751
-  - rid: 9129764570494402752
-  - rid: 9129764570494402753
-  - rid: 9129764570494402754
-  - rid: 9129764570494402755
-  - rid: 9129764570494402756
-  - rid: 9129764570494402757
-  - rid: 9129764570494402758
-  - rid: 9129764570494402759
-  - rid: 9129764570494402760
-  - rid: 9129764570494402761
-  - rid: 9129764570494402762
-  - rid: 9129764570494402763
-  - rid: 9129764570494402764
-  - rid: 9129764570494402765
-  - rid: 9129764570494402766
-  - rid: 9129764570494402767
-  - rid: 9129764570494402768
-  - rid: 9129764570494402769
-  - rid: 9129764570494402770
+  - rid: 9129764570494403268
+  - rid: 9129764570494403269
+  - rid: 9129764570494403270
+  - rid: 9129764570494403271
+  - rid: 9129764570494403272
+  - rid: 9129764570494403273
+  - rid: 9129764570494403274
+  - rid: 9129764570494403275
+  - rid: 9129764570494403276
+  - rid: 9129764570494403277
+  - rid: 9129764570494403278
+  - rid: 9129764570494403279
+  - rid: 9129764570494403280
+  - rid: 9129764570494403281
+  - rid: 9129764570494403282
+  - rid: 9129764570494403283
+  - rid: 9129764570494403284
+  - rid: 9129764570494403285
+  - rid: 9129764570494403286
+  - rid: 9129764570494403287
+  - rid: 9129764570494403288
+  - rid: 9129764570494403289
+  - rid: 9129764570494403290
+  - rid: 9129764570494403291
+  - rid: 9129764570494403292
+  - rid: 9129764570494403293
+  - rid: 9129764570494403294
+  - rid: 9129764570494403295
+  - rid: 9129764570494403296
+  - rid: 9129764570494403297
+  - rid: 9129764570494403298
+  - rid: 9129764570494403299
+  - rid: 9129764570494403300
+  - rid: 9129764570494403301
+  - rid: 9129764570494403302
+  - rid: 9129764570494403303
+  - rid: 9129764570494403304
+  - rid: 9129764570494403305
+  - rid: 9129764570494403306
+  - rid: 9129764570494403307
+  - rid: 9129764570494403308
+  - rid: 9129764570494403309
+  - rid: 9129764570494403310
+  - rid: 9129764570494403311
+  - rid: 9129764570494403312
+  - rid: 9129764570494403313
+  - rid: 9129764570494403314
+  - rid: 9129764570494403315
+  - rid: 9129764570494403316
+  - rid: 9129764570494403317
+  - rid: 9129764570494403318
+  - rid: 9129764570494403319
+  - rid: 9129764570494403320
+  - rid: 9129764570494403321
+  - rid: 9129764570494403322
+  - rid: 9129764570494403323
+  - rid: 9129764570494403324
+  - rid: 9129764570494403325
+  - rid: 9129764570494403326
+  - rid: 9129764570494403327
+  - rid: 9129764570494403328
+  - rid: 9129764570494403329
+  - rid: 9129764570494403330
+  - rid: 9129764570494403331
+  - rid: 9129764570494403332
+  - rid: 9129764570494403333
+  - rid: 9129764570494403334
+  - rid: 9129764570494403335
+  - rid: 9129764570494403336
+  - rid: 9129764570494403337
+  - rid: 9129764570494403338
+  - rid: 9129764570494403339
+  - rid: 9129764570494403340
+  - rid: 9129764570494403341
+  - rid: 9129764570494403342
+  - rid: 9129764570494403343
+  - rid: 9129764570494403344
+  - rid: 9129764570494403345
+  - rid: 9129764570494403346
+  - rid: 9129764570494403347
+  - rid: 9129764570494403348
+  - rid: 9129764570494403349
+  - rid: 9129764570494403350
+  - rid: 9129764570494403351
+  - rid: 9129764570494403352
+  - rid: 9129764570494403353
+  - rid: 9129764570494403354
+  - rid: 9129764570494403355
+  - rid: 9129764570494403356
+  - rid: 9129764570494403357
+  - rid: 9129764570494403358
+  - rid: 9129764570494403359
+  - rid: 9129764570494403360
+  - rid: 9129764570494403361
+  - rid: 9129764570494403362
+  - rid: 9129764570494403363
+  - rid: 9129764570494403364
+  - rid: 9129764570494403365
+  - rid: 9129764570494403366
+  - rid: 9129764570494403367
+  - rid: 9129764570494403368
+  - rid: 9129764570494403369
+  - rid: 9129764570494403370
+  - rid: 9129764570494403371
+  - rid: 9129764570494403372
+  - rid: 9129764570494403373
+  - rid: 9129764570494403374
+  - rid: 9129764570494403375
+  - rid: 9129764570494403376
+  - rid: 9129764570494403377
+  - rid: 9129764570494403378
+  - rid: 9129764570494403379
+  - rid: 9129764570494403380
+  - rid: 9129764570494403381
+  - rid: 9129764570494403382
+  - rid: 9129764570494403383
+  - rid: 9129764570494403384
+  - rid: 9129764570494403385
+  - rid: 9129764570494403386
+  - rid: 9129764570494403387
+  - rid: 9129764570494403388
+  - rid: 9129764570494403389
+  - rid: 9129764570494403390
+  - rid: 9129764570494403391
+  - rid: 9129764570494403392
+  - rid: 9129764570494403393
+  - rid: 9129764570494403394
+  - rid: 9129764570494403395
+  - rid: 9129764570494403396
+  - rid: 9129764570494403397
+  - rid: 9129764570494403398
+  - rid: 9129764570494403399
+  - rid: 9129764570494403400
+  - rid: 9129764570494403401
+  - rid: 9129764570494403402
+  - rid: 9129764570494403403
+  - rid: 9129764570494403404
+  - rid: 9129764570494403405
+  - rid: 9129764570494403406
+  - rid: 9129764570494403407
+  - rid: 9129764570494403408
+  - rid: 9129764570494403409
+  - rid: 9129764570494403410
+  - rid: 9129764570494403411
+  - rid: 9129764570494403412
+  - rid: 9129764570494403413
+  - rid: 9129764570494403414
+  - rid: 9129764570494403415
+  - rid: 9129764570494403416
+  - rid: 9129764570494403417
+  - rid: 9129764570494403418
+  - rid: 9129764570494403419
+  - rid: 9129764570494403420
+  - rid: 9129764570494403421
+  - rid: 9129764570494403422
+  - rid: 9129764570494403423
+  - rid: 9129764570494403424
+  - rid: 9129764570494403425
+  - rid: 9129764570494403426
+  - rid: 9129764570494403427
+  - rid: 9129764570494403428
+  - rid: 9129764570494403429
+  - rid: 9129764570494403430
+  - rid: 9129764570494403431
+  - rid: 9129764570494403432
+  - rid: 9129764570494403433
+  - rid: 9129764570494403434
+  - rid: 9129764570494403435
+  - rid: 9129764570494403436
+  - rid: 9129764570494403437
+  - rid: 9129764570494403438
+  - rid: 9129764570494403439
+  - rid: 9129764570494403440
+  - rid: 9129764570494403441
+  - rid: 9129764570494403442
+  - rid: 9129764570494403443
+  - rid: 9129764570494403444
+  - rid: 9129764570494403445
+  - rid: 9129764570494403446
+  - rid: 9129764570494403447
+  - rid: 9129764570494403448
+  - rid: 9129764570494403449
+  - rid: 9129764570494403450
+  - rid: 9129764570494403451
+  - rid: 9129764570494403452
+  - rid: 9129764570494403453
+  - rid: 9129764570494403454
+  - rid: 9129764570494403455
+  - rid: 9129764570494403456
+  - rid: 9129764570494403457
+  - rid: 9129764570494403458
+  - rid: 9129764570494403459
+  - rid: 9129764570494403460
+  - rid: 9129764570494403461
+  - rid: 9129764570494403462
+  - rid: 9129764570494403463
+  - rid: 9129764570494403464
+  - rid: 9129764570494403465
+  - rid: 9129764570494403466
+  - rid: 9129764570494403467
+  - rid: 9129764570494403468
+  - rid: 9129764570494403469
+  - rid: 9129764570494403470
+  - rid: 9129764570494403471
+  - rid: 9129764570494403472
+  - rid: 9129764570494403473
+  - rid: 9129764570494403474
+  - rid: 9129764570494403475
+  - rid: 9129764570494403476
+  - rid: 9129764570494403477
+  - rid: 9129764570494403478
+  - rid: 9129764570494403479
+  - rid: 9129764570494403480
+  - rid: 9129764570494403481
+  - rid: 9129764570494403482
+  - rid: 9129764570494403483
+  - rid: 9129764570494403484
+  - rid: 9129764570494403485
+  - rid: 9129764570494403486
+  - rid: 9129764570494403487
+  - rid: 9129764570494403488
+  - rid: 9129764570494403489
+  - rid: 9129764570494403490
+  - rid: 9129764570494403491
+  - rid: 9129764570494403492
+  - rid: 9129764570494403493
+  - rid: 9129764570494403494
+  - rid: 9129764570494403495
+  - rid: 9129764570494403496
+  - rid: 9129764570494403497
+  - rid: 9129764570494403498
+  - rid: 9129764570494403499
+  - rid: 9129764570494403500
+  - rid: 9129764570494403501
   references:
     version: 2
     RefIds:
-    - rid: 9129764567614751725
+    - rid: 9129764570494403268
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r001_c03
+        label: 'R1 C3 Speaker: Speech'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Speaker
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Speech
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_choice_r001_c03
+    - rid: 9129764570494403269
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_choice_r001_c03
+        label: Choice R1 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Choice
+          nextStepId: vnchapter_1_kensui_line_r003_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764570494403270
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r003_c03
@@ -265,7 +295,7 @@ MonoBehaviour:
           purposefully arranged by someone's careful hand.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r004_c03
-    - rid: 9129764567614751726
+    - rid: 9129764570494403271
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r004_c03
@@ -282,7 +312,7 @@ MonoBehaviour:
           before.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r005_c03
-    - rid: 9129764567614751727
+    - rid: 9129764570494403272
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r005_c03
@@ -297,7 +327,7 @@ MonoBehaviour:
         text: These symbols represent the elements of this world and beyond.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r006_c03
-    - rid: 9129764567614751728
+    - rid: 9129764570494403273
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r006_c03
@@ -313,7 +343,7 @@ MonoBehaviour:
           sun. He speaks to you once more, his voice a gentle springtime melody.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r007_c03
-    - rid: 9129764567614751729
+    - rid: 9129764570494403274
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r007_c03
@@ -329,7 +359,7 @@ MonoBehaviour:
           and our community will soon become your new home.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r008_c03
-    - rid: 9129764567614751730
+    - rid: 9129764570494403275
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r008_c03
@@ -345,7 +375,7 @@ MonoBehaviour:
           always welcome to seek my assistance.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r009_c03
-    - rid: 9129764567614751731
+    - rid: 9129764570494403276
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r009_c03
@@ -363,7 +393,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764567614751732
+    - rid: 9129764570494403277
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r016_c03
@@ -378,7 +408,7 @@ MonoBehaviour:
         text: Kensui points at the silver scale that you were studying earlier.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r017_c03
-    - rid: 9129764567614751733
+    - rid: 9129764570494403278
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r017_c03
@@ -393,7 +423,7 @@ MonoBehaviour:
         text: I see you've taken an interest in this old scale of mine.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r018_c03
-    - rid: 9129764567614751734
+    - rid: 9129764570494403279
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r018_c03
@@ -410,7 +440,7 @@ MonoBehaviour:
           world.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r019_c03
-    - rid: 9129764567614751735
+    - rid: 9129764570494403280
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r019_c03
@@ -426,7 +456,7 @@ MonoBehaviour:
           himself.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r020_c03
-    - rid: 9129764567614751736
+    - rid: 9129764570494403281
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r020_c03
@@ -442,7 +472,7 @@ MonoBehaviour:
           mouth twitch a little.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r021_c03
-    - rid: 9129764567614751737
+    - rid: 9129764570494403282
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r021_c03
@@ -458,7 +488,7 @@ MonoBehaviour:
           town near the academy.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r022_c03
-    - rid: 9129764567614751738
+    - rid: 9129764570494403283
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r022_c03
@@ -476,41 +506,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764567614751739
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_kensui_line_r024_c03
-        label: 'R24 C3 Narrative: Kensui lets out a soft laugh.'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: Narrative
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: Kensui lets out a soft laugh.
-        addToLog: 1
-        nextStepId: vnchapter_1_kensui_choice_r025_c03
-    - rid: 9129764567614751740
-      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_kensui_choice_r025_c03
-        label: Choice R25 C3
-        disableSkip: 0
-        stopAuto: 0
-        options:
-        - text: I am indeed. You are very perceptive, dear soul.
-          nextStepId: vnchapter_1_kensui_line_r026_c03
-          kind: 0
-          premiumPrice: 0
-          effects: []
-        - text: I like your attitude, dear soul! And yes, you are absolutely right.
-            Source willing, we will handle everything in its own time.
-          nextStepId: vnchapter_1_kensui_line_r026_c03
-          kind: 0
-          premiumPrice: 0
-          effects: []
-    - rid: 9129764567614751741
+    - rid: 9129764570494403284
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r026_c03
@@ -525,7 +521,7 @@ MonoBehaviour:
         text: Kensui looks thoughtful.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r027_c03
-    - rid: 9129764567614751742
+    - rid: 9129764570494403285
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r027_c03
@@ -541,7 +537,7 @@ MonoBehaviour:
           magic-neutral territories.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r028_c03
-    - rid: 9129764567614751743
+    - rid: 9129764570494403286
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r028_c03
@@ -557,7 +553,7 @@ MonoBehaviour:
           that.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r029_c03
-    - rid: 9129764570494402560
+    - rid: 9129764570494403287
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r029_c03
@@ -573,7 +569,7 @@ MonoBehaviour:
           if you notice anything suspicious.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r030_c03
-    - rid: 9129764570494402561
+    - rid: 9129764570494403288
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r030_c03
@@ -589,7 +585,7 @@ MonoBehaviour:
           eyes.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r031_c03
-    - rid: 9129764570494402562
+    - rid: 9129764570494403289
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r031_c03
@@ -605,7 +601,7 @@ MonoBehaviour:
           academy, but such is our Fate.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r032_c03
-    - rid: 9129764570494402563
+    - rid: 9129764570494403290
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r032_c03
@@ -621,7 +617,7 @@ MonoBehaviour:
           peacefully. We let her speak her mind to us and we listen.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r033_c03
-    - rid: 9129764570494402564
+    - rid: 9129764570494403291
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r033_c03
@@ -637,7 +633,7 @@ MonoBehaviour:
           with him through his eyes.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r034_c03
-    - rid: 9129764570494402565
+    - rid: 9129764570494403292
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r034_c03
@@ -653,7 +649,7 @@ MonoBehaviour:
           to start.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r035_c03
-    - rid: 9129764570494402566
+    - rid: 9129764570494403293
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r035_c03
@@ -668,7 +664,7 @@ MonoBehaviour:
         text: We shall speak again soon.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r037_c03
-    - rid: 9129764570494402567
+    - rid: 9129764570494403294
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r037_c03
@@ -684,7 +680,7 @@ MonoBehaviour:
           your first class when you hear someone shout.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r038_c03
-    - rid: 9129764570494402568
+    - rid: 9129764570494403295
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r038_c03
@@ -699,7 +695,7 @@ MonoBehaviour:
         text: Enough! Let me go already!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r039_c03
-    - rid: 9129764570494402569
+    - rid: 9129764570494403296
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r039_c03
@@ -714,7 +710,7 @@ MonoBehaviour:
         text: No one's holding you here. Or are you too dumb to see that?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r040_c03
-    - rid: 9129764570494402570
+    - rid: 9129764570494403297
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r040_c03
@@ -730,7 +726,7 @@ MonoBehaviour:
           surrounded by a group of older boys.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r041_c03
-    - rid: 9129764570494402571
+    - rid: 9129764570494403298
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r041_c03
@@ -745,7 +741,7 @@ MonoBehaviour:
         text: We just want to know how you got in. Can you answer that simple question?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r042_c03
-    - rid: 9129764570494402572
+    - rid: 9129764570494403299
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r042_c03
@@ -761,7 +757,7 @@ MonoBehaviour:
           just like you all did!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r043_c03
-    - rid: 9129764570494402573
+    - rid: 9129764570494403300
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r043_c03
@@ -777,7 +773,7 @@ MonoBehaviour:
           it to the academy.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r044_c03
-    - rid: 9129764570494402574
+    - rid: 9129764570494403301
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r044_c03
@@ -792,7 +788,7 @@ MonoBehaviour:
         text: You got no magic in you.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r045_c03
-    - rid: 9129764570494402575
+    - rid: 9129764570494403302
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r045_c03
@@ -808,7 +804,7 @@ MonoBehaviour:
           mean I can't be a battle mage.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r046_c03
-    - rid: 9129764570494402576
+    - rid: 9129764570494403303
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r046_c03
@@ -823,7 +819,7 @@ MonoBehaviour:
         text: How about you prove it to us, huh?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r047_c03
-    - rid: 9129764570494402577
+    - rid: 9129764570494403304
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r047_c03
@@ -838,7 +834,7 @@ MonoBehaviour:
         text: I... can't... there's too much pressure...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r048_c03
-    - rid: 9129764570494402578
+    - rid: 9129764570494403305
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r048_c03
@@ -853,7 +849,7 @@ MonoBehaviour:
         text: And I don't have to prove anything to you!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r049_c03
-    - rid: 9129764570494402579
+    - rid: 9129764570494403306
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r049_c03
@@ -869,7 +865,7 @@ MonoBehaviour:
           hands give her away. This is when you decide to step in.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r050_c03
-    - rid: 9129764570494402580
+    - rid: 9129764570494403307
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r050_c03
@@ -897,7 +893,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764570494402581
+    - rid: 9129764570494403308
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r057_c03
@@ -913,7 +909,7 @@ MonoBehaviour:
           in the eye.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r058_c03
-    - rid: 9129764570494402582
+    - rid: 9129764570494403309
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r058_c03
@@ -928,7 +924,7 @@ MonoBehaviour:
         text: You know her?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r059_c03
-    - rid: 9129764570494402583
+    - rid: 9129764570494403310
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r059_c03
@@ -943,7 +939,7 @@ MonoBehaviour:
         text: You answer without hesitation. You can't back down now.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r060_c03
-    - rid: 9129764570494402584
+    - rid: 9129764570494403311
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r060_c03
@@ -958,7 +954,7 @@ MonoBehaviour:
         text: Yes, I do.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r061_c03
-    - rid: 9129764570494402585
+    - rid: 9129764570494403312
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r061_c03
@@ -973,7 +969,7 @@ MonoBehaviour:
         text: She's not who you think she is.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r062_c03
-    - rid: 9129764570494402586
+    - rid: 9129764570494403313
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r062_c03
@@ -989,7 +985,7 @@ MonoBehaviour:
           looks back a couple of times, clearly troubled by a guilty conscience.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r063_c03
-    - rid: 9129764570494402587
+    - rid: 9129764570494403314
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r063_c03
@@ -1004,7 +1000,7 @@ MonoBehaviour:
         text: The girl lets out a deep sigh. Then she extends her hand in your direction.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r064_c03
-    - rid: 9129764570494402588
+    - rid: 9129764570494403315
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r064_c03
@@ -1020,7 +1016,7 @@ MonoBehaviour:
           from, but I didn't think it would happen on my first day at the academy!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r065_c03
-    - rid: 9129764570494402589
+    - rid: 9129764570494403316
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r065_c03
@@ -1036,7 +1032,7 @@ MonoBehaviour:
           again! My name's Yuzuri.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r066_c03
-    - rid: 9129764570494402590
+    - rid: 9129764570494403317
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r066_c03
@@ -1051,7 +1047,7 @@ MonoBehaviour:
         text: You shake Yuzuri's hand and introduce yourself.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r067_c03
-    - rid: 9129764570494402591
+    - rid: 9129764570494403318
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r067_c03
@@ -1067,7 +1063,7 @@ MonoBehaviour:
           one!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r068_c03
-    - rid: 9129764570494402592
+    - rid: 9129764570494403319
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r068_c03
@@ -1082,7 +1078,7 @@ MonoBehaviour:
         text: Suddenly her face lights up with a cheeky smile.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r069_c03
-    - rid: 9129764570494402593
+    - rid: 9129764570494403320
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r069_c03
@@ -1098,7 +1094,7 @@ MonoBehaviour:
           that he's even older than Lumis!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r070_c03
-    - rid: 9129764570494402594
+    - rid: 9129764570494403321
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r070_c03
@@ -1113,7 +1109,7 @@ MonoBehaviour:
         text: Can you believe that? I mean, he looks so young and handsome!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r071_c03
-    - rid: 9129764570494402595
+    - rid: 9129764570494403322
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r071_c03
@@ -1131,7 +1127,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764570494402596
+    - rid: 9129764570494403323
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r074_c03
@@ -1146,7 +1142,7 @@ MonoBehaviour:
         text: Sorry, I love to gossip! I hope this doesn't bother you too much!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r075_c03
-    - rid: 9129764570494402597
+    - rid: 9129764570494403324
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r075_c03
@@ -1162,7 +1158,7 @@ MonoBehaviour:
           time to go to your first class.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r076_c03
-    - rid: 9129764570494402598
+    - rid: 9129764570494403325
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r076_c03
@@ -1178,7 +1174,7 @@ MonoBehaviour:
           late!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r077_c03
-    - rid: 9129764570494402599
+    - rid: 9129764570494403326
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r077_c03
@@ -1194,7 +1190,7 @@ MonoBehaviour:
           is about to begin.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r078_c03
-    - rid: 9129764570494402600
+    - rid: 9129764570494403327
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r078_c03
@@ -1210,7 +1206,7 @@ MonoBehaviour:
           Kensui that I absolutely adore!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r079_c03
-    - rid: 9129764570494402601
+    - rid: 9129764570494403328
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r079_c03
@@ -1225,7 +1221,7 @@ MonoBehaviour:
         text: We're so lucky to have his seminar later today! I can't wait!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r080_c03
-    - rid: 9129764570494402602
+    - rid: 9129764570494403329
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r080_c03
@@ -1241,7 +1237,7 @@ MonoBehaviour:
           looking rather nervous.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r081_c03
-    - rid: 9129764570494402603
+    - rid: 9129764570494403330
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r081_c03
@@ -1256,7 +1252,7 @@ MonoBehaviour:
         text: So as I was saying...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r082_c03
-    - rid: 9129764570494402604
+    - rid: 9129764570494403331
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r082_c03
@@ -1271,7 +1267,7 @@ MonoBehaviour:
         text: Her voice trails off as she looks back again. You feel the urge to...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r083_c03
-    - rid: 9129764570494402605
+    - rid: 9129764570494403332
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r083_c03
@@ -1289,7 +1285,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764570494402606
+    - rid: 9129764570494403333
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r086_c03
@@ -1304,7 +1300,7 @@ MonoBehaviour:
         text: Her lips curl into a weak smile as she starts walking again.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r087_c03
-    - rid: 9129764570494402607
+    - rid: 9129764570494403334
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r087_c03
@@ -1320,7 +1316,7 @@ MonoBehaviour:
           It's almost like her shadow has peeled away and vanished into the unknown.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r088_c03
-    - rid: 9129764570494402608
+    - rid: 9129764570494403335
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r088_c03
@@ -1336,7 +1332,7 @@ MonoBehaviour:
           her shadow right where it's supposed to be.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r089_c03
-    - rid: 9129764570494402609
+    - rid: 9129764570494403336
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r089_c03
@@ -1351,7 +1347,7 @@ MonoBehaviour:
         text: I must be imagining things. I need to start going to bed earlier.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r091_c03
-    - rid: 9129764570494402610
+    - rid: 9129764570494403337
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r091_c03
@@ -1366,7 +1362,7 @@ MonoBehaviour:
         text: Shinrai is standing in front of a long chalkboard with his eyes closed.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r092_c03
-    - rid: 9129764570494402611
+    - rid: 9129764570494403338
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r092_c03
@@ -1381,7 +1377,7 @@ MonoBehaviour:
         text: I wonder what he's thinking about.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r093_c03
-    - rid: 9129764570494402612
+    - rid: 9129764570494403339
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r093_c03
@@ -1396,7 +1392,7 @@ MonoBehaviour:
         text: Yuzuri whispers to you as if she's just read your mind.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r094_c03
-    - rid: 9129764570494402613
+    - rid: 9129764570494403340
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r094_c03
@@ -1412,7 +1408,7 @@ MonoBehaviour:
           nothing breaks his concentration during his lectures.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r095_c03
-    - rid: 9129764570494402614
+    - rid: 9129764570494403341
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r095_c03
@@ -1428,7 +1424,7 @@ MonoBehaviour:
           fill up with students.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r096_c03
-    - rid: 9129764570494402615
+    - rid: 9129764570494403342
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r096_c03
@@ -1444,7 +1440,7 @@ MonoBehaviour:
           students to fall silent.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r097_c03
-    - rid: 9129764570494402616
+    - rid: 9129764570494403343
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r097_c03
@@ -1459,7 +1455,7 @@ MonoBehaviour:
         text: Welcome to the Art of Magic Strategy.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r098_c03
-    - rid: 9129764570494402617
+    - rid: 9129764570494403344
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r098_c03
@@ -1475,7 +1471,7 @@ MonoBehaviour:
           to every magician.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r099_c03
-    - rid: 9129764570494402618
+    - rid: 9129764570494403345
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r099_c03
@@ -1490,7 +1486,7 @@ MonoBehaviour:
         text: Did he forget to say hello?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r100_c03
-    - rid: 9129764570494402619
+    - rid: 9129764570494403346
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r100_c03
@@ -1505,7 +1501,7 @@ MonoBehaviour:
         text: Yuzuri murmurs to herself so quietly you can barely make out the words.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r101_c03
-    - rid: 9129764570494402620
+    - rid: 9129764570494403347
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r101_c03
@@ -1521,7 +1517,7 @@ MonoBehaviour:
           direction, his gaze cold as ice.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r102_c03
-    - rid: 9129764570494402621
+    - rid: 9129764570494403348
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r102_c03
@@ -1536,7 +1532,7 @@ MonoBehaviour:
         text: In fact, one day it could even save your life.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r103_c03
-    - rid: 9129764570494402622
+    - rid: 9129764570494403349
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r103_c03
@@ -1551,7 +1547,7 @@ MonoBehaviour:
         text: He's looking at us. I have to do something!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r104_c03
-    - rid: 9129764570494402623
+    - rid: 9129764570494403350
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r104_c03
@@ -1579,7 +1575,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764570494402624
+    - rid: 9129764570494403351
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r113_c03
@@ -1594,7 +1590,7 @@ MonoBehaviour:
         text: Shinrai addresses his audience.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r114_c03
-    - rid: 9129764570494402625
+    - rid: 9129764570494403352
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r114_c03
@@ -1609,7 +1605,7 @@ MonoBehaviour:
         text: I suggest we start practicing.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r115_c03
-    - rid: 9129764570494402626
+    - rid: 9129764570494403353
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r115_c03
@@ -1625,7 +1621,7 @@ MonoBehaviour:
           as long as you maintain concentration.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r116_c03
-    - rid: 9129764570494402627
+    - rid: 9129764570494403354
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r116_c03
@@ -1640,7 +1636,7 @@ MonoBehaviour:
         text: You hear an excited murmur in the audience.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r117_c03
-    - rid: 9129764570494402628
+    - rid: 9129764570494403355
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r117_c03
@@ -1655,7 +1651,7 @@ MonoBehaviour:
         text: I am going to show you just once.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r118_c03
-    - rid: 9129764570494402629
+    - rid: 9129764570494403356
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r118_c03
@@ -1671,7 +1667,7 @@ MonoBehaviour:
           with his hands.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r119_c03
-    - rid: 9129764570494402630
+    - rid: 9129764570494403357
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r119_c03
@@ -1686,7 +1682,7 @@ MonoBehaviour:
         text: Now, the important part. Master up your concentration and become unseen.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r120_c03
-    - rid: 9129764570494402631
+    - rid: 9129764570494403358
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r120_c03
@@ -1701,7 +1697,7 @@ MonoBehaviour:
         text: He disappears but you can still hear his voice.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r121_c03
-    - rid: 9129764570494402632
+    - rid: 9129764570494403359
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r121_c03
@@ -1716,7 +1712,7 @@ MonoBehaviour:
         text: You may now start to practice.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r122_c03
-    - rid: 9129764570494402633
+    - rid: 9129764570494403360
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r122_c03
@@ -1732,7 +1728,7 @@ MonoBehaviour:
           the spell.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r123_c03
-    - rid: 9129764570494402634
+    - rid: 9129764570494403361
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r123_c03
@@ -1748,7 +1744,7 @@ MonoBehaviour:
           demonstrated to you earlier.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r124_c03
-    - rid: 9129764570494402635
+    - rid: 9129764570494403362
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r124_c03
@@ -1763,7 +1759,7 @@ MonoBehaviour:
         text: Now, focus!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r125_c03
-    - rid: 9129764570494402636
+    - rid: 9129764570494403363
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r125_c03
@@ -1779,7 +1775,7 @@ MonoBehaviour:
           to become invisible.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r126_c03
-    - rid: 9129764570494402637
+    - rid: 9129764570494403364
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r126_c03
@@ -1794,7 +1790,7 @@ MonoBehaviour:
         text: A moment later you hear Yuzuri's voice. She sounds very impressed.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r127_c03
-    - rid: 9129764570494402638
+    - rid: 9129764570494403365
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r127_c03
@@ -1809,7 +1805,7 @@ MonoBehaviour:
         text: You did it! I can't see you! I can't believe you really did it!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r128_c03
-    - rid: 9129764570494402639
+    - rid: 9129764570494403366
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r128_c03
@@ -1825,7 +1821,7 @@ MonoBehaviour:
           right at you.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r129_c03
-    - rid: 9129764570494402640
+    - rid: 9129764570494403367
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r129_c03
@@ -1841,7 +1837,7 @@ MonoBehaviour:
           gone!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r130_c03
-    - rid: 9129764570494402641
+    - rid: 9129764570494403368
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r130_c03
@@ -1856,7 +1852,7 @@ MonoBehaviour:
         text: Thanks! What about you, Yuzuri? Have you tried the invisibility spell?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r131_c03
-    - rid: 9129764570494402642
+    - rid: 9129764570494403369
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r131_c03
@@ -1871,7 +1867,7 @@ MonoBehaviour:
         text: Yuzuri lowers her eyes and shakes her head in dismay.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r132_c03
-    - rid: 9129764570494402643
+    - rid: 9129764570494403370
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r132_c03
@@ -1887,7 +1883,7 @@ MonoBehaviour:
           day for magic...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r133_c03
-    - rid: 9129764570494402644
+    - rid: 9129764570494403371
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r133_c03
@@ -1905,7 +1901,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764570494402645
+    - rid: 9129764570494403372
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r137_c03
@@ -1921,7 +1917,7 @@ MonoBehaviour:
           her eyes and...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r138_c03
-    - rid: 9129764570494402646
+    - rid: 9129764570494403373
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r138_c03
@@ -1936,7 +1932,7 @@ MonoBehaviour:
         text: Nothing happens.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r139_c03
-    - rid: 9129764570494402647
+    - rid: 9129764570494403374
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r139_c03
@@ -1952,7 +1948,7 @@ MonoBehaviour:
           ...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r140_c03
-    - rid: 9129764570494402648
+    - rid: 9129764570494403375
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r140_c03
@@ -1967,7 +1963,7 @@ MonoBehaviour:
         text: You have enough magic energy to cast this spell.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r141_c03
-    - rid: 9129764570494402649
+    - rid: 9129764570494403376
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r141_c03
@@ -1983,7 +1979,7 @@ MonoBehaviour:
           reflection of cool mind and confidence.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r142_c03
-    - rid: 9129764570494402650
+    - rid: 9129764570494403377
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r142_c03
@@ -1998,7 +1994,7 @@ MonoBehaviour:
         text: What you lack, however, is concentration.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r143_c03
-    - rid: 9129764570494402651
+    - rid: 9129764570494403378
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r143_c03
@@ -2013,7 +2009,7 @@ MonoBehaviour:
         text: Yuzuri's eyes widen as she looks at the dean of the Order of Labyrinth.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r144_c03
-    - rid: 9129764570494402652
+    - rid: 9129764570494403379
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r144_c03
@@ -2028,7 +2024,7 @@ MonoBehaviour:
         text: You mean...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r145_c03
-    - rid: 9129764570494402653
+    - rid: 9129764570494403380
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r145_c03
@@ -2043,7 +2039,7 @@ MonoBehaviour:
         text: Your mind is elsewhere and that is not good enough.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r146_c03
-    - rid: 9129764570494402654
+    - rid: 9129764570494403381
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r146_c03
@@ -2059,7 +2055,7 @@ MonoBehaviour:
           allowing them to control you.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r147_c03
-    - rid: 9129764570494402655
+    - rid: 9129764570494403382
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r147_c03
@@ -2074,7 +2070,7 @@ MonoBehaviour:
         text: Yuzuri looks down, her cheeks flushing as she tries to speak.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r148_c03
-    - rid: 9129764570494402656
+    - rid: 9129764570494403383
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r148_c03
@@ -2089,7 +2085,7 @@ MonoBehaviour:
         text: I... yes, Teacher. I-I understand...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r149_c03
-    - rid: 9129764570494402657
+    - rid: 9129764570494403384
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r149_c03
@@ -2105,7 +2101,7 @@ MonoBehaviour:
           to even speak!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r150_c03
-    - rid: 9129764570494402658
+    - rid: 9129764570494403385
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r150_c03
@@ -2120,7 +2116,7 @@ MonoBehaviour:
         text: I have to help her.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r151_c03
-    - rid: 9129764570494402659
+    - rid: 9129764570494403386
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r151_c03
@@ -2135,7 +2131,7 @@ MonoBehaviour:
         text: PAID CHOICE
         addToLog: 1
         nextStepId: vnchapter_1_kensui_choice_r151_c03
-    - rid: 9129764570494402660
+    - rid: 9129764570494403387
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_choice_r151_c03
@@ -2153,7 +2149,7 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-    - rid: 9129764570494402661
+    - rid: 9129764570494403388
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r179_c03
@@ -2169,7 +2165,7 @@ MonoBehaviour:
           is no anger or discontent in it.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r180_c03
-    - rid: 9129764570494402662
+    - rid: 9129764570494403389
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r180_c03
@@ -2184,7 +2180,7 @@ MonoBehaviour:
         text: There is something I would like you to understand.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r181_c03
-    - rid: 9129764570494402663
+    - rid: 9129764570494403390
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r181_c03
@@ -2200,7 +2196,7 @@ MonoBehaviour:
           from anything that is troubling them during their practice.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r182_c03
-    - rid: 9129764570494402664
+    - rid: 9129764570494403391
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r182_c03
@@ -2215,7 +2211,7 @@ MonoBehaviour:
         text: This is how you become invincible.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r183_c03
-    - rid: 9129764570494402665
+    - rid: 9129764570494403392
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r183_c03
@@ -2231,7 +2227,7 @@ MonoBehaviour:
           before you get a chance to reply.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r184_c03
-    - rid: 9129764570494402666
+    - rid: 9129764570494403393
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r184_c03
@@ -2246,7 +2242,7 @@ MonoBehaviour:
         text: Yuzuri looks at you, her eyes full of gratitude.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r185_c03
-    - rid: 9129764570494402667
+    - rid: 9129764570494403394
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r185_c03
@@ -2262,7 +2258,7 @@ MonoBehaviour:
           say a word.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r186_c03
-    - rid: 9129764570494402668
+    - rid: 9129764570494403395
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r186_c03
@@ -2278,7 +2274,7 @@ MonoBehaviour:
           us well.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r187_c03
-    - rid: 9129764570494402669
+    - rid: 9129764570494403396
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r187_c03
@@ -2293,7 +2289,7 @@ MonoBehaviour:
         text: Yuzuri lets out a gentle laugh and you smile too.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r188_c03
-    - rid: 9129764570494402670
+    - rid: 9129764570494403397
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r188_c03
@@ -2308,7 +2304,7 @@ MonoBehaviour:
         text: You lock eyes with her and... can't believe what you're seeing.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r189_c03
-    - rid: 9129764570494402671
+    - rid: 9129764570494403398
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r189_c03
@@ -2324,7 +2320,7 @@ MonoBehaviour:
           features aren't visible now, as everything\u2019s just a shadow."
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r190_c03
-    - rid: 9129764570494402672
+    - rid: 9129764570494403399
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r190_c03
@@ -2339,7 +2335,7 @@ MonoBehaviour:
         text: "You cover your mouth so you don\u2019t scream."
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r191_c03
-    - rid: 9129764570494402673
+    - rid: 9129764570494403400
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r191_c03
@@ -2354,7 +2350,7 @@ MonoBehaviour:
         text: What is this? Is this real? Should I call for help?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_end
-    - rid: 9129764570494402674
+    - rid: 9129764570494403401
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r152_c04
@@ -2370,7 +2366,7 @@ MonoBehaviour:
           from Yuzuri.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r153_c04
-    - rid: 9129764570494402675
+    - rid: 9129764570494403402
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r153_c04
@@ -2385,7 +2381,7 @@ MonoBehaviour:
         text: To be in control of our thoughts...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r154_c04
-    - rid: 9129764570494402676
+    - rid: 9129764570494403403
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r154_c04
@@ -2401,7 +2397,7 @@ MonoBehaviour:
           other people are thinking?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r155_c04
-    - rid: 9129764570494402677
+    - rid: 9129764570494403404
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r155_c04
@@ -2417,7 +2413,7 @@ MonoBehaviour:
           in relief.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r156_c04
-    - rid: 9129764570494402678
+    - rid: 9129764570494403405
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r156_c04
@@ -2432,7 +2428,7 @@ MonoBehaviour:
         text: Why do you ask that?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r157_c04
-    - rid: 9129764570494402679
+    - rid: 9129764570494403406
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r157_c04
@@ -2447,7 +2443,7 @@ MonoBehaviour:
         text: I think I got him interested. Well, sort of. Now, to the good part.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r158_c04
-    - rid: 9129764570494402680
+    - rid: 9129764570494403407
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r158_c04
@@ -2462,7 +2458,7 @@ MonoBehaviour:
         text: Your meet Shinrai's piercing gaze.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r159_c04
-    - rid: 9129764570494402681
+    - rid: 9129764570494403408
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r159_c04
@@ -2478,7 +2474,7 @@ MonoBehaviour:
           level.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r160_c04
-    - rid: 9129764570494402682
+    - rid: 9129764570494403409
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r160_c04
@@ -2494,7 +2490,7 @@ MonoBehaviour:
           at you.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r161_c04
-    - rid: 9129764570494402683
+    - rid: 9129764570494403410
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r161_c04
@@ -2509,7 +2505,7 @@ MonoBehaviour:
         text: Are you asking me for a challenge?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r162_c04
-    - rid: 9129764570494402684
+    - rid: 9129764570494403411
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r162_c04
@@ -2524,7 +2520,7 @@ MonoBehaviour:
         text: You nod, trying your best to hide how worried you are.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r163_c04
-    - rid: 9129764570494402685
+    - rid: 9129764570494403412
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r163_c04
@@ -2539,7 +2535,7 @@ MonoBehaviour:
         text: Very well.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r164_c04
-    - rid: 9129764570494402686
+    - rid: 9129764570494403413
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r164_c04
@@ -2555,7 +2551,7 @@ MonoBehaviour:
           the only thing you can see. Or, rather, the only thing you care to see.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r165_c04
-    - rid: 9129764570494402687
+    - rid: 9129764570494403414
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r165_c04
@@ -2570,7 +2566,7 @@ MonoBehaviour:
         text: His voice echoes in your mind.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r166_c04
-    - rid: 9129764570494402688
+    - rid: 9129764570494403415
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r166_c04
@@ -2585,7 +2581,7 @@ MonoBehaviour:
         text: I'll let you see into my mind.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r167_c04
-    - rid: 9129764570494402689
+    - rid: 9129764570494403416
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r167_c04
@@ -2600,7 +2596,7 @@ MonoBehaviour:
         text: Look me in the eyes and quiet your thoughts.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r168_c04
-    - rid: 9129764570494402690
+    - rid: 9129764570494403417
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r168_c04
@@ -2615,7 +2611,7 @@ MonoBehaviour:
         text: You take a deep breath, focusing on Shinrai's gaze.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r169_c04
-    - rid: 9129764570494402691
+    - rid: 9129764570494403418
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r169_c04
@@ -2630,7 +2626,7 @@ MonoBehaviour:
         text: Suddenly you're standing on the balcony of Shinrai's office.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r170_c04
-    - rid: 9129764570494402692
+    - rid: 9129764570494403419
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r170_c04
@@ -2646,7 +2642,7 @@ MonoBehaviour:
           blanketed in snow.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r171_c04
-    - rid: 9129764570494402693
+    - rid: 9129764570494403420
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r171_c04
@@ -2661,7 +2657,7 @@ MonoBehaviour:
         text: It is snowing but you don't feel the cold.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r172_c04
-    - rid: 9129764570494402694
+    - rid: 9129764570494403421
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r172_c04
@@ -2676,7 +2672,7 @@ MonoBehaviour:
         text: It is so calm here in winter, like the whole world is asleep.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r173_c04
-    - rid: 9129764570494402695
+    - rid: 9129764570494403422
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r173_c04
@@ -2692,7 +2688,7 @@ MonoBehaviour:
           to...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r174_c04
-    - rid: 9129764570494402696
+    - rid: 9129764570494403423
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r174_c04
@@ -2707,7 +2703,7 @@ MonoBehaviour:
         text: Be careful. The blizzard is coming.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r175_c04
-    - rid: 9129764570494402697
+    - rid: 9129764570494403424
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r175_c04
@@ -2723,7 +2719,7 @@ MonoBehaviour:
           close your eyes involuntarily.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r176_c04
-    - rid: 9129764570494402698
+    - rid: 9129764570494403425
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r176_c04
@@ -2738,7 +2734,7 @@ MonoBehaviour:
         text: When you open them again, you're back in the classroom.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r177_c04
-    - rid: 9129764570494402699
+    - rid: 9129764570494403426
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r177_c04
@@ -2753,7 +2749,7 @@ MonoBehaviour:
         text: Shinrai acknowledges you with a cold nod.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r178_c04
-    - rid: 9129764570494402700
+    - rid: 9129764570494403427
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r178_c04
@@ -2768,7 +2764,7 @@ MonoBehaviour:
         text: I hope you are satisfied.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r179_c03
-    - rid: 9129764570494402701
+    - rid: 9129764570494403428
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r153_c05
@@ -2783,7 +2779,7 @@ MonoBehaviour:
         text: Teacher, I think she got your message.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r154_c05
-    - rid: 9129764570494402702
+    - rid: 9129764570494403429
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r154_c05
@@ -2798,7 +2794,7 @@ MonoBehaviour:
         text: In fact, I think Yuzuri might need a moment if that's okay.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r155_c05
-    - rid: 9129764570494402703
+    - rid: 9129764570494403430
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r155_c05
@@ -2813,7 +2809,7 @@ MonoBehaviour:
         text: Shinrai raises an eyebrow.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r156_c05
-    - rid: 9129764570494402704
+    - rid: 9129764570494403431
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r156_c05
@@ -2828,7 +2824,7 @@ MonoBehaviour:
         text: Are you suggesting that I am being overly assertive?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r158_c05
-    - rid: 9129764570494402705
+    - rid: 9129764570494403432
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r158_c05
@@ -2843,7 +2839,7 @@ MonoBehaviour:
         text: Both you and Yuzuri shake your heads vigorously.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r159_c05
-    - rid: 9129764570494402706
+    - rid: 9129764570494403433
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r159_c05
@@ -2858,7 +2854,7 @@ MonoBehaviour:
         text: That's not what I...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r179_c03
-    - rid: 9129764570494402707
+    - rid: 9129764570494403434
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r134_c04
@@ -2873,7 +2869,7 @@ MonoBehaviour:
         text: It's okay, Yuzuri! You're doing fine.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r135_c04
-    - rid: 9129764570494402708
+    - rid: 9129764570494403435
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r135_c04
@@ -2889,7 +2885,7 @@ MonoBehaviour:
           you can't do them.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r136_c04
-    - rid: 9129764570494402709
+    - rid: 9129764570494403436
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r136_c04
@@ -2905,7 +2901,7 @@ MonoBehaviour:
           try again!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r137_c03
-    - rid: 9129764570494402710
+    - rid: 9129764570494403437
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r134_c05
@@ -2920,7 +2916,7 @@ MonoBehaviour:
         text: How about we give it another go, but this time we do it together!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r135_c05
-    - rid: 9129764570494402711
+    - rid: 9129764570494403438
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r135_c05
@@ -2936,7 +2932,7 @@ MonoBehaviour:
           she smiles at you.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r136_c05
-    - rid: 9129764570494402712
+    - rid: 9129764570494403439
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r136_c05
@@ -2951,7 +2947,7 @@ MonoBehaviour:
         text: That's very kind of you. Okay, I think I'm ready to try again.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r137_c03
-    - rid: 9129764570494402713
+    - rid: 9129764570494403440
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r105_c04
@@ -2966,7 +2962,7 @@ MonoBehaviour:
         text: You throw your hand in the air and calmly meet Shinrai's gaze.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r106_c04
-    - rid: 9129764570494402714
+    - rid: 9129764570494403441
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r106_c04
@@ -2982,7 +2978,7 @@ MonoBehaviour:
           or our magical energy?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r107_c04
-    - rid: 9129764570494402715
+    - rid: 9129764570494403442
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r107_c04
@@ -2997,7 +2993,7 @@ MonoBehaviour:
         text: Shinrai's eyes glisten in the dark of the classroom.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r108_c04
-    - rid: 9129764570494402716
+    - rid: 9129764570494403443
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r108_c04
@@ -3012,7 +3008,7 @@ MonoBehaviour:
         text: This is, indeed, a good question.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r109_c04
-    - rid: 9129764570494402717
+    - rid: 9129764570494403444
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r109_c04
@@ -3028,7 +3024,7 @@ MonoBehaviour:
           at you?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r111_c04
-    - rid: 9129764570494402718
+    - rid: 9129764570494403445
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r111_c04
@@ -3043,7 +3039,7 @@ MonoBehaviour:
         text: And the answer is both.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r112_c04
-    - rid: 9129764570494402719
+    - rid: 9129764570494403446
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r112_c04
@@ -3058,7 +3054,7 @@ MonoBehaviour:
         text: And so much more than that.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r113_c03
-    - rid: 9129764570494402720
+    - rid: 9129764570494403447
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r105_c05
@@ -3073,7 +3069,7 @@ MonoBehaviour:
         text: You flash an awkward smile at Shinrai.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r106_c05
-    - rid: 9129764570494402721
+    - rid: 9129764570494403448
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r106_c05
@@ -3088,7 +3084,7 @@ MonoBehaviour:
         text: "Save our lives? That\u2019s just a hypothetical, right?"
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r107_c05
-    - rid: 9129764570494402722
+    - rid: 9129764570494403449
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r107_c05
@@ -3104,7 +3100,7 @@ MonoBehaviour:
           right in the eyes.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r108_c05
-    - rid: 9129764570494402723
+    - rid: 9129764570494403450
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r108_c05
@@ -3120,7 +3116,7 @@ MonoBehaviour:
           today may easily become part of our reality tomorrow.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r109_c05
-    - rid: 9129764570494402724
+    - rid: 9129764570494403451
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r109_c05
@@ -3136,7 +3132,7 @@ MonoBehaviour:
           to each other.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r111_c05
-    - rid: 9129764570494402725
+    - rid: 9129764570494403452
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r111_c05
@@ -3151,7 +3147,7 @@ MonoBehaviour:
         text: The sooner you learn it, the better.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r113_c03
-    - rid: 9129764570494402726
+    - rid: 9129764570494403453
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r105_c06
@@ -3167,7 +3163,7 @@ MonoBehaviour:
           in this lecture so far.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r106_c06
-    - rid: 9129764570494402727
+    - rid: 9129764570494403454
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r106_c06
@@ -3182,7 +3178,7 @@ MonoBehaviour:
         text: A magician's ability to focus...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r107_c06
-    - rid: 9129764570494402728
+    - rid: 9129764570494403455
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r107_c06
@@ -3198,7 +3194,7 @@ MonoBehaviour:
           gaze to meet his.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r108_c06
-    - rid: 9129764570494402729
+    - rid: 9129764570494403456
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r108_c06
@@ -3213,7 +3209,7 @@ MonoBehaviour:
         text: There is a more efficient way to do this.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r109_c06
-    - rid: 9129764570494402730
+    - rid: 9129764570494403457
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r109_c06
@@ -3229,7 +3225,7 @@ MonoBehaviour:
           out of your grip.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r110_c06
-    - rid: 9129764570494402731
+    - rid: 9129764570494403458
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r110_c06
@@ -3245,7 +3241,7 @@ MonoBehaviour:
           by itself.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r113_c03
-    - rid: 9129764570494402732
+    - rid: 9129764570494403459
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r084_c04
@@ -3261,7 +3257,7 @@ MonoBehaviour:
           now.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r085_c04
-    - rid: 9129764570494402733
+    - rid: 9129764570494403460
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r085_c04
@@ -3277,7 +3273,7 @@ MonoBehaviour:
           I really appreciate that!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r086_c03
-    - rid: 9129764570494402734
+    - rid: 9129764570494403461
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r084_c05
@@ -3292,7 +3288,7 @@ MonoBehaviour:
         text: Are you okay, Yuzuri? You look kind of nervous.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r085_c05
-    - rid: 9129764570494402735
+    - rid: 9129764570494403462
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r085_c05
@@ -3308,7 +3304,7 @@ MonoBehaviour:
           dorm. But I was wrong.  No biggie.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r086_c03
-    - rid: 9129764570494402736
+    - rid: 9129764570494403463
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r072_c04
@@ -3323,7 +3319,7 @@ MonoBehaviour:
         text: Yuzuri drops her voice to a whisper.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r073_c04
-    - rid: 9129764570494402737
+    - rid: 9129764570494403464
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r073_c04
@@ -3340,7 +3336,7 @@ MonoBehaviour:
           astral projection of himself in his place!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r074_c03
-    - rid: 9129764570494402738
+    - rid: 9129764570494403465
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r072_c05
@@ -3355,7 +3351,7 @@ MonoBehaviour:
         text: You look mildly annoyed, so Yuzuri cuts herself off.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r073_c05
-    - rid: 9129764570494402739
+    - rid: 9129764570494403466
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r073_c05
@@ -3370,7 +3366,7 @@ MonoBehaviour:
         text: Okay. No more Teacher Kensui talk. Got it.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r074_c03
-    - rid: 9129764570494402740
+    - rid: 9129764570494403467
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r051_c04
@@ -3386,7 +3382,7 @@ MonoBehaviour:
           they come from goes against the academy\u2019s rules."
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r053_c04
-    - rid: 9129764570494402741
+    - rid: 9129764570494403468
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r053_c04
@@ -3402,7 +3398,7 @@ MonoBehaviour:
           talks.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r054_c04
-    - rid: 9129764570494402742
+    - rid: 9129764570494403469
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r054_c04
@@ -3417,7 +3413,7 @@ MonoBehaviour:
         text: Rule number 201 of the student code of honor to be precise...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r055_c04
-    - rid: 9129764570494402743
+    - rid: 9129764570494403470
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r055_c04
@@ -3432,7 +3428,7 @@ MonoBehaviour:
         text: Shut up, Kenji!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r056_c04
-    - rid: 9129764570494402744
+    - rid: 9129764570494403471
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r056_c04
@@ -3448,7 +3444,7 @@ MonoBehaviour:
           he'd get me expelled!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r057_c03
-    - rid: 9129764570494402745
+    - rid: 9129764570494403472
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r051_c05
@@ -3464,7 +3460,7 @@ MonoBehaviour:
           shaking?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r053_c05
-    - rid: 9129764570494402746
+    - rid: 9129764570494403473
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r053_c05
@@ -3480,7 +3476,7 @@ MonoBehaviour:
           talks.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r054_c05
-    - rid: 9129764570494402747
+    - rid: 9129764570494403474
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r054_c05
@@ -3495,7 +3491,7 @@ MonoBehaviour:
         text: What the heck did we do? We only asked her a couple of questions!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r055_c05
-    - rid: 9129764570494402748
+    - rid: 9129764570494403475
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r055_c05
@@ -3510,7 +3506,7 @@ MonoBehaviour:
         text: Shut up, Kenji. You owe her no explanation.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r056_c05
-    - rid: 9129764570494402749
+    - rid: 9129764570494403476
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r056_c05
@@ -3525,7 +3521,7 @@ MonoBehaviour:
         text: Okay then. I guess, you're right...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r057_c03
-    - rid: 9129764570494402750
+    - rid: 9129764570494403477
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r051_c06
@@ -3541,7 +3537,7 @@ MonoBehaviour:
           bullying their younger coursemate.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r052_c06
-    - rid: 9129764570494402751
+    - rid: 9129764570494403478
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r052_c06
@@ -3556,7 +3552,7 @@ MonoBehaviour:
         text: I mean, what does that make them?!
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r053_c06
-    - rid: 9129764570494402752
+    - rid: 9129764570494403479
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r053_c06
@@ -3572,7 +3568,7 @@ MonoBehaviour:
           talks.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r054_c06
-    - rid: 9129764570494402753
+    - rid: 9129764570494403480
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r054_c06
@@ -3587,7 +3583,7 @@ MonoBehaviour:
         text: Idiots?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r055_c06
-    - rid: 9129764570494402754
+    - rid: 9129764570494403481
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r055_c06
@@ -3602,7 +3598,7 @@ MonoBehaviour:
         text: Shut up, Kenji! She's just messing with us.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r056_c06
-    - rid: 9129764570494402755
+    - rid: 9129764570494403482
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r056_c06
@@ -3617,7 +3613,7 @@ MonoBehaviour:
         text: She's kind of right though...
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r057_c03
-    - rid: 9129764570494402756
+    - rid: 9129764570494403483
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r054_c07
@@ -3632,7 +3628,7 @@ MonoBehaviour:
         text: Kenji
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r055_c07
-    - rid: 9129764570494402757
+    - rid: 9129764570494403484
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r055_c07
@@ -3647,7 +3643,7 @@ MonoBehaviour:
         text: Sota
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r056_c07
-    - rid: 9129764570494402758
+    - rid: 9129764570494403485
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r056_c07
@@ -3662,7 +3658,7 @@ MonoBehaviour:
         text: Kenji
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r057_c03
-    - rid: 9129764570494402759
+    - rid: 9129764570494403486
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r023_c04
@@ -3677,8 +3673,38 @@ MonoBehaviour:
         text: Teacher, are you talking about rumors of demons showing up in a town
           not far from the academy?
         addToLog: 1
-        nextStepId: vnchapter_1_kensui_line_r024_c03
-    - rid: 9129764570494402760
+        nextStepId: vnchapter_1_kensui_line_r024_c04
+    - rid: 9129764570494403487
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r024_c04
+        label: 'R24 C4 Narrative: Kensui lets out a soft laugh.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Narrative
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui lets out a soft laugh.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r025_c04
+    - rid: 9129764570494403488
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r025_c04
+        label: "R25 C4 Kensui: I am indeed. You are very percep\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: I am indeed. You are very perceptive, dear soul.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r026_c03
+    - rid: 9129764570494403489
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r023_c05
@@ -3693,8 +3719,39 @@ MonoBehaviour:
         text: I'm sure whatever's heading our way, we'll be able to handle it, won't
           we Teacher?
         addToLog: 1
-        nextStepId: vnchapter_1_kensui_line_r024_c03
-    - rid: 9129764570494402761
+        nextStepId: vnchapter_1_kensui_line_r024_c05
+    - rid: 9129764570494403490
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r024_c05
+        label: 'R24 C5 Narrative: Kensui lets out a soft laugh.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Narrative
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kensui lets out a soft laugh.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r025_c05
+    - rid: 9129764570494403491
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_1_kensui_line_r025_c05
+        label: "R25 C5 Kensui: I like your attitude, dear soul!\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kensui
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: I like your attitude, dear soul! And yes, you are absolutely right.
+          Source willing, we will handle everything in its own time.
+        addToLog: 1
+        nextStepId: vnchapter_1_kensui_line_r026_c03
+    - rid: 9129764570494403492
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r010_c04
@@ -3709,7 +3766,7 @@ MonoBehaviour:
         text: Thank you, Teacher. I really appreciate your warm welcome.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r011_c04
-    - rid: 9129764570494402762
+    - rid: 9129764570494403493
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r011_c04
@@ -3724,7 +3781,7 @@ MonoBehaviour:
         text: You bow gracefully to your mentor and he smiles at you warmly.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r012_c04
-    - rid: 9129764570494402763
+    - rid: 9129764570494403494
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r012_c04
@@ -3740,7 +3797,7 @@ MonoBehaviour:
           but it is our students who breathe life into it.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r013_c04
-    - rid: 9129764570494402764
+    - rid: 9129764570494403495
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r013_c04
@@ -3756,7 +3813,7 @@ MonoBehaviour:
           while you're learning.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r016_c03
-    - rid: 9129764570494402765
+    - rid: 9129764570494403496
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r010_c05
@@ -3771,7 +3828,7 @@ MonoBehaviour:
         text: Can you tell me more about being a student of Temple of the Everveil?
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r011_c05
-    - rid: 9129764570494402766
+    - rid: 9129764570494403497
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r011_c05
@@ -3786,7 +3843,7 @@ MonoBehaviour:
         text: Kensui nods at you calmly.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r012_c05
-    - rid: 9129764570494402767
+    - rid: 9129764570494403498
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r012_c05
@@ -3801,7 +3858,7 @@ MonoBehaviour:
         text: With great pleasure. Temple of the Everveil is Chronosoul's inner sanctuary.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r013_c05
-    - rid: 9129764570494402768
+    - rid: 9129764570494403499
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r013_c05
@@ -3817,7 +3874,7 @@ MonoBehaviour:
           help maintain the balance between the worlds.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r014_c05
-    - rid: 9129764570494402769
+    - rid: 9129764570494403500
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_line_r014_c05
@@ -3833,41 +3890,10 @@ MonoBehaviour:
           may turn to us when seeking spiritual guidance.
         addToLog: 1
         nextStepId: vnchapter_1_kensui_line_r016_c03
-    - rid: 9129764570494402770
+    - rid: 9129764570494403501
       type: {class: VNEndStep, ns: VN, asm: Assembly-CSharp}
       data:
         id: vnchapter_1_kensui_end
         label: END
         disableSkip: 0
         stopAuto: 0
-    - rid: 9129764570494403263
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: 98f1a2aa6cc54834aee2b66ca4cdd558
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764570494403264
-        nextStepId: 0685e045769c41a19a73644e0a04a440
-    - rid: 9129764570494403264
-      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        backgroundId: EXT. KENSUI'S ZEN GARDEN - DAY
-        crossfadeSeconds: 0.25
-    - rid: 9129764570494403265
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: 0685e045769c41a19a73644e0a04a440
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764570494403267
-        nextStepId: 
-    - rid: 9129764570494403267
-      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        musicId: Kensui_intro
-        fadeInSeconds: 0.5
-        loop: 1
