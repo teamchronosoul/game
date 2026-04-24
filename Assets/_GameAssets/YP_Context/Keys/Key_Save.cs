@@ -10,6 +10,8 @@ namespace YP
         public static string first_time => "ft";
         public static string sound => "s";
         public static string music => "m";
+        public static string vibration => "v";
+
     }
 }
 

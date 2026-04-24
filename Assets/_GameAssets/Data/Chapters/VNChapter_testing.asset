@@ -1368,10 +1368,10 @@ MonoBehaviour:
         label: 
         disableSkip: 0
         stopAuto: 0
-        speakerId: Hinato
+        speakerId: ???
         pose: 0
         emotion: 0
-        showSpeakerName: 0
+        showSpeakerName: 1
         sfxId: 
         text: Oh, I love that old trick with the petals! Kaitora's really just a
           hopeless romantic at heart.

@@ -12,7 +12,6 @@ namespace VN.UI
         [SerializeField] private RectTransform contentRoot;
         [SerializeField] private VNLogEntryItemUGUI entryPrefab;
         [SerializeField] private bool scrollToLatestOnShow = true;
-        [SerializeField] private float extraHeightPerEntry = 300f;
         [SerializeField] private GameObject blur;
         
         private readonly List<VNLogEntryItemUGUI> _spawned = new();

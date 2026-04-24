@@ -197,3 +197,7 @@ MonoBehaviour:
     - pose: 0
       emotion: 3
       sprite: {fileID: 21300000, guid: 6debd29b0c55917499855208e838cdd8, type: 3}
+  - id: ???
+    displayName: ???
+    defaultScreenSlot: 0
+    sprites: []

@@ -53,6 +53,10 @@ namespace VN.UI
         private System.Action _typewriterFinishedHandler;
         private System.Action<Vector2> _tapFeedbackHandler;
 
+        private System.Action<bool> _autoChangedHandler;
+        private System.Action<bool> _skipChangedHandler;
+        private System.Action<bool> _skipAllowedChangedHandler;
+
         private bool _isLogOpen;
 
         private void OnEnable()
@@ -73,16 +77,22 @@ namespace VN.UI
             runner.OnMusicStop += OnMusicStop;
             runner.OnSfxPlay += OnSfx;
 
-            runner.OnAutoChanged += _ => RefreshButtons();
-            runner.OnSkipChanged += _ => RefreshButtons();
-            runner.OnSkipAllowedChanged += _ => RefreshButtons();
+            _autoChangedHandler = _ => RefreshButtons();
+            _skipChangedHandler = _ => RefreshButtons();
+            _skipAllowedChangedHandler = _ => RefreshButtons();
+
+            runner.OnAutoChanged += _autoChangedHandler;
+            runner.OnSkipChanged += _skipChangedHandler;
+            runner.OnSkipAllowedChanged += _skipAllowedChangedHandler;
+
             runner.SetPresentedPlayerName(GetPlayerDisplayName());
-            
+
             _tapFeedbackHandler = pos =>
             {
                 if (tapFx != null && !_isLogOpen)
                     tapFx.Spawn(pos);
             };
+
             runner.OnTapFeedback += _tapFeedbackHandler;
 
             if (typewriter != null)
@@ -130,16 +140,35 @@ namespace VN.UI
                 if (_tapFeedbackHandler != null)
                     runner.OnTapFeedback -= _tapFeedbackHandler;
 
+                if (_autoChangedHandler != null)
+                    runner.OnAutoChanged -= _autoChangedHandler;
+
+                if (_skipChangedHandler != null)
+                    runner.OnSkipChanged -= _skipChangedHandler;
+
+                if (_skipAllowedChangedHandler != null)
+                    runner.OnSkipAllowedChanged -= _skipAllowedChangedHandler;
+
                 runner.SetModalOpen(false);
             }
 
+            _tapFeedbackHandler = null;
+            _autoChangedHandler = null;
+            _skipChangedHandler = null;
+            _skipAllowedChangedHandler = null;
+
             if (typewriter != null && _typewriterFinishedHandler != null)
                 typewriter.OnFinished -= _typewriterFinishedHandler;
+
+            _typewriterFinishedHandler = null;
 
             _isLogOpen = false;
 
             if (logPanel != null)
                 logPanel.HideImmediate();
+
+            ResetButtonGraphic(autoButton);
+            ResetButtonGraphic(skipButton);
         }
 
         public void SetPlayerDisplayName(string value)
@@ -162,10 +191,19 @@ namespace VN.UI
                 autoButton.onClick.RemoveAllListeners();
                 autoButton.onClick.AddListener(() =>
                 {
-                    if (_isLogOpen) return;
+                    if (_isLogOpen)
+                        return;
 
-                    if (runner.SkipEnabled) runner.SetSkip(false);
-                    runner.SetAuto(!runner.AutoEnabled);
+                    if (runner.AutoEnabled)
+                        return;
+
+                    runner.SuppressNextTap();
+
+                    if (runner.SkipEnabled)
+                        runner.SetSkip(false);
+
+                    runner.SetAuto(true);
+                    RefreshButtons();
                 });
             }
 
@@ -174,30 +212,45 @@ namespace VN.UI
                 skipButton.onClick.RemoveAllListeners();
                 skipButton.onClick.AddListener(() =>
                 {
-                    if (_isLogOpen) return;
+                    if (_isLogOpen)
+                        return;
 
-                    if (runner.AutoEnabled) runner.SetAuto(false);
+                    runner.SuppressNextTap();
+
+                    if (runner.AutoEnabled)
+                        runner.SetAuto(false);
+
                     runner.SetSkip(!runner.SkipEnabled);
+                    RefreshButtons();
                 });
             }
 
             if (logButton != null)
             {
                 logButton.onClick.RemoveAllListeners();
-                logButton.onClick.AddListener(() => SetLogOpen(true));
+                logButton.onClick.AddListener(() =>
+                {
+                    runner.SuppressNextTap();
+                    SetLogOpen(true);
+                });
             }
 
             if (closeLogButton != null)
             {
                 closeLogButton.onClick.RemoveAllListeners();
-                closeLogButton.onClick.AddListener(() => SetLogOpen(false));
+                closeLogButton.onClick.AddListener(() =>
+                {
+                    runner.SuppressNextTap();
+                    SetLogOpen(false);
+                });
             }
-            
+
             if (resetAutosaveButton != null)
             {
                 resetAutosaveButton.onClick.RemoveAllListeners();
                 resetAutosaveButton.onClick.AddListener(() =>
                 {
+                    runner.SuppressNextTap();
                     SetLogOpen(false);
                     runner.DeleteAutosaveAndRestart();
                 });
@@ -242,29 +295,65 @@ namespace VN.UI
             if (runner == null)
                 return;
 
+            bool autoActive = runner.AutoEnabled && !_isLogOpen;
+            bool skipActive = runner.SkipEnabled && runner.SkipAllowed && !_isLogOpen;
+
             if (autoButton != null)
-                SetButtonState(autoButton, runner.AutoEnabled);
+            {
+                autoButton.interactable = !_isLogOpen && !runner.AutoEnabled;
+                ApplyButtonGraphicState(autoButton, runner.AutoEnabled && !_isLogOpen);
+            }
 
             if (skipButton != null)
             {
-                skipButton.interactable = runner.SkipAllowed && !_isLogOpen;
-                SetButtonState(skipButton, runner.SkipEnabled && runner.SkipAllowed);
+                skipButton.interactable = runner.SkipAllowed && !_isLogOpen && !runner.AutoEnabled;
+                ApplyButtonGraphicState(skipButton, skipActive);
             }
 
             if (logButton != null)
-                logButton.interactable = !_isLogOpen;
+                logButton.interactable = !_isLogOpen && !runner.AutoEnabled;
 
             if (closeLogButton != null)
                 closeLogButton.interactable = _isLogOpen;
         }
 
-        private static void SetButtonState(Button btn, bool on)
+        private void ApplyButtonGraphicState(Button button, bool active)
         {
-            if (btn == null) return;
+            if (button == null || button.targetGraphic == null)
+                return;
 
-            var colors = btn.colors;
-            colors.normalColor = on ? new Color(0.25f, 0.8f, 0.35f, 1f) : Color.white;
-            btn.colors = colors;
+            ColorBlock colors = button.colors;
+
+            Color targetColor;
+
+            if (active)
+                targetColor = colors.pressedColor;
+            else if (!button.interactable)
+                targetColor = colors.disabledColor;
+            else
+                targetColor = colors.normalColor;
+
+            button.targetGraphic.CrossFadeColor(
+                targetColor,
+                colors.fadeDuration,
+                true,
+                true
+            );
+        }
+
+        private void ResetButtonGraphic(Button button)
+        {
+            if (button == null || button.targetGraphic == null)
+                return;
+
+            ColorBlock colors = button.colors;
+
+            button.targetGraphic.CrossFadeColor(
+                colors.normalColor,
+                0f,
+                true,
+                true
+            );
         }
 
         private void OnLineStarted(VN.VNRunner.VNLinePayload line)
@@ -436,7 +525,7 @@ namespace VN.UI
             if (!string.IsNullOrWhiteSpace(sfx.sfxId))
                 audioController.PlaySfx(sfx.sfxId);
         }
-        
+
         private string BuildShownLineText(VN.VNRunner.VNLinePayload line)
         {
             var text = line.text ?? "";

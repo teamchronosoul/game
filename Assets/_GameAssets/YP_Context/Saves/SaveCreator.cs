@@ -15,6 +15,7 @@ namespace YP
             new ItemString(Key_Save.first_time, DateTime.Now.ToString());
             new ItemBool(Key_Save.sound, true);
             new ItemBool(Key_Save.music, true);
+            new ItemBool(Key_Save.vibration, true);
 
             
         }

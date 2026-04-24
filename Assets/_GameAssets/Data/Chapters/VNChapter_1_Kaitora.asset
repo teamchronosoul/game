@@ -141,7 +141,6 @@ MonoBehaviour:
   - rid: 9129764570494402889
   - rid: 9129764570494402890
   - rid: 9129764570494402891
-  - rid: 9129764570494402892
   - rid: 9129764570494402893
   - rid: 9129764570494402894
   - rid: 9129764570494402895
@@ -1043,7 +1042,7 @@ MonoBehaviour:
         speakerId: Yuzuri
         pose: 0
         emotion: 4
-        showSpeakerName: 0
+        showSpeakerName: 1
         sfxId: 
         text: Oopsie! I forgot to introduce myself. I can't believe this happened
           again! My name's Yuzuri.
@@ -2126,22 +2125,7 @@ MonoBehaviour:
         sfxId: 
         text: I have to help her.
         addToLog: 1
-        nextStepId: vnchapter_1_kaitora_line_r154_c03
-    - rid: 9129764570494402892
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_kaitora_line_r154_c03
-        label: 'R154 C3 Narrator: PAID CHOICE'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: 
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: PAID CHOICE
-        addToLog: 1
-        nextStepId: vnchapter_1_kaitora_choice_r154_c03
+        nextStepId: 
     - rid: 9129764570494402893
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4019,4 +4003,4 @@ MonoBehaviour:
     - rid: 9129764570494403262
       type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
       data:
-        sfxId: 
+        sfxId: Shadow

@@ -1,0 +1,3664 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4cdc04c1304297a6b2f060f917eb30, type: 3}
+  m_Name: VNChapter_2
+  m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
+  chapterId: VNChapter_2
+  steps:
+  - rid: 9129764572344615122
+  - rid: 9129764572344615123
+  - rid: 9129764572344615124
+  - rid: 9129764572344615125
+  - rid: 9129764572344615126
+  - rid: 9129764572344615127
+  - rid: 9129764572344615128
+  - rid: 9129764572344615129
+  - rid: 9129764572344615130
+  - rid: 9129764572344615131
+  - rid: 9129764572344615132
+  - rid: 9129764572344615133
+  - rid: 9129764572344615134
+  - rid: 9129764572344615135
+  - rid: 9129764572344615136
+  - rid: 9129764572344615137
+  - rid: 9129764572344615138
+  - rid: 9129764572344615139
+  - rid: 9129764572344615140
+  - rid: 9129764572344615141
+  - rid: 9129764572344615142
+  - rid: 9129764572344615143
+  - rid: 9129764572344615144
+  - rid: 9129764572344615145
+  - rid: 9129764572344615146
+  - rid: 9129764572344615147
+  - rid: 9129764572344615148
+  - rid: 9129764572344615149
+  - rid: 9129764572344615150
+  - rid: 9129764572344615151
+  - rid: 9129764572344615152
+  - rid: 9129764572344615153
+  - rid: 9129764572344615154
+  - rid: 9129764572344615155
+  - rid: 9129764572344615156
+  - rid: 9129764572344615157
+  - rid: 9129764572344615158
+  - rid: 9129764572344615159
+  - rid: 9129764572344615160
+  - rid: 9129764572344615161
+  - rid: 9129764572344615162
+  - rid: 9129764572344615163
+  - rid: 9129764572344615164
+  - rid: 9129764572344615165
+  - rid: 9129764572344615166
+  - rid: 9129764572344615167
+  - rid: 9129764572344615168
+  - rid: 9129764572344615169
+  - rid: 9129764572344615170
+  - rid: 9129764572344615171
+  - rid: 9129764572344615172
+  - rid: 9129764572344615173
+  - rid: 9129764572344615174
+  - rid: 9129764572344615175
+  - rid: 9129764572344615176
+  - rid: 9129764572344615177
+  - rid: 9129764572344615178
+  - rid: 9129764572344615179
+  - rid: 9129764572344615180
+  - rid: 9129764572344615181
+  - rid: 9129764572344615182
+  - rid: 9129764572344615183
+  - rid: 9129764572344615184
+  - rid: 9129764572344615185
+  - rid: 9129764572344615186
+  - rid: 9129764572344615187
+  - rid: 9129764572344615188
+  - rid: 9129764572344615189
+  - rid: 9129764572344615190
+  - rid: 9129764572344615191
+  - rid: 9129764572344615192
+  - rid: 9129764572344615193
+  - rid: 9129764572344615194
+  - rid: 9129764572344615195
+  - rid: 9129764572344615196
+  - rid: 9129764572344615197
+  - rid: 9129764572344615198
+  - rid: 9129764572344615199
+  - rid: 9129764572344615200
+  - rid: 9129764572344615201
+  - rid: 9129764572344615202
+  - rid: 9129764572344615203
+  - rid: 9129764572344615204
+  - rid: 9129764572344615205
+  - rid: 9129764572344615206
+  - rid: 9129764572344615207
+  - rid: 9129764572344615208
+  - rid: 9129764572344615209
+  - rid: 9129764572344615210
+  - rid: 9129764572344615211
+  - rid: 9129764572344615212
+  - rid: 9129764572344615213
+  - rid: 9129764572344615214
+  - rid: 9129764572344615215
+  - rid: 9129764572344615216
+  - rid: 9129764572344615217
+  - rid: 9129764572344615218
+  - rid: 9129764572344615219
+  - rid: 9129764572344615220
+  - rid: 9129764572344615221
+  - rid: 9129764572344615222
+  - rid: 9129764572344615223
+  - rid: 9129764572344615224
+  - rid: 9129764572344615225
+  - rid: 9129764572344615226
+  - rid: 9129764572344615227
+  - rid: 9129764572344615228
+  - rid: 9129764572344615229
+  - rid: 9129764572344615230
+  - rid: 9129764572344615231
+  - rid: 9129764572344615232
+  - rid: 9129764572344615233
+  - rid: 9129764572344615234
+  - rid: 9129764572344615235
+  - rid: 9129764572344615236
+  - rid: 9129764572344615237
+  - rid: 9129764572344615238
+  - rid: 9129764572344615239
+  - rid: 9129764572344615240
+  - rid: 9129764572344615241
+  - rid: 9129764572344615242
+  - rid: 9129764572344615243
+  - rid: 9129764572344615244
+  - rid: 9129764572344615245
+  - rid: 9129764572344615246
+  - rid: 9129764572344615247
+  - rid: 9129764572344615248
+  - rid: 9129764572344615249
+  - rid: 9129764572344615250
+  - rid: 9129764572344615251
+  - rid: 9129764572344615252
+  - rid: 9129764572344615253
+  - rid: 9129764572344615254
+  - rid: 9129764572344615255
+  - rid: 9129764572344615256
+  - rid: 9129764572344615257
+  - rid: 9129764572344615258
+  - rid: 9129764572344615259
+  - rid: 9129764572344615260
+  - rid: 9129764572344615261
+  - rid: 9129764572344615262
+  - rid: 9129764572344615263
+  - rid: 9129764572344615264
+  - rid: 9129764572344615265
+  - rid: 9129764572344615266
+  - rid: 9129764572344615267
+  - rid: 9129764572344615268
+  - rid: 9129764572344615269
+  - rid: 9129764572344615270
+  - rid: 9129764572344615271
+  - rid: 9129764572344615272
+  - rid: 9129764572344615273
+  - rid: 9129764572344615274
+  - rid: 9129764572344615275
+  - rid: 9129764572344615276
+  - rid: 9129764572344615277
+  - rid: 9129764572344615278
+  - rid: 9129764572344615279
+  - rid: 9129764572344615280
+  - rid: 9129764572344615281
+  - rid: 9129764572344615282
+  - rid: 9129764572344615283
+  - rid: 9129764572344615284
+  - rid: 9129764572344615285
+  - rid: 9129764572344615286
+  - rid: 9129764572344615287
+  - rid: 9129764572344615288
+  - rid: 9129764572344615289
+  - rid: 9129764572344615290
+  - rid: 9129764572344615291
+  - rid: 9129764572344615292
+  - rid: 9129764572344615293
+  - rid: 9129764572344615294
+  - rid: 9129764572344615295
+  - rid: 9129764572344615296
+  - rid: 9129764572344615297
+  - rid: 9129764572344615298
+  - rid: 9129764572344615299
+  - rid: 9129764572344615300
+  - rid: 9129764572344615301
+  - rid: 9129764572344615302
+  - rid: 9129764572344615303
+  - rid: 9129764572344615304
+  - rid: 9129764572344615305
+  - rid: 9129764572344615306
+  - rid: 9129764572344615307
+  - rid: 9129764572344615308
+  - rid: 9129764572344615309
+  - rid: 9129764572344615310
+  - rid: 9129764572344615311
+  - rid: 9129764572344615312
+  - rid: 9129764572344615313
+  - rid: 9129764572344615314
+  - rid: 9129764572344615315
+  - rid: 9129764572344615316
+  - rid: 9129764572344615317
+  - rid: 9129764572344615318
+  - rid: 9129764572344615319
+  - rid: 9129764572344615320
+  - rid: 9129764572344615321
+  - rid: 9129764572344615322
+  - rid: 9129764572344615323
+  - rid: 9129764572344615324
+  - rid: 9129764572344615325
+  - rid: 9129764572344615326
+  - rid: 9129764572344615327
+  - rid: 9129764572344615328
+  - rid: 9129764572344615329
+  - rid: 9129764572344615330
+  - rid: 9129764572344615331
+  - rid: 9129764572344615332
+  - rid: 9129764572344615333
+  - rid: 9129764572344615334
+  - rid: 9129764572344615335
+  - rid: 9129764572344615336
+  - rid: 9129764572344615337
+  - rid: 9129764572344615338
+  references:
+    version: 2
+    RefIds:
+    - rid: 9129764572344615122
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r001_c03
+        label: 'R1 C3 Speaker: Speech'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Speaker
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Speech
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r001_c03
+    - rid: 9129764572344615123
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r001_c03
+        label: Choice R1 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Choice
+          nextStepId: vnchapter_2_line_r003_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615124
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r003_c03
+        label: "R3 C3 Yuzuri: Come on! Why are you so slow? We\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Come on! Why are you so slow? We gotta get to Teacher Kaitora\u2019s
+          practice!"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r004_c03
+    - rid: 9129764572344615125
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r004_c03
+        label: "R4 C3 Yuzuri: I love that he chose to take our\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: "I love that he chose to take our practice outside. Today\u2019s such
+          a lovely weather!"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r005_c03
+    - rid: 9129764572344615126
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r005_c03
+        label: "R5 C3 Narrator: You look at Yuzuri, a silent que\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You look at Yuzuri, a silent question in your eyes.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r006_c03
+    - rid: 9129764572344615127
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r006_c03
+        label: "R6 C3 You: How is she suddenly so upbeat? D\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: How is she suddenly so upbeat? Does she not know what happened?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r007_c03
+    - rid: 9129764572344615128
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r007_c03
+        label: "R7 C3 You: There must me an explanation to \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: There must me an explanation to the visions I've been getting when
+          I'm around Yuzuri.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r008_c03
+    - rid: 9129764572344615129
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r008_c03
+        label: "R8 C3 Yuzuri: You've stopped walking. Is every\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: You've stopped walking. Is everything alright?
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r009_c03
+    - rid: 9129764572344615130
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r009_c03
+        label: Choice R9 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Be direct
+          nextStepId: vnchapter_2_line_r010_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Be gentle
+          nextStepId: vnchapter_2_line_r010_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Bluff
+          nextStepId: vnchapter_2_line_r010_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: D - Achiever, E - Confidant, F - Jester
+          nextStepId: vnchapter_2_line_r015_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615131
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r015_c03
+        label: "R15 C3 Yuzuri: Look! He\u2019s here. He\u2019s come to ta\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: "Look! He\u2019s here. He\u2019s come to talk to us!"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r016_c03
+    - rid: 9129764572344615132
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r016_c03
+        label: "R16 C3 Narrator: You turn around and see him walk\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You turn around and see him walking calmly towards you, the light summer
+          breeze playing with his hair.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r017_c03
+    - rid: 9129764572344615133
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r017_c03
+        label: 'R17 C3 You: Good afternoon, Teacher Kaitora.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Good afternoon, Teacher Kaitora.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r018_c03
+    - rid: 9129764572344615134
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r018_c03
+        label: 'R18 C3 Yuzuri: Commander.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Commander.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r019_c03
+    - rid: 9129764572344615135
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r019_c03
+        label: "R19 C3 Narrator: He nods at you, his hand holding\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He nods at you, his hand holding on to his cloak.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r020_c03
+    - rid: 9129764572344615136
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r020_c03
+        label: "R20 C3 Kaitora: No need for titles. Kaitora is g\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: No need for titles. Kaitora is good enough.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r021_c03
+    - rid: 9129764572344615137
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r021_c03
+        label: "R21 C3 Kaitora: You've come here early. This mea\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You've come here early. This means you have enough time to get ready.
+          I approve of this.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r022_c03
+    - rid: 9129764572344615138
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r022_c03
+        label: "R22 C3 Narrator: This is when you notice he\u2019s hol\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "This is when you notice he\u2019s holding a golden bow with some initials
+          engraved into it."
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r023_c03
+    - rid: 9129764572344615139
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r023_c03
+        label: Choice R23 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Get ready for what?
+          nextStepId: vnchapter_2_line_r024_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: "That\u2019s a nice bow"
+          nextStepId: vnchapter_2_line_r024_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615140
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r028_c03
+        label: "R28 C3 Yuzuri: Woah, this raises so many questi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: "Woah, this raises so many questions\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r029_c03
+    - rid: 9129764572344615141
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r029_c03
+        label: "R29 C3 Narrator: You give Yuzuri a look and she i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You give Yuzuri a look and she imitates zipping her mouth shut.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r030_c03
+    - rid: 9129764572344615142
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r030_c03
+        label: "R30 C3 Kaitora: I need each of you to take a bow\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I need each of you to take a bow and meet me at the targets when you're
+          ready.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r031_c03
+    - rid: 9129764572344615143
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r031_c03
+        label: "R31 C3 Narrator: Kaitora turns around and starts \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Kaitora turns around and starts walking towards other students who\u2019ve
+          only just arrived."
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r032_c03
+    - rid: 9129764572344615144
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r032_c03
+        label: "R32 C3 Yuzuri: Using real weapons?! On the firs\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Using real weapons?! On the first day of school? How cool is that?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r033_c03
+    - rid: 9129764572344615145
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r033_c03
+        label: "R33 C3 Yuzuri: Commander really doesn't mess ar\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Commander really doesn't mess around, does he!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r034_c03
+    - rid: 9129764572344615146
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r034_c03
+        label: "R34 C3 Yuzuri: Okay, let\u2019s go get ourselves a w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: "Okay, let\u2019s go get ourselves a weapon!"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r035_c03
+    - rid: 9129764572344615147
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r035_c03
+        label: "R35 C3 Narrator: It doesn't take you long to pick\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It doesn't take you long to pick out your bow because you know exactly
+          what you're looking for.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r036_c03
+    - rid: 9129764572344615148
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r036_c03
+        label: "R36 C3 You: I'm going to go for\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: "I'm going to go for\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r036_c03
+    - rid: 9129764572344615149
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r036_c03
+        label: Choice R36 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: 'CON: TYPE OF BOW'
+          nextStepId: vnchapter_2_line_r037_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615150
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r040_c03
+        label: "R40 C3 Narrator: You look around but don't see Yu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You look around but don't see Yuzuri anywhere near you, so you join
+          Kaitora and his students without her.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r042_c03
+    - rid: 9129764572344615151
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r042_c03
+        label: "R42 C3 Kaitora: You may wonder why I brought you\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You may wonder why I brought you here today.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r043_c03
+    - rid: 9129764572344615152
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r043_c03
+        label: "R43 C3 Kaitora: The answer is quite straightforw\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The answer is quite straightforward. I always choose practice over
+          theory.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r044_c03
+    - rid: 9129764572344615153
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r044_c03
+        label: "R44 C3 Kaitora: Instead of chatting about using \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Instead of chatting about using your energy to hit your targets with
+          perfect accuracy, you're going to give it a go straightaway.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r045_c03
+    - rid: 9129764572344615154
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r045_c03
+        label: 'R45 C3 Kaitora: Now watch me carefully.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: Now watch me carefully.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r046_c03
+    - rid: 9129764572344615155
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r046_c03
+        label: "R46 C3 Narrator: Kaitora stands in front of the a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora stands in front of the aim that he is about to shoot.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r047_c03
+    - rid: 9129764572344615156
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r047_c03
+        label: "R47 C3 Kaitora: Lift your bow up and place the a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Lift your bow up and place the arrow on the bowstring.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r048_c03
+    - rid: 9129764572344615157
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r048_c03
+        label: "R48 C3 Narrator: Kaitora raises his wonderful gol\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora raises his wonderful golden bow in front of him and pulls the
+          bowstring toward his face.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r049_c03
+    - rid: 9129764572344615158
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r049_c03
+        label: "R49 C3 Kaitora: Look at the target and focus you\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Look at the target and focus your energy on it.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r050_c03
+    - rid: 9129764572344615159
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r050_c03
+        label: "R50 C3 Narrator: Kaitora gazes at the aim for a b\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora gazes at the aim for a brief moment, and his amber eyes, along
+          with his bow and the tip of the arrow, light up with his golden magic.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r051_c03
+    - rid: 9129764572344615160
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r051_c03
+        label: "R51 C3 Kaitora: Breathe out. And only then shoot\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Breathe out. And only then shoot.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r052_c03
+    - rid: 9129764572344615161
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r052_c03
+        label: "R52 C3 Narrator: He exhales and releases the bows\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: He exhales and releases the bowstring. The arrow strikes the target
+          in a flash.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r053_c03
+    - rid: 9129764572344615162
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r053_c03
+        label: 'R53 C3 You: Bullseye!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Bullseye!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r054_c03
+    - rid: 9129764572344615163
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r054_c03
+        label: "R54 C3 Narrator: You gasp as roots burst forth fr\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You gasp as roots burst forth from the ground and wrap around the target.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r055_c03
+    - rid: 9129764572344615164
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r055_c03
+        label: "R55 C3 You: This must be the element magic o\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: This must be the element magic of the Order of the Sentinels. And their
+          element is earth!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r056_c03
+    - rid: 9129764572344615165
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r056_c03
+        label: 'R56 C3 Narrator: Kaitora addresses his students.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora addresses his students.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r057_c03
+    - rid: 9129764572344615166
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r057_c03
+        label: "R57 C3 Kaitora: Your turn. Stand in front of you\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Your turn. Stand in front of your targets and get ready.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r058_c03
+    - rid: 9129764572344615167
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r058_c03
+        label: "R58 C3 Kaitora: Remember, it is important that y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Remember, it is important that you do this practice in the order that
+          I showed you.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r059_c03
+    - rid: 9129764572344615168
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r059_c03
+        label: "R59 C3 You: Alright, what was it? Raise your\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Alright, what was it? Raise your bow up, focus your energy on the target,
+          exhale and shoot!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r060_c03
+    - rid: 9129764572344615169
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r060_c03
+        label: "R60 C3 Narrator: You look at your bow and your gr\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "You look at your bow and your grip tightens around it. Then you\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r061_c03
+    - rid: 9129764572344615170
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r061_c03
+        label: Choice R61 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Lift your bow up
+          nextStepId: vnchapter_2_line_r062_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Look at the target
+          nextStepId: vnchapter_2_line_r062_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Say an incantation
+          nextStepId: vnchapter_2_line_r062_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: D (correct)
+          nextStepId: vnchapter_2_line_r064_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: "sfx \u041F\u0420\u0410\u0412\u0418\u041B\u042C\u041D\u042B\u0425
+            \u0432\u044B\u0431\u043E\u0440\u043E\u0432 \u0432 \u043C\u0438\u043D\u0438-\u0438\u0433\u0440\u0435
+            - impact_mini_game"
+          nextStepId: vnchapter_2_line_r064_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615171
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r064_c03
+        label: "R64 C3 Narrator: Now that the weapon is ready, yo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Now that the weapon is ready, you\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r065_c03
+    - rid: 9129764572344615172
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r065_c03
+        label: Choice R65 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Take a deep breath
+          nextStepId: vnchapter_2_line_r066_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Focus on the target
+          nextStepId: vnchapter_2_line_r066_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Shoot!
+          nextStepId: vnchapter_2_line_r066_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: E (correct)
+          nextStepId: vnchapter_2_line_r068_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: "sfx \u041F\u0420\u0410\u0412\u0418\u041B\u042C\u041D\u042B\u0425
+            \u0432\u044B\u0431\u043E\u0440\u043E\u0432 \u0432 \u043C\u0438\u043D\u0438-\u0438\u0433\u0440\u0435
+            - impact_mini_game"
+          nextStepId: vnchapter_2_line_r068_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615173
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r068_c03
+        label: "R68 C3 Narrator: The weapon is ready and aligned \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "The weapon is ready and aligned with the target in both time and space.
+          Now you\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r069_c03
+    - rid: 9129764572344615174
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r069_c03
+        label: Choice R69 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Fire!
+          nextStepId: vnchapter_2_line_r070_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Exhale then shoot
+          nextStepId: vnchapter_2_line_r070_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Shoot then exhale
+          nextStepId: vnchapter_2_line_r070_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: E (correct)
+          nextStepId: vnchapter_2_line_r071_c07
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: "sfx \u041F\u0420\u0410\u0412\u0418\u041B\u042C\u041D\u042B\u0425
+            \u0432\u044B\u0431\u043E\u0440\u043E\u0432 \u0432 \u043C\u0438\u043D\u0438-\u0438\u0433\u0440\u0435
+            - impact_mini_game"
+          nextStepId: vnchapter_2_line_r076_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615175
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r076_c03
+        label: 'R76 C3 Kaitora: Well done, scholar.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Well done, scholar.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r077_c03
+    - rid: 9129764572344615176
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r077_c03
+        label: "R77 C3 Narrator: You take your eyes off the bow a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take your eyes off the bow and realize Kaitora is standing right
+          next to you.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r078_c03
+    - rid: 9129764572344615177
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r078_c03
+        label: "R78 C3 You: Has he been watching me the whol\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Has he been watching me the whole time?!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r079_c03
+    - rid: 9129764572344615178
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r079_c03
+        label: "R79 C3 Kaitora: I see you've connected with your\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I see you've connected with your magic bow.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r080_c03
+    - rid: 9129764572344615179
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r080_c03
+        label: "R80 C3 Kaitora: That's commendable. Most sentine\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's commendable. Most sentinels are able to tame any weapon that
+          they come across.
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r081_c03
+    - rid: 9129764572344615180
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r081_c03
+        label: Choice R81 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: That's impressive!
+          nextStepId: vnchapter_2_line_r082_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Is it a necessary skill for sentinels?
+          nextStepId: vnchapter_2_line_r082_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Are you telling me I have a talent?
+          nextStepId: vnchapter_2_line_r082_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: D - Achiever, E - Confidant, F - Jester
+          nextStepId: vnchapter_2_line_r084_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615181
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r084_c03
+        label: "R84 C3 Narrator: Kaitora nods at you calmly and y\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora nods at you calmly and you can't help but notice that this
+          is the first time you see him smile.
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r085_c03
+    - rid: 9129764572344615182
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r085_c03
+        label: Choice R85 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: But it is well worth it - being able to protect the academy and all
+            the students.
+          nextStepId: vnchapter_2_line_r086_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Besides, weapons training can be quite fun.
+          nextStepId: vnchapter_2_line_r086_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: That's for you to recognize.
+          nextStepId: vnchapter_2_line_r086_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615183
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r092_c03
+        label: "R92 C3 You: Uh oh. I don't think I got Kaito\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: "Uh oh. I don't think I got Kaitora\u2019s instructions right. Oh,
+          well. Maybe next time..."
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r093_c03
+    - rid: 9129764572344615184
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r093_c03
+        label: Choice R93 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: END OF CON LOSS
+          nextStepId: vnchapter_2_line_r094_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615185
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r094_c03
+        label: "R94 C3 Narrator: This is when you hear her scream\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: This is when you hear her scream.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r095_c03
+    - rid: 9129764572344615186
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r095_c03
+        label: "R95 C3 Yuzuri: NO, NO, NO! Please, this can't b\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: NO, NO, NO! Please, this can't be!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r096_c03
+    - rid: 9129764572344615187
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r096_c03
+        label: "R96 C3 Narrator: You rush towards the shouting an\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You rush towards the shouting and see a wall of fireballs hurtling
+          in Yuzuri's direction.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r097_c03
+    - rid: 9129764572344615188
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r097_c03
+        label: "R97 C3 Narrator: Kaitora addresses his students a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora addresses his students as he's running in your direction.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r098_c03
+    - rid: 9129764572344615189
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r098_c03
+        label: 'R98 C3 Kaitora: Scholars, do not approach her!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 3
+        showSpeakerName: 1
+        sfxId: 
+        text: Scholars, do not approach her!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r099_c03
+    - rid: 9129764572344615190
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r099_c03
+        label: 'R99 C3 Yuzuri: Help! I can''t stop them!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Help! I can't stop them!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r100_c03
+    - rid: 9129764572344615191
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r100_c03
+        label: "R100 C3 You: This is very bad. The fireballs \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: This is very bad. The fireballs are about to hit Yuzuri. I should...
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r101_c03
+    - rid: 9129764572344615192
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r101_c03
+        label: Choice R101 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Rescue Yuzuri
+          nextStepId: vnchapter_2_line_r102_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Let Kaitora help her
+          nextStepId: vnchapter_2_line_r102_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615193
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r109_c03
+        label: "R109 C3 Narrator: Soon it is only you, Kaitora and\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Soon it is only you, Kaitora and Yuzuri left at the archery range.
+          Yuzuri isn't scared anymore, but she is unusually quiet.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r110_c03
+    - rid: 9129764572344615194
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r110_c03
+        label: "R110 C3 Kaitora: Can you tell me what exactly hap\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Can you tell me what exactly happened?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r111_c03
+    - rid: 9129764572344615195
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r111_c03
+        label: "R111 C3 Yuzuri: I was... trying to follow your i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I was... trying to follow your instructions when I lost control of
+          my own element magic.
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r112_c03
+    - rid: 9129764572344615196
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r112_c03
+        label: Choice R112 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: That was a lot of magic
+          nextStepId: vnchapter_2_line_r113_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Why did that happen?
+          nextStepId: vnchapter_2_line_r113_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615197
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r115_c03
+        label: "R115 C3 Yuzuri: I must've lost focus again! I sw\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I must've lost focus again! I swear by the name of the First Mage,
+          this must stop!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r116_c03
+    - rid: 9129764572344615198
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r116_c03
+        label: 'R116 C3 Kaitora: This is strange.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: This is strange.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r117_c03
+    - rid: 9129764572344615199
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r117_c03
+        label: 'R117 C3 Narrator: You both look at Kaitora.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You both look at Kaitora.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r118_c03
+    - rid: 9129764572344615200
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r118_c03
+        label: "R118 C3 Kaitora: You handled your magic energy pr\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You handled your magic energy pretty well during the entrance exams.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r119_c03
+    - rid: 9129764572344615201
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r119_c03
+        label: "R119 C3 Kaitora: I don't recall you losing focus \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I don't recall you losing focus like that.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r120_c03
+    - rid: 9129764572344615202
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r120_c03
+        label: "R120 C3 Kaitora: Something has to be different to\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Something has to be different today.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r121_c03
+    - rid: 9129764572344615203
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r121_c03
+        label: "R121 C3 Narrator: Yuzuri's eyes widen. She slips h\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri's eyes widen. She slips her hands in her pockets, looking for
+          something impatiently.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r122_c03
+    - rid: 9129764572344615204
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r122_c03
+        label: "R122 C3 Narrator: Then she slaps her forehead with\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Then she slaps her forehead with her palm.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r123_c03
+    - rid: 9129764572344615205
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r123_c03
+        label: "R123 C3 Yuzuri: Of course! I can't believe I did\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: Of course! I can't believe I didn't think of it myself!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r124_c03
+    - rid: 9129764572344615206
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r124_c03
+        label: "R124 C3 Yuzuri: Commander Kaitora, you're a geni\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: Commander Kaitora, you're a genius!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r125_c03
+    - rid: 9129764572344615207
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r125_c03
+        label: 'R125 C3 Kaitora: ...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: ...
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r126_c03
+    - rid: 9129764572344615208
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r126_c03
+        label: "R126 C3 Yuzuri: I've been losing focus all day t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I've been losing focus all day today because I forgot my lucky charm
+          at the dorm!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r127_c03
+    - rid: 9129764572344615209
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r127_c03
+        label: "R127 C3 Narrator: Kaitora shakes his head, a small\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora shakes his head, a small ironic smile flickering across his
+          lips.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r128_c03
+    - rid: 9129764572344615210
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r128_c03
+        label: 'R128 C3 Kaitora: I have to say that''s a first.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: I have to say that's a first.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r129_c03
+    - rid: 9129764572344615211
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r129_c03
+        label: "R129 C3 Kaitora: You do realize it doesn't exactl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You do realize it doesn't exactly work like that?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r130_c03
+    - rid: 9129764572344615212
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r130_c03
+        label: "R130 C3 Kaitora: In fact being superstitious can \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: In fact being superstitious can put you at a disadvantage when you're
+          up against your opponents.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r131_c03
+    - rid: 9129764572344615213
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r131_c03
+        label: 'R131 C3 Narrator: Kaitora looks at you.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora looks at you.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r132_c03
+    - rid: 9129764572344615214
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r132_c03
+        label: 'R132 C3 Kaitora: What do you think?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: What do you think?
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r133_c03
+    - rid: 9129764572344615215
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r133_c03
+        label: Choice R133 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Superstitions are just a distraction
+          nextStepId: vnchapter_2_line_r134_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Lucky charms help with confidence
+          nextStepId: vnchapter_2_line_r134_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615216
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r137_c03
+        label: "R137 C3 Narrator: Kaitora pauses, as if contemplat\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora pauses, as if contemplating whether he wants to carry on lecturing
+          Yuzuri.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r138_c03
+    - rid: 9129764572344615217
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r138_c03
+        label: "R138 C3 Kaitora: Let's leave it at that. I'll see\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Let's leave it at that. I'll see both of you at the physical training
+          class next week.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r139_c03
+    - rid: 9129764572344615218
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r139_c03
+        label: 'R139 C3 Kaitora: Take care.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Take care.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r140_c03
+    - rid: 9129764572344615219
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r140_c03
+        label: "R140 C3 Narrator: You expect him to walk off, but \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You expect him to walk off, but he just vanishes into thin air, leaving
+          a trail of golden petals floating around.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r141_c03
+    - rid: 9129764572344615220
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r141_c03
+        label: "R141 C3 Yuzuri: I don't think I'll ever get used\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I don't think I'll ever get used to Commander just vanishing like that.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r142_c03
+    - rid: 9129764572344615221
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r142_c03
+        label: "R142 C3 Yuzuri: Anyway, it's time I go get my lu\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Anyway, it's time I go get my lucky charm!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r143_c03
+    - rid: 9129764572344615222
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r143_c03
+        label: "R143 C3 Yuzuri: I can't wait to show it to you! \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: I can't wait to show it to you! It has a pretty red stone in it. Just
+          looking at it makes me feel more confident!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r144_c03
+    - rid: 9129764572344615223
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r144_c03
+        label: 'R144 C3 You: Yuzuri...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri...
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r145_c03
+    - rid: 9129764572344615224
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r145_c03
+        label: Choice R145 C3
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Why didn't you join me at the archery range?
+          nextStepId: vnchapter_2_line_r146_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: Aren't you coming to Kensui's seminar?
+          nextStepId: vnchapter_2_line_r146_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615225
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r154_c03
+        label: "R154 C3 Yuzuri: Alrighty. I'll see you in a bit!\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: Alrighty. I'll see you in a bit! Don't miss me too much!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r155_c03
+    - rid: 9129764572344615226
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r155_c03
+        label: "R155 C3 Narrator: You watch Yuzuri rush towards th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You watch Yuzuri rush towards the dorm as a sudden feeling that something
+          bad is about to happen grabs hold of your heart.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r156_c03
+    - rid: 9129764572344615227
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r156_c03
+        label: "R156 C3 Narrator: You try to distract yourself fro\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You try to distract yourself from this feeling but it just won't go
+          away.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r157_c03
+    - rid: 9129764572344615228
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r157_c03
+        label: "R157 C3 You: I need to talk to Teacher Kensui\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I need to talk to Teacher Kensui about it.
+        addToLog: 1
+        nextStepId: vnchapter_2_end
+    - rid: 9129764572344615229
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r146_c04
+        label: "R146 C4 You: I was wondering where you disapp\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I was wondering where you disappeared when Kaitora was giving instructions?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r147_c04
+    - rid: 9129764572344615230
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r147_c04
+        label: "R147 C4 Narrator: Yuzuri looks pensive for a momen\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri looks pensive for a moment. Her gaze meets yours.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r148_c04
+    - rid: 9129764572344615231
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r148_c04
+        label: "R148 C4 Yuzuri: It's not that I didn't want to p\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: It's not that I didn't want to practice with you... it's just...
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r149_c04
+    - rid: 9129764572344615232
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r149_c04
+        label: "R149 C4 Yuzuri: I've already caused you so much \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: I've already caused you so much trouble today, I thought I'd better
+          avoid you to not make things worse.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r150_c04
+    - rid: 9129764572344615233
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r150_c04
+        label: "R150 C4 Narrator: There's a touch of sadness in he\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: There's a touch of sadness in her eyes. You let out a sigh.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r151_c04
+    - rid: 9129764572344615234
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r151_c04
+        label: "R151 C4 You: You wouldn't make things worse f\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You wouldn't make things worse for me. It's our first day at the academy
+          and you have every right to make mistakes.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r152_c04
+    - rid: 9129764572344615235
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r152_c04
+        label: "R152 C4 Narrator: Yuzuri smiles at you as she wrap\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri smiles at you as she wraps you in a big hug.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r153_c04
+    - rid: 9129764572344615236
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r153_c04
+        label: "R153 C4 Yuzuri: You make so much sense! I'm so l\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 5
+        showSpeakerName: 1
+        sfxId: 
+        text: You make so much sense! I'm so lucky I've met you!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r154_c03
+    - rid: 9129764572344615237
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r146_c05
+        label: "R146 C5 You: I thought you really wanted to a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I thought you really wanted to attend Teacher Kensui's seminar. We
+          have just enough time to get there before it starts.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r147_c05
+    - rid: 9129764572344615238
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r147_c05
+        label: 'R147 C5 Narrator: Yuzuri gives you a nervous grin.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri gives you a nervous grin.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r148_c05
+    - rid: 9129764572344615239
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r148_c05
+        label: "R148 C5 Yuzuri: That's right. I've been looking \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: That's right. I've been looking forward to it all day!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r149_c05
+    - rid: 9129764572344615240
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r149_c05
+        label: "R149 C5 Yuzuri: I was gonna ask you if you could\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I was gonna ask you if you could save a seat for me, pretty please?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r150_c05
+    - rid: 9129764572344615241
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r150_c05
+        label: "R150 C5 Narrator: You nod, wondering why Yuzuri su\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You nod, wondering why Yuzuri suddenly looks so nervous again.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r151_c05
+    - rid: 9129764572344615242
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r151_c05
+        label: "R151 C5 You: Is it because she's missing her \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Is it because she's missing her lucky charm?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r154_c03
+    - rid: 9129764572344615243
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r134_c04
+        label: "R134 C4 You: I agree. Superstitions distract \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I agree. Superstitions distract us from our practice and honestly,
+          their value is questionable.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r135_c04
+    - rid: 9129764572344615244
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r135_c04
+        label: 'R135 C4 Narrator: Yuzuri makes a funny face.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri makes a funny face.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r136_c04
+    - rid: 9129764572344615245
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r136_c04
+        label: "R136 C4 Yuzuri: It's now two against one, you kn\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 4
+        showSpeakerName: 1
+        sfxId: 
+        text: It's now two against one, you know!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r137_c03
+    - rid: 9129764572344615246
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r134_c05
+        label: "R134 C5 You: I see your point, but I also thi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I see your point, but I also think that lucky charms can help magicians
+          feel more confident.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r135_c05
+    - rid: 9129764572344615247
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r135_c05
+        label: 'R135 C5 Narrator: Yuzuri''s face lights up.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri's face lights up.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r136_c05
+    - rid: 9129764572344615248
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r136_c05
+        label: "R136 C5 Yuzuri: Exactly! There's nothing wrong w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 1
+        showSpeakerName: 1
+        sfxId: 
+        text: Exactly! There's nothing wrong with boosting one's confidence a little,
+          is there?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r137_c03
+    - rid: 9129764572344615249
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r113_c04
+        label: 'R113 C4 You: That was quite a few fireballs.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That was quite a few fireballs.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r114_c04
+    - rid: 9129764572344615250
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r114_c04
+        label: 'R114 C4 Yuzuri: I know! I didn''t mean to...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I know! I didn't mean to...
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r115_c03
+    - rid: 9129764572344615251
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r113_c05
+        label: "R113 C5 You: Do you know why you lost control\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Do you know why you lost control of your magic?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r114_c05
+    - rid: 9129764572344615252
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r114_c05
+        label: "R114 C5 Yuzuri: I promise this has never happene\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: I promise this has never happened before!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r115_c03
+    - rid: 9129764572344615253
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r102_c04
+        label: "R102 C4 Narrator: You dash towards Yuzuri, knockin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You dash towards Yuzuri, knocking her over so the two of you end up
+          on the ground.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r103_c04
+    - rid: 9129764572344615254
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r103_c04
+        label: "R103 C4 Narrator: The fireballs zip over your head\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The fireballs zip over your heads and hit the targets, setting them
+          ablaze.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r104_c04
+    - rid: 9129764572344615255
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r104_c04
+        label: "R104 C4 Narrator: Yuzuri whispers to you, her hand\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri whispers to you, her hands covering her face as if she's trying
+          to hide from faulty magic spells.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r105_c04
+    - rid: 9129764572344615256
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r105_c04
+        label: 'R105 C4 Yuzuri: Thank you...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: Thank you...
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r106_c04
+    - rid: 9129764572344615257
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r106_c04
+        label: "R106 C4 Narrator: Kaitora shakes his head and puts\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora shakes his head and puts out the fire with a wave of his hand.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r107_c04
+    - rid: 9129764572344615258
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r107_c04
+        label: 'R107 C4 Kaitora: Are you two alright?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you two alright?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r108_c04
+    - rid: 9129764572344615259
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r108_c04
+        label: 'R108 C4 You: We''re fine.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: We're fine.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r109_c03
+    - rid: 9129764572344615260
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r102_c05
+        label: "R102 C5 Narrator: You see Kaitora jump in front of\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You see Kaitora jump in front of Yuzuri just as a huge shiny shield
+          suddenly appears in his hands.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r103_c05
+    - rid: 9129764572344615261
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r103_c05
+        label: "R103 C5 Narrator: Yuzuri gasps as the fireballs sl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri gasps as the fireballs slam into the shield and get absorbed
+          by it.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r104_c05
+    - rid: 9129764572344615262
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r104_c05
+        label: "R104 C5 Narrator: Eyes down, Yuzuri murmurs quietl\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Eyes down, Yuzuri murmurs quietly.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r105_c05
+    - rid: 9129764572344615263
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r105_c05
+        label: 'R105 C5 Yuzuri: Thank you, Commander...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: Thank you, Commander...
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r106_c05
+    - rid: 9129764572344615264
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r106_c05
+        label: "R106 C5 Narrator: Kaitora's shield disappears in h\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora's shield disappears in his hand.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r107_c05
+    - rid: 9129764572344615265
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r107_c05
+        label: 'R107 C5 Kaitora: Are you hurt?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 6
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you hurt?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r108_c05
+    - rid: 9129764572344615266
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r108_c05
+        label: 'R108 C5 Yuzuri: No... I don''t think so.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: No... I don't think so.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r109_c03
+    - rid: 9129764572344615267
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r086_c04
+        label: 'R86 C4 Kaitora: That''s what we''re here for.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's what we're here for.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r087_c04
+    - rid: 9129764572344615268
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r087_c04
+        label: 'R87 C4 Narrator: END OF CON WIN'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: END OF CON WIN
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r088_c04
+    - rid: 9129764572344615269
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r088_c04
+        label: 'R88 C4 Narrator: CON LOSS (see notes)'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: CON LOSS (see notes)
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r088_c04
+    - rid: 9129764572344615270
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r088_c04
+        label: Choice R88 C4
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: To lose player must pick at least 2 wrong options
+          nextStepId: vnchapter_2_line_r089_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615271
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r089_c04
+        label: "R89 C4 Narrator: CON: type of bow that player pic\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: 'CON: type of bow that player picked'
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r090_c04
+    - rid: 9129764572344615272
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r090_c04
+        label: 'R90 C4 Narrator: The fastest weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The fastest weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r091_c04
+    - rid: 9129764572344615273
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r091_c04
+        label: "R91 C4 Narrator: The arrow splits into two on its\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The arrow splits into two on its way to the target, but both of them
+          miss - one lands right in front of the target and the other flies over
+          it.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r092_c03
+    - rid: 9129764572344615274
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r086_c05
+        label: "R86 C5 Kaitora: Especially when you put in enoug\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Especially when you put in enough hours of practice.
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r088_c05
+    - rid: 9129764572344615275
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r088_c05
+        label: Choice R88 C5
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: To lose player must pick at least 2 wrong options
+          nextStepId: vnchapter_2_line_r090_c05
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615276
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r090_c05
+        label: 'R90 C5 Narrator: The lightest weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The lightest weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r091_c05
+    - rid: 9129764572344615277
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r091_c05
+        label: "R91 C5 Narrator: You lower the lightest weapon yo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lower the lightest weapon you'll probably ever hold, enjoying how
+          it feels in your hands as you watch your arrow completely miss the target.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r092_c03
+    - rid: 9129764572344615278
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r086_c06
+        label: "R86 C6 Kaitora: And more importantly, make a goo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: And more importantly, make a good use of it.
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r088_c06
+    - rid: 9129764572344615279
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r088_c06
+        label: Choice R88 C6
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: To lose player must pick at least 2 wrong options
+          nextStepId: vnchapter_2_line_r090_c06
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615280
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r090_c06
+        label: 'R90 C6 Narrator: The most agile weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The most agile weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r091_c06
+    - rid: 9129764572344615281
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r091_c06
+        label: "R91 C6 Narrator: You've just shot the bow that ne\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You've just shot the bow that never misses, and it doesn't this time
+          either, except it hits your fellow student's target. Much to his surprise.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r092_c03
+    - rid: 9129764572344615282
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r082_c04
+        label: "R82 C4 You: That's really impressive. I'm su\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: That's really impressive. I'm sure it takes you a lot of hard work!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r083_c04
+    - rid: 9129764572344615283
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r083_c04
+        label: "R83 C4 Kaitora: It takes discipline and practice\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: It takes discipline and practice.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r084_c03
+    - rid: 9129764572344615284
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r082_c05
+        label: "R82 C5 You: Is it necessary to be able to do\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Is it necessary to be able to do that to become a sentinel?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r083_c05
+    - rid: 9129764572344615285
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r083_c05
+        label: "R83 C5 Kaitora: I wouldn't say so. But it certai\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: I wouldn't say so. But it certainly helps our confidence if we are
+          familiar with a wide range of weapons.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r084_c03
+    - rid: 9129764572344615286
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r082_c06
+        label: "R82 C6 You: Are you saying I might have a sp\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Are you saying I might have a special talent?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r084_c03
+    - rid: 9129764572344615287
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r070_c04
+        label: "R70 C4 Narrator: The tip of the arrow lights up w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The tip of the arrow lights up with your magic as you send it towards
+          the target.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r071_c04
+    - rid: 9129764572344615288
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r071_c04
+        label: 'R71 C4 Narrator: CON: WIN (see notes)'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: 'CON: WIN (see notes)'
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r072_c04
+    - rid: 9129764572344615289
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r072_c04
+        label: "R72 C4 Narrator: CON: type of bow that player pic\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: 'CON: type of bow that player picked'
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r073_c04
+    - rid: 9129764572344615290
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r073_c04
+        label: 'R73 C4 Narrator: The fastest weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The fastest weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r074_c04
+    - rid: 9129764572344615291
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r074_c04
+        label: "R74 C4 Narrator: The arrow duplicates itself on t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The arrow duplicates itself on the way to the target so that both arrows
+          hit the bullseye in just under a second.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r075_c04
+    - rid: 9129764572344615292
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r075_c04
+        label: "R75 C4 You: Woah.This bow is really somethin\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Woah.This bow is really something else!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r076_c03
+    - rid: 9129764572344615293
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r070_c05
+        label: "R70 C5 Narrator: You take a deep breath and exhal\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take a deep breath and exhale in the same way that Kaitora did.
+          Then you send the arrow flying towards the target.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r073_c05
+    - rid: 9129764572344615294
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r073_c05
+        label: 'R73 C5 Narrator: The lightest weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The lightest weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r074_c05
+    - rid: 9129764572344615295
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r074_c05
+        label: "R74 C5 Narrator: You lower the lightest weapon yo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lower the lightest weapon you'll probably ever hold, enjoying how
+          it feels in your hands as you watch your arrow hit the target.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r075_c05
+    - rid: 9129764572344615296
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r075_c05
+        label: "R75 C5 You: Good job. Next time it's gotta b\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Good job. Next time it's gotta be the bullseye!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r076_c03
+    - rid: 9129764572344615297
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r070_c06
+        label: "R70 C6 Narrator: You release the arrow and breath\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You release the arrow and breathe out with relief. Will it hit the
+          target? Who knows, either way you did what you could.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r073_c06
+    - rid: 9129764572344615298
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r073_c06
+        label: 'R73 C6 Narrator: The most agile weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The most agile weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r074_c06
+    - rid: 9129764572344615299
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r074_c06
+        label: "R74 C6 Narrator: You watch the arrow nearly hit t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You watch the arrow nearly hit the target, then slow down, adjust its
+          course, and end up right in the bullseye.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r075_c06
+    - rid: 9129764572344615300
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r075_c06
+        label: "R75 C6 You: Did it just course-correct on th\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Did it just course-correct on the fly?! This bow is really something
+          else.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r076_c03
+    - rid: 9129764572344615301
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r071_c07
+        label: "R71 C7 Narrator: To win player must pick at least\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: To win player must pick at least 2 right options
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r076_c03
+    - rid: 9129764572344615302
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r066_c04
+        label: "R66 C4 Narrator: You take a deep breath and insta\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You take a deep breath and instantly remember that the next thing to
+          do was to focus your energy on the target as you aim.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r067_c04
+    - rid: 9129764572344615303
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r067_c04
+        label: 'R67 C4 You: Gah, I need to stay focused!'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Gah, I need to stay focused!
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r068_c03
+    - rid: 9129764572344615304
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r066_c05
+        label: "R66 C5 Narrator: You fix your gaze on the target \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You fix your gaze on the target and channel your thoughts and magic
+          energy towards it.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r067_c05
+    - rid: 9129764572344615305
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r067_c05
+        label: "R67 C5 You: That\u2019s it. I can feel the bow li\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: "That\u2019s it. I can feel the bow lining up with the target."
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r068_c03
+    - rid: 9129764572344615306
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r066_c06
+        label: "R66 C6 Narrator: You try to shoot the bow but the\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You try to shoot the bow but the arrow falls on the ground right in
+          front of you.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r067_c06
+    - rid: 9129764572344615307
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r067_c06
+        label: "R67 C6 You: My bad. I need to focus on the a\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: My bad. I need to focus on the aim now.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r068_c03
+    - rid: 9129764572344615308
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r062_c04
+        label: "R62 C4 Narrator: You lift your bow, nock an arrow\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You lift your bow, nock an arrow on the string and draw it towards
+          your face.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r063_c04
+    - rid: 9129764572344615309
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r063_c04
+        label: 'R63 C4 You: So far so good...'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: So far so good...
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r064_c03
+    - rid: 9129764572344615310
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r062_c05
+        label: "R62 C5 Narrator: You stare at the target trying t\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You stare at the target trying to focus your energy on it, but nothing
+          happens.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r063_c05
+    - rid: 9129764572344615311
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r063_c05
+        label: "R63 C5 You: Oops, wrong move. I need to get \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: Oops, wrong move. I need to get the weapon ready first.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r064_c03
+    - rid: 9129764572344615312
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r062_c06
+        label: "R62 C6 Narrator: You try to come up with an incan\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You try to come up with an incantation that would be suitable for this
+          task. However, nothing happens when you say the words out loud.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r063_c06
+    - rid: 9129764572344615313
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r063_c06
+        label: "R63 C6 You: I think not. I need to get the w\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 7
+        showSpeakerName: 1
+        sfxId: 
+        text: I think not. I need to get the weapon ready first.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r064_c03
+    - rid: 9129764572344615314
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r037_c04
+        label: 'R37 C4 Narrator: The fastest weapon'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: The fastest weapon
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r037_c04
+    - rid: 9129764572344615315
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r037_c04
+        label: Choice R37 C4
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: The lightest weapon
+          nextStepId: vnchapter_2_line_r038_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: The most agile weapon
+          nextStepId: vnchapter_2_line_r038_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615316
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r038_c04
+        label: "R38 C4 Narrator: You pick up a dark blue bow that\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You pick up a dark blue bow that looks like a crescent.
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r038_c04
+    - rid: 9129764572344615317
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r038_c04
+        label: Choice R38 C4
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: You go for a very thin almost see-through bow that weighs practically
+            nothing when you hold it.
+          nextStepId: vnchapter_2_line_r039_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: You choose a very sophisticated weapon with all kinds of embellishments
+            and engravings on it.
+          nextStepId: vnchapter_2_line_r039_c04
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615318
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r039_c04
+        label: "R39 C4 Narrator: Legend has it that if a magician\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Legend has it that if a magician bonds with the crescent bow, they\u2019ll
+          be able to cast twice as many spells while they're holding it."
+        addToLog: 1
+        nextStepId: vnchapter_2_choice_r039_c04
+    - rid: 9129764572344615319
+      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_choice_r039_c04
+        label: Choice R39 C4
+        disableSkip: 0
+        stopAuto: 0
+        options:
+        - text: Surely, you won't get tired shooting it.
+          nextStepId: vnchapter_2_line_r040_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+        - text: As you study the engravings, you remember that arrows shot with this
+            bow somehow always find their mark.
+          nextStepId: vnchapter_2_line_r040_c03
+          kind: 0
+          premiumPrice: 0
+          effects: []
+    - rid: 9129764572344615320
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r024_c04
+        label: "R24 C4 You: Kaitora, what exactly are we doi\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora, what exactly are we doing today?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r025_c04
+    - rid: 9129764572344615321
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r025_c04
+        label: "R25 C4 Narrator: Kaitora seems to be  completely \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora seems to be  completely unfazed by your question.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r027_c04
+    - rid: 9129764572344615322
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r027_c04
+        label: "R27 C4 Kaitora: You are at the archery range. Yo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: You are at the archery range. You will be shooting at targets.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r028_c03
+    - rid: 9129764572344615323
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r024_c05
+        label: "R24 C5 You: This is a beautiful weapon. Is i\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: This is a beautiful weapon. Is it yours?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r025_c05
+    - rid: 9129764572344615324
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r025_c05
+        label: 'R25 C5 Narrator: Kaitora shows you the initials.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Kaitora shows you the initials.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r026_c05
+    - rid: 9129764572344615325
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r026_c05
+        label: "R26 C5 You: LS. It stands for the Legion of \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: LS. It stands for the Legion of Sentinels, right?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r027_c05
+    - rid: 9129764572344615326
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r027_c05
+        label: "R27 C5 Kaitora: Correct. The bow belongs to the \u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Kaitora
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Correct. The bow belongs to the faculty. But as of today, I've had
+          a chance to use it in battles.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r028_c03
+    - rid: 9129764572344615327
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r010_c04
+        label: 'R10 C4 You: Yuzuri, I need to talk to you.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri, I need to talk to you.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r011_c04
+    - rid: 9129764572344615328
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r011_c04
+        label: "R11 C4 You: You see, I've been getting these\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "You see, I've been getting these visions, I've never had them before\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r012_c04
+    - rid: 9129764572344615329
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r012_c04
+        label: "R12 C4 Narrator: Yuzuri's eyes widen, and she loo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri's eyes widen, and she looks like she's lost for words for a
+          second. Suddenly she points her finger at someone behind you.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r015_c03
+    - rid: 9129764572344615330
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r010_c05
+        label: "R10 C5 You: Yuzuri, it might be a bit of a s\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Yuzuri, it might be a bit of a sensitive topic, but you might have
+          a solution to something that\u2019s been bugging me."
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r012_c05
+    - rid: 9129764572344615331
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r012_c05
+        label: 'R12 C5 Narrator: Yuzuri gulps.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Yuzuri gulps.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r013_c05
+    - rid: 9129764572344615332
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r013_c05
+        label: "R13 C5 Yuzuri: Er\u2026 sure. Whatever it is that bo\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: "Er\u2026 sure. Whatever it is that bothers you\u2026"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r014_c05
+    - rid: 9129764572344615333
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r014_c05
+        label: 'R14 C5 Narrator: Suddenly, her face lights up.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly, her face lights up.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r015_c03
+    - rid: 9129764572344615334
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r010_c06
+        label: 'R10 C6 You: Better than ever. Why?'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: You
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Better than ever. Why?
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r012_c06
+    - rid: 9129764572344615335
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r012_c06
+        label: "R12 C6 Narrator: You try to look as nonchalant as\u2026"
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "You try to look as nonchalant as you can. Yuzuri\u2019s face reddens.
+          Is this a sign of bad conscience?"
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r013_c06
+    - rid: 9129764572344615336
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r013_c06
+        label: "R13 C6 Yuzuri: It\u2019s because of me, isn\u2019t it."
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: Yuzuri
+        pose: 0
+        emotion: 2
+        showSpeakerName: 1
+        sfxId: 
+        text: "It\u2019s because of me, isn\u2019t it."
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r014_c06
+    - rid: 9129764572344615337
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_line_r014_c06
+        label: 'R14 C6 Narrator: Suddenly, her face lights up.'
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Suddenly, her face lights up.
+        addToLog: 1
+        nextStepId: vnchapter_2_line_r015_c03
+    - rid: 9129764572344615338
+      type: {class: VNEndStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: vnchapter_2_end
+        label: END
+        disableSkip: 0
+        stopAuto: 0

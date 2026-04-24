@@ -149,7 +149,6 @@ MonoBehaviour:
   - rid: 9129764567614750877
   - rid: 9129764567614750878
   - rid: 9129764567614750879
-  - rid: 9129764567614750880
   - rid: 9129764567614750881
   - rid: 9129764567614750882
   - rid: 9129764567614750883
@@ -2243,22 +2242,7 @@ MonoBehaviour:
         sfxId: 
         text: I have to help her.
         addToLog: 1
-        nextStepId: vnchapter_1_hinato_line_r158_c03
-    - rid: 9129764567614750880
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_hinato_line_r158_c03
-        label: 'R158 C3 Narrator: PAID CHOICE'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: 
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: PAID CHOICE
-        addToLog: 1
-        nextStepId: vnchapter_1_hinato_choice_r158_c03
+        nextStepId: 
     - rid: 9129764567614750881
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4056,7 +4040,7 @@ MonoBehaviour:
     - rid: 9129764567614751702
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
-        musicId: 
+        musicId: Shinrai_Class
         fadeInSeconds: 0.5
         loop: 1
     - rid: 9129764567614751703

@@ -3954,6 +3954,9 @@ MonoBehaviour:
   - _key: VNChapter_1_Hinato
     _webId: 1i-W2qJswWHn1ohgxEjFpb2pmoF6jnqqsEBrUwwk8Abk
     _gid: 0
+  - _key: VNChapter_2
+    _webId: 1q9l3Zru-Y_85cPCoYlGSdY9jNozwEFxJJzojbCeBqsg
+    _gid: 0
   _loadables:
   - {fileID: 11400000, guid: 42d9537c399a30547aa065df29f9df48, type: 2}
   _openTable: VNChapter_1_Shinrai

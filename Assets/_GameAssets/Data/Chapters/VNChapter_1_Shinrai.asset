@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
   chapterId: VNChapter_1_Shinrai
   steps:
-  - rid: 9129764570494403502
-  - rid: 9129764570494403503
+  - rid: 9129764572344615089
+  - rid: 9129764572344615091
   - rid: 9129764570494403504
   - rid: 9129764570494403505
   - rid: 9129764570494403506
@@ -36,8 +36,12 @@ MonoBehaviour:
   - rid: 9129764570494403521
   - rid: 9129764570494403522
   - rid: 9129764570494403523
+  - rid: 9129764572344615102
+  - rid: 9129764572344615094
+  - rid: 9129764572344615096
   - rid: 9129764570494403524
   - rid: 9129764570494403525
+  - rid: 9129764572344615099
   - rid: 9129764570494403526
   - rid: 9129764570494403527
   - rid: 9129764570494403528
@@ -56,6 +60,7 @@ MonoBehaviour:
   - rid: 9129764570494403541
   - rid: 9129764570494403542
   - rid: 9129764570494403543
+  - rid: 9129764572344615105
   - rid: 9129764570494403544
   - rid: 9129764570494403545
   - rid: 9129764570494403546
@@ -78,6 +83,8 @@ MonoBehaviour:
   - rid: 9129764570494403563
   - rid: 9129764570494403564
   - rid: 9129764570494403565
+  - rid: 9129764572344615108
+  - rid: 9129764572344615110
   - rid: 9129764570494403566
   - rid: 9129764570494403567
   - rid: 9129764570494403568
@@ -139,6 +146,7 @@ MonoBehaviour:
   - rid: 9129764572344614952
   - rid: 9129764572344614953
   - rid: 9129764572344614954
+  - rid: 9129764572344615113
   - rid: 9129764572344614955
   - rid: 9129764572344614956
   - rid: 9129764572344614957
@@ -224,9 +232,6 @@ MonoBehaviour:
   - rid: 9129764572344615037
   - rid: 9129764572344615038
   - rid: 9129764572344615039
-  - rid: 9129764572344615040
-  - rid: 9129764572344615041
-  - rid: 9129764572344615042
   - rid: 9129764572344615043
   - rid: 9129764572344615044
   - rid: 9129764572344615045
@@ -247,34 +252,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 9129764570494403502
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_shinrai_line_r001_c03
-        label: 'R1 C3 Speaker: Speech'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: Speaker
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: Speech
-        addToLog: 1
-        nextStepId: vnchapter_1_shinrai_choice_r001_c03
-    - rid: 9129764570494403503
-      type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_shinrai_choice_r001_c03
-        label: Choice R1 C3
-        disableSkip: 0
-        stopAuto: 0
-        options:
-        - text: Choice
-          nextStepId: vnchapter_1_shinrai_line_r003_c03
-          kind: 0
-          premiumPrice: 0
-          effects: []
     - rid: 9129764570494403504
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -591,7 +568,7 @@ MonoBehaviour:
         sfxId: 
         text: This will be it from me. I shall see you in the class shortly.
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r032_c03
+        nextStepId: 78ddf434238e4fa98567f1cf9db21fe7
     - rid: 9129764570494403524
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -615,14 +592,14 @@ MonoBehaviour:
         label: 'R33 C3 ???: Enough! Let me go already!'
         disableSkip: 0
         stopAuto: 0
-        speakerId: ???
+        speakerId: Yuzuri
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Enough! Let me go already!
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r034_c03
+        nextStepId: 3c1d3045ffac4427b271c1940e0cb1d5
     - rid: 9129764570494403526
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -630,10 +607,10 @@ MonoBehaviour:
         label: "R34 C3 Bully: No one's holding you here. Or ar\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: No one's holding you here. Or are you too dumb to see that?
         addToLog: 1
@@ -661,10 +638,10 @@ MonoBehaviour:
         label: "R36 C3 Bully: We just want to know how you got\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: We just want to know how you got in. Can you answer that simple question?
         addToLog: 1
@@ -676,10 +653,10 @@ MonoBehaviour:
         label: "R37 C3 ???: What do you mean? I passed the e\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: ???
+        speakerId: Yuzuri
         pose: 0
         emotion: 6
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: What do you mean? I passed the exams and then got sorted into my faculty,
           just like you all did!
@@ -692,10 +669,10 @@ MonoBehaviour:
         label: "R38 C3 Bully: Nah, you're lying to us. A small\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Nah, you're lying to us. A small-town bumpkin like you wouldn't make
           it to the academy.
@@ -708,10 +685,10 @@ MonoBehaviour:
         label: 'R39 C3 Bully: You got no magic in you.'
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Aki
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: You got no magic in you.
         addToLog: 1
@@ -723,10 +700,10 @@ MonoBehaviour:
         label: "R40 C3 ???: I have magic in me! Just because\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: ???
+        speakerId: Yuzuri
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: I have magic in me! Just because I was born far from the Tear, doesn't
           mean I can't be a battle mage.
@@ -739,10 +716,10 @@ MonoBehaviour:
         label: "R41 C3 Bully: How about you prove it to us, hu\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: How about you prove it to us, huh?
         addToLog: 1
@@ -754,10 +731,10 @@ MonoBehaviour:
         label: "R42 C3 ???: I... can't... there's too much p\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: ???
+        speakerId: Yuzuri
         pose: 0
         emotion: 6
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: I... can't... there's too much pressure...
         addToLog: 1
@@ -769,10 +746,10 @@ MonoBehaviour:
         label: "R43 C3 ???: And I don't have to prove anythi\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: ???
+        speakerId: Yuzuri
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: And I don't have to prove anything to you!
         addToLog: 1
@@ -816,11 +793,6 @@ MonoBehaviour:
           kind: 0
           premiumPrice: 0
           effects: []
-        - text: D - Achiever, E - Confidant, F - Jester
-          nextStepId: vnchapter_1_shinrai_line_r049_c07
-          kind: 0
-          premiumPrice: 0
-          effects: []
     - rid: 9129764570494403538
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -844,10 +816,10 @@ MonoBehaviour:
         label: 'R53 C3 Bully: You know her?'
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: You know her?
         addToLog: 1
@@ -874,10 +846,10 @@ MonoBehaviour:
         label: 'R55 C3 You: Yes, I do.'
         disableSkip: 0
         stopAuto: 0
-        speakerId: You
+        speakerId: Sota
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Yes, I do.
         addToLog: 1
@@ -912,7 +884,7 @@ MonoBehaviour:
         text: The bully turns around and starts walking, his friends join him. Kenji
           looks back a couple of times, clearly troubled by a guilty conscience.
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r058_c03
+        nextStepId: cab50d741a9848ed826587041c353ac1
     - rid: 9129764570494403544
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -938,7 +910,7 @@ MonoBehaviour:
         speakerId: Yuzuri
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Thank you for helping me out! I knew I'd get bullied for where I'm
           from, but I didn't think it would happen on my first day at the academy!
@@ -1258,7 +1230,7 @@ MonoBehaviour:
         sfxId: 
         text: I must be imagining things. I need to start going to bed earlier.
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r085_c03
+        nextStepId: c9601c5f663744de92b083d4d2eb4238
     - rid: 9129764570494403566
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1479,11 +1451,6 @@ MonoBehaviour:
           effects: []
         - text: Take notes vigorously
           nextStepId: vnchapter_1_shinrai_line_r099_c06
-          kind: 0
-          premiumPrice: 0
-          effects: []
-        - text: D - Confidant, E - Jester, F - Achiever. D - Shinrai +1
-          nextStepId: vnchapter_1_shinrai_line_r107_c03
           kind: 0
           premiumPrice: 0
           effects: []
@@ -2215,7 +2182,7 @@ MonoBehaviour:
         sfxId: 
         text: You lock eyes with her and... can't believe what you're seeing.
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r183_c03
+        nextStepId: 2c662c1d54b44c95b977ece912798534
     - rid: 9129764572344614955
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3316,10 +3283,10 @@ MonoBehaviour:
         label: "R49 C4 Bully: Rule number 201 of the student c\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Rule number 201 of the student code of honor to be precise...
         addToLog: 1
@@ -3331,10 +3298,10 @@ MonoBehaviour:
         label: 'R50 C4 Bully: Shut up, Kenji!'
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Shut up, Kenji!
         addToLog: 1
@@ -3346,10 +3313,10 @@ MonoBehaviour:
         label: "R51 C4 Bully: What, Shinrai made me memorise t\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: What, Shinrai made me memorise the whole thing last year. If I didn't,
           he'd get me expelled!
@@ -3394,10 +3361,10 @@ MonoBehaviour:
         label: "R49 C5 Bully: What the heck did we do? We only\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: What the heck did we do? We only asked her a couple of questions!
         addToLog: 1
@@ -3409,10 +3376,10 @@ MonoBehaviour:
         label: "R50 C5 Bully: Shut up, Kenji. You owe her no e\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Shut up, Kenji. You owe her no explanation.
         addToLog: 1
@@ -3424,10 +3391,10 @@ MonoBehaviour:
         label: "R51 C5 Bully: Okay then. I guess, you're right\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Okay then. I guess, you're right...
         addToLog: 1
@@ -3486,10 +3453,10 @@ MonoBehaviour:
         label: 'R49 C6 Bully: Idiots?'
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Idiots?
         addToLog: 1
@@ -3501,10 +3468,10 @@ MonoBehaviour:
         label: "R50 C6 Bully: Shut up, Kenji! She's just messi\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Sota
         pose: 0
         emotion: 3
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: Shut up, Kenji! She's just messing with us.
         addToLog: 1
@@ -3516,57 +3483,12 @@ MonoBehaviour:
         label: 'R51 C6 Bully: She''s kind of right though...'
         disableSkip: 0
         stopAuto: 0
-        speakerId: Bully
+        speakerId: Kenji
         pose: 0
         emotion: 0
-        showSpeakerName: 1
+        showSpeakerName: 0
         sfxId: 
         text: She's kind of right though...
-        addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r052_c03
-    - rid: 9129764572344615040
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_shinrai_line_r049_c07
-        label: 'R49 C7 Bully: Kenji'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: Bully
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: Kenji
-        addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r050_c07
-    - rid: 9129764572344615041
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_shinrai_line_r050_c07
-        label: 'R50 C7 Bully: Sota'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: Bully
-        pose: 0
-        emotion: 3
-        showSpeakerName: 1
-        sfxId: 
-        text: Sota
-        addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r051_c07
-    - rid: 9129764572344615042
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_shinrai_line_r051_c07
-        label: 'R51 C7 Bully: Kenji'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: Bully
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: Kenji
         addToLog: 1
         nextStepId: vnchapter_1_shinrai_line_r052_c03
     - rid: 9129764572344615043
@@ -3822,3 +3744,159 @@ MonoBehaviour:
         label: END
         disableSkip: 0
         stopAuto: 0
+    - rid: 9129764572344615089
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: d5344f5019d64a59a444f78860a4eecb
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615090
+        nextStepId: 82c12e25f26d4f469fcfbd9b6617590f
+    - rid: 9129764572344615090
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: INT. SHINRAI'S OFFICE - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764572344615091
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 82c12e25f26d4f469fcfbd9b6617590f
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615093
+        nextStepId: 
+    - rid: 9129764572344615093
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shinrai_intro
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764572344615094
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 84c8012bdf5240829c301655eec91093
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615095
+        nextStepId: 5609c5ac4ce547ce8acb7867fb42f707
+    - rid: 9129764572344615095
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: EXT. SCHOOL YARD - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764572344615096
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 5609c5ac4ce547ce8acb7867fb42f707
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615098
+        nextStepId: vnchapter_1_shinrai_line_r032_c03
+    - rid: 9129764572344615098
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: School_Yard
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764572344615099
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 3c1d3045ffac4427b271c1940e0cb1d5
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615101
+        nextStepId: vnchapter_1_shinrai_line_r034_c03
+    - rid: 9129764572344615101
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Bullies
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764572344615102
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 78ddf434238e4fa98567f1cf9db21fe7
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615104
+        nextStepId: 84c8012bdf5240829c301655eec91093
+    - rid: 9129764572344615104
+      type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        slot: 0
+        fadeSeconds: 0.2
+    - rid: 9129764572344615105
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: cab50d741a9848ed826587041c353ac1
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615107
+        nextStepId: vnchapter_1_shinrai_line_r058_c03
+    - rid: 9129764572344615107
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: School_Yard
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764572344615108
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: c9601c5f663744de92b083d4d2eb4238
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615109
+        nextStepId: 23fcc9d3ccaa4a759c240db2224405ac
+    - rid: 9129764572344615109
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: INT. CLASSROOM - DAY
+        crossfadeSeconds: 0.25
+    - rid: 9129764572344615110
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 23fcc9d3ccaa4a759c240db2224405ac
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615112
+        nextStepId: vnchapter_1_shinrai_line_r085_c03
+    - rid: 9129764572344615112
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shinrai_Class
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 9129764572344615113
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 2c662c1d54b44c95b977ece912798534
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764572344615115
+        nextStepId: vnchapter_1_shinrai_line_r183_c03
+    - rid: 9129764572344615115
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shadow
+        fadeInSeconds: 0.5
+        loop: 1

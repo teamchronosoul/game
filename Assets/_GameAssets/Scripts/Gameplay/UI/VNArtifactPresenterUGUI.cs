@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using _GameAssets.Scripts.Gameplay.UI;
 using CandyCoded.HapticFeedback;
 using UnityEngine;
 using UnityEngine.UI;
@@ -269,6 +270,9 @@ namespace VN.UI
 
         private void TriggerHapticPulse()
         {
+            if (!VNSettingsWindowUGUI.VibrationEnabled)
+                return;
+            
             if (!useHaptic)
                 return;
 
