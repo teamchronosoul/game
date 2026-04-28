@@ -3903,7 +3903,7 @@ MonoBehaviour:
     - rid: 9129764570494403244
       type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
       data:
-        backgroundId: 
+        backgroundId: EXT. SCHOOL YARD - DAY
         crossfadeSeconds: 0.25
     - rid: 9129764570494403245
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}

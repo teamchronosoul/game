@@ -585,7 +585,7 @@ MonoBehaviour:
         label: "R29 C3 Narrative: Hinato strolls over to the firep\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Narrative
+        speakerId: 
         pose: 0
         emotion: 0
         showSpeakerName: 1
