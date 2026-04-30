@@ -458,7 +458,7 @@ namespace VN.UI
 
             if (!slot.visible || slot.sprite == null)
             {
-                view.Crossfade(null, Mathf.Max(0f, slot.crossfadeSeconds), false);
+                view.Crossfade((Sprite)null, Mathf.Max(0f, slot.crossfadeSeconds), false);
                 return;
             }
 

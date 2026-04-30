@@ -45,7 +45,6 @@ MonoBehaviour:
   - rid: 9129764572344615070
   - rid: 9129764570494403294
   - rid: 9129764570494403295
-  - rid: 9129764572344615073
   - rid: 9129764570494403296
   - rid: 9129764570494403297
   - rid: 9129764570494403298
@@ -670,7 +669,7 @@ MonoBehaviour:
         sfxId: 
         text: Enough! Let me go already!
         addToLog: 1
-        nextStepId: 779c68555b08442fb54da17a76f6bf1c
+        nextStepId: 
     - rid: 9129764570494403296
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3875,22 +3874,6 @@ MonoBehaviour:
           rid: 9129764572344615072
         nextStepId: vnchapter_1_kensui_line_r037_c03
     - rid: 9129764572344615072
-      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        musicId: School_Yard
-        fadeInSeconds: 0.5
-        loop: 1
-    - rid: 9129764572344615073
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: 779c68555b08442fb54da17a76f6bf1c
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764572344615075
-        nextStepId: vnchapter_1_kensui_line_r039_c03
-    - rid: 9129764572344615075
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
         musicId: Bullies

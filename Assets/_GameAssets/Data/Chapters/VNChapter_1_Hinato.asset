@@ -57,7 +57,6 @@ MonoBehaviour:
   - rid: 9129764567614750789
   - rid: 9129764567614750790
   - rid: 9129764567614750791
-  - rid: 9129764567614751692
   - rid: 9129764567614750792
   - rid: 9129764567614750793
   - rid: 9129764567614750794
@@ -860,7 +859,7 @@ MonoBehaviour:
         sfxId: 
         text: No one's holding you here. Or are you too dumb to see that?
         addToLog: 1
-        nextStepId: bbaea2ea31a74b9a8671d9daff82b32c
+        nextStepId: 
     - rid: 9129764567614750792
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3975,22 +3974,6 @@ MonoBehaviour:
           rid: 9129764567614751691
         nextStepId: vnchapter_1_hinato_line_r045_c03
     - rid: 9129764567614751691
-      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        musicId: School_Yard
-        fadeInSeconds: 0.5
-        loop: 1
-    - rid: 9129764567614751692
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: bbaea2ea31a74b9a8671d9daff82b32c
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764567614751694
-        nextStepId: vnchapter_1_hinato_line_r048_c03
-    - rid: 9129764567614751694
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
         musicId: Bullies

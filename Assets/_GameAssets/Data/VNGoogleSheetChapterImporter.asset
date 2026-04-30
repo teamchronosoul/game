@@ -13,15 +13,61 @@ MonoBehaviour:
   m_Name: VNGoogleSheetChapterImporter
   m_EditorClassIdentifier: Assembly-CSharp::VN.VNGoogleSheetChapterImporter
   chapters:
-  - tableKey: VNChapter_2
-    chapter: {fileID: 11400000, guid: a208445b1fc4a9542b7e410556b0b090, type: 2}
+  - tableKey: VNChapter_1_Hinato
+    chapter: {fileID: 11400000, guid: 627c1e908416bc048b4d34dab1ec573c, type: 2}
     chapterIdOverride: 
+    importMode: 2
     firstDataRow: 1
     speakerColumn: 0
     emotionColumn: 1
     flowColumn: 2
     firstChoiceColumn: 3
     appendEndStep: 1
+    textOnlyLineMatchMode: 1
+  - tableKey: VNChapter_1_Kaitora
+    chapter: {fileID: 11400000, guid: 41650e29158d21d4a93a7cedbd636eeb, type: 2}
+    chapterIdOverride: 
+    importMode: 2
+    firstDataRow: 1
+    speakerColumn: 0
+    emotionColumn: 1
+    flowColumn: 2
+    firstChoiceColumn: 3
+    appendEndStep: 1
+    textOnlyLineMatchMode: 1
+  - tableKey: VNChapter_1_Kensui
+    chapter: {fileID: 11400000, guid: 02a6023705b7c864198b5c1cf5cf4aea, type: 2}
+    chapterIdOverride: 
+    importMode: 2
+    firstDataRow: 1
+    speakerColumn: 0
+    emotionColumn: 1
+    flowColumn: 2
+    firstChoiceColumn: 3
+    appendEndStep: 1
+    textOnlyLineMatchMode: 1
+  - tableKey: VNChapter_1_Shinrai
+    chapter: {fileID: 11400000, guid: e2e7be65c4bb2fa4b98a800ecba8214f, type: 2}
+    chapterIdOverride: 
+    importMode: 2
+    firstDataRow: 1
+    speakerColumn: 0
+    emotionColumn: 1
+    flowColumn: 2
+    firstChoiceColumn: 3
+    appendEndStep: 1
+    textOnlyLineMatchMode: 1
+  - tableKey: VNChapter_2
+    chapter: {fileID: 11400000, guid: a208445b1fc4a9542b7e410556b0b090, type: 2}
+    chapterIdOverride: 
+    importMode: 0
+    firstDataRow: 1
+    speakerColumn: 0
+    emotionColumn: 1
+    flowColumn: 2
+    firstChoiceColumn: 3
+    appendEndStep: 1
+    textOnlyLineMatchMode: 1
   speakerAliases: []
   narratorAliases:
   - Narrator

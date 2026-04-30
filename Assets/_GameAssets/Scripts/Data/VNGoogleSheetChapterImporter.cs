@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using YP;
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -22,35 +21,50 @@ namespace VN
             public string speakerId;
         }
 
+        public enum ChapterImportMode
+        {
+            FullRebuild = 0,
+            SkipCompletely = 1,
+            TextOnlyExistingLines = 2
+        }
+
+        public enum TextOnlyLineMatchMode
+        {
+            StableIdOnly = 0,
+            StableIdThenLineOrder = 1,
+            LineOrderOnly = 2
+        }
+
         [Serializable]
         public class ChapterBinding
         {
-            [Header("Source")]
-            public string tableKey;
+            [Header("Source")] public string tableKey;
 
-            [Header("Target")]
-            public VNChapter chapter;
+            [Header("Target")] public VNChapter chapter;
             public string chapterIdOverride;
 
-            [Header("Sheet Layout")]
-            [Min(1)] public int firstDataRow = 2;
+            [Header("Import Mode")] public ChapterImportMode importMode = ChapterImportMode.FullRebuild;
+
+            [Header("Sheet Layout")] [Min(1)] public int firstDataRow = 2;
             public Column speakerColumn = Column.A;
             public Column emotionColumn = Column.B;
             public Column flowColumn = Column.C;
             public Column firstChoiceColumn = Column.D;
 
-            [Header("Build")]
-            public bool appendEndStep = true;
+            [Header("Build")] public bool appendEndStep = true;
+
+            [Header("Text Only Mode")]
+            public TextOnlyLineMatchMode textOnlyLineMatchMode = TextOnlyLineMatchMode.StableIdThenLineOrder;
         }
 
-        [Header("Import Bindings")]
-        [SerializeField] private List<ChapterBinding> chapters = new();
+        [Header("Import Bindings")] [SerializeField]
+        private List<ChapterBinding> chapters = new();
 
-        [Header("Speaker Mapping")]
-        [SerializeField] private List<SpeakerAlias> speakerAliases = new();
+        [Header("Speaker Mapping")] [SerializeField]
+        private List<SpeakerAlias> speakerAliases = new();
 
-        [Header("Narrator aliases -> empty speakerId")]
-        [SerializeField] private List<string> narratorAliases = new()
+        [Header("Narrator aliases -> empty speakerId")] [SerializeField]
+        private List<string> narratorAliases = new()
         {
             "Narrator",
             "narrator",
@@ -59,22 +73,20 @@ namespace VN
             "-"
         };
 
-        [Header("Character Database")]
-        [SerializeField] private VNCharacterDatabase characterDatabase;
+        [Header("Character Database")] [SerializeField]
+        private VNCharacterDatabase characterDatabase;
+
         [SerializeField] private bool autoFindCharacterDatabasesInProject = true;
         [SerializeField] private bool matchSpeakerByCharacterId = true;
         [SerializeField] private bool matchSpeakerByDisplayName = true;
 
-        [Header("Debug")]
-        [SerializeField] private bool logWarnings = true;
+        [Header("Debug")] [SerializeField] private bool logWarnings = true;
 
         private readonly Dictionary<string, string> _speakerIdLookup = new(StringComparer.OrdinalIgnoreCase);
         private bool _speakerLookupBuilt;
 
         public override void LoadData(Dictionary<string, Table> allTables)
         {
-            EnsureSpeakerLookup();
-
             if (chapters == null || chapters.Count == 0)
                 return;
 
@@ -82,6 +94,12 @@ namespace VN
             {
                 if (binding == null)
                     continue;
+
+                if (binding.importMode == ChapterImportMode.SkipCompletely)
+                {
+                    Debug.Log($"VN Google Sheet Importer: chapter binding '{binding.tableKey}' skipped completely.");
+                    continue;
+                }
 
                 if (binding.chapter == null)
                 {
@@ -101,8 +119,23 @@ namespace VN
                     continue;
                 }
 
+                EnsureSpeakerLookup();
+
                 var builder = new Builder(this, binding, table);
-                builder.BuildInto(binding.chapter);
+
+                switch (binding.importMode)
+                {
+                    case ChapterImportMode.FullRebuild:
+                        builder.BuildInto(binding.chapter);
+                        break;
+
+                    case ChapterImportMode.TextOnlyExistingLines:
+                        builder.UpdateOnlyLineText(binding.chapter);
+                        break;
+
+                    case ChapterImportMode.SkipCompletely:
+                        break;
+                }
             }
         }
 
@@ -119,10 +152,10 @@ namespace VN
 #if UNITY_EDITOR
             if (autoFindCharacterDatabasesInProject)
             {
-                string[] guids = AssetDatabase.FindAssets("t:VNCharacterDatabase");
-                for (int i = 0; i < guids.Length; i++)
+                var guids = AssetDatabase.FindAssets("t:VNCharacterDatabase");
+                for (var i = 0; i < guids.Length; i++)
                 {
-                    string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+                    var path = AssetDatabase.GUIDToAssetPath(guids[i]);
                     var db = AssetDatabase.LoadAssetAtPath<VNCharacterDatabase>(path);
                     AddCharacterDatabaseToLookup(db);
                 }
@@ -140,8 +173,8 @@ namespace VN
                 if (ch == null)
                     continue;
 
-                string id = NormalizeLookupKey(ch.id);
-                string displayName = NormalizeLookupKey(ch.displayName);
+                var id = NormalizeLookupKey(ch.id);
+                var displayName = NormalizeLookupKey(ch.displayName);
 
                 if (matchSpeakerByCharacterId && !string.IsNullOrWhiteSpace(id))
                     RegisterSpeakerLookup(id, ch.id?.Trim());
@@ -169,7 +202,7 @@ namespace VN
 
             speakerId = string.Empty;
 
-            string key = NormalizeLookupKey(rawValue);
+            var key = NormalizeLookupKey(rawValue);
             if (string.IsNullOrWhiteSpace(key))
                 return false;
 
@@ -183,7 +216,7 @@ namespace VN
             if (speakerAliases == null)
                 return false;
 
-            for (int i = 0; i < speakerAliases.Count; i++)
+            for (var i = 0; i < speakerAliases.Count; i++)
             {
                 var alias = speakerAliases[i];
                 if (alias == null || string.IsNullOrWhiteSpace(alias.tableValue))
@@ -207,7 +240,7 @@ namespace VN
             if (narratorAliases == null)
                 return false;
 
-            for (int i = 0; i < narratorAliases.Count; i++)
+            for (var i = 0; i < narratorAliases.Count; i++)
             {
                 var alias = narratorAliases[i];
                 if (string.IsNullOrWhiteSpace(alias))
@@ -262,19 +295,19 @@ namespace VN
             {
                 builtSteps.Clear();
 
-                int startRow = Mathf.Max(0, binding.firstDataRow - 1);
-                int flowCol = (int)binding.flowColumn;
-                int choiceStartCol = (int)binding.firstChoiceColumn;
+                var startRow = Mathf.Max(0, binding.firstDataRow - 1);
+                var flowCol = (int)binding.flowColumn;
+                var choiceStartCol = (int)binding.firstChoiceColumn;
 
                 var root = ParseFlow(
-                    flowCol: flowCol,
-                    startRow: startRow,
-                    endRowExclusive: table.rows,
-                    variantIndex: -1,
-                    variantCount: 0,
-                    choiceStartCol: choiceStartCol);
+                    flowCol,
+                    startRow,
+                    table.rows,
+                    -1,
+                    0,
+                    choiceStartCol);
 
-                bool needEnd =
+                var needEnd =
                     binding.appendEndStep ||
                     string.IsNullOrWhiteSpace(root.firstStepId) ||
                     root.terminals.Count > 0 ||
@@ -293,13 +326,11 @@ namespace VN
                 }
 
                 if (builtSteps.Count == 0)
-                {
                     builtSteps.Add(new VNEndStep
                     {
                         id = $"{idPrefix}_end",
                         label = "END"
                     });
-                }
 
                 chapter.steps = new List<VNChapterStep>(builtSteps);
 
@@ -324,11 +355,11 @@ namespace VN
                 int choiceStartCol)
             {
                 var result = new ParseResult();
-                int row = startRow;
+                var row = startRow;
 
                 while (row < endRowExclusive)
                 {
-                    string flowText = GetCell(row, flowCol);
+                    var flowText = GetCell(row, flowCol);
 
                     if (IsIgnoredRowMarker(flowText))
                     {
@@ -336,10 +367,10 @@ namespace VN
                         continue;
                     }
 
-                    List<int> choiceColumns = CollectChoiceColumns(row, choiceStartCol);
+                    var choiceColumns = CollectChoiceColumns(row, choiceStartCol);
 
-                    bool hasText = !string.IsNullOrWhiteSpace(flowText);
-                    bool hasChoice = choiceColumns.Count > 0;
+                    var hasText = !string.IsNullOrWhiteSpace(flowText);
+                    var hasChoice = choiceColumns.Count > 0;
 
                     if (!hasText && !hasChoice)
                     {
@@ -358,45 +389,39 @@ namespace VN
                         var choice = CreateChoiceStep(row, flowCol, choiceColumns);
                         AppendNonTerminalStep(result, choice);
 
-                        int branchStartRow = row + 1;
-                        int returnRow = FindReturnRow(flowCol, branchStartRow, endRowExclusive);
-                        int nestedChoiceStartCol = choiceStartCol + choiceColumns.Count;
+                        var branchStartRow = row + 1;
+                        var returnRow = FindReturnRow(flowCol, branchStartRow, endRowExclusive);
+                        var nestedChoiceStartCol = choiceStartCol + choiceColumns.Count;
 
                         var continuation = ParseFlow(
-                            flowCol: flowCol,
-                            startRow: returnRow,
-                            endRowExclusive: endRowExclusive,
-                            variantIndex: variantIndex,
-                            variantCount: variantCount,
-                            choiceStartCol: choiceStartCol);
+                            flowCol,
+                            returnRow,
+                            endRowExclusive,
+                            variantIndex,
+                            variantCount,
+                            choiceStartCol);
 
                         var unresolvedAfterChoice = new ParseResult();
 
-                        for (int optionIndex = 0; optionIndex < choiceColumns.Count; optionIndex++)
+                        for (var optionIndex = 0; optionIndex < choiceColumns.Count; optionIndex++)
                         {
-                            int branchCol = choiceColumns[optionIndex];
+                            var branchCol = choiceColumns[optionIndex];
                             var option = choice.options[optionIndex];
 
                             var branch = ParseFlow(
-                                flowCol: branchCol,
-                                startRow: branchStartRow,
-                                endRowExclusive: returnRow,
-                                variantIndex: optionIndex,
-                                variantCount: choiceColumns.Count,
-                                choiceStartCol: nestedChoiceStartCol);
+                                branchCol,
+                                branchStartRow,
+                                returnRow,
+                                optionIndex,
+                                choiceColumns.Count,
+                                nestedChoiceStartCol);
 
                             if (!string.IsNullOrWhiteSpace(branch.firstStepId))
-                            {
                                 option.nextStepId = branch.firstStepId;
-                            }
                             else if (!string.IsNullOrWhiteSpace(continuation.firstStepId))
-                            {
                                 option.nextStepId = continuation.firstStepId;
-                            }
                             else
-                            {
                                 unresolvedAfterChoice.pendingDirectOptions.Add(option);
-                            }
 
                             if (!string.IsNullOrWhiteSpace(continuation.firstStepId))
                             {
@@ -431,18 +456,20 @@ namespace VN
 
                 return result;
             }
+
             private static bool IsIgnoredRowMarker(string value)
             {
                 return string.Equals(NormalizeText(value), "-", StringComparison.Ordinal);
             }
+
             private VNLineStep CreateLineStep(int row, int flowCol, string text, int variantIndex, int variantCount)
             {
-                string rawSpeaker = GetVariantCell(row, (int)binding.speakerColumn, variantIndex, variantCount);
-                string rawEmotion = GetVariantCell(row, (int)binding.emotionColumn, variantIndex, variantCount);
+                var rawSpeaker = GetVariantCell(row, (int)binding.speakerColumn, variantIndex, variantCount);
+                var rawEmotion = GetVariantCell(row, (int)binding.emotionColumn, variantIndex, variantCount);
 
-                string speakerId = NormalizeSpeaker(rawSpeaker);
-                VNEmotion emotion = ParseEmotion(rawEmotion, speakerId, row);
-                
+                var speakerId = NormalizeSpeaker(rawSpeaker);
+                var emotion = ParseEmotion(rawEmotion, speakerId, row);
+
                 return new VNLineStep
                 {
                     id = MakeStepId("line", row, flowCol),
@@ -465,10 +492,10 @@ namespace VN
                     label = $"Choice R{row + 1} C{flowCol + 1}"
                 };
 
-                for (int i = 0; i < choiceColumns.Count; i++)
+                for (var i = 0; i < choiceColumns.Count; i++)
                 {
-                    int col = choiceColumns[i];
-                    string optionText = NormalizeText(GetCell(row, col));
+                    var col = choiceColumns[i];
+                    var optionText = NormalizeText(GetCell(row, col));
 
                     step.options.Add(new VNChoiceOption
                     {
@@ -515,10 +542,10 @@ namespace VN
                 if (string.IsNullOrWhiteSpace(targetStepId) || result == null)
                     return;
 
-                for (int i = 0; i < result.terminals.Count; i++)
+                for (var i = 0; i < result.terminals.Count; i++)
                     SetNext(result.terminals[i], targetStepId);
 
-                for (int i = 0; i < result.pendingDirectOptions.Count; i++)
+                for (var i = 0; i < result.pendingDirectOptions.Count; i++)
                     result.pendingDirectOptions[i].nextStepId = targetStepId;
             }
 
@@ -551,11 +578,9 @@ namespace VN
 
             private int FindReturnRow(int parentFlowCol, int startRow, int endRowExclusive)
             {
-                for (int row = startRow; row < endRowExclusive; row++)
-                {
+                for (var row = startRow; row < endRowExclusive; row++)
                     if (!string.IsNullOrWhiteSpace(GetCell(row, parentFlowCol)))
                         return row;
-                }
 
                 return endRowExclusive;
             }
@@ -567,9 +592,9 @@ namespace VN
                 if (startCol < 0 || startCol >= table.columns)
                     return result;
 
-                for (int col = startCol; col < table.columns; col++)
+                for (var col = startCol; col < table.columns; col++)
                 {
-                    string value = GetCell(row, col);
+                    var value = GetCell(row, col);
 
                     if (string.IsNullOrWhiteSpace(value))
                         break;
@@ -626,7 +651,7 @@ namespace VN
 
             private string GetVariantCell(int row, int col, int variantIndex, int variantCount)
             {
-                string raw = GetCell(row, col);
+                var raw = GetCell(row, col);
                 if (string.IsNullOrWhiteSpace(raw))
                     return string.Empty;
 
@@ -664,8 +689,8 @@ namespace VN
 
             private string BuildLineLabel(int row, int flowCol, string speakerId, string text)
             {
-                string speaker = string.IsNullOrWhiteSpace(speakerId) ? "Narrator" : speakerId;
-                string preview = NormalizeText(text).Replace("\n", " ");
+                var speaker = string.IsNullOrWhiteSpace(speakerId) ? "Narrator" : speakerId;
+                var preview = NormalizeText(text).Replace("\n", " ");
 
                 if (preview.Length > 32)
                     preview = preview.Substring(0, 32) + "…";
@@ -700,7 +725,7 @@ namespace VN
                     .Select(ch => char.IsLetterOrDigit(ch) ? ch : '_')
                     .ToArray();
 
-                string result = new string(chars);
+                var result = new string(chars);
 
                 while (result.Contains("__"))
                     result = result.Replace("__", "_");
@@ -713,20 +738,185 @@ namespace VN
                 if (Enum.TryParse(raw, true, out value))
                     return true;
 
-                string normalizedRaw = NormalizeEnumToken(raw);
+                var normalizedRaw = NormalizeEnumToken(raw);
                 var names = Enum.GetNames(typeof(TEnum));
 
-                for (int i = 0; i < names.Length; i++)
-                {
+                for (var i = 0; i < names.Length; i++)
                     if (NormalizeEnumToken(names[i]) == normalizedRaw)
                     {
                         value = (TEnum)Enum.Parse(typeof(TEnum), names[i], true);
                         return true;
                     }
-                }
 
                 value = default;
                 return false;
+            }
+
+            public void UpdateOnlyLineText(VNChapter chapter)
+            {
+                builtSteps.Clear();
+
+                if (chapter == null || chapter.steps == null)
+                    return;
+
+                var startRow = Mathf.Max(0, binding.firstDataRow - 1);
+                var flowCol = (int)binding.flowColumn;
+                var choiceStartCol = (int)binding.firstChoiceColumn;
+
+                // Парсим таблицу во временный список.
+                // В реальную главу ничего не добавляем.
+                ParseFlow(
+                    flowCol,
+                    startRow,
+                    table.rows,
+                    -1,
+                    0,
+                    choiceStartCol);
+
+                var sourceLines = builtSteps
+                    .OfType<VNLineStep>()
+                    .ToList();
+
+                var sourceLinesById = new Dictionary<string, VNLineStep>(StringComparer.Ordinal);
+
+                for (var i = 0; i < sourceLines.Count; i++)
+                {
+                    var id = NormalizeId(sourceLines[i].id);
+                    if (string.IsNullOrEmpty(id))
+                        continue;
+
+                    if (!sourceLinesById.ContainsKey(id))
+                        sourceLinesById.Add(id, sourceLines[i]);
+                }
+
+                // Важно:
+                // Берём только существующие VNLineStep.
+                // VNCommandStep и любые другие шаги между репликами не считаются и не трогаются.
+                var targetLines = chapter.steps
+                    .OfType<VNLineStep>()
+                    .ToList();
+
+                var matchedById = 0;
+                var matchedByOrder = 0;
+                var changed = 0;
+
+#if UNITY_EDITOR
+                var undoRecorded = false;
+#endif
+
+                var sourceUsed = new bool[sourceLines.Count];
+                var targetUpdated = new bool[targetLines.Count];
+
+                var allowIdMatch =
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdOnly ||
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdThenLineOrder;
+
+                var allowOrderMatch =
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.LineOrderOnly ||
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdThenLineOrder;
+
+                if (allowIdMatch)
+                    for (var targetIndex = 0; targetIndex < targetLines.Count; targetIndex++)
+                    {
+                        var targetLine = targetLines[targetIndex];
+                        if (targetLine == null)
+                            continue;
+
+                        var targetId = NormalizeId(targetLine.id);
+                        if (string.IsNullOrEmpty(targetId))
+                            continue;
+
+                        if (!sourceLinesById.TryGetValue(targetId, out var sourceLine))
+                            continue;
+
+                        var sourceIndex = sourceLines.IndexOf(sourceLine);
+                        if (sourceIndex >= 0)
+                            sourceUsed[sourceIndex] = true;
+
+                        targetUpdated[targetIndex] = true;
+                        matchedById++;
+
+                        if (ApplyTextIfChanged(chapter, targetLine, sourceLine.text, ref changed, ref undoRecorded))
+                        {
+                        }
+                    }
+
+                if (allowOrderMatch)
+                {
+                    var sourceCursor = 0;
+
+                    for (var targetIndex = 0; targetIndex < targetLines.Count; targetIndex++)
+                    {
+                        if (targetUpdated[targetIndex])
+                            continue;
+
+                        while (sourceCursor < sourceLines.Count && sourceUsed[sourceCursor])
+                            sourceCursor++;
+
+                        if (sourceCursor >= sourceLines.Count)
+                            break;
+
+                        var targetLine = targetLines[targetIndex];
+                        var sourceLine = sourceLines[sourceCursor];
+
+                        sourceUsed[sourceCursor] = true;
+                        targetUpdated[targetIndex] = true;
+                        matchedByOrder++;
+
+                        ApplyTextIfChanged(chapter, targetLine, sourceLine.text, ref changed, ref undoRecorded);
+
+                        sourceCursor++;
+                    }
+                }
+
+                if (changed > 0)
+                {
+#if UNITY_EDITOR
+                    EditorUtility.SetDirty(chapter);
+#endif
+                }
+
+                Debug.Log(
+                    $"VN Google Sheet Importer: text-only update for '{chapter.name}'. " +
+                    $"Source lines: {sourceLines.Count}. Existing lines: {targetLines.Count}. " +
+                    $"Matched by id: {matchedById}. Matched by line order: {matchedByOrder}. Changed texts: {changed}. " +
+                    "Commands and non-line steps were ignored.");
+
+                builtSteps.Clear();
+            }
+
+            private static string NormalizeId(string value)
+            {
+                return string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+            }
+
+            private static bool ApplyTextIfChanged(
+                VNChapter chapter,
+                VNLineStep targetLine,
+                string newText,
+                ref int changed,
+                ref bool undoRecorded)
+            {
+                if (targetLine == null)
+                    return false;
+
+                var oldText = targetLine.text ?? string.Empty;
+                newText ??= string.Empty;
+
+                if (string.Equals(oldText, newText, StringComparison.Ordinal))
+                    return false;
+
+#if UNITY_EDITOR
+                if (!undoRecorded)
+                {
+                    Undo.RecordObject(chapter, "Update VN Line Texts From Google Sheet");
+                    undoRecorded = true;
+                }
+#endif
+
+                targetLine.text = newText;
+                changed++;
+                return true;
             }
 
             private static string NormalizeEnumToken(string value)

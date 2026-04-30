@@ -5537,6 +5537,7 @@ GameObject:
   - component: {fileID: 7493252050249330696}
   - component: {fileID: 7493252050249330695}
   - component: {fileID: 7493252050249330697}
+  - component: {fileID: 7493252050249330698}
   m_Layer: 0
   m_Name: Analytics
   m_TagString: Untagged
@@ -5589,6 +5590,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b82d1391db91f54a923313f6c506ac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7493252050249330698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7493252050249330693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2ec6ba1ee8b48749524f015ed572a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AppsFlyer::AppsFlyerObjectScript
+  devKey: 
+  appID: 
+  UWPAppID: 
+  macOSAppID: 
+  isDebug: 0
+  getConversionData: 0
 --- !u!1 &7669604502304819975
 GameObject:
   m_ObjectHideFlags: 0

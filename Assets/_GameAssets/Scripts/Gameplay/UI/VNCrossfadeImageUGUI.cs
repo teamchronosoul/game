@@ -4,27 +4,40 @@ using UnityEngine.UI;
 
 namespace VN.UI
 {
-    // Компонент для кроссфейда спрайта через 2 Image (двойной буфер).
-    // Требования:
-    // - На объекте должны быть 2 Image (A и B) с одинаковым RectTransform.
-    // - Оба должны быть Raycast Target = false (обычно).
+    // Компонент для кроссфейда через двойной буфер.
+    //
+    // Работает с:
+    // - Image + Sprite
+    // - RawImage + Sprite
+    // - RawImage + Texture
+    //
+    // Внешний код менять не нужно:
+    // SetInstant(Sprite)
+    // Crossfade(Sprite, seconds)
+    // Hide(seconds)
     public class VNCrossfadeImageUGUI : MonoBehaviour
     {
+        [Header("Image buffer")]
         [SerializeField] private Image a;
         [SerializeField] private Image b;
 
+        [Header("RawImage buffer")]
+        [SerializeField] private RawImage rawA;
+        [SerializeField] private RawImage rawB;
+
         private bool _aIsFront = true;
         private Coroutine _co;
+
+        private bool UseRawImage => rawA != null || rawB != null;
 
         public void SetInstant(Sprite sprite, bool visible = true)
         {
             StopFade();
 
-            var front = _aIsFront ? a : b;
-            var back  = _aIsFront ? b : a;
-
-            ApplyImage(front, sprite, visible ? 1f : 0f);
-            DisableImage(back);
+            if (UseRawImage)
+                SetInstantRaw(sprite, visible);
+            else
+                SetInstantImage(sprite, visible);
         }
 
         public void Crossfade(Sprite sprite, float seconds, bool visible = true)
@@ -36,25 +49,62 @@ namespace VN.UI
             }
 
             StopFade();
-            _co = StartCoroutine(CoCrossfade(sprite, seconds, visible));
+
+            _co = UseRawImage
+                ? StartCoroutine(CoCrossfadeRaw(sprite, seconds, visible))
+                : StartCoroutine(CoCrossfadeImage(sprite, seconds, visible));
+        }
+
+        // Дополнительно: если где-то нужно напрямую передать Texture.
+        // Старый код это не ломает.
+        public void SetInstant(Texture texture, bool visible = true)
+        {
+            StopFade();
+            SetInstantRaw(texture, visible);
+        }
+
+        public void Crossfade(Texture texture, float seconds, bool visible = true)
+        {
+            if (seconds <= 0f)
+            {
+                SetInstant(texture, visible);
+                return;
+            }
+
+            StopFade();
+            _co = StartCoroutine(CoCrossfadeRaw(texture, seconds, visible));
         }
 
         public void Hide(float seconds = 0.2f)
         {
-            Crossfade(null, seconds, visible: false);
+            Crossfade((Sprite)null, seconds, visible: false);
         }
 
-        private IEnumerator CoCrossfade(Sprite sprite, float seconds, bool visible)
+        // =========================
+        // Image / Sprite
+        // =========================
+
+        private void SetInstantImage(Sprite sprite, bool visible)
+        {
+            var front = _aIsFront ? a : b;
+            var back  = _aIsFront ? b : a;
+
+            ApplyImage(front, sprite, visible ? 1f : 0f);
+            DisableImage(back);
+        }
+
+        private IEnumerator CoCrossfadeImage(Sprite sprite, float seconds, bool visible)
         {
             var from = _aIsFront ? a : b;
             var to   = _aIsFront ? b : a;
 
-            // Подготавливаем "to"
-            to.sprite = sprite;
-            to.enabled = visible && sprite != null;
-            SetAlpha(to, 0f);
+            if (to != null)
+            {
+                to.sprite = sprite;
+                to.enabled = visible && sprite != null;
+                SetAlpha(to, 0f);
+            }
 
-            // "from" может быть выключен
             if (from != null && from.enabled == false)
                 SetAlpha(from, 0f);
 
@@ -68,7 +118,7 @@ namespace VN.UI
                 t += Time.deltaTime;
                 float k = Mathf.Clamp01(t / dur);
 
-                float toA = (visible && sprite != null) ? k : 0f;
+                float toA = visible && sprite != null ? k : 0f;
                 float fromA = Mathf.Lerp(fromStart, 0f, k);
 
                 SetAlpha(to, toA);
@@ -77,8 +127,7 @@ namespace VN.UI
                 yield return null;
             }
 
-            // Финализируем
-            SetAlpha(to, (visible && sprite != null) ? 1f : 0f);
+            SetAlpha(to, visible && sprite != null ? 1f : 0f);
 
             if (from != null)
             {
@@ -87,14 +136,140 @@ namespace VN.UI
             }
 
             if (!(visible && sprite != null))
-            {
-                to.enabled = false;
-                to.sprite = null;
-            }
+                DisableImage(to);
 
             _aIsFront = !_aIsFront;
             _co = null;
         }
+
+        // =========================
+        // RawImage / Sprite
+        // =========================
+
+        private void SetInstantRaw(Sprite sprite, bool visible)
+        {
+            var front = _aIsFront ? rawA : rawB;
+            var back  = _aIsFront ? rawB : rawA;
+
+            ApplyRawImage(front, sprite, visible ? 1f : 0f);
+            DisableRawImage(back);
+        }
+
+        private IEnumerator CoCrossfadeRaw(Sprite sprite, float seconds, bool visible)
+        {
+            var from = _aIsFront ? rawA : rawB;
+            var to   = _aIsFront ? rawB : rawA;
+
+            if (to != null)
+            {
+                ApplySpriteToRawImage(to, sprite);
+                to.enabled = visible && sprite != null;
+                SetAlpha(to, 0f);
+            }
+
+            if (from != null && from.enabled == false)
+                SetAlpha(from, 0f);
+
+            float fromStart = from != null ? from.color.a : 0f;
+
+            float t = 0f;
+            float dur = Mathf.Max(0.001f, seconds);
+
+            while (t < dur)
+            {
+                t += Time.deltaTime;
+                float k = Mathf.Clamp01(t / dur);
+
+                float toA = visible && sprite != null ? k : 0f;
+                float fromA = Mathf.Lerp(fromStart, 0f, k);
+
+                SetAlpha(to, toA);
+                SetAlpha(from, fromA);
+
+                yield return null;
+            }
+
+            SetAlpha(to, visible && sprite != null ? 1f : 0f);
+
+            if (from != null)
+            {
+                SetAlpha(from, 0f);
+                from.enabled = false;
+            }
+
+            if (!(visible && sprite != null))
+                DisableRawImage(to);
+
+            _aIsFront = !_aIsFront;
+            _co = null;
+        }
+
+        // =========================
+        // RawImage / Texture
+        // =========================
+
+        private void SetInstantRaw(Texture texture, bool visible)
+        {
+            var front = _aIsFront ? rawA : rawB;
+            var back  = _aIsFront ? rawB : rawA;
+
+            ApplyRawImage(front, texture, visible ? 1f : 0f);
+            DisableRawImage(back);
+        }
+
+        private IEnumerator CoCrossfadeRaw(Texture texture, float seconds, bool visible)
+        {
+            var from = _aIsFront ? rawA : rawB;
+            var to   = _aIsFront ? rawB : rawA;
+
+            if (to != null)
+            {
+                to.texture = texture;
+                to.uvRect = new Rect(0f, 0f, 1f, 1f);
+                to.enabled = visible && texture != null;
+                SetAlpha(to, 0f);
+            }
+
+            if (from != null && from.enabled == false)
+                SetAlpha(from, 0f);
+
+            float fromStart = from != null ? from.color.a : 0f;
+
+            float t = 0f;
+            float dur = Mathf.Max(0.001f, seconds);
+
+            while (t < dur)
+            {
+                t += Time.deltaTime;
+                float k = Mathf.Clamp01(t / dur);
+
+                float toA = visible && texture != null ? k : 0f;
+                float fromA = Mathf.Lerp(fromStart, 0f, k);
+
+                SetAlpha(to, toA);
+                SetAlpha(from, fromA);
+
+                yield return null;
+            }
+
+            SetAlpha(to, visible && texture != null ? 1f : 0f);
+
+            if (from != null)
+            {
+                SetAlpha(from, 0f);
+                from.enabled = false;
+            }
+
+            if (!(visible && texture != null))
+                DisableRawImage(to);
+
+            _aIsFront = !_aIsFront;
+            _co = null;
+        }
+
+        // =========================
+        // Helpers
+        // =========================
 
         private void StopFade()
         {
@@ -114,29 +289,94 @@ namespace VN.UI
 
             SetAlpha(img, alpha);
 
-            // если sprite == null — можно выключить сразу
             if (sprite == null)
-            {
-                img.enabled = false;
-                img.sprite = null;
-                SetAlpha(img, 0f);
-            }
+                DisableImage(img);
         }
 
         private static void DisableImage(Image img)
         {
             if (img == null) return;
+
             img.enabled = false;
             img.sprite = null;
             SetAlpha(img, 0f);
         }
 
-        private static void SetAlpha(Image img, float a)
+        private static void ApplyRawImage(RawImage img, Sprite sprite, float alpha)
         {
             if (img == null) return;
-            var c = img.color;
+
+            ApplySpriteToRawImage(img, sprite);
+
+            img.enabled = sprite != null && alpha > 0f;
+            SetAlpha(img, alpha);
+
+            if (sprite == null)
+                DisableRawImage(img);
+        }
+
+        private static void ApplyRawImage(RawImage img, Texture texture, float alpha)
+        {
+            if (img == null) return;
+
+            img.texture = texture;
+            img.uvRect = new Rect(0f, 0f, 1f, 1f);
+            img.enabled = texture != null && alpha > 0f;
+
+            SetAlpha(img, alpha);
+
+            if (texture == null)
+                DisableRawImage(img);
+        }
+
+        private static void DisableRawImage(RawImage img)
+        {
+            if (img == null) return;
+
+            img.enabled = false;
+            img.texture = null;
+            img.uvRect = new Rect(0f, 0f, 1f, 1f);
+            SetAlpha(img, 0f);
+        }
+
+        private static void ApplySpriteToRawImage(RawImage img, Sprite sprite)
+        {
+            if (img == null) return;
+
+            if (sprite == null)
+            {
+                img.texture = null;
+                img.uvRect = new Rect(0f, 0f, 1f, 1f);
+                return;
+            }
+
+            img.texture = sprite.texture;
+            img.uvRect = GetSpriteUVRect(sprite);
+        }
+
+        private static Rect GetSpriteUVRect(Sprite sprite)
+        {
+            if (sprite == null || sprite.texture == null)
+                return new Rect(0f, 0f, 1f, 1f);
+
+            Rect textureRect = sprite.textureRect;
+            Texture texture = sprite.texture;
+
+            return new Rect(
+                textureRect.x / texture.width,
+                textureRect.y / texture.height,
+                textureRect.width / texture.width,
+                textureRect.height / texture.height
+            );
+        }
+
+        private static void SetAlpha(Graphic graphic, float a)
+        {
+            if (graphic == null) return;
+
+            var c = graphic.color;
             c.a = Mathf.Clamp01(a);
-            img.color = c;
+            graphic.color = c;
         }
     }
 }

@@ -1,0 +1,1703 @@
+fileFormatVersion: 2
+guid: 46b78ade2d6fbad4a806e55be6fc4b11
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2680822287206719846
+    second: Subtract_0
+  - first:
+      213: -5940198412599948551
+    second: Subtract_1
+  - first:
+      213: 4802384495716647501
+    second: Subtract_2
+  - first:
+      213: 8456727893084637448
+    second: Subtract_3
+  - first:
+      213: -5586542397858019354
+    second: Subtract_4
+  - first:
+      213: -3619592863158613294
+    second: Subtract_5
+  - first:
+      213: -4026823351188281429
+    second: Subtract_6
+  - first:
+      213: -8604795922119069886
+    second: Subtract_7
+  - first:
+      213: -3567178970740161198
+    second: Subtract_8
+  - first:
+      213: -4429775438845838112
+    second: Subtract_9
+  - first:
+      213: 320782973648009655
+    second: Subtract_10
+  - first:
+      213: -3294155032712749982
+    second: Subtract_11
+  - first:
+      213: -8856373445463608478
+    second: Subtract_12
+  - first:
+      213: -1643554548269661322
+    second: Subtract_13
+  - first:
+      213: 5382936328676299035
+    second: Subtract_14
+  - first:
+      213: -1180366287648410627
+    second: Subtract_15
+  - first:
+      213: -176057099005732217
+    second: Subtract_16
+  - first:
+      213: -947503346628731908
+    second: Subtract_17
+  - first:
+      213: 6108116792281654673
+    second: Subtract_18
+  - first:
+      213: -5203343648946850425
+    second: Subtract_19
+  - first:
+      213: -7085992125598236917
+    second: Subtract_20
+  - first:
+      213: 5486122721722410047
+    second: Subtract_21
+  - first:
+      213: -6612371765595700693
+    second: Subtract_22
+  - first:
+      213: 5521678458149486133
+    second: Subtract_23
+  - first:
+      213: -7776530571279041314
+    second: Subtract_24
+  - first:
+      213: -6804682489328539169
+    second: Subtract_25
+  - first:
+      213: 6479869497248800855
+    second: Subtract_26
+  - first:
+      213: 4389126234819689584
+    second: Subtract_27
+  - first:
+      213: -5316453650116179841
+    second: Subtract_28
+  - first:
+      213: -6482374913773508488
+    second: Subtract_29
+  - first:
+      213: 7897628360064774561
+    second: Subtract_30
+  - first:
+      213: 242458957170538263
+    second: Subtract_31
+  - first:
+      213: 4486544972538576743
+    second: Subtract_32
+  - first:
+      213: -5010415458121081365
+    second: Subtract_33
+  - first:
+      213: 136776675397103567
+    second: Subtract_34
+  - first:
+      213: -8943872401306091013
+    second: Subtract_35
+  - first:
+      213: -3248051284925866926
+    second: Subtract_36
+  - first:
+      213: 4772282259726988525
+    second: Subtract_37
+  - first:
+      213: 5861828543280328349
+    second: Subtract_38
+  - first:
+      213: -1271504888700935607
+    second: Subtract_39
+  - first:
+      213: -2830155942257992942
+    second: Subtract_40
+  - first:
+      213: 4217579619003148252
+    second: Subtract_41
+  - first:
+      213: 6832445820642504650
+    second: Subtract_42
+  - first:
+      213: 6076100310640203788
+    second: Subtract_43
+  - first:
+      213: 3358324406247024396
+    second: Subtract_44
+  - first:
+      213: 6604452202398966279
+    second: Subtract_45
+  - first:
+      213: 3113806042637420880
+    second: Subtract_46
+  - first:
+      213: -4983100403471569717
+    second: Subtract_47
+  - first:
+      213: 2782150344184972632
+    second: Subtract_48
+  - first:
+      213: -313880466755099413
+    second: Subtract_49
+  - first:
+      213: -7745802083815997726
+    second: Subtract_50
+  - first:
+      213: 8479580070681381177
+    second: Subtract_51
+  - first:
+      213: 7016052410115671476
+    second: Subtract_52
+  - first:
+      213: 5431419264879040021
+    second: Subtract_53
+  - first:
+      213: 4771870720088483105
+    second: Subtract_54
+  - first:
+      213: 8627210136849961847
+    second: Subtract_55
+  - first:
+      213: -1051137370652755549
+    second: Subtract_56
+  - first:
+      213: 1663487386279625533
+    second: Subtract_57
+  - first:
+      213: 5350173768501460528
+    second: Subtract_58
+  - first:
+      213: 5443062702293694575
+    second: Subtract_59
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Subtract_0
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 715
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ed719555ecbcad0800000000000000
+      internalID: -2680822287206719846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_1
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 732
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fa04a9240d209da0800000000000000
+      internalID: -5940198412599948551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 745
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42c806314f75a240800000000000000
+      internalID: 4802384495716647501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_3
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 754
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 809827d86355c5570800000000000000
+      internalID: 8456727893084637448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_4
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 760
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e78305b94d9872b0800000000000000
+      internalID: -5586542397858019354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_5
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 760
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2da44e7e77f94cdc0800000000000000
+      internalID: -3619592863158613294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_6
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 755
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7ac234f79dd18c0800000000000000
+      internalID: -4026823351188281429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_7
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 745
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24fec51f2bf959880800000000000000
+      internalID: -8604795922119069886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 732
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2550ac630a5de7ec0800000000000000
+      internalID: -3567178970740161198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_9
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 715
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ecf7d455b64682c0800000000000000
+      internalID: -4429775438845838112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_10
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 671
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9784a3a66a37400800000000000000
+      internalID: 320782973648009655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_11
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 694
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26c5710737fc842d0800000000000000
+      internalID: -3294155032712749982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_12
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 695
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26370f04647d71580800000000000000
+      internalID: -8856373445463608478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_13
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 671
+        width: 49
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 673c865a8dbe039e0800000000000000
+      internalID: -1643554548269661322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_14
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 645
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b11db47221804ba40800000000000000
+      internalID: 5382936328676299035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_15
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 615
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3bedf7d1f7e9fe0800000000000000
+      internalID: -1180366287648410627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_16
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 644
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78ad39150058e8df0800000000000000
+      internalID: -176057099005732217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_17
+      rect:
+        serializedVersion: 2
+        x: 669
+        y: 615
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfb53b0f9bac9d2f0800000000000000
+      internalID: -947503346628731908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_18
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 550
+        width: 47
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 195eb824cd364c450800000000000000
+      internalID: 6108116792281654673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_19
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 583
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 785fc3015820ac7b0800000000000000
+      internalID: -5203343648946850425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_20
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 584
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f708874bf79ad90800000000000000
+      internalID: -7085992125598236917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_21
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 550
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f34a6767c8f922c40800000000000000
+      internalID: 5486122721722410047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_22
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 477
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2288dcb9e22c34a0800000000000000
+      internalID: -6612371765595700693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_23
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 514
+        width: 47
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e3de57d41f0ac40800000000000000
+      internalID: 5521678458149486133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_24
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 514
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc72f1b5a6341490800000000000000
+      internalID: -7776530571279041314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_25
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 478
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd960462459e091a0800000000000000
+      internalID: -6804682489328539169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7506766d9fe1de950800000000000000
+      internalID: 6479869497248800855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_27
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 440
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c76c45e0f49ec30800000000000000
+      internalID: 4389126234819689584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_28
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 440
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f780fffa2992836b0800000000000000
+      internalID: -5316453650116179841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_29
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 400
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87860ab6c5af906a0800000000000000
+      internalID: -6482374913773508488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 359
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a136b966230a9d60800000000000000
+      internalID: 7897628360064774561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_31
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 318
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717f2ce03236d5300800000000000000
+      internalID: 242458957170538263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_32
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 318
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76ff9fcb1e8634e30800000000000000
+      internalID: 4486544972538576743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_33
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 359
+        width: 38
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bed1199efad677ab0800000000000000
+      internalID: -5010415458121081365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_34
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 278
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcf6a9e59ade5e100800000000000000
+      internalID: 136776675397103567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_35
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 239
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf10bbb007bf0e380800000000000000
+      internalID: -8943872401306091013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_36
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 239
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25c1eb5b09a9ce2d0800000000000000
+      internalID: -3248051284925866926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_37
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 278
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4fcea3e6d8a3240800000000000000
+      internalID: 4772282259726988525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_38
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 202
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9e2878b006695150800000000000000
+      internalID: 5861828543280328349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_39
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 167
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 942eeca5a05ba5ee0800000000000000
+      internalID: -1271504888700935607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_40
+      rect:
+        serializedVersion: 2
+        x: 694
+        y: 166
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b50c25a2449b8d0800000000000000
+      internalID: -2830155942257992942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_41
+      rect:
+        serializedVersion: 2
+        x: 714
+        y: 201
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd72c9a515ad78a30800000000000000
+      internalID: 4217579619003148252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_42
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 135
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acfaf762649b1de50800000000000000
+      internalID: 6832445820642504650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_43
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 105
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08995b3a05a25450800000000000000
+      internalID: 6076100310640203788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_44
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 104
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c07e0ea114a2b9e20800000000000000
+      internalID: 3358324406247024396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_45
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 134
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7026904494ab7ab50800000000000000
+      internalID: 6604452202398966279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_46
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 78
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0594ede1916763b20800000000000000
+      internalID: 3113806042637420880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_47
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 55
+        width: 48
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcca8faa59878dab0800000000000000
+      internalID: -4983100403471569717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_48
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 36
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85540e06ffe2c9620800000000000000
+      internalID: 2782150344184972632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_49
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 35
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be4e025e06fd4abf0800000000000000
+      internalID: -313880466755099413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_50
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 55
+        width: 49
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2eebaa53b02618490800000000000000
+      internalID: -7745802083815997726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_51
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 78
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9390275c5258da570800000000000000
+      internalID: 8479580070681381177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_52
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 21
+        width: 47
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b5c77e8e760e5160800000000000000
+      internalID: 7016052410115671476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_53
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 9
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51614556b07406b40800000000000000
+      internalID: 5431419264879040021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_54
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 2
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12526f03327193240800000000000000
+      internalID: 4771870720088483105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_55
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 0
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 773579919e10ab770800000000000000
+      internalID: 8627210136849961847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_56
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 0
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a9ba1c612c9961f0800000000000000
+      internalID: -1051137370652755549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_57
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 2
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d334a8bd6f4e51710800000000000000
+      internalID: 1663487386279625533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_58
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 9
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03e742e22b2af3a40800000000000000
+      internalID: 5350173768501460528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Subtract_59
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 20
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f68b46c60b4a98b40800000000000000
+      internalID: 5443062702293694575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Subtract_0: -2680822287206719846
+      Subtract_1: -5940198412599948551
+      Subtract_10: 320782973648009655
+      Subtract_11: -3294155032712749982
+      Subtract_12: -8856373445463608478
+      Subtract_13: -1643554548269661322
+      Subtract_14: 5382936328676299035
+      Subtract_15: -1180366287648410627
+      Subtract_16: -176057099005732217
+      Subtract_17: -947503346628731908
+      Subtract_18: 6108116792281654673
+      Subtract_19: -5203343648946850425
+      Subtract_2: 4802384495716647501
+      Subtract_20: -7085992125598236917
+      Subtract_21: 5486122721722410047
+      Subtract_22: -6612371765595700693
+      Subtract_23: 5521678458149486133
+      Subtract_24: -7776530571279041314
+      Subtract_25: -6804682489328539169
+      Subtract_26: 6479869497248800855
+      Subtract_27: 4389126234819689584
+      Subtract_28: -5316453650116179841
+      Subtract_29: -6482374913773508488
+      Subtract_3: 8456727893084637448
+      Subtract_30: 7897628360064774561
+      Subtract_31: 242458957170538263
+      Subtract_32: 4486544972538576743
+      Subtract_33: -5010415458121081365
+      Subtract_34: 136776675397103567
+      Subtract_35: -8943872401306091013
+      Subtract_36: -3248051284925866926
+      Subtract_37: 4772282259726988525
+      Subtract_38: 5861828543280328349
+      Subtract_39: -1271504888700935607
+      Subtract_4: -5586542397858019354
+      Subtract_40: -2830155942257992942
+      Subtract_41: 4217579619003148252
+      Subtract_42: 6832445820642504650
+      Subtract_43: 6076100310640203788
+      Subtract_44: 3358324406247024396
+      Subtract_45: 6604452202398966279
+      Subtract_46: 3113806042637420880
+      Subtract_47: -4983100403471569717
+      Subtract_48: 2782150344184972632
+      Subtract_49: -313880466755099413
+      Subtract_5: -3619592863158613294
+      Subtract_50: -7745802083815997726
+      Subtract_51: 8479580070681381177
+      Subtract_52: 7016052410115671476
+      Subtract_53: 5431419264879040021
+      Subtract_54: 4771870720088483105
+      Subtract_55: 8627210136849961847
+      Subtract_56: -1051137370652755549
+      Subtract_57: 1663487386279625533
+      Subtract_58: 5350173768501460528
+      Subtract_59: 5443062702293694575
+      Subtract_6: -4026823351188281429
+      Subtract_7: -8604795922119069886
+      Subtract_8: -3567178970740161198
+      Subtract_9: -4429775438845838112
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

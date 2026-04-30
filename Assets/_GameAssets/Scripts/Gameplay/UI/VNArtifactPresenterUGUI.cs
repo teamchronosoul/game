@@ -117,9 +117,9 @@ namespace VN.UI
             if (slot == null) return;
 
             if (fade <= 0f)
-                slot.SetInstant(null, false);
+                slot.SetInstant((Sprite)null, false);
             else
-                slot.Crossfade(null, fade, false);
+                slot.Crossfade((Sprite)null, fade, false);
         }
 
         private IEnumerator PlayRoutine(VN.VNRunner.VNArtifactPayload payload)

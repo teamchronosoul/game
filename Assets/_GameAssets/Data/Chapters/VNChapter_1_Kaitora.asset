@@ -43,11 +43,11 @@ MonoBehaviour:
   - rid: 9129764570494402797
   - rid: 9129764570494402798
   - rid: 9129764570494402799
+  - rid: 9129764659770687690
   - rid: 9129764570494403243
   - rid: 9129764570494403248
   - rid: 9129764570494402800
   - rid: 9129764570494402801
-  - rid: 9129764570494403251
   - rid: 9129764570494402802
   - rid: 9129764570494402803
   - rid: 9129764570494402804
@@ -684,7 +684,7 @@ MonoBehaviour:
         text: Was he being ironic about Shinrai's class? Or was he being serious?
           Although he's quite direct, your mentor is still a bit of mystery to you.
         addToLog: 1
-        nextStepId: 0d00686b350841aab144710a5edd03aa
+        nextStepId: f0fdfd7e6a1e45a4853032c4e9c7f293
     - rid: 9129764570494402800
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -715,7 +715,7 @@ MonoBehaviour:
         sfxId: 
         text: Enough! Let me go already!
         addToLog: 1
-        nextStepId: 6a5a8757c1bb4beba82fcfc37b0c80d3
+        nextStepId: 
     - rid: 9129764570494402802
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3756,7 +3756,7 @@ MonoBehaviour:
         label: "R15 C4 Kensui: Needless to say, the sentinels a\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Kensui
+        speakerId: Kaitora
         pose: 0
         emotion: 0
         showSpeakerName: 1
@@ -3819,7 +3819,7 @@ MonoBehaviour:
         label: "R15 C5 Kensui: There's nothing like honing your\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Kensui
+        speakerId: Kaitora
         pose: 0
         emotion: 5
         showSpeakerName: 1
@@ -3939,22 +3939,6 @@ MonoBehaviour:
     - rid: 9129764570494403250
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
-        musicId: School_Yard
-        fadeInSeconds: 0.5
-        loop: 1
-    - rid: 9129764570494403251
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: 6a5a8757c1bb4beba82fcfc37b0c80d3
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764570494403253
-        nextStepId: vnchapter_1_kaitora_line_r042_c03
-    - rid: 9129764570494403253
-      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
-      data:
         musicId: Bullies
         fadeInSeconds: 0.5
         loop: 1
@@ -4004,3 +3988,18 @@ MonoBehaviour:
       type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
       data:
         sfxId: Shadow
+    - rid: 9129764659770687690
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: f0fdfd7e6a1e45a4853032c4e9c7f293
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764659770687692
+        nextStepId: 0d00686b350841aab144710a5edd03aa
+    - rid: 9129764659770687692
+      type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        slot: 0
+        fadeSeconds: 0.2

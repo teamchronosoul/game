@@ -41,7 +41,6 @@ MonoBehaviour:
   - rid: 9129764572344615096
   - rid: 9129764570494403524
   - rid: 9129764570494403525
-  - rid: 9129764572344615099
   - rid: 9129764570494403526
   - rid: 9129764570494403527
   - rid: 9129764570494403528
@@ -134,7 +133,6 @@ MonoBehaviour:
   - rid: 9129764572344614940
   - rid: 9129764572344614941
   - rid: 9129764572344614942
-  - rid: 9129764572344614943
   - rid: 9129764572344614944
   - rid: 9129764572344614945
   - rid: 9129764572344614946
@@ -599,7 +597,7 @@ MonoBehaviour:
         sfxId: 
         text: Enough! Let me go already!
         addToLog: 1
-        nextStepId: 3c1d3045ffac4427b271c1940e0cb1d5
+        nextStepId: 
     - rid: 9129764570494403526
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1994,22 +1992,7 @@ MonoBehaviour:
         sfxId: 
         text: I have to help her.
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r145_c03
-    - rid: 9129764572344614943
-      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: vnchapter_1_shinrai_line_r145_c03
-        label: 'R145 C3 Narrator: PAID CHOICE'
-        disableSkip: 0
-        stopAuto: 0
-        speakerId: 
-        pose: 0
-        emotion: 0
-        showSpeakerName: 1
-        sfxId: 
-        text: PAID CHOICE
-        addToLog: 1
-        nextStepId: vnchapter_1_shinrai_choice_r145_c03
+        nextStepId: 
     - rid: 9129764572344614944
       type: {class: VNChoiceStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3801,22 +3784,6 @@ MonoBehaviour:
           rid: 9129764572344615098
         nextStepId: vnchapter_1_shinrai_line_r032_c03
     - rid: 9129764572344615098
-      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        musicId: School_Yard
-        fadeInSeconds: 0.5
-        loop: 1
-    - rid: 9129764572344615099
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: 3c1d3045ffac4427b271c1940e0cb1d5
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764572344615101
-        nextStepId: vnchapter_1_shinrai_line_r034_c03
-    - rid: 9129764572344615101
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
         musicId: Bullies
