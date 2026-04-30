@@ -17,7 +17,6 @@ MonoBehaviour:
   - rid: 9129764703577833769
   - rid: 4444057210713014340
   - rid: 4444056912327082053
-  - rid: 9129764703577833835
   - rid: 4444056912327082061
   - rid: 4444056912327082062
   - rid: 4444056912327082063
@@ -180,7 +179,7 @@ MonoBehaviour:
         text: Greetings to you, young magician! Your magic personality test is about
           to start!
         addToLog: 1
-        nextStepId: 69b23fe15b2448f1ad52f620c105175b
+        nextStepId: 
     - rid: 4444056912327082056
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2495,21 +2494,3 @@ MonoBehaviour:
       data:
         backgroundId: 1
         crossfadeSeconds: 0.25
-    - rid: 9129764703577833835
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: 69b23fe15b2448f1ad52f620c105175b
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 9129764703577833837
-        nextStepId: step_004
-    - rid: 9129764703577833837
-      type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        holdSeconds: 15
-        failsBeforeSkip: 0
-        allowSkipAfterFails: 1
-        finishOnFail: 1
-        driftStrength: -1
