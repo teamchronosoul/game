@@ -1,53 +1,52 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using VN.UI;
 
 namespace VN
 {
     public class VNRunner : MonoBehaviour
     {
-        [Header("Project")]
-        [SerializeField] private VNProjectDatabase project;
+        [Header("Project")] [SerializeField] private VNProjectDatabase project;
 
-        [Header("Startup")]
-        [SerializeField] private string startChapterId = "chapter_01";
+        [Header("Startup")] [SerializeField] private string startChapterId = "chapter_01";
         [SerializeField] private bool autoLoadAutosaveOnStart = true;
         [SerializeField] private bool autoShowSpeakerIfMissing = true;
 
-        [Header("Startup Control")]
-        [SerializeField] private bool startAutomatically = true;
+        [Header("Startup Control")] [SerializeField]
+        private bool startAutomatically = true;
 
-        [Header("Auto timing")]
-        [SerializeField] private bool useFixedAutoReadDelay = true;
+        [Header("Auto timing")] [SerializeField]
+        private bool useFixedAutoReadDelay = true;
+
         [SerializeField] [Min(0f)] private float fixedAutoReadDelaySeconds = 1.2f;
 
-        [Tooltip("Используется только если Use Fixed Auto Read Delay выключен.")]
-        [SerializeField] [Min(0f)] private float autoBaseDelaySeconds = 0.8f;
+        [Tooltip("Используется только если Use Fixed Auto Read Delay выключен.")] [SerializeField] [Min(0f)]
+        private float autoBaseDelaySeconds = 0.8f;
 
-        [Tooltip("Используется только если Use Fixed Auto Read Delay выключен.")]
-        [SerializeField] [Min(0f)] private float autoPerCharacterSeconds = 0.03f;
+        [Tooltip("Используется только если Use Fixed Auto Read Delay выключен.")] [SerializeField] [Min(0f)]
+        private float autoPerCharacterSeconds = 0.03f;
 
-        [Tooltip("Используется только если Use Fixed Auto Read Delay выключен.")]
-        [SerializeField] [Min(0f)] private float autoPunctuationExtraSeconds = 0.25f;
+        [Tooltip("Используется только если Use Fixed Auto Read Delay выключен.")] [SerializeField] [Min(0f)]
+        private float autoPunctuationExtraSeconds = 0.25f;
 
-        [Tooltip("Если включено, авточтение будет выключаться при появлении нового персонажа.")]
-        [SerializeField] private bool stopAutoOnNewCharacter = false;
+        [Tooltip("Если включено, авточтение будет выключаться при появлении нового персонажа.")] [SerializeField]
+        private bool stopAutoOnNewCharacter;
 
-        [Header("Skip")]
-        [SerializeField] [Min(0f)] private float skipStepFrameDelay = 0f;
+        [Header("Skip")] [SerializeField] [Min(0f)]
+        private float skipStepFrameDelay;
 
-        [Header("MBTI")]
-        [SerializeField] private VNMbtiState mbti = new();
+        [Header("MBTI")] [SerializeField] private VNMbtiState mbti = new();
         public VNMbtiState Mbti => mbti;
 
-        [Header("Character auto show")]
-        [SerializeField] [Min(0f)] private float autoSpeakerCrossfadeSeconds = 0.2f;
+        [Header("Character auto show")] [SerializeField] [Min(0f)]
+        private float autoSpeakerCrossfadeSeconds = 0.2f;
 
-        [Header("VFX")]
-        [SerializeField] private VNVfxPlayer vfxPlayer;
+        [Header("VFX")] [SerializeField] private VNVfxPlayer vfxPlayer;
 
-        [Header("UI")]
-        [SerializeField] private GameObject mainMenuRoot;
+        [Header("UI")] [SerializeField] private GameObject mainMenuRoot;
+        [SerializeField] private VNTruthEyeMinigameUGUI truthEyeMinigame;
+
 
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
@@ -164,7 +163,9 @@ namespace VN
         private bool _interruptWaitRequested;
         private bool _modalOpen;
         private bool _suppressNextTap;
-
+        public VNTruthEyeMinigameUGUI.Result LastTruthEyeResult { get; private set; }
+        public event Action<bool> OnTruthEyeMinigameActiveChanged;
+        private bool _truthEyeMinigameActive;
         private string _presentedPlayerName = "Player";
 
         private bool _choiceWaiting;
@@ -350,10 +351,8 @@ namespace VN
             AddChoiceToLog(opt.text);
 
             if (opt.effects != null)
-            {
-                for (int i = 0; i < opt.effects.Count; i++)
+                for (var i = 0; i < opt.effects.Count; i++)
                     ApplyVarOp(opt.effects[i]);
-            }
 
             var next = Norm(opt.nextStepId);
             if (string.IsNullOrEmpty(next))
@@ -475,7 +474,7 @@ namespace VN
 
             AddToLogAfterReveal(line);
 
-            bool stopAutoHere = IsStopAutoHere(line) || _autoStopDueToNewCharacterThisStep;
+            var stopAutoHere = IsStopAutoHere(line) || _autoStopDueToNewCharacterThisStep;
             StopAutoIfNeeded(stopAutoHere);
 
             if (SkipEnabled && SkipAllowed)
@@ -497,7 +496,7 @@ namespace VN
 
                 if (AutoEnabled && !stopAutoHere)
                 {
-                    float delay = ComputeAutoDelay(payload.text);
+                    var delay = ComputeAutoDelay(payload.text);
                     yield return WaitAutoOrUserInterrupt(delay);
 
                     if (AutoEnabled && !_modalOpen)
@@ -538,10 +537,7 @@ namespace VN
 
             OnChoicePresented?.Invoke(payload);
 
-            while (_choiceWaiting)
-            {
-                yield return null;
-            }
+            while (_choiceWaiting) yield return null;
         }
 
         private IEnumerator HandleCommandStep(VNChapter chapter, int index, VNCommandStep cmdStep)
@@ -558,6 +554,18 @@ namespace VN
                     var shouldWaitForVfx = vfxCommand.waitUntilFinished && !(SkipEnabled && SkipAllowed);
                     yield return StartCoroutine(HandleVfxCommand(vfxCommand, shouldWaitForVfx));
                 }
+                else if (cmdStep.command is VNTruthEyeCommand truthEyeCommand)
+                {
+                    if (AutoEnabled)
+                        SetAuto(false);
+
+                    if (SkipEnabled)
+                        SetSkip(false);
+
+                    stopAutoHere = true;
+
+                    yield return StartCoroutine(HandleTruthEyeCommand(truthEyeCommand));
+                }
                 else
                 {
                     ApplyCommand(cmdStep.command, ref stopAutoHere);
@@ -566,7 +574,7 @@ namespace VN
                 State.currentStepApplied = true;
                 VNAutosave.Save(State);
             }
-            
+
             StopAutoIfNeeded(stopAutoHere);
 
             if (cmdStep.command is VNGiveArtifactCommand)
@@ -607,7 +615,8 @@ namespace VN
 
             if (stopAutoHere)
             {
-                yield return WaitManualAdvance();
+                if (cmdStep.command is not VNTruthEyeCommand)
+                    yield return WaitManualAdvance();
 
                 AdvanceToNextStep(chapter, index, cmdStep.nextStepId);
 
@@ -678,8 +687,8 @@ namespace VN
 
         private IEnumerator WaitCommandSeconds(float seconds)
         {
-            float duration = Mathf.Max(0f, seconds);
-            float elapsed = 0f;
+            var duration = Mathf.Max(0f, seconds);
+            var elapsed = 0f;
 
             while (elapsed < duration)
             {
@@ -707,8 +716,8 @@ namespace VN
 
         private IEnumerator WaitAutoOrUserInterrupt(float seconds)
         {
-            float duration = Mathf.Max(0f, seconds);
-            float elapsed = 0f;
+            var duration = Mathf.Max(0f, seconds);
+            var elapsed = 0f;
 
             while (elapsed < duration)
             {
@@ -759,6 +768,9 @@ namespace VN
                 stop = true;
 
             if (step is VNCommandStep art && art.command is VNGiveArtifactCommand)
+                stop = true;
+
+            if (step is VNCommandStep truthEye && truthEye.command is VNTruthEyeCommand)
                 stop = true;
 
             return stop;
@@ -905,10 +917,8 @@ namespace VN
             );
 
             if (waitUntilFinished && handle != null)
-            {
                 while (!handle.IsFinished)
                     yield return null;
-            }
         }
 
         private void EmitArtifact(VNGiveArtifactCommand cmd)
@@ -1037,7 +1047,7 @@ namespace VN
             for (var i = 0; i < State.slots.Count; i++)
             {
                 var s = State.slots[i];
-                bool isTarget = s.slot == targetSlot;
+                var isTarget = s.slot == targetSlot;
 
                 if (isTarget || !s.visible)
                     continue;
@@ -1052,7 +1062,7 @@ namespace VN
 
             var targetState = State.GetSlot(targetSlot);
 
-            bool wasSameCharacterAlreadyVisible =
+            var wasSameCharacterAlreadyVisible =
                 targetState.visible &&
                 string.Equals(targetState.characterId, characterId, StringComparison.Ordinal);
 
@@ -1061,8 +1071,8 @@ namespace VN
             targetState.pose = pose;
             targetState.emotion = emotion;
 
-            float emitFade = wasSameCharacterAlreadyVisible ? 0f : fade;
-            bool isNewCharacter = !wasSameCharacterAlreadyVisible;
+            var emitFade = wasSameCharacterAlreadyVisible ? 0f : fade;
+            var isNewCharacter = !wasSameCharacterAlreadyVisible;
 
             EmitSlot(targetSlot, characterId, pose, emotion, true, emitFade, isNewCharacter);
 
@@ -1106,6 +1116,7 @@ namespace VN
         {
             _advanceRequested = false;
             _interruptWaitRequested = false;
+            _interruptWaitRequested = false;
             _lineRevealCompleted = false;
 
             OnLineStarted?.Invoke(new VNLinePayload
@@ -1146,7 +1157,7 @@ namespace VN
                 if (c == null)
                     continue;
 
-                bool ok = EvaluateSingleCondition(c);
+                var ok = EvaluateSingleCondition(c);
 
                 if (requireAll && !ok)
                     return false;
@@ -1168,8 +1179,8 @@ namespace VN
             {
                 case VNConditionValueType.Bool:
                 {
-                    bool v = State.GetBool(key);
-                    bool t = c.boolValue;
+                    var v = State.GetBool(key);
+                    var t = c.boolValue;
 
                     return c.op switch
                     {
@@ -1181,8 +1192,8 @@ namespace VN
 
                 case VNConditionValueType.Int:
                 {
-                    int v = State.GetInt(key);
-                    int t = c.intValue;
+                    var v = State.GetInt(key);
+                    var t = c.intValue;
 
                     return c.op switch
                     {
@@ -1198,8 +1209,8 @@ namespace VN
 
                 case VNConditionValueType.String:
                 {
-                    string v = State.GetString(key);
-                    string t = c.stringValue ?? "";
+                    var v = State.GetString(key);
+                    var t = c.stringValue ?? "";
 
                     return c.op switch
                     {
@@ -1382,7 +1393,7 @@ namespace VN
 
         private void AdvanceToNextStep(VNChapter chapter, int currentIndex, string explicitNextStepId)
         {
-            if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitNextStepId, out string nextId))
+            if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitNextStepId, out var nextId))
             {
                 State.stepId = nextId;
                 State.currentStepApplied = false;
@@ -1398,7 +1409,7 @@ namespace VN
 
         private bool TryAdvanceToExplicitOrFallback(VNChapter chapter, int currentIndex, string explicitTargetStepId)
         {
-            if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitTargetStepId, out string nextId))
+            if (TryResolveExplicitOrLinearNext(chapter, currentIndex, explicitTargetStepId, out var nextId))
             {
                 State.stepId = nextId;
                 State.currentStepApplied = false;
@@ -1460,18 +1471,18 @@ namespace VN
 
             text ??= "";
 
-            int chars = text.Length;
-            int punct = 0;
+            var chars = text.Length;
+            var punct = 0;
 
             for (var i = 0; i < text.Length; i++)
             {
-                char c = text[i];
+                var c = text[i];
 
                 if (c == '.' || c == '!' || c == '?' || c == ',' || c == ';' || c == ':')
                     punct++;
             }
 
-            float delay =
+            var delay =
                 autoBaseDelaySeconds +
                 chars * autoPerCharacterSeconds +
                 punct * autoPunctuationExtraSeconds;
@@ -1589,11 +1600,70 @@ namespace VN
             _interruptWaitRequested = false;
             _lineRevealCompleted = false;
             _suppressNextTap = false;
-
+            SetTruthEyeMinigameActive(false);
+            
             OnChoiceHidden?.Invoke();
             OnLineHidden?.Invoke();
         }
+        private void SetTruthEyeMinigameActive(bool active)
+        {
+            if (_truthEyeMinigameActive == active)
+                return;
 
+            _truthEyeMinigameActive = active;
+            OnTruthEyeMinigameActiveChanged?.Invoke(active);
+        }
+        private IEnumerator HandleTruthEyeCommand(VNTruthEyeCommand command)
+        {
+            if (command == null)
+                yield break;
+
+            if (truthEyeMinigame == null)
+            {
+                Debug.LogWarning("[VNRunner] Truth Eye minigame is not assigned. Command skipped.");
+                yield break;
+            }
+
+            VNTruthEyeMinigameUGUI.Result result = default;
+            var done = false;
+
+            if (AutoEnabled)
+                SetAuto(false);
+
+            if (SkipEnabled)
+                SetSkip(false);
+
+            SetTruthEyeMinigameActive(true);
+
+            truthEyeMinigame.Play(
+                command.holdSeconds,
+                command.failsBeforeSkip,
+                command.allowSkipAfterFails,
+                command.driftStrength,
+                command.finishOnFail,
+                r =>
+                {
+                    result = r;
+                    LastTruthEyeResult = r;
+                    done = true;
+                }
+            );
+
+            while (!done)
+            {
+                yield return null;
+            }
+
+            SetTruthEyeMinigameActive(false);
+
+            State.SetBool("truth_eye_success", result.success);
+            State.SetBool("truth_eye_skipped", result.skipped);
+            State.SetBool("truth_eye_failed", result.failed);
+            State.SetInt("truth_eye_fails", result.fails);
+
+            VNAutosave.Save(State);
+        }
+        
         public void SetPresentedPlayerName(string value)
         {
             _presentedPlayerName = string.IsNullOrWhiteSpace(value) ? "Player" : value.Trim();
@@ -1626,17 +1696,11 @@ namespace VN
             var speakerName = "";
 
             if (!line.showSpeakerName && !string.IsNullOrWhiteSpace(speakerId))
-            {
                 speakerName = "???";
-            }
             else if (string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase))
-            {
                 speakerName = GetPresentedPlayerName();
-            }
             else if (!string.IsNullOrWhiteSpace(speakerId) && project.characterDatabase != null)
-            {
                 project.characterDatabase.TryGetDisplayName(speakerId, out speakerName);
-            }
 
             var text = line.text ?? "";
 
@@ -1671,11 +1735,12 @@ namespace VN
 
             return $"<i>{text}</i>";
         }
+
         private void ClearVisualStateForMainMenu()
         {
             State.EnsureSlots();
 
-            for (int i = 0; i < State.slots.Count; i++)
+            for (var i = 0; i < State.slots.Count; i++)
             {
                 var slot = State.slots[i];
 
@@ -1706,6 +1771,7 @@ namespace VN
 
             VNAutosave.Save(State);
         }
+
         private static string Norm(string s)
         {
             return string.IsNullOrWhiteSpace(s) ? null : s.Trim();

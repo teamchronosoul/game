@@ -1,61 +1,74 @@
-﻿using TMPro;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 namespace VN.UI
 {
     public class VNUIViewUGUI : MonoBehaviour
     {
-        [Header("Runner")]
-        [SerializeField] private VN.VNRunner runner;
+        [Header("Runner")] [SerializeField] private VNRunner runner;
 
-        [Header("Dialogue UI")]
-        [SerializeField] private GameObject dialogueRoot;
+        [Header("Dialogue UI")] [SerializeField]
+        private GameObject dialogueRoot;
 
-        [Tooltip("Корневой объект плашки имени. Будет скрываться для Narrator.")]
-        [SerializeField] private GameObject speakerNameRoot;
+        [Tooltip("Корневой объект плашки имени. Будет скрываться для Narrator.")] [SerializeField]
+        private GameObject speakerNameRoot;
 
         [SerializeField] private TextMeshProUGUI speakerNameText;
         [SerializeField] private VNTypewriterUGUI typewriter;
 
-        [Header("Player")]
-        [Tooltip("Имя, которое будет показано вместо speakerId = YOU")]
-        [SerializeField] private string playerDisplayName = "Player";
+        [Header("Player")] [Tooltip("Имя, которое будет показано вместо speakerId = YOU")] [SerializeField]
+        private string playerDisplayName = "Player";
 
-        [Header("Background")]
-        [SerializeField] private VNCrossfadeImageUGUI background;
+        [Header("Background")] [SerializeField]
+        private VNCrossfadeImageUGUI background;
 
-        [Header("Character slots (full body)")]
-        [SerializeField] private VNCrossfadeImageUGUI leftSlot;
+        [Header("Character slots (full body)")] [SerializeField]
+        private VNCrossfadeImageUGUI leftSlot;
+
         [SerializeField] private VNCrossfadeImageUGUI centerSlot;
         [SerializeField] private VNCrossfadeImageUGUI rightSlot;
 
-        [Header("Choice UI")]
-        [SerializeField] private VNChoicePanelUGUI choicePanel;
+        [Header("Choice UI")] [SerializeField] private VNChoicePanelUGUI choicePanel;
 
-        [Header("Log UI")]
-        [SerializeField] private VNLogPanelUGUI logPanel;
+        [Header("Log UI")] [SerializeField] private VNLogPanelUGUI logPanel;
 
-        [Header("Buttons")]
-        [SerializeField] private Button autoButton;
+        [Header("Buttons")] [SerializeField] private Button autoButton;
         [SerializeField] private Button skipButton;
         [SerializeField] private Button logButton;
         [SerializeField] private Button closeLogButton;
         [SerializeField] private Button resetAutosaveButton;
 
-        [Header("Tap feedback")]
-        [SerializeField] private VNTapFeedbackHeart tapFx;
+        [Header("Tap feedback")] [SerializeField]
+        private VNTapFeedbackHeart tapFx;
 
-        [Header("Audio")]
-        [SerializeField] private VNAudioController audioController;
+        [Header("Audio")] [SerializeField] private VNAudioController audioController;
 
-        private System.Action _typewriterFinishedHandler;
-        private System.Action<Vector2> _tapFeedbackHandler;
+        [Header("Truth Eye Minigame Visibility")] [SerializeField]
+        private bool hideDialogueDuringTruthEye = true;
 
-        private System.Action<bool> _autoChangedHandler;
-        private System.Action<bool> _skipChangedHandler;
-        private System.Action<bool> _skipAllowedChangedHandler;
+        [SerializeField] private bool hideCharactersDuringTruthEye = true;
+
+        [Tooltip(
+            "Дополнительные объекты, которые нужно скрывать на время мини-игры. Например кнопки Auto/Skip/Log, если они не внутри dialogueRoot.")]
+        [SerializeField]
+        private GameObject[] extraHideDuringTruthEye;
+
+        private Action<bool> _truthEyeActiveChangedHandler;
+
+        private bool _truthEyeActive;
+        private bool _truthEyeVisualsHidden;
+        private GameObject[] _truthEyeHiddenTargets;
+        private bool[] _truthEyeHiddenTargetStates;
+        private Action _typewriterFinishedHandler;
+        private Action<Vector2> _tapFeedbackHandler;
+
+        private Action<bool> _autoChangedHandler;
+        private Action<bool> _skipChangedHandler;
+        private Action<bool> _skipAllowedChangedHandler;
 
         private bool _isLogOpen;
 
@@ -73,6 +86,9 @@ namespace VN.UI
             runner.OnBackgroundChanged += OnBackground;
             runner.OnSlotChanged += OnSlot;
 
+
+            _truthEyeActiveChangedHandler = SetTruthEyeActive;
+            runner.OnTruthEyeMinigameActiveChanged += _truthEyeActiveChangedHandler;
             runner.OnMusicPlay += OnMusicPlay;
             runner.OnMusicStop += OnMusicStop;
             runner.OnSfxPlay += OnSfx;
@@ -137,6 +153,9 @@ namespace VN.UI
                 runner.OnMusicStop -= OnMusicStop;
                 runner.OnSfxPlay -= OnSfx;
 
+                if (_truthEyeActiveChangedHandler != null)
+                    runner.OnTruthEyeMinigameActiveChanged -= _truthEyeActiveChangedHandler;
+
                 if (_tapFeedbackHandler != null)
                     runner.OnTapFeedback -= _tapFeedbackHandler;
 
@@ -163,6 +182,9 @@ namespace VN.UI
             _typewriterFinishedHandler = null;
 
             _isLogOpen = false;
+
+            SetTruthEyeVisualsHidden(false);
+            _truthEyeActive = false;
 
             if (logPanel != null)
                 logPanel.HideImmediate();
@@ -295,8 +317,8 @@ namespace VN.UI
             if (runner == null)
                 return;
 
-            bool autoActive = runner.AutoEnabled && !_isLogOpen;
-            bool skipActive = runner.SkipEnabled && runner.SkipAllowed && !_isLogOpen;
+            var autoActive = runner.AutoEnabled && !_isLogOpen;
+            var skipActive = runner.SkipEnabled && runner.SkipAllowed && !_isLogOpen;
 
             if (autoButton != null)
             {
@@ -315,6 +337,29 @@ namespace VN.UI
 
             if (closeLogButton != null)
                 closeLogButton.interactable = _isLogOpen;
+            
+            if (_truthEyeActive)
+            {
+                if (autoButton != null)
+                {
+                    autoButton.interactable = false;
+                    ApplyButtonGraphicState(autoButton, false);
+                }
+
+                if (skipButton != null)
+                {
+                    skipButton.interactable = false;
+                    ApplyButtonGraphicState(skipButton, false);
+                }
+
+                if (logButton != null)
+                    logButton.interactable = false;
+
+                if (closeLogButton != null)
+                    closeLogButton.interactable = false;
+
+                return;
+            }
         }
 
         private void ApplyButtonGraphicState(Button button, bool active)
@@ -322,7 +367,7 @@ namespace VN.UI
             if (button == null || button.targetGraphic == null)
                 return;
 
-            ColorBlock colors = button.colors;
+            var colors = button.colors;
 
             Color targetColor;
 
@@ -346,7 +391,7 @@ namespace VN.UI
             if (button == null || button.targetGraphic == null)
                 return;
 
-            ColorBlock colors = button.colors;
+            var colors = button.colors;
 
             button.targetGraphic.CrossFadeColor(
                 colors.normalColor,
@@ -356,13 +401,13 @@ namespace VN.UI
             );
         }
 
-        private void OnLineStarted(VN.VNRunner.VNLinePayload line)
+        private void OnLineStarted(VNRunner.VNLinePayload line)
         {
             if (dialogueRoot != null)
                 dialogueRoot.SetActive(true);
 
-            string shownSpeakerName = ResolveShownSpeakerName(line);
-            bool showSpeakerPlate = !line.isNarrator && !string.IsNullOrWhiteSpace(shownSpeakerName);
+            var shownSpeakerName = ResolveShownSpeakerName(line);
+            var showSpeakerPlate = !line.isNarrator && !string.IsNullOrWhiteSpace(shownSpeakerName);
 
             SetSpeakerPlateVisible(showSpeakerPlate);
 
@@ -373,7 +418,7 @@ namespace VN.UI
                 typewriter.Begin(BuildShownLineText(line));
         }
 
-        private string ResolveShownSpeakerName(VN.VNRunner.VNLinePayload line)
+        private string ResolveShownSpeakerName(VNRunner.VNLinePayload line)
         {
             if (line.isNarrator)
                 return "";
@@ -381,10 +426,10 @@ namespace VN.UI
             if (!line.showSpeakerName)
                 return "???";
 
-            string speakerId = (line.speakerId ?? "").Trim();
-            string speakerName = (line.speakerName ?? "").Trim();
+            var speakerId = (line.speakerId ?? "").Trim();
+            var speakerName = (line.speakerName ?? "").Trim();
 
-            if (string.Equals(speakerId, "YOU", System.StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase))
                 return GetPlayerDisplayName();
 
             if (!string.IsNullOrWhiteSpace(speakerName))
@@ -416,7 +461,7 @@ namespace VN.UI
         {
         }
 
-        private void OnChoice(VN.VNRunner.VNChoicePayload payload)
+        private void OnChoice(VNRunner.VNChoicePayload payload)
         {
             if (dialogueRoot != null)
                 dialogueRoot.SetActive(false);
@@ -434,7 +479,7 @@ namespace VN.UI
                 dialogueRoot.SetActive(true);
         }
 
-        private void OnBackground(VN.VNRunner.VNBackgroundPayload bg)
+        private void OnBackground(VNRunner.VNBackgroundPayload bg)
         {
             if (background == null) return;
 
@@ -444,13 +489,13 @@ namespace VN.UI
                 background.Crossfade(bg.sprite, bg.crossfadeSeconds, bg.sprite != null);
         }
 
-        private void OnSlot(VN.VNRunner.VNSlotPayload slot)
+        private void OnSlot(VNRunner.VNSlotPayload slot)
         {
             var view = slot.slot switch
             {
-                VN.VNScreenSlot.Left => leftSlot,
-                VN.VNScreenSlot.Center => centerSlot,
-                VN.VNScreenSlot.Right => rightSlot,
+                VNScreenSlot.Left => leftSlot,
+                VNScreenSlot.Center => centerSlot,
+                VNScreenSlot.Right => rightSlot,
                 _ => null
             };
 
@@ -464,12 +509,12 @@ namespace VN.UI
 
             if (slot.crossfadeSeconds <= 0f)
             {
-                view.SetInstant(slot.sprite, true);
+                view.SetInstant(slot.sprite);
                 ApplyNativeSize(view);
             }
             else
             {
-                view.Crossfade(slot.sprite, slot.crossfadeSeconds, true);
+                view.Crossfade(slot.sprite, slot.crossfadeSeconds);
                 StartCoroutine(ApplyNativeSizeNextFrame(view));
             }
         }
@@ -479,11 +524,9 @@ namespace VN.UI
             if (view == null) return;
 
             var images = view.GetComponentsInChildren<Image>(true);
-            for (int i = 0; i < images.Length; i++)
-            {
+            for (var i = 0; i < images.Length; i++)
                 if (images[i] != null && images[i].sprite != null)
                     images[i].SetNativeSize();
-            }
         }
 
         private IEnumerator ApplyNativeSizeNextFrame(VNCrossfadeImageUGUI view)
@@ -492,7 +535,7 @@ namespace VN.UI
             ApplyNativeSize(view);
         }
 
-        private void OnMusicPlay(VN.VNRunner.VNMusicPayload m)
+        private void OnMusicPlay(VNRunner.VNMusicPayload m)
         {
             if (audioController == null) return;
 
@@ -512,7 +555,7 @@ namespace VN.UI
             audioController.StopMusic(fadeOut);
         }
 
-        private void OnSfx(VN.VNRunner.VNSfxPayload sfx)
+        private void OnSfx(VNRunner.VNSfxPayload sfx)
         {
             if (audioController == null) return;
 
@@ -526,7 +569,7 @@ namespace VN.UI
                 audioController.PlaySfx(sfx.sfxId);
         }
 
-        private string BuildShownLineText(VN.VNRunner.VNLinePayload line)
+        private string BuildShownLineText(VNRunner.VNLinePayload line)
         {
             var text = line.text ?? "";
 
@@ -536,10 +579,116 @@ namespace VN.UI
             return text;
         }
 
-        private static bool IsPlayerThoughtsLine(VN.VNRunner.VNLinePayload line)
+        private void SetTruthEyeActive(bool active)
         {
-            return string.Equals(line.speakerId, "YOU", System.StringComparison.OrdinalIgnoreCase)
-                   && line.emotion.ToString().Equals("Thoughts", System.StringComparison.OrdinalIgnoreCase);
+            _truthEyeActive = active;
+
+            if (active)
+            {
+                if (_isLogOpen)
+                    SetLogOpen(false);
+
+                if (runner != null)
+                    runner.SetModalOpen(false);
+
+                if (typewriter != null && typewriter.IsPlaying)
+                    typewriter.RevealInstant();
+
+                SetTruthEyeVisualsHidden(true);
+            }
+            else
+            {
+                SetTruthEyeVisualsHidden(false);
+            }
+
+            RefreshButtons();
+        }
+
+        private void SetTruthEyeVisualsHidden(bool hidden)
+        {
+            if (_truthEyeVisualsHidden == hidden)
+                return;
+
+            _truthEyeVisualsHidden = hidden;
+
+            if (hidden)
+            {
+                _truthEyeHiddenTargets = BuildTruthEyeHideTargets();
+                _truthEyeHiddenTargetStates = new bool[_truthEyeHiddenTargets.Length];
+
+                for (var i = 0; i < _truthEyeHiddenTargets.Length; i++)
+                {
+                    var target = _truthEyeHiddenTargets[i];
+
+                    if (target == null)
+                        continue;
+
+                    _truthEyeHiddenTargetStates[i] = target.activeSelf;
+                    target.SetActive(false);
+                }
+            }
+            else
+            {
+                if (_truthEyeHiddenTargets != null && _truthEyeHiddenTargetStates != null)
+                {
+                    var count = Mathf.Min(_truthEyeHiddenTargets.Length, _truthEyeHiddenTargetStates.Length);
+
+                    for (var i = 0; i < count; i++)
+                    {
+                        var target = _truthEyeHiddenTargets[i];
+
+                        if (target == null)
+                            continue;
+
+                        target.SetActive(_truthEyeHiddenTargetStates[i]);
+                    }
+                }
+
+                _truthEyeHiddenTargets = null;
+                _truthEyeHiddenTargetStates = null;
+            }
+        }
+
+        private GameObject[] BuildTruthEyeHideTargets()
+        {
+            var list = new List<GameObject>();
+
+            if (hideDialogueDuringTruthEye)
+                AddUniqueHideTarget(list, dialogueRoot);
+
+            if (hideCharactersDuringTruthEye)
+            {
+                AddUniqueHideTarget(list, leftSlot != null ? leftSlot.gameObject : null);
+                AddUniqueHideTarget(list, centerSlot != null ? centerSlot.gameObject : null);
+                AddUniqueHideTarget(list, rightSlot != null ? rightSlot.gameObject : null);
+            }
+
+            if (extraHideDuringTruthEye != null)
+                for (var i = 0; i < extraHideDuringTruthEye.Length; i++)
+                    AddUniqueHideTarget(list, extraHideDuringTruthEye[i]);
+
+            return list.ToArray();
+        }
+
+        private void AddUniqueHideTarget(List<GameObject> list, GameObject target)
+        {
+            if (target == null)
+                return;
+
+            if (target == gameObject)
+            {
+                Debug.LogWarning("[VNUIViewUGUI] Do not add the VNUIViewUGUI root itself to Truth Eye hide targets.");
+                return;
+            }
+
+            if (!list.Contains(target))
+                list.Add(target);
+        }
+
+        private static bool IsPlayerThoughtsLine(VNRunner.VNLinePayload line)
+        {
+            return string.Equals(line.speakerId, "YOU", StringComparison.OrdinalIgnoreCase)
+                   && line.emotion.ToString().Equals("Thoughts", StringComparison.OrdinalIgnoreCase);
         }
 
         private static string WrapItalic(string text)
@@ -547,8 +696,8 @@ namespace VN.UI
             if (string.IsNullOrEmpty(text))
                 return text;
 
-            if (text.StartsWith("<i>", System.StringComparison.OrdinalIgnoreCase) &&
-                text.EndsWith("</i>", System.StringComparison.OrdinalIgnoreCase))
+            if (text.StartsWith("<i>", StringComparison.OrdinalIgnoreCase) &&
+                text.EndsWith("</i>", StringComparison.OrdinalIgnoreCase))
                 return text;
 
             return $"<i>{text}</i>";

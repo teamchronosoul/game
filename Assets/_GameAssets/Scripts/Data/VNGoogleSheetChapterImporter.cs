@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using YP;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -38,32 +39,38 @@ namespace VN
         [Serializable]
         public class ChapterBinding
         {
-            [Header("Source")] public string tableKey;
+            [Header("Source")]
+            public string tableKey;
 
-            [Header("Target")] public VNChapter chapter;
+            [Header("Target")]
+            public VNChapter chapter;
             public string chapterIdOverride;
 
-            [Header("Import Mode")] public ChapterImportMode importMode = ChapterImportMode.FullRebuild;
+            [Header("Import Mode")]
+            public ChapterImportMode importMode = ChapterImportMode.FullRebuild;
 
-            [Header("Sheet Layout")] [Min(1)] public int firstDataRow = 2;
+            [Header("Sheet Layout")]
+            [Min(1)] public int firstDataRow = 2;
             public Column speakerColumn = Column.A;
             public Column emotionColumn = Column.B;
             public Column flowColumn = Column.C;
             public Column firstChoiceColumn = Column.D;
 
-            [Header("Build")] public bool appendEndStep = true;
+            [Header("Build")]
+            public bool appendEndStep = true;
 
             [Header("Text Only Mode")]
             public TextOnlyLineMatchMode textOnlyLineMatchMode = TextOnlyLineMatchMode.StableIdThenLineOrder;
         }
 
-        [Header("Import Bindings")] [SerializeField]
-        private List<ChapterBinding> chapters = new();
+        [Header("Import Bindings")]
+        [SerializeField] private List<ChapterBinding> chapters = new();
 
-        [Header("Speaker Mapping")] [SerializeField]
-        private List<SpeakerAlias> speakerAliases = new();
+        [Header("Speaker Mapping")]
+        [SerializeField] private List<SpeakerAlias> speakerAliases = new();
 
-        [Header("Narrator aliases -> empty speakerId")] [SerializeField]
+        [Header("Narrator aliases -> empty speakerId")]
+        [SerializeField]
         private List<string> narratorAliases = new()
         {
             "Narrator",
@@ -73,14 +80,18 @@ namespace VN
             "-"
         };
 
-        [Header("Character Database")] [SerializeField]
-        private VNCharacterDatabase characterDatabase;
+        [Header("Character Database")]
+        [SerializeField] private VNCharacterDatabase characterDatabase;
 
+#if UNITY_EDITOR
         [SerializeField] private bool autoFindCharacterDatabasesInProject = true;
+#endif
+
         [SerializeField] private bool matchSpeakerByCharacterId = true;
         [SerializeField] private bool matchSpeakerByDisplayName = true;
 
-        [Header("Debug")] [SerializeField] private bool logWarnings = true;
+        [Header("Debug")]
+        [SerializeField] private bool logWarnings = true;
 
         private readonly Dictionary<string, string> _speakerIdLookup = new(StringComparer.OrdinalIgnoreCase);
         private bool _speakerLookupBuilt;
@@ -153,6 +164,7 @@ namespace VN
             if (autoFindCharacterDatabasesInProject)
             {
                 var guids = AssetDatabase.FindAssets("t:VNCharacterDatabase");
+
                 for (var i = 0; i < guids.Length; i++)
                 {
                     var path = AssetDatabase.GUIDToAssetPath(guids[i]);
@@ -203,10 +215,12 @@ namespace VN
             speakerId = string.Empty;
 
             var key = NormalizeLookupKey(rawValue);
+
             if (string.IsNullOrWhiteSpace(key))
                 return false;
 
-            return _speakerIdLookup.TryGetValue(key, out speakerId) && !string.IsNullOrWhiteSpace(speakerId);
+            return _speakerIdLookup.TryGetValue(key, out speakerId) &&
+                   !string.IsNullOrWhiteSpace(speakerId);
         }
 
         private bool TryMapSpeakerAlias(string rawValue, out string mapped)
@@ -219,6 +233,7 @@ namespace VN
             for (var i = 0; i < speakerAliases.Count; i++)
             {
                 var alias = speakerAliases[i];
+
                 if (alias == null || string.IsNullOrWhiteSpace(alias.tableValue))
                     continue;
 
@@ -243,6 +258,7 @@ namespace VN
             for (var i = 0; i < narratorAliases.Count; i++)
             {
                 var alias = narratorAliases[i];
+
                 if (string.IsNullOrWhiteSpace(alias))
                     continue;
 
@@ -288,6 +304,7 @@ namespace VN
                 this.owner = owner;
                 this.binding = binding;
                 this.table = table;
+
                 idPrefix = SanitizeIdPart(binding.tableKey);
             }
 
@@ -326,11 +343,13 @@ namespace VN
                 }
 
                 if (builtSteps.Count == 0)
+                {
                     builtSteps.Add(new VNEndStep
                     {
                         id = $"{idPrefix}_end",
                         label = "END"
                     });
+                }
 
                 chapter.steps = new List<VNChapterStep>(builtSteps);
 
@@ -344,6 +363,148 @@ namespace VN
 #if UNITY_EDITOR
                 EditorUtility.SetDirty(chapter);
 #endif
+            }
+
+            public void UpdateOnlyLineText(VNChapter chapter)
+            {
+                builtSteps.Clear();
+
+                if (chapter == null || chapter.steps == null)
+                    return;
+
+                var startRow = Mathf.Max(0, binding.firstDataRow - 1);
+                var flowCol = (int)binding.flowColumn;
+                var choiceStartCol = (int)binding.firstChoiceColumn;
+
+                ParseFlow(
+                    flowCol,
+                    startRow,
+                    table.rows,
+                    -1,
+                    0,
+                    choiceStartCol);
+
+                var sourceLines = builtSteps
+                    .OfType<VNLineStep>()
+                    .ToList();
+
+                var sourceLinesById = new Dictionary<string, VNLineStep>(StringComparer.Ordinal);
+
+                for (var i = 0; i < sourceLines.Count; i++)
+                {
+                    var id = NormalizeId(sourceLines[i].id);
+
+                    if (string.IsNullOrEmpty(id))
+                        continue;
+
+                    if (!sourceLinesById.ContainsKey(id))
+                        sourceLinesById.Add(id, sourceLines[i]);
+                }
+
+                var targetLines = chapter.steps
+                    .OfType<VNLineStep>()
+                    .ToList();
+
+                var matchedById = 0;
+                var matchedByOrder = 0;
+                var changed = 0;
+
+                // Важно: не прятать под #if UNITY_EDITOR.
+                // Иначе в билде переменная не существует, но передаётся в ApplyTextIfChanged.
+                var undoRecorded = false;
+
+                var sourceUsed = new bool[sourceLines.Count];
+                var targetUpdated = new bool[targetLines.Count];
+
+                var allowIdMatch =
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdOnly ||
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdThenLineOrder;
+
+                var allowOrderMatch =
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.LineOrderOnly ||
+                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdThenLineOrder;
+
+                if (allowIdMatch)
+                {
+                    for (var targetIndex = 0; targetIndex < targetLines.Count; targetIndex++)
+                    {
+                        var targetLine = targetLines[targetIndex];
+
+                        if (targetLine == null)
+                            continue;
+
+                        var targetId = NormalizeId(targetLine.id);
+
+                        if (string.IsNullOrEmpty(targetId))
+                            continue;
+
+                        if (!sourceLinesById.TryGetValue(targetId, out var sourceLine))
+                            continue;
+
+                        var sourceIndex = sourceLines.IndexOf(sourceLine);
+
+                        if (sourceIndex >= 0)
+                            sourceUsed[sourceIndex] = true;
+
+                        targetUpdated[targetIndex] = true;
+                        matchedById++;
+
+                        ApplyTextIfChanged(
+                            chapter,
+                            targetLine,
+                            sourceLine.text,
+                            ref changed,
+                            ref undoRecorded);
+                    }
+                }
+
+                if (allowOrderMatch)
+                {
+                    var sourceCursor = 0;
+
+                    for (var targetIndex = 0; targetIndex < targetLines.Count; targetIndex++)
+                    {
+                        if (targetUpdated[targetIndex])
+                            continue;
+
+                        while (sourceCursor < sourceLines.Count && sourceUsed[sourceCursor])
+                            sourceCursor++;
+
+                        if (sourceCursor >= sourceLines.Count)
+                            break;
+
+                        var targetLine = targetLines[targetIndex];
+                        var sourceLine = sourceLines[sourceCursor];
+
+                        sourceUsed[sourceCursor] = true;
+                        targetUpdated[targetIndex] = true;
+                        matchedByOrder++;
+
+                        ApplyTextIfChanged(
+                            chapter,
+                            targetLine,
+                            sourceLine.text,
+                            ref changed,
+                            ref undoRecorded);
+
+                        sourceCursor++;
+                    }
+                }
+
+                if (changed > 0)
+                {
+#if UNITY_EDITOR
+                    EditorUtility.SetDirty(chapter);
+#endif
+                }
+
+                Debug.Log(
+                    $"VN Google Sheet Importer: text-only update for '{chapter.name}'. " +
+                    $"Source lines: {sourceLines.Count}. Existing lines: {targetLines.Count}. " +
+                    $"Matched by id: {matchedById}. Matched by line order: {matchedByOrder}. Changed texts: {changed}. " +
+                    "Commands and non-line steps were ignored.");
+
+                builtSteps.Clear();
             }
 
             private ParseResult ParseFlow(
@@ -579,8 +740,10 @@ namespace VN
             private int FindReturnRow(int parentFlowCol, int startRow, int endRowExclusive)
             {
                 for (var row = startRow; row < endRowExclusive; row++)
+                {
                     if (!string.IsNullOrWhiteSpace(GetCell(row, parentFlowCol)))
                         return row;
+                }
 
                 return endRowExclusive;
             }
@@ -652,6 +815,7 @@ namespace VN
             private string GetVariantCell(int row, int col, int variantIndex, int variantCount)
             {
                 var raw = GetCell(row, col);
+
                 if (string.IsNullOrWhiteSpace(raw))
                     return string.Empty;
 
@@ -742,147 +906,16 @@ namespace VN
                 var names = Enum.GetNames(typeof(TEnum));
 
                 for (var i = 0; i < names.Length; i++)
+                {
                     if (NormalizeEnumToken(names[i]) == normalizedRaw)
                     {
                         value = (TEnum)Enum.Parse(typeof(TEnum), names[i], true);
                         return true;
                     }
+                }
 
                 value = default;
                 return false;
-            }
-
-            public void UpdateOnlyLineText(VNChapter chapter)
-            {
-                builtSteps.Clear();
-
-                if (chapter == null || chapter.steps == null)
-                    return;
-
-                var startRow = Mathf.Max(0, binding.firstDataRow - 1);
-                var flowCol = (int)binding.flowColumn;
-                var choiceStartCol = (int)binding.firstChoiceColumn;
-
-                // Парсим таблицу во временный список.
-                // В реальную главу ничего не добавляем.
-                ParseFlow(
-                    flowCol,
-                    startRow,
-                    table.rows,
-                    -1,
-                    0,
-                    choiceStartCol);
-
-                var sourceLines = builtSteps
-                    .OfType<VNLineStep>()
-                    .ToList();
-
-                var sourceLinesById = new Dictionary<string, VNLineStep>(StringComparer.Ordinal);
-
-                for (var i = 0; i < sourceLines.Count; i++)
-                {
-                    var id = NormalizeId(sourceLines[i].id);
-                    if (string.IsNullOrEmpty(id))
-                        continue;
-
-                    if (!sourceLinesById.ContainsKey(id))
-                        sourceLinesById.Add(id, sourceLines[i]);
-                }
-
-                // Важно:
-                // Берём только существующие VNLineStep.
-                // VNCommandStep и любые другие шаги между репликами не считаются и не трогаются.
-                var targetLines = chapter.steps
-                    .OfType<VNLineStep>()
-                    .ToList();
-
-                var matchedById = 0;
-                var matchedByOrder = 0;
-                var changed = 0;
-
-#if UNITY_EDITOR
-                var undoRecorded = false;
-#endif
-
-                var sourceUsed = new bool[sourceLines.Count];
-                var targetUpdated = new bool[targetLines.Count];
-
-                var allowIdMatch =
-                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdOnly ||
-                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdThenLineOrder;
-
-                var allowOrderMatch =
-                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.LineOrderOnly ||
-                    binding.textOnlyLineMatchMode == TextOnlyLineMatchMode.StableIdThenLineOrder;
-
-                if (allowIdMatch)
-                    for (var targetIndex = 0; targetIndex < targetLines.Count; targetIndex++)
-                    {
-                        var targetLine = targetLines[targetIndex];
-                        if (targetLine == null)
-                            continue;
-
-                        var targetId = NormalizeId(targetLine.id);
-                        if (string.IsNullOrEmpty(targetId))
-                            continue;
-
-                        if (!sourceLinesById.TryGetValue(targetId, out var sourceLine))
-                            continue;
-
-                        var sourceIndex = sourceLines.IndexOf(sourceLine);
-                        if (sourceIndex >= 0)
-                            sourceUsed[sourceIndex] = true;
-
-                        targetUpdated[targetIndex] = true;
-                        matchedById++;
-
-                        if (ApplyTextIfChanged(chapter, targetLine, sourceLine.text, ref changed, ref undoRecorded))
-                        {
-                        }
-                    }
-
-                if (allowOrderMatch)
-                {
-                    var sourceCursor = 0;
-
-                    for (var targetIndex = 0; targetIndex < targetLines.Count; targetIndex++)
-                    {
-                        if (targetUpdated[targetIndex])
-                            continue;
-
-                        while (sourceCursor < sourceLines.Count && sourceUsed[sourceCursor])
-                            sourceCursor++;
-
-                        if (sourceCursor >= sourceLines.Count)
-                            break;
-
-                        var targetLine = targetLines[targetIndex];
-                        var sourceLine = sourceLines[sourceCursor];
-
-                        sourceUsed[sourceCursor] = true;
-                        targetUpdated[targetIndex] = true;
-                        matchedByOrder++;
-
-                        ApplyTextIfChanged(chapter, targetLine, sourceLine.text, ref changed, ref undoRecorded);
-
-                        sourceCursor++;
-                    }
-                }
-
-                if (changed > 0)
-                {
-#if UNITY_EDITOR
-                    EditorUtility.SetDirty(chapter);
-#endif
-                }
-
-                Debug.Log(
-                    $"VN Google Sheet Importer: text-only update for '{chapter.name}'. " +
-                    $"Source lines: {sourceLines.Count}. Existing lines: {targetLines.Count}. " +
-                    $"Matched by id: {matchedById}. Matched by line order: {matchedByOrder}. Changed texts: {changed}. " +
-                    "Commands and non-line steps were ignored.");
-
-                builtSteps.Clear();
             }
 
             private static string NormalizeId(string value)
@@ -916,6 +949,7 @@ namespace VN
 
                 targetLine.text = newText;
                 changed++;
+
                 return true;
             }
 

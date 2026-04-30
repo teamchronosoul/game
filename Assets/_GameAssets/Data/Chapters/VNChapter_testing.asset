@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VN.VNChapter
   chapterId: chapter_testing
   steps:
-  - rid: 4444056912327082054
+  - rid: 9129764703577833769
   - rid: 4444057210713014340
   - rid: 4444056912327082053
   - rid: 4444056912327082061
@@ -179,22 +179,7 @@ MonoBehaviour:
         text: Greetings to you, young magician! Your magic personality test is about
           to start!
         addToLog: 1
-        nextStepId: step_004
-    - rid: 4444056912327082054
-      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
-      data:
-        id: step_001
-        label: 
-        disableSkip: 0
-        stopAuto: 0
-        command:
-          rid: 4444056912327082055
-        nextStepId: step_002
-    - rid: 4444056912327082055
-      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        backgroundId: 1
-        crossfadeSeconds: 0.25
+        nextStepId: 
     - rid: 4444056912327082056
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -375,8 +360,8 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: 'Good day to you. I am Shinrai, Dean of the Order of Labyrinth. And
-          I DO NOT enjoy small talk, so let us get straight to the point. '
+        text: 'Good day to you. I am Shinrai, Dean of the Order of the Labyrinth.
+          And I DO NOT enjoy small talk, so let us get straight to the point. '
         addToLog: 1
         nextStepId: step_019
     - rid: 4444056937922035779
@@ -424,7 +409,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: 'I see. I have to warn you. Studying at the Academy is no easy endeavor.
+        text: 'I see. I have to warn you. Studying at the academy is no easy endeavor.
           You must be prepared to apply your brilliant mind whenever it is required. '
         addToLog: 1
         nextStepId: step_024
@@ -890,7 +875,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Allow me to introduce Commander Kaitora of the Legion of Sentinels!
+        text: Allow me to introduce Commander Kaitora of Legion of Sentinels!
         addToLog: 1
         nextStepId: 
     - rid: 4444056937922035823
@@ -923,8 +908,8 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Good day. The Legion of Sentinels are the Academy's loyal servants
-          and its primary line of defence. Let's see if you're one of us.
+        text: Good day. Legion of Sentinels are the academy's loyal servants and
+          its primary line of defence. Let's see if you're one of us.
         addToLog: 1
         nextStepId: step_078
     - rid: 4444056937922035825
@@ -2494,3 +2479,18 @@ MonoBehaviour:
         lifetimeOverride: -1
         softStopSecondsOverride: -1
         waitUntilFinished: 0
+    - rid: 9129764703577833769
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 29fa308f087741fc936ce34091ac283d
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764703577833770
+        nextStepId: step_002
+    - rid: 9129764703577833770
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: 1
+        crossfadeSeconds: 0.25

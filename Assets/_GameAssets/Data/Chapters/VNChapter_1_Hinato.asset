@@ -126,6 +126,7 @@ MonoBehaviour:
   - rid: 9129764567614750855
   - rid: 9129764567614750856
   - rid: 9129764567614750857
+  - rid: 9129764703577833823
   - rid: 9129764567614750858
   - rid: 9129764567614750859
   - rid: 9129764567614750860
@@ -1900,7 +1901,7 @@ MonoBehaviour:
         text: You close your eyes tight and focus your mind and energy on your will
           to become invisible.
         addToLog: 1
-        nextStepId: vnchapter_1_hinato_line_r133_c03
+        nextStepId: 09c1c583705c47f2a789c88729bdb0e0
     - rid: 9129764567614750858
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2132,7 +2133,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Yuzuri's eyes widen as she looks at the dean of the Order of Labyrinth.
+        text: Yuzuri's eyes widen as she looks at the dean of the Order of the Labyrinth.
         addToLog: 1
         nextStepId: vnchapter_1_hinato_line_r151_c03
     - rid: 9129764567614750873
@@ -4040,3 +4041,21 @@ MonoBehaviour:
       type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
       data:
         sfxId: Shadow
+    - rid: 9129764703577833823
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 09c1c583705c47f2a789c88729bdb0e0
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764703577833825
+        nextStepId: vnchapter_1_hinato_line_r133_c03
+    - rid: 9129764703577833825
+      type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        holdSeconds: 15
+        failsBeforeSkip: 0
+        allowSkipAfterFails: 1
+        finishOnFail: 1
+        driftStrength: -1

@@ -130,6 +130,29 @@ namespace VN
         public bool waitUntilFinished = false;
     }
     [Serializable]
+    public sealed class VNTruthEyeCommand : VNCommand
+    {
+        [Header("Truth Eye Minigame")]
+
+        [Tooltip("Сколько секунд нужно непрерывно удерживать глаз в зоне.")]
+        [Min(1f)]
+        public float holdSeconds = 15f;
+
+        [Tooltip("После скольких ошибок показывать кнопку Skip. 0 = Skip доступен сразу.")]
+        [Min(0)]
+        public int failsBeforeSkip = 0;
+
+        [Tooltip("Можно ли скипнуть мини-игру.")]
+        public bool allowSkipAfterFails = true;
+
+        [Tooltip("Если true, первый проигрыш завершает мини-игру с результатом failed.")]
+        public bool finishOnFail = true;
+
+        [Tooltip("Если <= 0, будет использовано значение из компонента мини-игры.")]
+        public float driftStrength = -1f;
+    }
+    
+    [Serializable]
     public class VNSetBackgroundCommand : VNCommand
     {
         public string backgroundId;

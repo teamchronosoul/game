@@ -4347,6 +4347,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 54b00a667a42c5347b30e9d93daa9449, type: 3}
   - key: Kensui_intro
     clip: {fileID: 8300000, guid: 11cc7b5225d511442969a3fe79f6a872, type: 3}
+  - key: miniGameEyeNearLose
+    clip: {fileID: 8300000, guid: 511b74ca4c4bf7c42a819fd9f6bda2b6, type: 3}
+  - key: MiniGameEyeWin
+    clip: {fileID: 8300000, guid: 2cb99b6be283f2f4cbedc0aa9fc8d333, type: 3}
   - key: School_Yard
     clip: {fileID: 8300000, guid: 4c65334bad2269c4ab36b5608b018579, type: 3}
   - key: Shadow

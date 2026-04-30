@@ -111,6 +111,7 @@ MonoBehaviour:
   - rid: 9129764572344614918
   - rid: 9129764572344614919
   - rid: 9129764572344614920
+  - rid: 9129764703577833832
   - rid: 9129764572344614921
   - rid: 9129764572344614922
   - rid: 9129764572344614923
@@ -294,7 +295,8 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Greetings, scholar. I am pleased to welcome you to the Order of Labyrinth.
+        text: Greetings, scholar. I am pleased to welcome you to the Order of the
+          Labyrinth.
         addToLog: 1
         nextStepId: vnchapter_1_shinrai_line_r006_c03
     - rid: 9129764570494403507
@@ -1651,7 +1653,7 @@ MonoBehaviour:
         text: You close your eyes tight and focus your mind and energy on your will
           to become invisible.
         addToLog: 1
-        nextStepId: vnchapter_1_shinrai_line_r120_c03
+        nextStepId: b80dc93392fe4c109bd6be6d8f876328
     - rid: 9129764572344614921
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1883,7 +1885,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Yuzuri's eyes widen as she looks at the dean of the Order of Labyrinth.
+        text: Yuzuri's eyes widen as she looks at the dean of the Order of the Labyrinth.
         addToLog: 1
         nextStepId: vnchapter_1_shinrai_line_r138_c03
     - rid: 9129764572344614936
@@ -3548,7 +3550,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Can you tell me more about being a student of the Order of Labyrinth?
+        text: Can you tell me more about being a student of the Order of the Labyrinth?
         addToLog: 1
         nextStepId: vnchapter_1_shinrai_line_r012_c04
     - rid: 9129764572344615048
@@ -3578,7 +3580,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Here at the Order of Labyrinth, we value logic and discipline above
+        text: Here at the Order of the Labyrinth, we value logic and discipline above
           all.
         addToLog: 1
         nextStepId: vnchapter_1_shinrai_line_r014_c04
@@ -3867,3 +3869,21 @@ MonoBehaviour:
         musicId: Shadow
         fadeInSeconds: 0.5
         loop: 1
+    - rid: 9129764703577833832
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: b80dc93392fe4c109bd6be6d8f876328
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764703577833834
+        nextStepId: vnchapter_1_shinrai_line_r120_c03
+    - rid: 9129764703577833834
+      type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        holdSeconds: 15
+        failsBeforeSkip: 0
+        allowSkipAfterFails: 1
+        finishOnFail: 1
+        driftStrength: -1

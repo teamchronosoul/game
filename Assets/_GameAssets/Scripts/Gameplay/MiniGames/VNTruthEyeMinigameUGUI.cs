@@ -1,15 +1,25 @@
 ﻿using System;
 using System.Collections;
+using _GameAssets.Scripts.Gameplay.UI;
+using CandyCoded.HapticFeedback;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using YP;
 
 namespace VN.UI
 {
     [DisallowMultipleComponent]
     public sealed class VNTruthEyeMinigameUGUI : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
     {
+        public enum VisualState
+        {
+            Normal,
+            Risk,
+            Fail
+        }
+
         [Serializable]
         public struct Result
         {
@@ -17,6 +27,44 @@ namespace VN.UI
             public bool skipped;
             public int fails;
             public float playTime;
+
+            public bool failed => !success && !skipped;
+        }
+
+        [Serializable]
+        public sealed class SpriteStateTarget
+        {
+            public Image image;
+
+            [Header("Sprites")]
+            public Sprite normalSprite;
+            public Sprite riskSprite;
+            public Sprite failSprite;
+
+            [Tooltip("Если включено, после смены спрайта будет вызван SetNativeSize.")]
+            public bool setNativeSize;
+
+            public void Apply(VisualState state)
+            {
+                if (image == null)
+                    return;
+
+                Sprite target = state switch
+                {
+                    VisualState.Normal => normalSprite,
+                    VisualState.Risk => riskSprite != null ? riskSprite : normalSprite,
+                    VisualState.Fail => failSprite != null ? failSprite : riskSprite != null ? riskSprite : normalSprite,
+                    _ => normalSprite
+                };
+
+                if (target == null)
+                    return;
+
+                image.sprite = target;
+
+                if (setNativeSize)
+                    image.SetNativeSize();
+            }
         }
 
         [Header("Roots")]
@@ -28,14 +76,23 @@ namespace VN.UI
         [SerializeField] private RectTransform safeZone;
         [SerializeField] private RectTransform eye;
         [SerializeField] private Image progressCircle;
-        [SerializeField] private Image ringImage;
-        [SerializeField] private Image eyeGlowImage;
         [SerializeField] private Button skipButton;
+
+        [Header("Sprite States")]
+        [Tooltip("Сюда добавь все Image, которым нужно менять спрайт: кольцо, глаз, фон, прогресс и т.д.")]
+        [SerializeField] private SpriteStateTarget[] spriteStateTargets;
 
         [Header("Rules")]
         [SerializeField] [Min(1f)] private float requiredHoldSeconds = 15f;
+
+        [Tooltip("0 = кнопка Skip доступна сразу.")]
+        [SerializeField] [Min(0)] private int failsBeforeSkip = 0;
+
         [SerializeField] private bool allowSkipAfterFails = true;
-        [SerializeField] [Min(0)] private int failsBeforeSkip = 3;
+
+        [Tooltip("Если true, первый проигрыш завершает мини-игру как failed.")]
+        [SerializeField] private bool finishOnFail = true;
+
         [SerializeField] private bool useUnscaledTime = true;
         [SerializeField] private bool hideOnAwake = true;
 
@@ -43,34 +100,87 @@ namespace VN.UI
         [Tooltip("Если 0, радиус берётся из размера safeZone.")]
         [SerializeField] [Min(0f)] private float manualSafeZoneRadius = 0f;
 
-        [Header("Eye Control")]
-        [SerializeField] [Min(1f)] private float dragFollowSpeed = 18f;
+        [Header("Player Counter Force")]
+        [Tooltip("Сила, с которой палец тянет глаз к точке касания. Это НЕ телепорт, а компенсирующая сила.")]
+        [SerializeField] [Min(0f)] private float playerPullStrength = 7.5f;
+
+        [Tooltip("Максимальная скорость компенсации игрока. Если ниже магической тяги, глаз будет прорываться сильнее.")]
+        [SerializeField] [Min(0f)] private float maxPlayerPullSpeed = 230f;
+
+        [Tooltip("Максимальная дистанция от глаза до пальца, которая учитывается для управления.")]
+        [SerializeField] [Min(1f)] private float maxPointerControlDistance = 380f;
+
+        [Tooltip("Процент магической тяги, который невозможно полностью отменить даже движением в противоположную сторону.")]
+        [SerializeField] [Range(0f, 0.8f)] private float unavoidableDriftPercent = 0.25f;
 
         [Header("Magic Drift")]
-        [SerializeField] [Min(0f)] private float driftStrength = 70f;
-        [SerializeField] [Range(0f, 1f)] private float outwardBias = 0.55f;
-        [SerializeField] [Min(0f)] private float noiseStrength = 18f;
-        [SerializeField] [Min(0.01f)] private float noiseSpeed = 1.25f;
-        [SerializeField] [Min(0.05f)] private float directionChangeInterval = 1.1f;
+        [Tooltip("Основная сила, которая тянет глаз. Чем выше, тем сложнее.")]
+        [SerializeField] [Min(0f)] private float driftStrength = 125f;
+
+        [Tooltip("Насколько сильно глаз тянет именно наружу. Ниже = больше хаотичного движения в разные стороны.")]
+        [SerializeField] [Range(0f, 1f)] private float outwardBias = 0.25f;
+
+        [Tooltip("Сила постоянного магического шума.")]
+        [SerializeField] [Min(0f)] private float noiseStrength = 45f;
+
+        [SerializeField] [Min(0.01f)] private float noiseSpeed = 2.2f;
+
+        [Tooltip("Как часто меняется основное направление тяги.")]
+        [SerializeField] [Min(0.05f)] private float directionChangeInterval = 0.45f;
+
+        [Header("Random Pull Bursts")]
+        [Tooltip("Сила коротких рывков в случайные стороны.")]
+        [SerializeField] [Min(0f)] private float randomPullBurstStrength = 95f;
+
+        [SerializeField] [Min(0.05f)] private float randomPullBurstMinInterval = 0.35f;
+        [SerializeField] [Min(0.05f)] private float randomPullBurstMaxInterval = 0.9f;
+
+        [Tooltip("Как быстро затухают рывки.")]
+        [SerializeField] [Min(0.1f)] private float randomPullDamping = 4.5f;
 
         [Header("Risk Feedback")]
+        [Tooltip("С какой дистанции от центра начинается состояние риска.")]
         [SerializeField] [Range(0f, 1f)] private float riskDistance01 = 0.72f;
-        [SerializeField] [Min(0f)] private float riskShakeAmplitude = 5f;
+
+        [SerializeField] [Min(0f)] private float riskShakeAmplitude = 6f;
         [SerializeField] [Min(0f)] private float riskPulseScale = 0.045f;
         [SerializeField] [Min(0.05f)] private float riskPulseEventInterval = 0.35f;
 
+        [Header("Progress Drain")]
+        [Tooltip("С какой дистанции от центра прогресс начинает уменьшаться. 1 = только у самой границы.")]
+        [SerializeField] [Range(0f, 1f)] private float progressDrainDistance01 = 0.86f;
+
+        [Tooltip("Если включено, скорость сброса равна скорости заполнения.")]
+        [SerializeField] private bool drainProgressAtFillSpeed = true;
+
+        [Tooltip("Используется только если Drain Progress At Fill Speed выключен.")]
+        [SerializeField] [Min(0.01f)] private float customProgressDrainSeconds = 15f;
+
+        [Header("Haptic Feedback")]
+        [SerializeField] private bool useRiskHaptic = true;
+
+        [Tooltip("С какой близости к границе начинается вибрация. Обычно равно Risk Distance или чуть выше.")]
+        [SerializeField] [Range(0f, 1f)] private float hapticDistance01 = 0.78f;
+
+        [Tooltip("Минимальная пауза между вибрациями, чтобы телефон не вибрировал постоянно.")]
+        [SerializeField] [Min(0.05f)] private float hapticCooldownSeconds = 0.35f;
+
+        [SerializeField] private bool useFailHaptic = true;
+
+        [Header("Sound Feedback")]
+        [Tooltip("Звук, когда глаз входит в состояние риска / граница краснеет.")]
+        [SerializeField] private string riskSfxKey;
+
+        [Tooltip("Минимальная пауза между звуками риска.")]
+        [SerializeField] [Min(0.05f)] private float riskSfxCooldownSeconds = 0.45f;
+
+        [Tooltip("Звук победы.")]
+        [SerializeField] private string successSfxKey;
+
         [Header("Fail Feedback")]
-        [SerializeField] [Min(0.01f)] private float failFlashSeconds = 0.22f;
+        [SerializeField] [Min(0.01f)] private float failFeedbackSeconds = 0.35f;
         [SerializeField] [Min(0f)] private float failCooldownSeconds = 0.18f;
         [SerializeField] [Min(0f)] private float failPulseScale = 0.12f;
-
-        [Header("Colors")]
-        [SerializeField] private Color calmRingColor = Color.white;
-        [SerializeField] private Color riskRingColor = new Color(0.35f, 0.75f, 1f, 1f);
-        [SerializeField] private Color failRingColor = new Color(1f, 0.12f, 0.08f, 1f);
-        [SerializeField] private Color progressColor = new Color(0.1f, 0.55f, 1f, 1f);
-        [SerializeField] private Color calmEyeColor = new Color(0.35f, 0.85f, 1f, 1f);
-        [SerializeField] private Color riskEyeColor = new Color(0.85f, 0.95f, 1f, 1f);
 
         [Header("Events")]
         [SerializeField] private UnityEvent onRiskPulse = new UnityEvent();
@@ -82,6 +192,7 @@ namespace VN.UI
         public int DefaultFailsBeforeSkip => failsBeforeSkip;
         public bool DefaultAllowSkipAfterFails => allowSkipAfterFails;
         public float DefaultDriftStrength => driftStrength;
+        public bool DefaultFinishOnFail => finishOnFail;
 
         private Action<Result> _onFinished;
 
@@ -94,12 +205,16 @@ namespace VN.UI
         private float _runtimeDriftStrength;
         private bool _runtimeAllowSkip;
         private int _runtimeFailsBeforeSkip;
+        private bool _runtimeFinishOnFail;
 
         private float _progress01;
         private float _playTime;
         private float _failCooldownTimer;
         private float _directionTimer;
         private float _riskEventTimer;
+        private float _randomPullTimer;
+        private float _hapticCooldownTimer;
+        private float _riskSfxCooldownTimer;
 
         private int _fails;
 
@@ -107,14 +222,19 @@ namespace VN.UI
         private Vector2 _dragTarget;
         private Vector2 _targetDriftDirection;
         private Vector2 _currentDriftDirection;
+        private Vector2 _burstVelocity;
 
         private float _noiseSeedX;
         private float _noiseSeedY;
 
         private Vector3 _safeZoneBaseScale;
         private Vector3 _eyeBaseScale;
+        private Vector3 _progressCircleBaseScale;
 
         private Coroutine _feedbackRoutine;
+
+        private VisualState _visualState;
+        private bool _visualStateInitialized;
 
         private float DeltaTime => useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime;
         private float CurrentTime => useUnscaledTime ? Time.unscaledTime : Time.time;
@@ -141,6 +261,12 @@ namespace VN.UI
             float dt = DeltaTime;
             _playTime += dt;
 
+            if (_hapticCooldownTimer > 0f)
+                _hapticCooldownTimer -= dt;
+
+            if (_riskSfxCooldownTimer > 0f)
+                _riskSfxCooldownTimer -= dt;
+
             if (_failCooldownTimer > 0f)
             {
                 _failCooldownTimer -= dt;
@@ -148,22 +274,18 @@ namespace VN.UI
             }
 
             UpdateDriftDirection(dt);
+            UpdateRandomPullBurst(dt);
             UpdateEyePosition(dt);
 
             SetEyeAnchoredPosition(_eyePos);
 
             float distance01 = GetCurrentDistance01();
 
-            if (distance01 > 1f)
-            {
-                Fail();
+            if (UpdateProgressByDistance(distance01, dt))
                 return;
-            }
 
-            _progress01 = Mathf.Clamp01(_progress01 + dt / Mathf.Max(0.01f, _runtimeHoldSeconds));
             SetProgress(_progress01);
-
-            ApplyNormalFeedback(distance01);
+            ApplyLiveFeedback(distance01);
 
             if (_progress01 >= 1f)
                 CompleteSuccess();
@@ -171,7 +293,14 @@ namespace VN.UI
 
         public void Play(Action<Result> onFinished)
         {
-            Play(requiredHoldSeconds, failsBeforeSkip, allowSkipAfterFails, -1f, onFinished);
+            Play(
+                requiredHoldSeconds,
+                failsBeforeSkip,
+                allowSkipAfterFails,
+                -1f,
+                finishOnFail,
+                onFinished
+            );
         }
 
         public void Play(
@@ -179,6 +308,24 @@ namespace VN.UI
             int failsToShowSkip,
             bool allowSkip,
             float driftOverride,
+            Action<Result> onFinished)
+        {
+            Play(
+                holdSeconds,
+                failsToShowSkip,
+                allowSkip,
+                driftOverride,
+                finishOnFail,
+                onFinished
+            );
+        }
+
+        public void Play(
+            float holdSeconds,
+            int failsToShowSkip,
+            bool allowSkip,
+            float driftOverride,
+            bool finishOnFailValue,
             Action<Result> onFinished)
         {
             EnsureInitialized();
@@ -189,6 +336,7 @@ namespace VN.UI
             _runtimeFailsBeforeSkip = Mathf.Max(0, failsToShowSkip);
             _runtimeAllowSkip = allowSkip;
             _runtimeDriftStrength = driftOverride > 0f ? driftOverride : driftStrength;
+            _runtimeFinishOnFail = finishOnFailValue;
 
             _playing = true;
             _finishing = false;
@@ -199,6 +347,10 @@ namespace VN.UI
             _fails = 0;
             _failCooldownTimer = 0f;
             _riskEventTimer = 0f;
+            _randomPullTimer = 0f;
+            _hapticCooldownTimer = 0f;
+            _riskSfxCooldownTimer = 0f;
+            _burstVelocity = Vector2.zero;
 
             _eyePos = GetSafeZoneCenterInPlayArea();
             _dragTarget = _eyePos;
@@ -207,15 +359,14 @@ namespace VN.UI
             _noiseSeedY = UnityEngine.Random.Range(0f, 1000f);
 
             PickNewDriftDirection(true);
+            ResetRandomPullTimer();
 
             SetVisible(true);
             SetProgress(0f);
             SetEyeAnchoredPosition(_eyePos);
-
-            if (skipButton != null)
-                skipButton.gameObject.SetActive(false);
-
-            ResetVisuals();
+            ApplyVisualState(VisualState.Normal, true);
+            RefreshSkipButton();
+            ResetTransforms();
         }
 
         public void Skip()
@@ -277,14 +428,14 @@ namespace VN.UI
             if (eye != null)
                 _eyeBaseScale = eye.localScale;
 
-            if (skipButton != null)
-                skipButton.onClick.AddListener(Skip);
-
             if (progressCircle != null)
             {
                 progressCircle.fillAmount = 0f;
-                progressCircle.color = progressColor;
+                _progressCircleBaseScale = progressCircle.rectTransform.localScale;
             }
+
+            if (skipButton != null)
+                skipButton.onClick.AddListener(Skip);
         }
 
         private void SetVisible(bool visible)
@@ -298,6 +449,15 @@ namespace VN.UI
                 canvasGroup.interactable = visible;
                 canvasGroup.blocksRaycasts = visible;
             }
+        }
+
+        private void RefreshSkipButton()
+        {
+            if (skipButton == null)
+                return;
+
+            bool visible = _runtimeAllowSkip && _fails >= _runtimeFailsBeforeSkip;
+            skipButton.gameObject.SetActive(visible);
         }
 
         private void UpdateDragTarget(PointerEventData eventData)
@@ -327,7 +487,7 @@ namespace VN.UI
             _currentDriftDirection = Vector2.Lerp(
                 _currentDriftDirection,
                 _targetDriftDirection,
-                1f - Mathf.Exp(-3f * dt)
+                1f - Mathf.Exp(-4.5f * dt)
             );
 
             if (_currentDriftDirection.sqrMagnitude < 0.001f)
@@ -353,18 +513,41 @@ namespace VN.UI
                 _currentDriftDirection = _targetDriftDirection;
         }
 
+        private void UpdateRandomPullBurst(float dt)
+        {
+            _randomPullTimer -= dt;
+
+            if (_randomPullTimer <= 0f)
+            {
+                Vector2 dir = UnityEngine.Random.insideUnitCircle;
+
+                if (dir.sqrMagnitude < 0.001f)
+                    dir = Vector2.right;
+
+                dir.Normalize();
+
+                _burstVelocity += dir * randomPullBurstStrength;
+                ResetRandomPullTimer();
+            }
+
+            _burstVelocity = Vector2.Lerp(
+                _burstVelocity,
+                Vector2.zero,
+                1f - Mathf.Exp(-randomPullDamping * dt)
+            );
+        }
+
+        private void ResetRandomPullTimer()
+        {
+            float min = Mathf.Max(0.05f, randomPullBurstMinInterval);
+            float max = Mathf.Max(min, randomPullBurstMaxInterval);
+
+            _randomPullTimer = UnityEngine.Random.Range(min, max);
+        }
+
         private void UpdateEyePosition(float dt)
         {
             Vector2 center = GetSafeZoneCenterInPlayArea();
-
-            if (_dragging)
-            {
-                _eyePos = Vector2.Lerp(
-                    _eyePos,
-                    _dragTarget,
-                    1f - Mathf.Exp(-dragFollowSpeed * dt)
-                );
-            }
 
             Vector2 fromCenter = _eyePos - center;
             Vector2 outward = fromCenter.sqrMagnitude > 0.001f
@@ -389,62 +572,141 @@ namespace VN.UI
                 Mathf.PerlinNoise(_noiseSeedY, noiseTime) - 0.5f
             ) * 2f;
 
-            Vector2 magicForce =
+            Vector2 magicVelocity =
                 driftDirection * _runtimeDriftStrength +
-                noise * noiseStrength;
+                noise * noiseStrength +
+                _burstVelocity;
 
-            _eyePos += magicForce * dt;
+            Vector2 playerVelocity = Vector2.zero;
+
+            if (_dragging)
+            {
+                Vector2 toPointer = _dragTarget - _eyePos;
+
+                if (toPointer.magnitude > maxPointerControlDistance)
+                    toPointer = toPointer.normalized * maxPointerControlDistance;
+
+                playerVelocity = toPointer * playerPullStrength;
+
+                if (playerVelocity.magnitude > maxPlayerPullSpeed)
+                    playerVelocity = playerVelocity.normalized * maxPlayerPullSpeed;
+            }
+
+            Vector2 totalVelocity = playerVelocity + magicVelocity;
+
+            if (magicVelocity.sqrMagnitude > 0.001f && unavoidableDriftPercent > 0f)
+            {
+                Vector2 magicDir = magicVelocity.normalized;
+                float magicSpeed = magicVelocity.magnitude;
+
+                float minUnavoidableSpeed = magicSpeed * unavoidableDriftPercent;
+                float currentSpeedAlongMagic = Vector2.Dot(totalVelocity, magicDir);
+
+                if (currentSpeedAlongMagic < minUnavoidableSpeed)
+                {
+                    float missingSpeed = minUnavoidableSpeed - currentSpeedAlongMagic;
+                    totalVelocity += magicDir * missingSpeed;
+                }
+            }
+
+            _eyePos += totalVelocity * dt;
+        }
+
+        private bool UpdateProgressByDistance(float distance01, float dt)
+        {
+            float fillSpeed = 1f / Mathf.Max(0.01f, _runtimeHoldSeconds);
+
+            bool shouldDrain = distance01 >= progressDrainDistance01;
+
+            if (shouldDrain)
+            {
+                float drainSeconds = drainProgressAtFillSpeed
+                    ? _runtimeHoldSeconds
+                    : customProgressDrainSeconds;
+
+                float drainSpeed = 1f / Mathf.Max(0.01f, drainSeconds);
+
+                _progress01 = Mathf.Clamp01(_progress01 - drainSpeed * dt);
+                SetProgress(_progress01);
+
+                if (_progress01 <= 0f)
+                {
+                    Fail();
+                    return true;
+                }
+
+                return false;
+            }
+
+            _progress01 = Mathf.Clamp01(_progress01 + fillSpeed * dt);
+            return false;
         }
 
         private void Fail()
         {
+            if (_feedbackRoutine != null)
+                StopCoroutine(_feedbackRoutine);
+
             _fails++;
             _progress01 = 0f;
             SetProgress(0f);
 
             _dragging = false;
-            _failCooldownTimer = failCooldownSeconds;
+            _playing = false;
 
-            _eyePos = GetSafeZoneCenterInPlayArea();
-            _dragTarget = _eyePos;
-            SetEyeAnchoredPosition(_eyePos);
-
-            PickNewDriftDirection(true);
-
-            if (skipButton != null && _runtimeAllowSkip && _fails >= _runtimeFailsBeforeSkip)
-                skipButton.gameObject.SetActive(true);
-
+            RefreshSkipButton();
             onFail?.Invoke();
 
-            if (_feedbackRoutine != null)
-                StopCoroutine(_feedbackRoutine);
+            if (useFailHaptic)
+                TriggerHapticPulse();
 
-            _feedbackRoutine = StartCoroutine(FailFlashRoutine());
+            _feedbackRoutine = StartCoroutine(FailRoutine());
         }
 
-        private IEnumerator FailFlashRoutine()
+        private IEnumerator FailRoutine()
         {
+            ApplyVisualState(VisualState.Fail, true);
+
             float timer = 0f;
 
-            while (timer < failFlashSeconds)
+            while (timer < failFeedbackSeconds)
             {
-                float t = timer / Mathf.Max(0.01f, failFlashSeconds);
+                float t = timer / Mathf.Max(0.01f, failFeedbackSeconds);
                 float pulse = 1f + failPulseScale * (1f - t);
-
-                if (ringImage != null)
-                    ringImage.color = Color.Lerp(failRingColor, calmRingColor, t);
 
                 if (safeZone != null)
                     safeZone.localScale = _safeZoneBaseScale * pulse;
 
-                if (eyeGlowImage != null)
-                    eyeGlowImage.color = Color.Lerp(failRingColor, calmEyeColor, t);
+                if (progressCircle != null)
+                    progressCircle.rectTransform.localScale = _progressCircleBaseScale * pulse;
 
                 timer += DeltaTime;
                 yield return null;
             }
 
-            ResetVisuals();
+            ResetTransforms();
+
+            if (_runtimeFinishOnFail)
+            {
+                Finish(false, false);
+                yield break;
+            }
+
+            _eyePos = GetSafeZoneCenterInPlayArea();
+            _dragTarget = _eyePos;
+            SetEyeAnchoredPosition(_eyePos);
+
+            _failCooldownTimer = failCooldownSeconds;
+            _hapticCooldownTimer = 0f;
+            _riskSfxCooldownTimer = 0f;
+            _burstVelocity = Vector2.zero;
+
+            PickNewDriftDirection(true);
+            ResetRandomPullTimer();
+
+            ApplyVisualState(VisualState.Normal, true);
+
+            _playing = true;
             _feedbackRoutine = null;
         }
 
@@ -453,7 +715,9 @@ namespace VN.UI
             _progress01 = 1f;
             SetProgress(1f);
 
+            PlaySfx(successSfxKey);
             onSuccess?.Invoke();
+
             Finish(true, false);
         }
 
@@ -483,32 +747,32 @@ namespace VN.UI
             Action<Result> callback = _onFinished;
             _onFinished = null;
 
+            ResetTransforms();
             SetVisible(false);
+
             callback?.Invoke(result);
         }
 
-        private void ApplyNormalFeedback(float distance01)
+        private void ApplyLiveFeedback(float distance01)
         {
+            bool risk = distance01 >= riskDistance01;
+            ApplyVisualState(risk ? VisualState.Risk : VisualState.Normal);
+
             float risk01 = Mathf.InverseLerp(riskDistance01, 1f, distance01);
 
-            if (ringImage != null)
-                ringImage.color = Color.Lerp(calmRingColor, riskRingColor, risk01);
+            float pulse = 1f;
 
-            if (eyeGlowImage != null)
-                eyeGlowImage.color = Color.Lerp(calmEyeColor, riskEyeColor, risk01);
+            if (risk01 > 0f)
+            {
+                float sin = Mathf.Sin(CurrentTime * 16f) * 0.5f + 0.5f;
+                pulse += riskPulseScale * risk01 * sin;
+            }
 
             if (safeZone != null)
-            {
-                float pulse = 1f;
-
-                if (risk01 > 0f)
-                {
-                    float sin = Mathf.Sin(CurrentTime * 16f) * 0.5f + 0.5f;
-                    pulse += riskPulseScale * risk01 * sin;
-                }
-
                 safeZone.localScale = _safeZoneBaseScale * pulse;
-            }
+
+            if (progressCircle != null)
+                progressCircle.rectTransform.localScale = _progressCircleBaseScale * pulse;
 
             Vector2 visualPos = _eyePos;
 
@@ -523,6 +787,8 @@ namespace VN.UI
                     _riskEventTimer = riskPulseEventInterval;
                     onRiskPulse?.Invoke();
                 }
+
+                TryTriggerRiskHaptic(distance01);
             }
             else
             {
@@ -532,16 +798,78 @@ namespace VN.UI
             SetEyeAnchoredPosition(visualPos);
         }
 
-        private void ResetVisuals()
+        private void TryTriggerRiskHaptic(float distance01)
         {
-            if (ringImage != null)
-                ringImage.color = calmRingColor;
+            if (!useRiskHaptic)
+                return;
 
-            if (eyeGlowImage != null)
-                eyeGlowImage.color = calmEyeColor;
+            if (distance01 < hapticDistance01)
+                return;
 
+            if (_hapticCooldownTimer > 0f)
+                return;
+
+            _hapticCooldownTimer = hapticCooldownSeconds;
+            TriggerHapticPulse();
+        }
+
+        private void TriggerHapticPulse()
+        {
+            if (!VNSettingsWindowUGUI.VibrationEnabled)
+                return;
+
+            HapticFeedback.HeavyFeedback();
+        }
+
+        private void ApplyVisualState(VisualState state, bool force = false)
+        {
+            if (!force && _visualStateInitialized && _visualState == state)
+                return;
+
+            bool wasInitialized = _visualStateInitialized;
+            VisualState previousState = _visualState;
+
+            _visualState = state;
+            _visualStateInitialized = true;
+
+            if (spriteStateTargets != null)
+            {
+                for (int i = 0; i < spriteStateTargets.Length; i++)
+                    spriteStateTargets[i]?.Apply(state);
+            }
+
+            bool enteredRisk =
+                state == VisualState.Risk &&
+                (!wasInitialized || previousState != VisualState.Risk);
+
+            if (enteredRisk && !force)
+                TryPlayRiskSfx();
+        }
+
+        private void TryPlayRiskSfx()
+        {
+            if (_riskSfxCooldownTimer > 0f)
+                return;
+
+            _riskSfxCooldownTimer = riskSfxCooldownSeconds;
+            PlaySfx(riskSfxKey);
+        }
+
+        private static void PlaySfx(string sfxKey)
+        {
+            if (string.IsNullOrWhiteSpace(sfxKey))
+                return;
+
+            Sound.PlaySFX(sfxKey);
+        }
+
+        private void ResetTransforms()
+        {
             if (safeZone != null)
                 safeZone.localScale = _safeZoneBaseScale;
+
+            if (progressCircle != null)
+                progressCircle.rectTransform.localScale = _progressCircleBaseScale;
 
             if (eye != null)
                 eye.localScale = _eyeBaseScale;
@@ -553,7 +881,6 @@ namespace VN.UI
                 return;
 
             progressCircle.fillAmount = Mathf.Clamp01(value);
-            progressCircle.color = progressColor;
         }
 
         private void SetEyeAnchoredPosition(Vector2 position)
@@ -564,27 +891,39 @@ namespace VN.UI
 
         private float GetCurrentDistance01()
         {
-            if (eye == null || safeZone == null)
-                return 0f;
-
-            Vector3 eyeWorldCenter = eye.TransformPoint(eye.rect.center);
-            Vector3 eyeLocalToSafeZone = safeZone.InverseTransformPoint(eyeWorldCenter);
-
-            float radius = GetSafeZoneRadius();
-            float distance = new Vector2(eyeLocalToSafeZone.x, eyeLocalToSafeZone.y).magnitude;
+            Vector2 center = GetSafeZoneCenterInPlayArea();
+            float radius = GetSafeZoneRadiusInPlayArea();
+            float distance = (_eyePos - center).magnitude;
 
             return distance / Mathf.Max(1f, radius);
         }
 
-        private float GetSafeZoneRadius()
+        private float GetSafeZoneRadiusInPlayArea()
         {
             if (manualSafeZoneRadius > 0f)
                 return manualSafeZoneRadius;
 
-            if (safeZone == null)
+            if (safeZone == null || playArea == null)
                 return 1f;
 
-            return Mathf.Min(safeZone.rect.width, safeZone.rect.height) * 0.5f;
+            Vector3 centerWorld = safeZone.TransformPoint(safeZone.rect.center);
+
+            Vector3 rightWorld = safeZone.TransformPoint(
+                safeZone.rect.center + Vector2.right * safeZone.rect.width * 0.5f
+            );
+
+            Vector3 topWorld = safeZone.TransformPoint(
+                safeZone.rect.center + Vector2.up * safeZone.rect.height * 0.5f
+            );
+
+            Vector2 centerLocal = playArea.InverseTransformPoint(centerWorld);
+            Vector2 rightLocal = playArea.InverseTransformPoint(rightWorld);
+            Vector2 topLocal = playArea.InverseTransformPoint(topWorld);
+
+            float radiusX = Vector2.Distance(centerLocal, rightLocal);
+            float radiusY = Vector2.Distance(centerLocal, topLocal);
+
+            return Mathf.Min(radiusX, radiusY);
         }
 
         private Vector2 GetSafeZoneCenterInPlayArea()

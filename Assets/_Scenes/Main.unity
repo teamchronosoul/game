@@ -2342,6 +2342,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513213774}
+  - component: {fileID: 513213776}
+  - component: {fileID: 513213775}
   m_Layer: 0
   m_Name: Dim
   m_TagString: Untagged
@@ -2368,6 +2370,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &513213775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513213773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 2100000, guid: ab0dae9ed7d0e2447a7b2512b119de63, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &513213776
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 513213773}
+  m_CullTransparentMesh: 1
 --- !u!1 &526384054
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,38 +2601,64 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VN.UI.VNTruthEyeMinigameUGUI
   root: {fileID: 556988124}
   canvasGroup: {fileID: 556988129}
-  playArea: {fileID: 0}
-  safeZone: {fileID: 0}
-  eye: {fileID: 0}
-  progressCircle: {fileID: 0}
-  ringImage: {fileID: 0}
-  eyeGlowImage: {fileID: 0}
-  skipButton: {fileID: 0}
+  playArea: {fileID: 1045396454}
+  safeZone: {fileID: 2129398456}
+  eye: {fileID: 1886734453}
+  progressCircle: {fileID: 1454125182}
+  skipButton: {fileID: 1713545010}
+  spriteStateTargets:
+  - image: {fileID: 1886734454}
+    normalSprite: {fileID: 21300000, guid: 4d2dce5043f424c40b0fe77b05567cbb, type: 3}
+    riskSprite: {fileID: 21300000, guid: 9c65f8e6d6cde4c4e836ff2d89056560, type: 3}
+    failSprite: {fileID: 21300000, guid: 9c65f8e6d6cde4c4e836ff2d89056560, type: 3}
+    setNativeSize: 1
+  - image: {fileID: 2129398457}
+    normalSprite: {fileID: 21300000, guid: 13c7459f9c987b247a70cb6441e1cd4d, type: 3}
+    riskSprite: {fileID: 21300000, guid: de9810b4b38118f44bfd546175326100, type: 3}
+    failSprite: {fileID: 21300000, guid: de9810b4b38118f44bfd546175326100, type: 3}
+    setNativeSize: 0
+  - image: {fileID: 1454125182}
+    normalSprite: {fileID: 21300000, guid: 101fa7416401fde4d9e50832d3bd4837, type: 3}
+    riskSprite: {fileID: 21300000, guid: 3c1bab6e88b9a714ebef0bb439b6467c, type: 3}
+    failSprite: {fileID: 21300000, guid: 3c1bab6e88b9a714ebef0bb439b6467c, type: 3}
+    setNativeSize: 0
   requiredHoldSeconds: 15
-  allowSkipAfterFails: 1
   failsBeforeSkip: 3
+  allowSkipAfterFails: 1
+  finishOnFail: 1
   useUnscaledTime: 1
-  hideOnAwake: 1
-  manualSafeZoneRadius: 0
-  dragFollowSpeed: 18
-  driftStrength: 70
-  outwardBias: 0.55
-  noiseStrength: 18
+  hideOnAwake: 0
+  manualSafeZoneRadius: 240
+  playerPullStrength: 9.5
+  maxPlayerPullSpeed: 260
+  maxPointerControlDistance: 380
+  unavoidableDriftPercent: 0.2
+  driftStrength: 120
+  outwardBias: 0.2
+  noiseStrength: 50
   noiseSpeed: 1.25
-  directionChangeInterval: 1.1
+  directionChangeInterval: 0.35
+  randomPullBurstStrength: 130
+  randomPullBurstMinInterval: 0.35
+  randomPullBurstMaxInterval: 0.9
+  randomPullDamping: 4.5
   riskDistance01: 0.72
   riskShakeAmplitude: 5
   riskPulseScale: 0.045
   riskPulseEventInterval: 0.35
-  failFlashSeconds: 0.22
+  progressDrainDistance01: 0.86
+  drainProgressAtFillSpeed: 1
+  customProgressDrainSeconds: 15
+  useRiskHaptic: 1
+  hapticDistance01: 0.78
+  hapticCooldownSeconds: 0.05
+  useFailHaptic: 1
+  riskSfxKey: miniGameEyeNearLose
+  riskSfxCooldownSeconds: 1
+  successSfxKey: MiniGameEyeWin
+  failFeedbackSeconds: 0.35
   failCooldownSeconds: 0.18
   failPulseScale: 0.12
-  calmRingColor: {r: 1, g: 1, b: 1, a: 1}
-  riskRingColor: {r: 0.35, g: 0.75, b: 1, a: 1}
-  failRingColor: {r: 1, g: 0.12, b: 0.08, a: 1}
-  progressColor: {r: 0.1, g: 0.55, b: 1, a: 1}
-  calmEyeColor: {r: 0.35, g: 0.85, b: 1, a: 1}
-  riskEyeColor: {r: 0.85, g: 0.95, b: 1, a: 1}
   onRiskPulse:
     m_PersistentCalls:
       m_Calls: []
@@ -3668,6 +3734,7 @@ MonoBehaviour:
   autoSpeakerCrossfadeSeconds: 0.2
   vfxPlayer: {fileID: 887321017}
   mainMenuRoot: {fileID: 1376201533}
+  truthEyeMinigame: {fileID: 556988126}
 --- !u!114 &714067277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4713,6 +4780,10 @@ MonoBehaviour:
   resetAutosaveButton: {fileID: 201484365}
   tapFx: {fileID: 887321014}
   audioController: {fileID: 887321013}
+  hideDialogueDuringTruthEye: 1
+  hideCharactersDuringTruthEye: 1
+  extraHideDuringTruthEye:
+  - {fileID: 556988124}
 --- !u!114 &887321012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6723,14 +6794,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 46b78ade2d6fbad4a806e55be6fc4b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 101fa7416401fde4d9e50832d3bd4837, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.328
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1454125183
@@ -7978,6 +8049,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1713545009}
+  - component: {fileID: 1713545012}
+  - component: {fileID: 1713545011}
+  - component: {fileID: 1713545010}
   m_Layer: 0
   m_Name: SkipButton
   m_TagString: Untagged
@@ -7999,11 +8073,93 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 556988125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1713545010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713545008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1713545011}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1713545011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713545008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1713545012
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713545008}
+  m_CullTransparentMesh: 1
 --- !u!1 &1721849398
 GameObject:
   m_ObjectHideFlags: 0
@@ -8956,7 +9112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 420, y: 404}
+  m_SizeDelta: {x: 424, y: 446}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1886734454
 MonoBehaviour:
@@ -8978,7 +9134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a50d145382d015545ab518b3cbce64bc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d2dce5043f424c40b0fe77b05567cbb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10567,7 +10723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b492796feb9a834d8694803886d41d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 13c7459f9c987b247a70cb6441e1cd4d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -119,6 +119,7 @@ MonoBehaviour:
   - rid: 9129764570494402867
   - rid: 9129764570494402868
   - rid: 9129764570494402869
+  - rid: 9129764703577833826
   - rid: 9129764570494402870
   - rid: 9129764570494402871
   - rid: 9129764570494402872
@@ -351,7 +352,7 @@ MonoBehaviour:
         emotion: 5
         showSpeakerName: 1
         sfxId: 
-        text: Welcome to the Legion of Sentinels, scholar.
+        text: Welcome to Legion of Sentinels, scholar.
         addToLog: 1
         nextStepId: vnchapter_1_kaitora_line_r009_c03
     - rid: 9129764570494402779
@@ -1784,7 +1785,7 @@ MonoBehaviour:
         text: You close your eyes tight and focus your mind and energy on your will
           to become invisible.
         addToLog: 1
-        nextStepId: vnchapter_1_kaitora_line_r129_c03
+        nextStepId: fb62937d6d5a4d5a94c1aceb262d17f4
     - rid: 9129764570494402870
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2016,7 +2017,7 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: Yuzuri's eyes widen as she looks at the dean of the Order of Labyrinth.
+        text: Yuzuri's eyes widen as she looks at the dean of the Order of the Labyrinth.
         addToLog: 1
         nextStepId: vnchapter_1_kaitora_line_r147_c03
     - rid: 9129764570494402885
@@ -3714,7 +3715,7 @@ MonoBehaviour:
         showSpeakerName: 1
         sfxId: 
         text: Thank you, Teacher Kaitora. Can you tell me more about being a student
-          of the Legion of Sentinels?
+          of Legion of Sentinels?
         addToLog: 1
         nextStepId: vnchapter_1_kaitora_line_r013_c04
     - rid: 9129764570494402999
@@ -4003,3 +4004,21 @@ MonoBehaviour:
       data:
         slot: 0
         fadeSeconds: 0.2
+    - rid: 9129764703577833826
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: fb62937d6d5a4d5a94c1aceb262d17f4
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 9129764703577833828
+        nextStepId: vnchapter_1_kaitora_line_r129_c03
+    - rid: 9129764703577833828
+      type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        holdSeconds: 15
+        failsBeforeSkip: 0
+        allowSkipAfterFails: 1
+        finishOnFail: 1
+        driftStrength: -1

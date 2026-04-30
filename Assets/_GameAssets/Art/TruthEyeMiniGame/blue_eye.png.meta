@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6b492796feb9a834d8694803886d41d2
+guid: 4d2dce5043f424c40b0fe77b05567cbb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3393647654439524593
-    second: Ellipse 87_0
+      213: -3835098358361601701
+    second: blue_eye_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ellipse 87_0
+      name: blue_eye_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 3
-        width: 914
-        height: 914
+        x: 16
+        y: 5
+        width: 408
+        height: 414
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1f894b7bf88a81f20800000000000000
-      internalID: 3393647654439524593
+      spriteID: b594c2fbc5ef6cac0800000000000000
+      internalID: -3835098358361601701
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ellipse 87_0: 3393647654439524593
+      blue_eye_0: -3835098358361601701
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

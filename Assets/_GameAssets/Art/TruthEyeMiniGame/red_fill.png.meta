@@ -1,187 +1,187 @@
 fileFormatVersion: 2
-guid: 46b78ade2d6fbad4a806e55be6fc4b11
+guid: 3c1bab6e88b9a714ebef0bb439b6467c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2680822287206719846
-    second: Subtract_0
+      213: 435830826355983577
+    second: red_fill_0
   - first:
-      213: -5940198412599948551
-    second: Subtract_1
+      213: 3445584556647573482
+    second: red_fill_1
   - first:
-      213: 4802384495716647501
-    second: Subtract_2
+      213: -6237241249146471126
+    second: red_fill_2
   - first:
-      213: 8456727893084637448
-    second: Subtract_3
+      213: -2489660381560027891
+    second: red_fill_3
   - first:
-      213: -5586542397858019354
-    second: Subtract_4
+      213: -1128421070047971265
+    second: red_fill_4
   - first:
-      213: -3619592863158613294
-    second: Subtract_5
+      213: -7306261276629298141
+    second: red_fill_5
   - first:
-      213: -4026823351188281429
-    second: Subtract_6
+      213: -697244986045307694
+    second: red_fill_6
   - first:
-      213: -8604795922119069886
-    second: Subtract_7
+      213: 4259677614031813024
+    second: red_fill_7
   - first:
-      213: -3567178970740161198
-    second: Subtract_8
+      213: -3210222282162188268
+    second: red_fill_8
   - first:
-      213: -4429775438845838112
-    second: Subtract_9
+      213: 3367539710144864731
+    second: red_fill_9
   - first:
-      213: 320782973648009655
-    second: Subtract_10
+      213: -446754118327216796
+    second: red_fill_10
   - first:
-      213: -3294155032712749982
-    second: Subtract_11
+      213: -5444326746530045294
+    second: red_fill_11
   - first:
-      213: -8856373445463608478
-    second: Subtract_12
+      213: -2178635478384458381
+    second: red_fill_12
   - first:
-      213: -1643554548269661322
-    second: Subtract_13
+      213: -8991717023936462968
+    second: red_fill_13
   - first:
-      213: 5382936328676299035
-    second: Subtract_14
+      213: -1691071225502416336
+    second: red_fill_14
   - first:
-      213: -1180366287648410627
-    second: Subtract_15
+      213: -7690391254574462642
+    second: red_fill_15
   - first:
-      213: -176057099005732217
-    second: Subtract_16
+      213: 8146080405118167387
+    second: red_fill_16
   - first:
-      213: -947503346628731908
-    second: Subtract_17
+      213: -5579711981798575499
+    second: red_fill_17
   - first:
-      213: 6108116792281654673
-    second: Subtract_18
+      213: -428373547974012292
+    second: red_fill_18
   - first:
-      213: -5203343648946850425
-    second: Subtract_19
+      213: 3273180080489877790
+    second: red_fill_19
   - first:
-      213: -7085992125598236917
-    second: Subtract_20
+      213: -5318884019957452944
+    second: red_fill_20
   - first:
-      213: 5486122721722410047
-    second: Subtract_21
+      213: -5000188798751375476
+    second: red_fill_21
   - first:
-      213: -6612371765595700693
-    second: Subtract_22
+      213: 8041316027609265690
+    second: red_fill_22
   - first:
-      213: 5521678458149486133
-    second: Subtract_23
+      213: 564463067458719076
+    second: red_fill_23
   - first:
-      213: -7776530571279041314
-    second: Subtract_24
+      213: -259600245600416447
+    second: red_fill_24
   - first:
-      213: -6804682489328539169
-    second: Subtract_25
+      213: -5214263235880210119
+    second: red_fill_25
   - first:
-      213: 6479869497248800855
-    second: Subtract_26
+      213: -2610098193207533073
+    second: red_fill_26
   - first:
-      213: 4389126234819689584
-    second: Subtract_27
+      213: -7231565578393251990
+    second: red_fill_27
   - first:
-      213: -5316453650116179841
-    second: Subtract_28
+      213: -5622496036106962251
+    second: red_fill_28
   - first:
-      213: -6482374913773508488
-    second: Subtract_29
+      213: 5393721277541570880
+    second: red_fill_29
   - first:
-      213: 7897628360064774561
-    second: Subtract_30
+      213: -386782199047097776
+    second: red_fill_30
   - first:
-      213: 242458957170538263
-    second: Subtract_31
+      213: 4904789044459164236
+    second: red_fill_31
   - first:
-      213: 4486544972538576743
-    second: Subtract_32
+      213: 5549485985888093139
+    second: red_fill_32
   - first:
-      213: -5010415458121081365
-    second: Subtract_33
+      213: 8435813582317631425
+    second: red_fill_33
   - first:
-      213: 136776675397103567
-    second: Subtract_34
+      213: -3354318865059016224
+    second: red_fill_34
   - first:
-      213: -8943872401306091013
-    second: Subtract_35
+      213: 8581615288129546516
+    second: red_fill_35
   - first:
-      213: -3248051284925866926
-    second: Subtract_36
+      213: 7515405294711167329
+    second: red_fill_36
   - first:
-      213: 4772282259726988525
-    second: Subtract_37
+      213: -8178096594594032380
+    second: red_fill_37
   - first:
-      213: 5861828543280328349
-    second: Subtract_38
+      213: 188958464021609243
+    second: red_fill_38
   - first:
-      213: -1271504888700935607
-    second: Subtract_39
+      213: -5602006473404836322
+    second: red_fill_39
   - first:
-      213: -2830155942257992942
-    second: Subtract_40
+      213: 4897928548921493152
+    second: red_fill_40
   - first:
-      213: 4217579619003148252
-    second: Subtract_41
+      213: -4246274541813310616
+    second: red_fill_41
   - first:
-      213: 6832445820642504650
-    second: Subtract_42
+      213: 1270720284821177926
+    second: red_fill_42
   - first:
-      213: 6076100310640203788
-    second: Subtract_43
+      213: -5529145723287031489
+    second: red_fill_43
   - first:
-      213: 3358324406247024396
-    second: Subtract_44
+      213: 1468833642728687141
+    second: red_fill_44
   - first:
-      213: 6604452202398966279
-    second: Subtract_45
+      213: 2748681781225399808
+    second: red_fill_45
   - first:
-      213: 3113806042637420880
-    second: Subtract_46
+      213: -1064376267482029951
+    second: red_fill_46
   - first:
-      213: -4983100403471569717
-    second: Subtract_47
+      213: 1293475064059640546
+    second: red_fill_47
   - first:
-      213: 2782150344184972632
-    second: Subtract_48
+      213: -6763619043232482472
+    second: red_fill_48
   - first:
-      213: -313880466755099413
-    second: Subtract_49
+      213: -2442877658278442577
+    second: red_fill_49
   - first:
-      213: -7745802083815997726
-    second: Subtract_50
+      213: 6075346410841173310
+    second: red_fill_50
   - first:
-      213: 8479580070681381177
-    second: Subtract_51
+      213: 6155025324798326596
+    second: red_fill_51
   - first:
-      213: 7016052410115671476
-    second: Subtract_52
+      213: -8651732111661025795
+    second: red_fill_52
   - first:
-      213: 5431419264879040021
-    second: Subtract_53
+      213: -2173458308614393463
+    second: red_fill_53
   - first:
-      213: 4771870720088483105
-    second: Subtract_54
+      213: 6123896703543290404
+    second: red_fill_54
   - first:
-      213: 8627210136849961847
-    second: Subtract_55
+      213: 786604909824707165
+    second: red_fill_55
   - first:
-      213: -1051137370652755549
-    second: Subtract_56
+      213: -3454300205135087158
+    second: red_fill_56
   - first:
-      213: 1663487386279625533
-    second: Subtract_57
+      213: -8546143932879606400
+    second: red_fill_57
   - first:
-      213: 5350173768501460528
-    second: Subtract_58
+      213: 8330856900436959539
+    second: red_fill_58
   - first:
-      213: 5443062702293694575
-    second: Subtract_59
+      213: 1738803483238917971
+    second: red_fill_59
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -303,7 +303,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Subtract_0
+      name: red_fill_0
       rect:
         serializedVersion: 2
         x: 200
@@ -318,14 +318,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a9ed719555ecbcad0800000000000000
-      internalID: -2680822287206719846
+      spriteID: 9d40d13d3d16c0600800000000000000
+      internalID: 435830826355983577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_1
+      name: red_fill_1
       rect:
         serializedVersion: 2
         x: 237
@@ -340,14 +340,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9fa04a9240d209da0800000000000000
-      internalID: -5940198412599948551
+      spriteID: ae7ec8616ec21df20800000000000000
+      internalID: 3445584556647573482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_2
+      name: red_fill_2
       rect:
         serializedVersion: 2
         x: 276
@@ -362,14 +362,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d42c806314f75a240800000000000000
-      internalID: 4802384495716647501
+      spriteID: a2df536512ed079a0800000000000000
+      internalID: -6237241249146471126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_3
+      name: red_fill_3
       rect:
         serializedVersion: 2
         x: 316
@@ -384,14 +384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 809827d86355c5570800000000000000
-      internalID: 8456727893084637448
+      spriteID: d0540c1e213f27dd0800000000000000
+      internalID: -2489660381560027891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_4
+      name: red_fill_4
       rect:
         serializedVersion: 2
         x: 357
@@ -406,14 +406,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e78305b94d9872b0800000000000000
-      internalID: -5586542397858019354
+      spriteID: f3879b2f30b0750f0800000000000000
+      internalID: -1128421070047971265
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_5
+      name: red_fill_5
       rect:
         serializedVersion: 2
         x: 398
@@ -428,14 +428,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2da44e7e77f94cdc0800000000000000
-      internalID: -3619592863158613294
+      spriteID: 32491524412fa9a90800000000000000
+      internalID: -7306261276629298141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_6
+      name: red_fill_6
       rect:
         serializedVersion: 2
         x: 437
@@ -450,14 +450,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba7ac234f79dd18c0800000000000000
-      internalID: -4026823351188281429
+      spriteID: 2d4e85d1163e256f0800000000000000
+      internalID: -697244986045307694
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_7
+      name: red_fill_7
       rect:
         serializedVersion: 2
         x: 475
@@ -472,14 +472,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 24fec51f2bf959880800000000000000
-      internalID: -8604795922119069886
+      spriteID: 0a9bc02a83a6d1b30800000000000000
+      internalID: 4259677614031813024
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_8
+      name: red_fill_8
       rect:
         serializedVersion: 2
         x: 512
@@ -494,14 +494,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2550ac630a5de7ec0800000000000000
-      internalID: -3567178970740161198
+      spriteID: 410dda5c7dff273d0800000000000000
+      internalID: -3210222282162188268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_9
+      name: red_fill_9
       rect:
         serializedVersion: 2
         x: 547
@@ -516,14 +516,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ecf7d455b64682c0800000000000000
-      internalID: -4429775438845838112
+      spriteID: bd1e43e3687ebbe20800000000000000
+      internalID: 3367539710144864731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_10
+      name: red_fill_10
       rect:
         serializedVersion: 2
         x: 133
@@ -538,14 +538,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7b9784a3a66a37400800000000000000
-      internalID: 320782973648009655
+      spriteID: 465d9231f7fccc9f0800000000000000
+      internalID: -446754118327216796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_11
+      name: red_fill_11
       rect:
         serializedVersion: 2
         x: 165
@@ -560,14 +560,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26c5710737fc842d0800000000000000
-      internalID: -3294155032712749982
+      spriteID: 2922be75badd174b0800000000000000
+      internalID: -5444326746530045294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_12
+      name: red_fill_12
       rect:
         serializedVersion: 2
         x: 581
@@ -582,14 +582,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 26370f04647d71580800000000000000
-      internalID: -8856373445463608478
+      spriteID: 375c4d7439ee3c1e0800000000000000
+      internalID: -2178635478384458381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_13
+      name: red_fill_13
       rect:
         serializedVersion: 2
         x: 613
@@ -604,14 +604,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 673c865a8dbe039e0800000000000000
-      internalID: -1643554548269661322
+      spriteID: 88f3f63c101073380800000000000000
+      internalID: -8991717023936462968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_14
+      name: red_fill_14
       rect:
         serializedVersion: 2
         x: 642
@@ -626,14 +626,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b11db47221804ba40800000000000000
-      internalID: 5382936328676299035
+      spriteID: 0324b0a1eab1888e0800000000000000
+      internalID: -1691071225502416336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_15
+      name: red_fill_15
       rect:
         serializedVersion: 2
         x: 77
@@ -648,14 +648,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df3bedf7d1f7e9fe0800000000000000
-      internalID: -1180366287648410627
+      spriteID: e49815f36ed364590800000000000000
+      internalID: -7690391254574462642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_16
+      name: red_fill_16
       rect:
         serializedVersion: 2
         x: 103
@@ -670,14 +670,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78ad39150058e8df0800000000000000
-      internalID: -176057099005732217
+      spriteID: b59a6daf7f0bc0170800000000000000
+      internalID: 8146080405118167387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_17
+      name: red_fill_17
       rect:
         serializedVersion: 2
         x: 669
@@ -692,14 +692,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cfb53b0f9bac9d2f0800000000000000
-      internalID: -947503346628731908
+      spriteID: 572b7efd381e092b0800000000000000
+      internalID: -5579711981798575499
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_18
+      name: red_fill_18
       rect:
         serializedVersion: 2
         x: 35
@@ -714,14 +714,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 195eb824cd364c450800000000000000
-      internalID: 6108116792281654673
+      spriteID: c72d5d9178c1e0af0800000000000000
+      internalID: -428373547974012292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_19
+      name: red_fill_19
       rect:
         serializedVersion: 2
         x: 54
@@ -736,14 +736,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 785fc3015820ac7b0800000000000000
-      internalID: -5203343648946850425
+      spriteID: e11db7fe0fbac6d20800000000000000
+      internalID: 3273180080489877790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_20
+      name: red_fill_20
       rect:
         serializedVersion: 2
         x: 693
@@ -758,14 +758,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b0f708874bf79ad90800000000000000
-      internalID: -7085992125598236917
+      spriteID: 07f2fec1a278f26b0800000000000000
+      internalID: -5318884019957452944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_21
+      name: red_fill_21
       rect:
         serializedVersion: 2
         x: 713
@@ -780,14 +780,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f34a6767c8f922c40800000000000000
-      internalID: 5486122721722410047
+      spriteID: c8f798897c2cb9ab0800000000000000
+      internalID: -5000188798751375476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_22
+      name: red_fill_22
       rect:
         serializedVersion: 2
         x: 8
@@ -802,14 +802,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2288dcb9e22c34a0800000000000000
-      internalID: -6612371765595700693
+      spriteID: a163e48825e789f60800000000000000
+      internalID: 8041316027609265690
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_23
+      name: red_fill_23
       rect:
         serializedVersion: 2
         x: 19
@@ -824,14 +824,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53e3de57d41f0ac40800000000000000
-      internalID: 5521678458149486133
+      spriteID: 46d44b05b2065d700800000000000000
+      internalID: 564463067458719076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_24
+      name: red_fill_24
       rect:
         serializedVersion: 2
         x: 730
@@ -846,14 +846,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: edc72f1b5a6341490800000000000000
-      internalID: -7776530571279041314
+      spriteID: 14d0269b3f6b56cf0800000000000000
+      internalID: -259600245600416447
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_25
+      name: red_fill_25
       rect:
         serializedVersion: 2
         x: 744
@@ -868,14 +868,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fd960462459e091a0800000000000000
-      internalID: -6804682489328539169
+      spriteID: 9313bfb963733a7b0800000000000000
+      internalID: -5214263235880210119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_26
+      name: red_fill_26
       rect:
         serializedVersion: 2
         x: 0
@@ -890,14 +890,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7506766d9fe1de950800000000000000
-      internalID: 6479869497248800855
+      spriteID: fe1e9fca58117cbd0800000000000000
+      internalID: -2610098193207533073
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_27
+      name: red_fill_27
       rect:
         serializedVersion: 2
         x: 2
@@ -912,14 +912,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 07c76c45e0f49ec30800000000000000
-      internalID: 4389126234819689584
+      spriteID: a6f8de1cb6154ab90800000000000000
+      internalID: -7231565578393251990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_28
+      name: red_fill_28
       rect:
         serializedVersion: 2
         x: 753
@@ -934,14 +934,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f780fffa2992836b0800000000000000
-      internalID: -5316453650116179841
+      spriteID: 5ba7dc8f4a1e8f1b0800000000000000
+      internalID: -5622496036106962251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_29
+      name: red_fill_29
       rect:
         serializedVersion: 2
         x: 759
@@ -956,14 +956,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87860ab6c5af906a0800000000000000
-      internalID: -6482374913773508488
+      spriteID: 049d45dbce85ada40800000000000000
+      internalID: 5393721277541570880
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_30
+      name: red_fill_30
       rect:
         serializedVersion: 2
         x: 0
@@ -978,14 +978,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a136b966230a9d60800000000000000
-      internalID: 7897628360064774561
+      spriteID: 0527a54a3afd1aaf0800000000000000
+      internalID: -386782199047097776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_31
+      name: red_fill_31
       rect:
         serializedVersion: 2
         x: 1
@@ -1000,14 +1000,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 717f2ce03236d5300800000000000000
-      internalID: 242458957170538263
+      spriteID: c42573536af411440800000000000000
+      internalID: 4904789044459164236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_32
+      name: red_fill_32
       rect:
         serializedVersion: 2
         x: 753
@@ -1022,14 +1022,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 76ff9fcb1e8634e30800000000000000
-      internalID: 4486544972538576743
+      spriteID: 3d34eda0a1cb30d40800000000000000
+      internalID: 5549485985888093139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_33
+      name: red_fill_33
       rect:
         serializedVersion: 2
         x: 759
@@ -1044,14 +1044,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bed1199efad677ab0800000000000000
-      internalID: -5010415458121081365
+      spriteID: 1c7357d12c7021570800000000000000
+      internalID: 8435813582317631425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_34
+      name: red_fill_34
       rect:
         serializedVersion: 2
         x: 8
@@ -1066,14 +1066,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcf6a9e59ade5e100800000000000000
-      internalID: 136776675397103567
+      spriteID: 0e114c0a3c01371d0800000000000000
+      internalID: -3354318865059016224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_35
+      name: red_fill_35
       rect:
         serializedVersion: 2
         x: 19
@@ -1088,14 +1088,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bf10bbb007bf0e380800000000000000
-      internalID: -8943872401306091013
+      spriteID: 419e50023a5081770800000000000000
+      internalID: 8581615288129546516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_36
+      name: red_fill_36
       rect:
         serializedVersion: 2
         x: 731
@@ -1110,14 +1110,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 25c1eb5b09a9ce2d0800000000000000
-      internalID: -3248051284925866926
+      spriteID: 16959561c451c4860800000000000000
+      internalID: 7515405294711167329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_37
+      name: red_fill_37
       rect:
         serializedVersion: 2
         x: 744
@@ -1132,14 +1132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de4fcea3e6d8a3240800000000000000
-      internalID: 4772282259726988525
+      spriteID: 40514640a70918e80800000000000000
+      internalID: -8178096594594032380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_38
+      name: red_fill_38
       rect:
         serializedVersion: 2
         x: 34
@@ -1154,14 +1154,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9e2878b006695150800000000000000
-      internalID: 5861828543280328349
+      spriteID: b1bbf4dc8b05f9200800000000000000
+      internalID: 188958464021609243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_39
+      name: red_fill_39
       rect:
         serializedVersion: 2
         x: 53
@@ -1176,14 +1176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 942eeca5a05ba5ee0800000000000000
-      internalID: -1271504888700935607
+      spriteID: e16144b0bcca142b0800000000000000
+      internalID: -5602006473404836322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_40
+      name: red_fill_40
       rect:
         serializedVersion: 2
         x: 694
@@ -1198,14 +1198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 21b50c25a2449b8d0800000000000000
-      internalID: -2830155942257992942
+      spriteID: 0a6c5bd9010f8f340800000000000000
+      internalID: 4897928548921493152
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_41
+      name: red_fill_41
       rect:
         serializedVersion: 2
         x: 714
@@ -1220,14 +1220,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd72c9a515ad78a30800000000000000
-      internalID: 4217579619003148252
+      spriteID: 86bde6c4dc33215c0800000000000000
+      internalID: -4246274541813310616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_42
+      name: red_fill_42
       rect:
         serializedVersion: 2
         x: 76
@@ -1242,14 +1242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: acfaf762649b1de50800000000000000
-      internalID: 6832445820642504650
+      spriteID: 64646a1dd5182a110800000000000000
+      internalID: 1270720284821177926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_43
+      name: red_fill_43
       rect:
         serializedVersion: 2
         x: 102
@@ -1264,14 +1264,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c08995b3a05a25450800000000000000
-      internalID: 6076100310640203788
+      spriteID: f313b1462478443b0800000000000000
+      internalID: -5529145723287031489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_44
+      name: red_fill_44
       rect:
         serializedVersion: 2
         x: 643
@@ -1286,14 +1286,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c07e0ea114a2b9e20800000000000000
-      internalID: 3358324406247024396
+      spriteID: 5268cf47a68526410800000000000000
+      internalID: 1468833642728687141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_45
+      name: red_fill_45
       rect:
         serializedVersion: 2
         x: 670
@@ -1308,14 +1308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7026904494ab7ab50800000000000000
-      internalID: 6604452202398966279
+      spriteID: 00627825487452620800000000000000
+      internalID: 2748681781225399808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_46
+      name: red_fill_46
       rect:
         serializedVersion: 2
         x: 132
@@ -1330,14 +1330,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0594ede1916763b20800000000000000
-      internalID: 3113806042637420880
+      spriteID: 180a06d8c639a31f0800000000000000
+      internalID: -1064376267482029951
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_47
+      name: red_fill_47
       rect:
         serializedVersion: 2
         x: 165
@@ -1352,14 +1352,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bcca8faa59878dab0800000000000000
-      internalID: -4983100403471569717
+      spriteID: 2eab917b7b853f110800000000000000
+      internalID: 1293475064059640546
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_48
+      name: red_fill_48
       rect:
         serializedVersion: 2
         x: 199
@@ -1374,14 +1374,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 85540e06ffe2c9620800000000000000
-      internalID: 2782150344184972632
+      spriteID: 85b7f0cb05cc222a0800000000000000
+      internalID: -6763619043232482472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_49
+      name: red_fill_49
       rect:
         serializedVersion: 2
         x: 548
@@ -1396,14 +1396,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be4e025e06fd4abf0800000000000000
-      internalID: -313880466755099413
+      spriteID: fa9439476b7291ed0800000000000000
+      internalID: -2442877658278442577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_50
+      name: red_fill_50
       rect:
         serializedVersion: 2
         x: 582
@@ -1418,14 +1418,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2eebaa53b02618490800000000000000
-      internalID: -7745802083815997726
+      spriteID: e3de1a14f57ff4450800000000000000
+      internalID: 6075346410841173310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_51
+      name: red_fill_51
       rect:
         serializedVersion: 2
         x: 614
@@ -1440,14 +1440,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9390275c5258da570800000000000000
-      internalID: 8479580070681381177
+      spriteID: 44733241cea0b6550800000000000000
+      internalID: 6155025324798326596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_52
+      name: red_fill_52
       rect:
         serializedVersion: 2
         x: 236
@@ -1462,14 +1462,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4b5c77e8e760e5160800000000000000
-      internalID: 7016052410115671476
+      spriteID: df5ba98bb7fdee780800000000000000
+      internalID: -8651732111661025795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_53
+      name: red_fill_53
       rect:
         serializedVersion: 2
         x: 275
@@ -1484,14 +1484,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 51614556b07406b40800000000000000
-      internalID: 5431419264879040021
+      spriteID: 981faec0f2356d1e0800000000000000
+      internalID: -2173458308614393463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_54
+      name: red_fill_54
       rect:
         serializedVersion: 2
         x: 316
@@ -1506,14 +1506,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 12526f03327193240800000000000000
-      internalID: 4771870720088483105
+      spriteID: 42a22e72b937cf450800000000000000
+      internalID: 6123896703543290404
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_55
+      name: red_fill_55
       rect:
         serializedVersion: 2
         x: 357
@@ -1528,14 +1528,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 773579919e10ab770800000000000000
-      internalID: 8627210136849961847
+      spriteID: d5a0ea47ff49aea00800000000000000
+      internalID: 786604909824707165
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_56
+      name: red_fill_56
       rect:
         serializedVersion: 2
         x: 398
@@ -1550,14 +1550,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3a9ba1c612c9961f0800000000000000
-      internalID: -1051137370652755549
+      spriteID: ac93d5dd34cdf00d0800000000000000
+      internalID: -3454300205135087158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_57
+      name: red_fill_57
       rect:
         serializedVersion: 2
         x: 438
@@ -1572,14 +1572,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d334a8bd6f4e51710800000000000000
-      internalID: 1663487386279625533
+      spriteID: 08de9595f5ff56980800000000000000
+      internalID: -8546143932879606400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_58
+      name: red_fill_58
       rect:
         serializedVersion: 2
         x: 475
@@ -1594,14 +1594,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03e742e22b2af3a40800000000000000
-      internalID: 5350173768501460528
+      spriteID: 331282156362d9370800000000000000
+      internalID: 8330856900436959539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtract_59
+      name: red_fill_59
       rect:
         serializedVersion: 2
         x: 512
@@ -1616,8 +1616,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f68b46c60b4a98b40800000000000000
-      internalID: 5443062702293694575
+      spriteID: 357eaa03e88712810800000000000000
+      internalID: 1738803483238917971
       vertices: []
       indices: 
       edges: []
@@ -1636,66 +1636,66 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Subtract_0: -2680822287206719846
-      Subtract_1: -5940198412599948551
-      Subtract_10: 320782973648009655
-      Subtract_11: -3294155032712749982
-      Subtract_12: -8856373445463608478
-      Subtract_13: -1643554548269661322
-      Subtract_14: 5382936328676299035
-      Subtract_15: -1180366287648410627
-      Subtract_16: -176057099005732217
-      Subtract_17: -947503346628731908
-      Subtract_18: 6108116792281654673
-      Subtract_19: -5203343648946850425
-      Subtract_2: 4802384495716647501
-      Subtract_20: -7085992125598236917
-      Subtract_21: 5486122721722410047
-      Subtract_22: -6612371765595700693
-      Subtract_23: 5521678458149486133
-      Subtract_24: -7776530571279041314
-      Subtract_25: -6804682489328539169
-      Subtract_26: 6479869497248800855
-      Subtract_27: 4389126234819689584
-      Subtract_28: -5316453650116179841
-      Subtract_29: -6482374913773508488
-      Subtract_3: 8456727893084637448
-      Subtract_30: 7897628360064774561
-      Subtract_31: 242458957170538263
-      Subtract_32: 4486544972538576743
-      Subtract_33: -5010415458121081365
-      Subtract_34: 136776675397103567
-      Subtract_35: -8943872401306091013
-      Subtract_36: -3248051284925866926
-      Subtract_37: 4772282259726988525
-      Subtract_38: 5861828543280328349
-      Subtract_39: -1271504888700935607
-      Subtract_4: -5586542397858019354
-      Subtract_40: -2830155942257992942
-      Subtract_41: 4217579619003148252
-      Subtract_42: 6832445820642504650
-      Subtract_43: 6076100310640203788
-      Subtract_44: 3358324406247024396
-      Subtract_45: 6604452202398966279
-      Subtract_46: 3113806042637420880
-      Subtract_47: -4983100403471569717
-      Subtract_48: 2782150344184972632
-      Subtract_49: -313880466755099413
-      Subtract_5: -3619592863158613294
-      Subtract_50: -7745802083815997726
-      Subtract_51: 8479580070681381177
-      Subtract_52: 7016052410115671476
-      Subtract_53: 5431419264879040021
-      Subtract_54: 4771870720088483105
-      Subtract_55: 8627210136849961847
-      Subtract_56: -1051137370652755549
-      Subtract_57: 1663487386279625533
-      Subtract_58: 5350173768501460528
-      Subtract_59: 5443062702293694575
-      Subtract_6: -4026823351188281429
-      Subtract_7: -8604795922119069886
-      Subtract_8: -3567178970740161198
-      Subtract_9: -4429775438845838112
+      red_fill_0: 435830826355983577
+      red_fill_1: 3445584556647573482
+      red_fill_10: -446754118327216796
+      red_fill_11: -5444326746530045294
+      red_fill_12: -2178635478384458381
+      red_fill_13: -8991717023936462968
+      red_fill_14: -1691071225502416336
+      red_fill_15: -7690391254574462642
+      red_fill_16: 8146080405118167387
+      red_fill_17: -5579711981798575499
+      red_fill_18: -428373547974012292
+      red_fill_19: 3273180080489877790
+      red_fill_2: -6237241249146471126
+      red_fill_20: -5318884019957452944
+      red_fill_21: -5000188798751375476
+      red_fill_22: 8041316027609265690
+      red_fill_23: 564463067458719076
+      red_fill_24: -259600245600416447
+      red_fill_25: -5214263235880210119
+      red_fill_26: -2610098193207533073
+      red_fill_27: -7231565578393251990
+      red_fill_28: -5622496036106962251
+      red_fill_29: 5393721277541570880
+      red_fill_3: -2489660381560027891
+      red_fill_30: -386782199047097776
+      red_fill_31: 4904789044459164236
+      red_fill_32: 5549485985888093139
+      red_fill_33: 8435813582317631425
+      red_fill_34: -3354318865059016224
+      red_fill_35: 8581615288129546516
+      red_fill_36: 7515405294711167329
+      red_fill_37: -8178096594594032380
+      red_fill_38: 188958464021609243
+      red_fill_39: -5602006473404836322
+      red_fill_4: -1128421070047971265
+      red_fill_40: 4897928548921493152
+      red_fill_41: -4246274541813310616
+      red_fill_42: 1270720284821177926
+      red_fill_43: -5529145723287031489
+      red_fill_44: 1468833642728687141
+      red_fill_45: 2748681781225399808
+      red_fill_46: -1064376267482029951
+      red_fill_47: 1293475064059640546
+      red_fill_48: -6763619043232482472
+      red_fill_49: -2442877658278442577
+      red_fill_5: -7306261276629298141
+      red_fill_50: 6075346410841173310
+      red_fill_51: 6155025324798326596
+      red_fill_52: -8651732111661025795
+      red_fill_53: -2173458308614393463
+      red_fill_54: 6123896703543290404
+      red_fill_55: 786604909824707165
+      red_fill_56: -3454300205135087158
+      red_fill_57: -8546143932879606400
+      red_fill_58: 8330856900436959539
+      red_fill_59: 1738803483238917971
+      red_fill_6: -697244986045307694
+      red_fill_7: 4259677614031813024
+      red_fill_8: -3210222282162188268
+      red_fill_9: 3367539710144864731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
