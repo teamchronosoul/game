@@ -2637,7 +2637,7 @@ MonoBehaviour:
   outwardBias: 0.2
   noiseStrength: 50
   noiseSpeed: 1.25
-  directionChangeInterval: 0.35
+  directionChangeInterval: 0.6
   randomPullBurstStrength: 130
   randomPullBurstMinInterval: 0.35
   randomPullBurstMaxInterval: 0.9
