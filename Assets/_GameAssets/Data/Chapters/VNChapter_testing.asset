@@ -2494,3 +2494,8 @@ MonoBehaviour:
       data:
         backgroundId: 1
         crossfadeSeconds: 0.25
+        playLocationIntro: 0
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
+        locationName: 
+        timeOfDay: 

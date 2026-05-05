@@ -57,12 +57,46 @@ namespace VN.UI
         [SerializeField]
         private GameObject[] extraHideDuringTruthEye;
 
+        [Header("Location Intro Camera Slide")]
+        [Tooltip("UI-анимация скольжения фона при смене локации. Раннер все равно делает паузу, даже если этот флаг выключен.")]
+        [SerializeField] private bool playLocationIntroInView = true;
+
+        [Tooltip("Что двигать во время интро. Если пусто, будет использован RectTransform объекта Background.")]
+        [SerializeField] private RectTransform cameraSlideTarget;
+
+        [SerializeField, Min(0f)] private float cameraSlideDistancePixels = 80f;
+        [SerializeField] private AnimationCurve cameraSlideCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
+        // Location Intro Plate temporarily disabled.
+        // Keep this block for quick restore when the plate is needed again.
+        /*
+        [Header("Location Intro Plate")]
+        [SerializeField] private GameObject locationIntroPlateRoot;
+        [SerializeField] private TextMeshProUGUI locationIntroLocationText;
+        [SerializeField] private TextMeshProUGUI locationIntroTimeOfDayText;
+        */
+
+        [Header("Location Intro Visibility")]
+        [SerializeField] private bool hideDialogueDuringLocationIntro = true;
+        [SerializeField] private bool hideCharactersDuringLocationIntro = true;
+        [SerializeField] private GameObject[] extraHideDuringLocationIntro;
+
         private Action<bool> _truthEyeActiveChangedHandler;
 
         private bool _truthEyeActive;
         private bool _truthEyeVisualsHidden;
         private GameObject[] _truthEyeHiddenTargets;
         private bool[] _truthEyeHiddenTargetStates;
+
+        private bool _locationIntroActive;
+        private bool _locationIntroVisualsHidden;
+        private GameObject[] _locationIntroHiddenTargets;
+        private bool[] _locationIntroHiddenTargetStates;
+        private Coroutine _locationIntroCoroutine;
+        private RectTransform _activeCameraSlideTarget;
+        private Vector2 _cameraSlideBaseAnchoredPosition;
+        private bool _hasCameraSlideBasePosition;
+
         private Action _typewriterFinishedHandler;
         private Action<Vector2> _tapFeedbackHandler;
 
@@ -92,6 +126,8 @@ namespace VN.UI
             runner.OnMusicPlay += OnMusicPlay;
             runner.OnMusicStop += OnMusicStop;
             runner.OnSfxPlay += OnSfx;
+            runner.OnLocationIntroStarted += OnLocationIntroStarted;
+            runner.OnLocationIntroFinished += OnLocationIntroFinished;
 
             _autoChangedHandler = _ => RefreshButtons();
             _skipChangedHandler = _ => RefreshButtons();
@@ -152,6 +188,8 @@ namespace VN.UI
                 runner.OnMusicPlay -= OnMusicPlay;
                 runner.OnMusicStop -= OnMusicStop;
                 runner.OnSfxPlay -= OnSfx;
+                runner.OnLocationIntroStarted -= OnLocationIntroStarted;
+                runner.OnLocationIntroFinished -= OnLocationIntroFinished;
 
                 if (_truthEyeActiveChangedHandler != null)
                     runner.OnTruthEyeMinigameActiveChanged -= _truthEyeActiveChangedHandler;
@@ -185,6 +223,11 @@ namespace VN.UI
 
             SetTruthEyeVisualsHidden(false);
             _truthEyeActive = false;
+            StopLocationIntroCoroutine(true);
+            // Location intro plate temporarily disabled.
+            // SetLocationIntroPlateVisible(false);
+            SetLocationIntroVisualsHidden(false);
+            _locationIntroActive = false;
 
             if (logPanel != null)
                 logPanel.HideImmediate();
@@ -338,7 +381,7 @@ namespace VN.UI
             if (closeLogButton != null)
                 closeLogButton.interactable = _isLogOpen;
             
-            if (_truthEyeActive)
+            if (_truthEyeActive || _locationIntroActive)
             {
                 if (autoButton != null)
                 {
@@ -567,6 +610,202 @@ namespace VN.UI
 
             if (!string.IsNullOrWhiteSpace(sfx.sfxId))
                 audioController.PlaySfx(sfx.sfxId);
+        }
+
+        private void OnLocationIntroStarted(VNRunner.VNLocationIntroPayload payload)
+        {
+            _locationIntroActive = true;
+
+            // Дублируем жесткую остановку музыки на стороне view, чтобы гарантированно заглушить
+            // трек, который мог быть запущен вне VNRunner и не сохранен в VNState.musicId.
+            if (audioController != null)
+                audioController.StopMusic(0f);
+
+            if (_isLogOpen)
+                SetLogOpen(false);
+
+            if (typewriter != null && typewriter.IsPlaying)
+                typewriter.RevealInstant();
+
+            SetLocationIntroVisualsHidden(true);
+            // Location intro plate temporarily disabled.
+            // SetLocationIntroPlate(payload);
+
+            StopLocationIntroCoroutine(true);
+
+            if (playLocationIntroInView)
+                _locationIntroCoroutine = StartCoroutine(PlayLocationIntroSlide(payload.durationSeconds));
+
+            RefreshButtons();
+        }
+
+        private void OnLocationIntroFinished()
+        {
+            StopLocationIntroCoroutine(true);
+            // Location intro plate temporarily disabled.
+            // SetLocationIntroPlateVisible(false);
+            SetLocationIntroVisualsHidden(false);
+            _locationIntroActive = false;
+            RefreshButtons();
+        }
+
+        private IEnumerator PlayLocationIntroSlide(float durationSeconds)
+        {
+            var target = ResolveCameraSlideTarget();
+            if (target == null)
+                yield break;
+
+            _activeCameraSlideTarget = target;
+            _cameraSlideBaseAnchoredPosition = target.anchoredPosition;
+            _hasCameraSlideBasePosition = true;
+
+            var duration = Mathf.Max(0.001f, durationSeconds);
+            var distance = Mathf.Max(0f, cameraSlideDistancePixels);
+            var from = _cameraSlideBaseAnchoredPosition + new Vector2(distance, 0f);
+            var to = _cameraSlideBaseAnchoredPosition;
+
+            target.anchoredPosition = from;
+
+            var elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                var normalized = Mathf.Clamp01(elapsed / duration);
+                var k = cameraSlideCurve != null
+                    ? cameraSlideCurve.Evaluate(normalized)
+                    : Mathf.SmoothStep(0f, 1f, normalized);
+
+                target.anchoredPosition = Vector2.LerpUnclamped(from, to, k);
+                yield return null;
+            }
+
+            target.anchoredPosition = to;
+            _locationIntroCoroutine = null;
+        }
+
+        private RectTransform ResolveCameraSlideTarget()
+        {
+            if (cameraSlideTarget != null)
+                return cameraSlideTarget;
+
+            return background != null ? background.transform as RectTransform : null;
+        }
+
+        private void StopLocationIntroCoroutine(bool snapToBasePosition)
+        {
+            if (_locationIntroCoroutine != null)
+            {
+                StopCoroutine(_locationIntroCoroutine);
+                _locationIntroCoroutine = null;
+            }
+
+            if (snapToBasePosition && _activeCameraSlideTarget != null && _hasCameraSlideBasePosition)
+                _activeCameraSlideTarget.anchoredPosition = _cameraSlideBaseAnchoredPosition;
+
+            _activeCameraSlideTarget = null;
+            _hasCameraSlideBasePosition = false;
+        }
+
+        // Location intro plate temporarily disabled.
+        // Keep these methods for quick restore when the plate is needed again.
+        /*
+        private void SetLocationIntroPlate(VNRunner.VNLocationIntroPayload payload)
+        {
+            var locationName = payload.locationName ?? "";
+            var timeOfDay = payload.timeOfDay ?? "";
+
+            if (locationIntroLocationText != null)
+            {
+                locationIntroLocationText.text = locationName;
+                locationIntroLocationText.gameObject.SetActive(!string.IsNullOrWhiteSpace(locationName));
+            }
+
+            if (locationIntroTimeOfDayText != null)
+            {
+                locationIntroTimeOfDayText.text = timeOfDay;
+                locationIntroTimeOfDayText.gameObject.SetActive(!string.IsNullOrWhiteSpace(timeOfDay));
+            }
+
+            var showPlate = !string.IsNullOrWhiteSpace(locationName) || !string.IsNullOrWhiteSpace(timeOfDay);
+            SetLocationIntroPlateVisible(showPlate);
+        }
+
+        private void SetLocationIntroPlateVisible(bool visible)
+        {
+            if (locationIntroPlateRoot != null)
+                locationIntroPlateRoot.SetActive(visible);
+            else
+            {
+                if (locationIntroLocationText != null)
+                    locationIntroLocationText.gameObject.SetActive(visible && !string.IsNullOrWhiteSpace(locationIntroLocationText.text));
+
+                if (locationIntroTimeOfDayText != null)
+                    locationIntroTimeOfDayText.gameObject.SetActive(visible && !string.IsNullOrWhiteSpace(locationIntroTimeOfDayText.text));
+            }
+        }
+        */
+
+        private void SetLocationIntroVisualsHidden(bool hidden)
+        {
+            if (_locationIntroVisualsHidden == hidden)
+                return;
+
+            _locationIntroVisualsHidden = hidden;
+
+            if (hidden)
+            {
+                _locationIntroHiddenTargets = BuildLocationIntroHideTargets();
+                _locationIntroHiddenTargetStates = new bool[_locationIntroHiddenTargets.Length];
+
+                for (var i = 0; i < _locationIntroHiddenTargets.Length; i++)
+                {
+                    var target = _locationIntroHiddenTargets[i];
+                    if (target == null)
+                        continue;
+
+                    _locationIntroHiddenTargetStates[i] = target.activeSelf;
+                    target.SetActive(false);
+                }
+            }
+            else
+            {
+                if (_locationIntroHiddenTargets != null && _locationIntroHiddenTargetStates != null)
+                {
+                    var count = Mathf.Min(_locationIntroHiddenTargets.Length, _locationIntroHiddenTargetStates.Length);
+                    for (var i = 0; i < count; i++)
+                    {
+                        var target = _locationIntroHiddenTargets[i];
+                        if (target == null)
+                            continue;
+
+                        target.SetActive(_locationIntroHiddenTargetStates[i]);
+                    }
+                }
+
+                _locationIntroHiddenTargets = null;
+                _locationIntroHiddenTargetStates = null;
+            }
+        }
+
+        private GameObject[] BuildLocationIntroHideTargets()
+        {
+            var list = new List<GameObject>();
+
+            if (hideDialogueDuringLocationIntro)
+                AddUniqueHideTarget(list, dialogueRoot);
+
+            if (hideCharactersDuringLocationIntro)
+            {
+                AddUniqueHideTarget(list, leftSlot != null ? leftSlot.gameObject : null);
+                AddUniqueHideTarget(list, centerSlot != null ? centerSlot.gameObject : null);
+                AddUniqueHideTarget(list, rightSlot != null ? rightSlot.gameObject : null);
+            }
+
+            if (extraHideDuringLocationIntro != null)
+                for (var i = 0; i < extraHideDuringLocationIntro.Length; i++)
+                    AddUniqueHideTarget(list, extraHideDuringLocationIntro[i]);
+
+            return list.ToArray();
         }
 
         private string BuildShownLineText(VNRunner.VNLinePayload line)

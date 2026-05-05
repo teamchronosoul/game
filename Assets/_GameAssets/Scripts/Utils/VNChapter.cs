@@ -157,6 +157,26 @@ namespace VN
     {
         public string backgroundId;
         [Min(0f)] public float crossfadeSeconds = 0.25f;
+
+        [Header("Location Intro")]
+        [Tooltip("Если включено, при первом показе или смене этого фона раннер делает короткое скольжение камеры и задерживает следующие шаги.")]
+        public bool playLocationIntro = true;
+
+        [Tooltip("Включить интро даже если backgroundId совпадает с текущим. Обычно выключено, чтобы не повторять скольжение на том же фоне.")]
+        public bool forceLocationIntro = false;
+
+        [Tooltip("0 = использовать дефолт из VNRunner. Если задано, значение будет зажато в диапазон 1-2 секунды.")]
+        [Min(0f)] public float locationIntroDurationOverride = 0f;
+
+        // Location intro plate temporarily disabled.
+        // Keep this block for quick restore when the plate is needed again.
+        /*
+        [Tooltip("Опциональное название локации для плашки. Если пусто, берется из VNAssetDatabase.backgrounds или fallback = backgroundId.")]
+        public string locationName;
+
+        [Tooltip("Опциональное время суток для плашки. Если пусто, берется из VNAssetDatabase.backgrounds, если там заполнено.")]
+        public string timeOfDay;
+        */
     }
     
     [System.Serializable]

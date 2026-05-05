@@ -12,6 +12,17 @@ namespace VN
         {
             public string id;
             public Sprite asset;
+
+            // Location intro plate temporarily disabled.
+            // Keep this block for quick restore when the plate is needed again.
+            /*
+            [Header("Location Intro")]
+            [Tooltip("Опциональное отображаемое название локации для плашки при смене фона.")]
+            public string locationDisplayName;
+
+            [Tooltip("Опциональное время суток для плашки при смене фона: Утро, День, Вечер, Ночь и т.п.")]
+            public string timeOfDay;
+            */
         }
 
         [Serializable]
@@ -112,6 +123,36 @@ namespace VN
             if (string.IsNullOrEmpty(id)) return false;
             return _bg.TryGetValue(id, out sprite) && sprite != null;
         }
+
+        // Location intro plate temporarily disabled.
+        // Keep this helper for quick restore when the plate is needed again.
+        /*
+        public bool TryGetBackgroundLocationInfo(string id, out string locationDisplayName, out string timeOfDay)
+        {
+            locationDisplayName = null;
+            timeOfDay = null;
+
+            id = Normalize(id);
+            if (string.IsNullOrEmpty(id) || backgrounds == null)
+                return false;
+
+            for (var i = 0; i < backgrounds.Count; i++)
+            {
+                var entry = backgrounds[i];
+                if (entry == null)
+                    continue;
+
+                if (!string.Equals(Normalize(entry.id), id, StringComparison.Ordinal))
+                    continue;
+
+                locationDisplayName = Normalize(entry.locationDisplayName);
+                timeOfDay = Normalize(entry.timeOfDay);
+                return !string.IsNullOrWhiteSpace(locationDisplayName) || !string.IsNullOrWhiteSpace(timeOfDay);
+            }
+
+            return false;
+        }
+        */
         public bool TryGetVfx(string id, out VNVfxDefinition result)
         {
             if (!string.IsNullOrWhiteSpace(id))

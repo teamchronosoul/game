@@ -47,6 +47,19 @@ namespace VN
         [Header("UI")] [SerializeField] private GameObject mainMenuRoot;
         [SerializeField] private VNTruthEyeMinigameUGUI truthEyeMinigame;
 
+        [Header("Location Intro")]
+        [Tooltip("При первом показе нового backgroundId или смене backgroundId делает короткое скольжение камеры.")]
+        [SerializeField] private bool playLocationIntroOnBackgroundChange = true;
+
+        [Tooltip("Длительность скольжения по умолчанию. По ТЗ держим 1-2 секунды.")]
+        [SerializeField, Range(1f, 2f)] private float defaultLocationIntroDurationSeconds = 1.5f;
+
+        [Tooltip("Скрывать всех персонажей перед скольжением, чтобы локация показывалась пустой.")]
+        [SerializeField] private bool clearCharactersBeforeLocationIntro = true;
+
+        [Tooltip("Полностью выключать любую текущую музыку перед скольжением. Следующая VNPlayMusicCommand сработает уже после интро.")]
+        [SerializeField] private bool stopMusicBeforeLocationIntro = true;
+
 
         public bool AutoEnabled { get; private set; }
         public bool SkipEnabled { get; private set; }
@@ -62,6 +75,8 @@ namespace VN
         public event Action OnChoiceHidden;
 
         public event Action<VNBackgroundPayload> OnBackgroundChanged;
+        public event Action<VNLocationIntroPayload> OnLocationIntroStarted;
+        public event Action OnLocationIntroFinished;
         public event Action<VNSlotPayload> OnSlotChanged;
 
         public event Action<VNMusicPayload> OnMusicPlay;
@@ -106,6 +121,17 @@ namespace VN
             public string backgroundId;
             public Sprite sprite;
             public float crossfadeSeconds;
+        }
+
+        [Serializable]
+        public struct VNLocationIntroPayload
+        {
+            public string backgroundId;
+            // Location intro plate temporarily disabled.
+            // Keep these fields for quick restore when the plate is needed again.
+            // public string locationName;
+            // public string timeOfDay;
+            public float durationSeconds;
         }
 
         [Serializable]
@@ -174,6 +200,7 @@ namespace VN
         private bool _autoStopDueToNewCharacterThisStep;
 
         private bool _artifactWaiting;
+        private bool _locationIntroActive;
 
         private void Awake()
         {
@@ -264,6 +291,9 @@ namespace VN
                 return;
             }
 
+            if (_locationIntroActive)
+                return;
+
             if (_modalOpen)
                 return;
 
@@ -298,6 +328,9 @@ namespace VN
 
         public void SetAuto(bool enabled)
         {
+            if (_locationIntroActive && enabled)
+                enabled = false;
+
             if (AutoEnabled == enabled)
                 return;
 
@@ -307,6 +340,9 @@ namespace VN
 
         public void SetSkip(bool enabled)
         {
+            if (_locationIntroActive && enabled)
+                enabled = false;
+
             if (enabled && !SkipAllowed)
                 enabled = false;
 
@@ -549,7 +585,11 @@ namespace VN
 
             if (!State.currentStepApplied)
             {
-                if (cmdStep.command is VNVfxCommand vfxCommand)
+                if (cmdStep.command is VNSetBackgroundCommand backgroundCommand)
+                {
+                    yield return HandleSetBackgroundCommand(backgroundCommand);
+                }
+                else if (cmdStep.command is VNVfxCommand vfxCommand)
                 {
                     var shouldWaitForVfx = vfxCommand.waitUntilFinished && !(SkipEnabled && SkipAllowed);
                     yield return StartCoroutine(HandleVfxCommand(vfxCommand, shouldWaitForVfx));
@@ -784,6 +824,128 @@ namespace VN
             if (AutoEnabled)
                 SetAuto(false);
         }
+
+        private IEnumerator HandleSetBackgroundCommand(VNSetBackgroundCommand command)
+        {
+            if (command == null)
+                yield break;
+
+            var previousBackgroundId = State.backgroundId;
+            var nextBackgroundId = Norm(command.backgroundId);
+            var shouldPlayIntro = ShouldPlayLocationIntro(command, previousBackgroundId, nextBackgroundId);
+
+            if (shouldPlayIntro)
+            {
+                if (AutoEnabled)
+                    SetAuto(false);
+
+                if (SkipEnabled)
+                    SetSkip(false);
+
+                if (clearCharactersBeforeLocationIntro)
+                    HideAllCharacters(0f);
+
+                if (stopMusicBeforeLocationIntro)
+                {
+                    // Важно: останавливаем музыку без проверки State.musicId.
+                    // В Sound могла играть музыка, запущенная не через VNRunner (например меню/предыдущая сцена),
+                    // поэтому перед интро локации всегда шлем жесткий stop с нулевым fade.
+                    State.musicId = null;
+                    OnMusicStop?.Invoke(0f);
+                }
+            }
+
+            State.backgroundId = nextBackgroundId;
+            EmitBackground(command.backgroundId, command.crossfadeSeconds);
+
+            if (shouldPlayIntro)
+                yield return PlayLocationIntro(command, nextBackgroundId);
+        }
+
+        private bool ShouldPlayLocationIntro(VNSetBackgroundCommand command, string previousBackgroundId, string nextBackgroundId)
+        {
+            if (!playLocationIntroOnBackgroundChange || command == null || !command.playLocationIntro)
+                return false;
+
+            if (string.IsNullOrWhiteSpace(nextBackgroundId))
+                return false;
+
+            if (command.forceLocationIntro)
+                return true;
+
+            return !string.Equals(Norm(previousBackgroundId), Norm(nextBackgroundId), StringComparison.Ordinal);
+        }
+
+        private IEnumerator PlayLocationIntro(VNSetBackgroundCommand command, string backgroundId)
+        {
+            var duration = ResolveLocationIntroDuration(command);
+            // Location intro plate temporarily disabled.
+            // ResolveLocationIntroText(command, backgroundId, out var locationName, out var timeOfDay);
+
+            var previousSkipAllowed = SkipAllowed;
+            _locationIntroActive = true;
+            SetSkipAllowed(false);
+
+            OnLocationIntroStarted?.Invoke(new VNLocationIntroPayload
+            {
+                backgroundId = backgroundId,
+                // Location intro plate temporarily disabled.
+                // locationName = locationName,
+                // timeOfDay = timeOfDay,
+                durationSeconds = duration
+            });
+
+            var elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            OnLocationIntroFinished?.Invoke();
+
+            _locationIntroActive = false;
+            SetSkipAllowed(previousSkipAllowed);
+        }
+
+        private float ResolveLocationIntroDuration(VNSetBackgroundCommand command)
+        {
+            var duration = defaultLocationIntroDurationSeconds;
+
+            if (command != null && command.locationIntroDurationOverride > 0f)
+                duration = command.locationIntroDurationOverride;
+
+            return Mathf.Clamp(duration, 1f, 2f);
+        }
+
+        // Location intro plate temporarily disabled.
+        // Keep this method for quick restore when the plate is needed again.
+        /*
+        private void ResolveLocationIntroText(
+            VNSetBackgroundCommand command,
+            string backgroundId,
+            out string locationName,
+            out string timeOfDay)
+        {
+            locationName = Norm(command != null ? command.locationName : null);
+            timeOfDay = Norm(command != null ? command.timeOfDay : null);
+
+            if (project != null && project.assetDatabase != null)
+            {
+                if (project.assetDatabase.TryGetBackgroundLocationInfo(backgroundId, out var dbLocationName, out var dbTimeOfDay))
+                {
+                    if (string.IsNullOrWhiteSpace(locationName))
+                        locationName = dbLocationName;
+
+                    if (string.IsNullOrWhiteSpace(timeOfDay))
+                        timeOfDay = dbTimeOfDay;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(locationName))
+                locationName = backgroundId;
+        }
+        */
 
         private void ApplyCommand(VNCommand command, ref bool stopAutoHere)
         {
@@ -1600,6 +1762,13 @@ namespace VN
             _interruptWaitRequested = false;
             _lineRevealCompleted = false;
             _suppressNextTap = false;
+
+            if (_locationIntroActive)
+            {
+                _locationIntroActive = false;
+                OnLocationIntroFinished?.Invoke();
+            }
+
             SetTruthEyeMinigameActive(false);
             
             OnChoiceHidden?.Invoke();
