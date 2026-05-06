@@ -15,47 +15,35 @@ MonoBehaviour:
   backgrounds:
   - id: 1
     asset: {fileID: -8593865114822522149, guid: f21c4a06170633e4191be3b725557319, type: 3}
-    locationDisplayName: FOREST - INTRO
   - id: EXT. ARCHERY RANGE - DAY
     asset: {fileID: 21300000, guid: 2e490cd520f819c479845f181a5f8016, type: 3}
-    locationDisplayName: ARCHERY RANGE - DAY
   - id: EXT. KENSUI'S ZEN GARDEN - DAY
     asset: {fileID: 21300000, guid: c95817dc7a2d098448436a6605c13270, type: 3}
-    locationDisplayName: KENSUI'S ZEN GARDEN - DAY
   - id: EXT. SCHOOL YARD - DAY
     asset: {fileID: 21300000, guid: 87d9b23ae5630054f887568575f76a28, type: 3}
-    locationDisplayName: SCHOOL YARD - DAY
   - id: EXT. STARRY SKY- NIGHT
     asset: {fileID: 21300000, guid: ddb771a1304a27344847598fd09bdae7, type: 3}
-    locationDisplayName: STARRY SKY- NIGHT
   - id: INT. CLASSROOM - DAY
     asset: {fileID: 21300000, guid: ec73d263840cb684ab00dea725fc45fe, type: 3}
-    locationDisplayName: CLASSROOM - DAY
   - id: INT. HINATO'S OFFICE - DAY
     asset: {fileID: 21300000, guid: 278261530d32bad40b26b0425c83f7a4, type: 3}
-    locationDisplayName: HINATO'S OFFICE - DAY
   - id: INT. ROOM AT THE DORM -DAY
     asset: {fileID: 21300000, guid: f2bbf6e0f1d718c459c021c14e55313b, type: 3}
-    locationDisplayName: ROOM AT THE DORM -DAY
   - id: INT. SHINRAI'S OFFICE - DAY
     asset: {fileID: 21300000, guid: 39b7f9cc51de7cf44a4b1c3f0d10865a, type: 3}
-    locationDisplayName: SHINRAI'S OFFICE - DAY
+  - id: INT. CLASSROOM - SHADOWED
+    asset: {fileID: 21300000, guid: af48b8700dd817c4e9461b6b5d45d851, type: 3}
   artifacts:
   - id: card0
     asset: {fileID: 21300000, guid: aa97dc45a2aeaad46bec354dff87b9a2, type: 3}
-    locationDisplayName: 
   - id: card1
     asset: {fileID: 21300000, guid: 23d48552dc7b509469c3dbbe5d4be7fb, type: 3}
-    locationDisplayName: 
   - id: scale
     asset: {fileID: 21300000, guid: e117e9e5f50f3e045ba1a1ffd9aeed19, type: 3}
-    locationDisplayName: 
   - id: ball
     asset: {fileID: 21300000, guid: 6208a02d049f5d948a1b60a89013cf11, type: 3}
-    locationDisplayName: 
   - id: scarf
     asset: {fileID: 21300000, guid: db5e52974731d14439439c517c3311a1, type: 3}
-    locationDisplayName: 
   music: []
   sfx: []
   vfx:

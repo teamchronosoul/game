@@ -120,6 +120,9 @@ MonoBehaviour:
   - rid: 9129764570494402868
   - rid: 9129764570494402869
   - rid: 9129764703577833826
+  - rid: 7087601633252343903
+  - rid: 7087601633252343905
+  - rid: 7087601633252343904
   - rid: 9129764570494402870
   - rid: 9129764570494402871
   - rid: 9129764570494402872
@@ -153,6 +156,7 @@ MonoBehaviour:
   - rid: 9129764570494402901
   - rid: 9129764570494402902
   - rid: 9129764570494402903
+  - rid: 7087601633252343810
   - rid: 9129764570494403260
   - rid: 9129764570494402904
   - rid: 9129764570494402905
@@ -259,6 +263,93 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 7087601633252343810
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 38fd4ace05c44249a8d5272f47b57d88
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601633252343811
+        nextStepId: f67d4fddae43442ab39669891a4475b1
+    - rid: 7087601633252343811
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: INT. CLASSROOM - SHADOWED
+        crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
+    - rid: 7087601633252343817
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Tense_1
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 7087601633252343903
+      type: {class: VNIfStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 8a2976794c774e9bb0dc2bce9e067ca0
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        requireAll: 1
+        conditions:
+        - type: 0
+          key: truth_eye_win
+          op: 0
+          boolValue: 1
+          intValue: 0
+          stringValue: 
+        trueStepId: 01c8b4f716824efe9e769b3d7e1f664e
+        falseStepId: aaaf95a794ce4a3fa9a42b6c1ebf1fa2
+    - rid: 7087601633252343904
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 01c8b4f716824efe9e769b3d7e1f664e
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Congratulations! You've mastered your concentration and tamed the eye
+          of the Labyrinth, even if just for a brief moment.
+        addToLog: 1
+        nextStepId: vnchapter_1_kaitora_line_r129_c03
+    - rid: 7087601633252343905
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: aaaf95a794ce4a3fa9a42b6c1ebf1fa2
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Alas! You didn\u2019t quite tame the eye of the Labyrinth this time,
+          but you still managed to cast the spell and turn invisible."
+        addToLog: 1
+        nextStepId: vnchapter_1_kaitora_line_r129_c03
+    - rid: 7087601633252343929
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: EXT. SCHOOL YARD - DAY
+        crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
+    - rid: 7087601633252343930
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Bullies
+        fadeInSeconds: 0.5
+        loop: 1
     - rid: 9129764570494402773
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -585,7 +676,7 @@ MonoBehaviour:
         label: "R32 C3 Narrative: Kaitora meets your gaze and imme\u2026"
         disableSkip: 0
         stopAuto: 0
-        speakerId: Narrative
+        speakerId: 
         pose: 0
         emotion: 0
         showSpeakerName: 1
@@ -1828,8 +1919,8 @@ MonoBehaviour:
         emotion: 0
         showSpeakerName: 1
         sfxId: 
-        text: You concentrate on her voice and slowly open your eyes. Yuzuri is looking
-          right at you.
+        text: You concentrate on Yuzuri's voice and slowly open your eyes. Your new
+          friend is looking right at you.
         addToLog: 1
         nextStepId: vnchapter_1_kaitora_line_r132_c03
     - rid: 9129764570494402873
@@ -2299,7 +2390,7 @@ MonoBehaviour:
         sfxId: 
         text: You lock eyes with her and... can't believe what you're seeing.
         addToLog: 1
-        nextStepId: f67d4fddae43442ab39669891a4475b1
+        nextStepId: 38fd4ace05c44249a8d5272f47b57d88
     - rid: 9129764570494402904
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3881,6 +3972,9 @@ MonoBehaviour:
       data:
         backgroundId: EXT. ARCHERY RANGE - DAY
         crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
     - rid: 9129764570494403241
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3899,13 +3993,8 @@ MonoBehaviour:
         disableSkip: 0
         stopAuto: 0
         command:
-          rid: 9129764570494403244
+          rid: 7087601633252343929
         nextStepId: 0853ec8901e54f70a759fdd8f43ab726
-    - rid: 9129764570494403244
-      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        backgroundId: EXT. SCHOOL YARD - DAY
-        crossfadeSeconds: 0.25
     - rid: 9129764570494403245
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3921,6 +4010,9 @@ MonoBehaviour:
       data:
         backgroundId: INT. CLASSROOM - DAY
         crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
     - rid: 9129764570494403247
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3935,14 +4027,8 @@ MonoBehaviour:
         disableSkip: 0
         stopAuto: 0
         command:
-          rid: 9129764570494403250
+          rid: 7087601633252343930
         nextStepId: vnchapter_1_kaitora_line_r040_c03
-    - rid: 9129764570494403250
-      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        musicId: Bullies
-        fadeInSeconds: 0.5
-        loop: 1
     - rid: 9129764570494403254
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3983,12 +4069,8 @@ MonoBehaviour:
         disableSkip: 0
         stopAuto: 0
         command:
-          rid: 9129764570494403262
+          rid: 7087601633252343817
         nextStepId: vnchapter_1_kaitora_line_r192_c03
-    - rid: 9129764570494403262
-      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        sfxId: Shadow
     - rid: 9129764659770687690
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4003,7 +4085,7 @@ MonoBehaviour:
       type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
       data:
         slot: 0
-        fadeSeconds: 0.2
+        fadeSeconds: 0
     - rid: 9129764703577833826
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4013,7 +4095,7 @@ MonoBehaviour:
         stopAuto: 0
         command:
           rid: 9129764703577833828
-        nextStepId: vnchapter_1_kaitora_line_r129_c03
+        nextStepId: 8a2976794c774e9bb0dc2bce9e067ca0
     - rid: 9129764703577833828
       type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4022,3 +4104,4 @@ MonoBehaviour:
         allowSkipAfterFails: 1
         finishOnFail: 1
         driftStrength: -1
+        resultBoolKey: truth_eye_win

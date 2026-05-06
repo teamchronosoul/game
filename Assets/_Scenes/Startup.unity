@@ -4351,6 +4351,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 511b74ca4c4bf7c42a819fd9f6bda2b6, type: 3}
   - key: MiniGameEyeWin
     clip: {fileID: 8300000, guid: 2cb99b6be283f2f4cbedc0aa9fc8d333, type: 3}
+  - key: Negative_2
+    clip: {fileID: 8300000, guid: 2de03c62306c0244893fcf12a76b666c, type: 3}
   - key: School_Yard
     clip: {fileID: 8300000, guid: 4c65334bad2269c4ab36b5608b018579, type: 3}
   - key: Shadow
@@ -4365,6 +4367,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 11e84d0387a269141bd84fa7c4ac6f8f, type: 3}
   - key: tap
     clip: {fileID: 8300000, guid: 4e7721584ddef9e4e9f69ff474cecbcc, type: 3}
+  - key: Tense_1
+    clip: {fileID: 8300000, guid: 0c104a771b25f9841861311930491a8e, type: 3}
 --- !u!114 &2223241241140177498
 MonoBehaviour:
   m_ObjectHideFlags: 0

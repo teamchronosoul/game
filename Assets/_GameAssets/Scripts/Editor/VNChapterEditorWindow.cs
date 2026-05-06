@@ -1,4 +1,4 @@
-﻿
+
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
@@ -2424,7 +2424,7 @@ namespace VN.Editor
                     EditorGUILayout.LabelField($"Condition #{i + 1}", EditorStyles.boldLabel);
 
                     EditorGUILayout.PropertyField(c.FindPropertyRelative("type"));
-                    EditorGUILayout.PropertyField(c.FindPropertyRelative("key"));
+                    DrawConditionKeyDropdown(c.FindPropertyRelative("key"));
                     EditorGUILayout.PropertyField(c.FindPropertyRelative("op"));
 
                     var type = (VNConditionValueType)c.FindPropertyRelative("type").enumValueIndex;
@@ -2459,6 +2459,58 @@ namespace VN.Editor
                     stepProp.FindPropertyRelative("falseStepId").stringValue = _chapter.steps[newIndex].id;
                     _selectedStepIndex = newIndex;
                 }
+            }
+        }
+
+        private void DrawConditionKeyDropdown(SerializedProperty keyProp)
+        {
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.PropertyField(keyProp, new GUIContent("Key"));
+
+                if (!GUILayout.Button("▼", GUILayout.Width(28)))
+                    return;
+
+                var keys = new List<string>
+                {
+                    "truth_eye_win"
+                };
+
+                if (_chapter != null && _chapter.steps != null)
+                {
+                    foreach (var step in _chapter.steps)
+                    {
+                        if (step is not VNCommandStep commandStep)
+                            continue;
+
+                        if (commandStep.command is VNTruthEyeCommand truthEye &&
+                            !string.IsNullOrWhiteSpace(truthEye.resultBoolKey))
+                        {
+                            keys.Add(truthEye.resultBoolKey.Trim());
+                        }
+                    }
+                }
+
+                keys = keys
+                    .Where(k => !string.IsNullOrWhiteSpace(k))
+                    .Distinct()
+                    .OrderBy(k => k)
+                    .ToList();
+
+                var menu = new GenericMenu();
+
+                foreach (var key in keys)
+                {
+                    var captured = key;
+                    menu.AddItem(new GUIContent(captured), keyProp.stringValue == captured, () =>
+                    {
+                        keyProp.stringValue = captured;
+                        keyProp.serializedObject.ApplyModifiedProperties();
+                        EditorUtility.SetDirty(_chapter);
+                    });
+                }
+
+                menu.ShowAsContext();
             }
         }
 

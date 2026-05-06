@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -93,6 +93,8 @@ namespace VN.UI
         private GameObject[] _locationIntroHiddenTargets;
         private bool[] _locationIntroHiddenTargetStates;
         private Coroutine _locationIntroCoroutine;
+        private bool _hasPendingLocationIntroMusic;
+        private VNRunner.VNMusicPayload _pendingLocationIntroMusic;
         private RectTransform _activeCameraSlideTarget;
         private Vector2 _cameraSlideBaseAnchoredPosition;
         private bool _hasCameraSlideBasePosition;
@@ -228,6 +230,8 @@ namespace VN.UI
             // SetLocationIntroPlateVisible(false);
             SetLocationIntroVisualsHidden(false);
             _locationIntroActive = false;
+            _hasPendingLocationIntroMusic = false;
+            _pendingLocationIntroMusic = default;
 
             if (logPanel != null)
                 logPanel.HideImmediate();
@@ -544,20 +548,29 @@ namespace VN.UI
 
             if (view == null) return;
 
+            // Во время location intro character-slot может быть временно SetActive(false).
+            // На неактивном объекте Crossfade запускает coroutine и может не выполниться,
+            // поэтому команды hide/show персонажа применяем мгновенно, чтобы состояние не потерялось.
+            var canAnimateSlot = view.gameObject.activeInHierarchy && !_locationIntroVisualsHidden;
+
             if (!slot.visible || slot.sprite == null)
             {
-                view.Crossfade((Sprite)null, Mathf.Max(0f, slot.crossfadeSeconds), false);
+                if (canAnimateSlot && slot.crossfadeSeconds > 0f)
+                    view.Crossfade((Sprite)null, Mathf.Max(0f, slot.crossfadeSeconds), false);
+                else
+                    view.SetInstant((Sprite)null, false);
+
                 return;
             }
 
-            if (slot.crossfadeSeconds <= 0f)
+            if (!canAnimateSlot || slot.crossfadeSeconds <= 0f)
             {
-                view.SetInstant(slot.sprite);
+                view.SetInstant(slot.sprite, true);
                 ApplyNativeSize(view);
             }
             else
             {
-                view.Crossfade(slot.sprite, slot.crossfadeSeconds);
+                view.Crossfade(slot.sprite, slot.crossfadeSeconds, true);
                 StartCoroutine(ApplyNativeSizeNextFrame(view));
             }
         }
@@ -582,6 +595,41 @@ namespace VN.UI
         {
             if (audioController == null) return;
 
+            // Во время скольжения локации музыка не должна звучать.
+            // Но сама команда смены музыки должна запомниться, чтобы после интро
+            // заиграла уже новая музыка.
+            if (_locationIntroActive)
+            {
+                _pendingLocationIntroMusic = m;
+                _hasPendingLocationIntroMusic = true;
+                audioController.StopMusic(0f);
+                return;
+            }
+
+            PlayMusicPayload(m);
+        }
+
+        private void OnMusicStop(float fadeOut)
+        {
+            if (audioController == null) return;
+
+            // Если во время скольжения пришла команда StopMusic, она отменяет
+            // отложенную музыку и после интро музыка не включится.
+            if (_locationIntroActive)
+            {
+                _hasPendingLocationIntroMusic = false;
+                _pendingLocationIntroMusic = default;
+                audioController.StopMusic(0f);
+                return;
+            }
+
+            audioController.StopMusic(fadeOut);
+        }
+
+        private void PlayMusicPayload(VNRunner.VNMusicPayload m)
+        {
+            if (audioController == null) return;
+
             if (m.clip != null)
             {
                 audioController.PlayMusic(m.clip, m.fadeInSeconds, m.loop);
@@ -590,12 +638,6 @@ namespace VN.UI
 
             if (!string.IsNullOrWhiteSpace(m.musicId))
                 audioController.PlayMusic(m.musicId, m.fadeInSeconds, m.loop);
-        }
-
-        private void OnMusicStop(float fadeOut)
-        {
-            if (audioController == null) return;
-            audioController.StopMusic(fadeOut);
         }
 
         private void OnSfx(VNRunner.VNSfxPayload sfx)
@@ -615,9 +657,11 @@ namespace VN.UI
         private void OnLocationIntroStarted(VNRunner.VNLocationIntroPayload payload)
         {
             _locationIntroActive = true;
+            _hasPendingLocationIntroMusic = false;
+            _pendingLocationIntroMusic = default;
 
-            // Дублируем жесткую остановку музыки на стороне view, чтобы гарантированно заглушить
-            // трек, который мог быть запущен вне VNRunner и не сохранен в VNState.musicId.
+            // На время скольжения локации должна быть полная тишина.
+            // Если следующая команда сменит музыку, OnMusicPlay запомнит её и включит после интро.
             if (audioController != null)
                 audioController.StopMusic(0f);
 
@@ -646,6 +690,15 @@ namespace VN.UI
             // SetLocationIntroPlateVisible(false);
             SetLocationIntroVisualsHidden(false);
             _locationIntroActive = false;
+
+            if (_hasPendingLocationIntroMusic)
+            {
+                var pendingMusic = _pendingLocationIntroMusic;
+                _hasPendingLocationIntroMusic = false;
+                _pendingLocationIntroMusic = default;
+                PlayMusicPayload(pendingMusic);
+            }
+
             RefreshButtons();
         }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using _GameAssets.Scripts.Gameplay.UI;
 using CandyCoded.HapticFeedback;
@@ -78,6 +78,16 @@ namespace VN.UI
         [SerializeField] private Image progressCircle;
         [SerializeField] private Button skipButton;
 
+        [Header("Tutorial")]
+        [Tooltip("Плашка туториала. Показывается при старте мини-игры и блокирует начало игры до закрытия.")]
+        [SerializeField] private GameObject tutorialRoot;
+
+        [Tooltip("Кнопка/область на плашке туториала. Нажатие скрывает туториал и запускает игру.")]
+        [SerializeField] private Button tutorialHideButton;
+
+        [Tooltip("Если включено, туториал показывается каждый запуск мини-игры.")]
+        [SerializeField] private bool showTutorialOnEveryPlay = true;
+
         [Header("Sprite States")]
         [Tooltip("Сюда добавь все Image, которым нужно менять спрайт: кольцо, глаз, фон, прогресс и т.д.")]
         [SerializeField] private SpriteStateTarget[] spriteStateTargets;
@@ -156,6 +166,13 @@ namespace VN.UI
         [Tooltip("Используется только если Drain Progress At Fill Speed выключен.")]
         [SerializeField] [Min(0.01f)] private float customProgressDrainSeconds = 15f;
 
+        [Header("Boundary Clamp")]
+        [Tooltip("Если включено, глаз не сможет выйти дальше окружности, где начинается откат прогресса.")]
+        [SerializeField] private bool clampEyeToDrainBoundary = true;
+
+        [Tooltip("0 = использовать Progress Drain Distance 01. Можно задать отдельную границу, если нужно.")]
+        [SerializeField] [Range(0f, 1.25f)] private float customClampDistance01 = 0f;
+
         [Header("Haptic Feedback")]
         [SerializeField] private bool useRiskHaptic = true;
 
@@ -176,6 +193,9 @@ namespace VN.UI
 
         [Tooltip("Звук победы.")]
         [SerializeField] private string successSfxKey;
+
+        [Tooltip("Звук поражения.")]
+        [SerializeField] private string failSfxKey;
 
         [Header("Fail Feedback")]
         [SerializeField] [Min(0.01f)] private float failFeedbackSeconds = 0.35f;
@@ -200,6 +220,7 @@ namespace VN.UI
         private bool _playing;
         private bool _dragging;
         private bool _finishing;
+        private bool _waitingForTutorial;
 
         private float _runtimeHoldSeconds;
         private float _runtimeDriftStrength;
@@ -251,6 +272,9 @@ namespace VN.UI
         {
             if (skipButton != null)
                 skipButton.onClick.RemoveListener(Skip);
+
+            if (tutorialHideButton != null)
+                tutorialHideButton.onClick.RemoveListener(DismissTutorial);
         }
 
         private void Update()
@@ -338,7 +362,8 @@ namespace VN.UI
             _runtimeDriftStrength = driftOverride > 0f ? driftOverride : driftStrength;
             _runtimeFinishOnFail = finishOnFailValue;
 
-            _playing = true;
+            _waitingForTutorial = showTutorialOnEveryPlay && tutorialRoot != null;
+            _playing = !_waitingForTutorial;
             _finishing = false;
             _dragging = false;
 
@@ -365,8 +390,27 @@ namespace VN.UI
             SetProgress(0f);
             SetEyeAnchoredPosition(_eyePos);
             ApplyVisualState(VisualState.Normal, true);
-            RefreshSkipButton();
             ResetTransforms();
+            SetTutorialVisible(_waitingForTutorial);
+            RefreshSkipButton();
+        }
+
+        public void DismissTutorial()
+        {
+            if (!_waitingForTutorial)
+                return;
+
+            // Скрываем кнопку сразу после нажатия, даже если она находится не внутри tutorialRoot.
+            if (tutorialHideButton != null)
+                tutorialHideButton.gameObject.SetActive(false);
+
+            _waitingForTutorial = false;
+            SetTutorialVisible(false);
+
+            if (!_finishing)
+                _playing = true;
+
+            RefreshSkipButton();
         }
 
         public void Skip()
@@ -386,6 +430,12 @@ namespace VN.UI
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (_waitingForTutorial)
+            {
+                DismissTutorial();
+                return;
+            }
+
             if (!_playing || _finishing || _failCooldownTimer > 0f)
                 return;
 
@@ -436,10 +486,18 @@ namespace VN.UI
 
             if (skipButton != null)
                 skipButton.onClick.AddListener(Skip);
+
+            if (tutorialHideButton != null)
+                tutorialHideButton.onClick.AddListener(DismissTutorial);
+
+            SetTutorialVisible(false);
         }
 
         private void SetVisible(bool visible)
         {
+            if (!visible)
+                SetTutorialVisible(false);
+
             if (root != null)
                 root.SetActive(visible);
 
@@ -451,12 +509,21 @@ namespace VN.UI
             }
         }
 
+        private void SetTutorialVisible(bool visible)
+        {
+            if (tutorialRoot != null)
+                tutorialRoot.SetActive(visible);
+
+            if (tutorialHideButton != null)
+                tutorialHideButton.gameObject.SetActive(visible);
+        }
+
         private void RefreshSkipButton()
         {
             if (skipButton == null)
                 return;
 
-            bool visible = _runtimeAllowSkip && _fails >= _runtimeFailsBeforeSkip;
+            bool visible = !_waitingForTutorial && _runtimeAllowSkip && _fails >= _runtimeFailsBeforeSkip;
             skipButton.gameObject.SetActive(visible);
         }
 
@@ -610,12 +677,46 @@ namespace VN.UI
             }
 
             _eyePos += totalVelocity * dt;
+            ClampEyeToAllowedBoundary();
+        }
+
+        private void ClampEyeToAllowedBoundary()
+        {
+            _eyePos = ClampPointToAllowedBoundary(_eyePos);
+        }
+
+        private Vector2 ClampPointToAllowedBoundary(Vector2 point)
+        {
+            if (!clampEyeToDrainBoundary)
+                return point;
+
+            Vector2 center = GetSafeZoneCenterInPlayArea();
+            float radius = GetSafeZoneRadiusInPlayArea();
+            float boundary01 = GetClampBoundaryDistance01();
+            float maxDistance = Mathf.Max(1f, radius * boundary01);
+
+            Vector2 offset = point - center;
+
+            if (offset.sqrMagnitude <= maxDistance * maxDistance)
+                return point;
+
+            if (offset.sqrMagnitude < 0.001f)
+                return center;
+
+            return center + offset.normalized * maxDistance;
+        }
+
+        private float GetClampBoundaryDistance01()
+        {
+            if (customClampDistance01 > 0f)
+                return customClampDistance01;
+
+            return progressDrainDistance01;
         }
 
         private bool UpdateProgressByDistance(float distance01, float dt)
         {
             float fillSpeed = 1f / Mathf.Max(0.01f, _runtimeHoldSeconds);
-
             bool shouldDrain = distance01 >= progressDrainDistance01;
 
             if (shouldDrain)
@@ -656,6 +757,8 @@ namespace VN.UI
 
             RefreshSkipButton();
             onFail?.Invoke();
+
+            PlaySfx(failSfxKey);
 
             if (useFailHaptic)
                 TriggerHapticPulse();
@@ -729,6 +832,7 @@ namespace VN.UI
             _finishing = true;
             _playing = false;
             _dragging = false;
+            _waitingForTutorial = false;
 
             if (_feedbackRoutine != null)
             {
@@ -747,6 +851,7 @@ namespace VN.UI
             Action<Result> callback = _onFinished;
             _onFinished = null;
 
+            SetTutorialVisible(false);
             ResetTransforms();
             SetVisible(false);
 
@@ -779,6 +884,7 @@ namespace VN.UI
             if (risk01 > 0f)
             {
                 visualPos += UnityEngine.Random.insideUnitCircle * riskShakeAmplitude * risk01;
+                visualPos = ClampPointToAllowedBoundary(visualPos);
 
                 _riskEventTimer -= DeltaTime;
 

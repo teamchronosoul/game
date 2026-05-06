@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 using VN.UI;
@@ -201,6 +201,8 @@ namespace VN
 
         private bool _artifactWaiting;
         private bool _locationIntroActive;
+        private Coroutine _locationIntroCoroutine;
+        private bool _locationIntroPreviousSkipAllowed = true;
 
         private void Awake()
         {
@@ -457,6 +459,9 @@ namespace VN
 
                 if (step is VNEndStep)
                 {
+                    if (_locationIntroActive)
+                        yield return WaitForLocationIntroToFinish();
+
                     OnChapterEnded?.Invoke(State.chapterId);
                     ShowMainMenu();
                 }
@@ -483,6 +488,12 @@ namespace VN
 
         private IEnumerator HandleLineStep(VNChapter chapter, int index, VNLineStep line)
         {
+            if (_locationIntroActive)
+            {
+                yield return WaitForLocationIntroToFinish();
+                ApplySkipAllowedForStep(line);
+            }
+
             _advanceRequested = false;
             _interruptWaitRequested = false;
             _autoStopDueToNewCharacterThisStep = false;
@@ -553,6 +564,12 @@ namespace VN
 
         private IEnumerator HandleChoiceStep(VNChoiceStep choice)
         {
+            if (_locationIntroActive)
+            {
+                yield return WaitForLocationIntroToFinish();
+                ApplySkipAllowedForStep(choice);
+            }
+
             if (AutoEnabled)
                 SetAuto(false);
 
@@ -787,6 +804,9 @@ namespace VN
 
         private void SetSkipAllowed(bool allowed)
         {
+            if (_locationIntroActive)
+                allowed = false;
+
             if (SkipAllowed == allowed)
                 return;
 
@@ -858,8 +878,13 @@ namespace VN
             State.backgroundId = nextBackgroundId;
             EmitBackground(command.backgroundId, command.crossfadeSeconds);
 
+            // Важно: интро локации больше НЕ блокирует выполнение следующих command-step.
+            // Так команды музыки/скрытия/показа персонажей, которые идут сразу после background,
+            // успевают примениться во время скольжения, а текст/выбор дождутся конца интро отдельно.
             if (shouldPlayIntro)
-                yield return PlayLocationIntro(command, nextBackgroundId);
+                StartLocationIntro(command, nextBackgroundId);
+
+            yield return null;
         }
 
         private bool ShouldPlayLocationIntro(VNSetBackgroundCommand command, string previousBackgroundId, string nextBackgroundId)
@@ -876,13 +901,15 @@ namespace VN
             return !string.Equals(Norm(previousBackgroundId), Norm(nextBackgroundId), StringComparison.Ordinal);
         }
 
-        private IEnumerator PlayLocationIntro(VNSetBackgroundCommand command, string backgroundId)
+        private void StartLocationIntro(VNSetBackgroundCommand command, string backgroundId)
         {
+            StopLocationIntro(sendFinishedEvent: true, restoreSkipAllowed: true);
+
             var duration = ResolveLocationIntroDuration(command);
             // Location intro plate temporarily disabled.
             // ResolveLocationIntroText(command, backgroundId, out var locationName, out var timeOfDay);
 
-            var previousSkipAllowed = SkipAllowed;
+            _locationIntroPreviousSkipAllowed = SkipAllowed;
             _locationIntroActive = true;
             SetSkipAllowed(false);
 
@@ -895,17 +922,48 @@ namespace VN
                 durationSeconds = duration
             });
 
+            _locationIntroCoroutine = StartCoroutine(LocationIntroRoutine(duration));
+        }
+
+        private IEnumerator LocationIntroRoutine(float duration)
+        {
             var elapsed = 0f;
-            while (elapsed < duration)
+            var waitSeconds = Mathf.Max(0f, duration);
+
+            while (elapsed < waitSeconds)
             {
                 elapsed += Time.deltaTime;
                 yield return null;
             }
 
-            OnLocationIntroFinished?.Invoke();
+            _locationIntroCoroutine = null;
+            StopLocationIntro(sendFinishedEvent: true, restoreSkipAllowed: true);
+        }
+
+        private void StopLocationIntro(bool sendFinishedEvent, bool restoreSkipAllowed)
+        {
+            if (_locationIntroCoroutine != null)
+            {
+                StopCoroutine(_locationIntroCoroutine);
+                _locationIntroCoroutine = null;
+            }
+
+            if (!_locationIntroActive)
+                return;
 
             _locationIntroActive = false;
-            SetSkipAllowed(previousSkipAllowed);
+
+            if (sendFinishedEvent)
+                OnLocationIntroFinished?.Invoke();
+
+            if (restoreSkipAllowed)
+                SetSkipAllowed(_locationIntroPreviousSkipAllowed);
+        }
+
+        private IEnumerator WaitForLocationIntroToFinish()
+        {
+            while (_locationIntroActive)
+                yield return null;
         }
 
         private float ResolveLocationIntroDuration(VNSetBackgroundCommand command)
@@ -1763,11 +1821,7 @@ namespace VN
             _lineRevealCompleted = false;
             _suppressNextTap = false;
 
-            if (_locationIntroActive)
-            {
-                _locationIntroActive = false;
-                OnLocationIntroFinished?.Invoke();
-            }
+            StopLocationIntro(sendFinishedEvent: true, restoreSkipAllowed: false);
 
             SetTruthEyeMinigameActive(false);
             
@@ -1825,10 +1879,13 @@ namespace VN
 
             SetTruthEyeMinigameActive(false);
 
-            State.SetBool("truth_eye_success", result.success);
-            State.SetBool("truth_eye_skipped", result.skipped);
-            State.SetBool("truth_eye_failed", result.failed);
-            State.SetInt("truth_eye_fails", result.fails);
+            var resultBoolKey = string.IsNullOrWhiteSpace(command.resultBoolKey)
+                ? "truth_eye_win"
+                : command.resultBoolKey.Trim();
+
+            // Один bool для conditions главы:
+            // true = победа, false = поражение или Skip.
+            State.SetBool(resultBoolKey, result.success);
 
             VNAutosave.Save(State);
         }

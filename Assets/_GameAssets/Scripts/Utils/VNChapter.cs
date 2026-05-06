@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -150,6 +150,10 @@ namespace VN
 
         [Tooltip("Если <= 0, будет использовано значение из компонента мини-игры.")]
         public float driftStrength = -1f;
+
+        [Header("Result Condition")]
+        [Tooltip("Один bool-ключ для условий главы. true = победа, false = поражение или Skip.")]
+        public string resultBoolKey = "truth_eye_win";
     }
     
     [Serializable]

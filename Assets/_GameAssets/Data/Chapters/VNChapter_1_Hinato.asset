@@ -127,6 +127,9 @@ MonoBehaviour:
   - rid: 9129764567614750856
   - rid: 9129764567614750857
   - rid: 9129764703577833823
+  - rid: 7087601633252343916
+  - rid: 7087601633252343918
+  - rid: 7087601633252343917
   - rid: 9129764567614750858
   - rid: 9129764567614750859
   - rid: 9129764567614750860
@@ -160,6 +163,7 @@ MonoBehaviour:
   - rid: 9129764567614750889
   - rid: 9129764567614750890
   - rid: 9129764567614750891
+  - rid: 7087601633252343808
   - rid: 9129764567614751703
   - rid: 9129764567614750892
   - rid: 9129764567614750893
@@ -261,6 +265,79 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 7087601633252343808
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: fce1ba62c6494387b79adc8571b5b928
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601633252343809
+        nextStepId: 1c6ba274d887436e95db4c8d2e6030a3
+    - rid: 7087601633252343809
+      type: {class: VNSetBackgroundCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        backgroundId: INT. CLASSROOM - SHADOWED
+        crossfadeSeconds: 0
+        playLocationIntro: 0
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
+    - rid: 7087601633252343818
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Tense_1
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 7087601633252343916
+      type: {class: VNIfStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 807f7369f7514b3c84baca58df22f088
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        requireAll: 1
+        conditions:
+        - type: 0
+          key: truth_eye_win
+          op: 0
+          boolValue: 1
+          intValue: 0
+          stringValue: 
+        trueStepId: 9b0468d2a1144b50ac21e77284ae65bd
+        falseStepId: e51cd78fe73e402e9220d1ed2066591a
+    - rid: 7087601633252343917
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 9b0468d2a1144b50ac21e77284ae65bd
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: Congratulations! You've mastered your concentration and tamed the eye
+          of the Labyrinth, even if just for a brief moment.
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r133_c03
+    - rid: 7087601633252343918
+      type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: e51cd78fe73e402e9220d1ed2066591a
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        speakerId: 
+        pose: 0
+        emotion: 0
+        showSpeakerName: 1
+        sfxId: 
+        text: "Alas! You didn\u2019t quite tame the eye of the Labyrinth this time,
+          but you still managed to cast the spell and turn invisible."
+        addToLog: 1
+        nextStepId: vnchapter_1_hinato_line_r133_c03
     - rid: 9129764567614750754
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2415,7 +2492,7 @@ MonoBehaviour:
         sfxId: 
         text: You lock eyes with her and... can't believe what you're seeing.
         addToLog: 1
-        nextStepId: 1c6ba274d887436e95db4c8d2e6030a3
+        nextStepId: fce1ba62c6494387b79adc8571b5b928
     - rid: 9129764567614750892
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3918,6 +3995,9 @@ MonoBehaviour:
       data:
         backgroundId: INT. HINATO'S OFFICE - DAY
         crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
     - rid: 9129764567614751681
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -3964,6 +4044,9 @@ MonoBehaviour:
       data:
         backgroundId: EXT. SCHOOL YARD - DAY
         crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
     - rid: 9129764567614751689
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4011,6 +4094,9 @@ MonoBehaviour:
       data:
         backgroundId: INT. CLASSROOM - DAY
         crossfadeSeconds: 0.25
+        playLocationIntro: 1
+        forceLocationIntro: 0
+        locationIntroDurationOverride: 0
     - rid: 9129764567614751700
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4035,12 +4121,8 @@ MonoBehaviour:
         disableSkip: 0
         stopAuto: 0
         command:
-          rid: 9129764567614751705
+          rid: 7087601633252343818
         nextStepId: vnchapter_1_hinato_line_r196_c03
-    - rid: 9129764567614751705
-      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
-      data:
-        sfxId: Shadow
     - rid: 9129764703577833823
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4050,7 +4132,7 @@ MonoBehaviour:
         stopAuto: 0
         command:
           rid: 9129764703577833825
-        nextStepId: vnchapter_1_hinato_line_r133_c03
+        nextStepId: 807f7369f7514b3c84baca58df22f088
     - rid: 9129764703577833825
       type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4059,3 +4141,4 @@ MonoBehaviour:
         allowSkipAfterFails: 1
         finishOnFail: 1
         driftStrength: -1
+        resultBoolKey: truth_eye_win
