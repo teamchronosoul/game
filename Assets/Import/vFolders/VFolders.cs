@@ -1,22 +1,31 @@
 #if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEditor;
 using UnityEditor.ShortcutManagement;
-using System.Reflection;
-using System.Linq;
-using System.IO;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using UnityEditor.IMGUI.Controls;
-using UnityEditorInternal;
 using Type = System.Type;
-using static VFolders.VFoldersData;
-using static VFolders.VFoldersCache;
 using static VFolders.Libs.VUtils;
 using static VFolders.Libs.VGUI;
+// using static VTools.VDebug;
+using static VFolders.VFoldersData;
+using static VFolders.VFoldersCache;
+
+#if UNITY_6000_3_OR_NEWER
+using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<UnityEngine.EntityId>;
+using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<UnityEngine.EntityId>;
+#elif UNITY_6000_2_OR_NEWER
+using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<int>;
+using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<int>;
+#endif
+
 
 
 
@@ -24,891 +33,450 @@ namespace VFolders
 {
     public static class VFolders
     {
-        static void RowGUI(string guid, Rect rowRect)
+
+        static void WrappedGUI(EditorWindow window)
         {
-            var fullRowRect = rowRect.AddWidthFromRight(rowRect.x);
+            var navbarHeight = 26;
 
-            var isRowHovered = fullRowRect.IsHovered();
+            var isOneColumn = window.GetMemberValue<int>("m_ViewMode") == 0;
 
-            var isListArea = rowRect.x == 14;
-
-            var isFolder = AssetDatabase.IsValidFolder(guid.ToPath());
-            var isAsset = !isFolder && !guid.IsNullOrEmpty();
-            var isFavorite = !isFolder && !isAsset && rowRect.x != 16;
-
-            var isFavoritesRoot = rowRect.x == 16 && !isFolder && rowRect.y == 0;
-            var isAssetsRoot = rowRect.x == 16 && isFolder && guid.ToPath() == "Assets";
-            var isPackagesRoot = rowRect.x == 16 && !isFavoritesRoot && !isAssetsRoot && guid.IsNullOrEmpty();
-
-            var useClearerRows = VFoldersMenu.clearerRowsEnabled && !isListArea;
-            var useMinimalMode = VFoldersMenu.minimalModeEnabled && !isListArea;
-            var useContentMinimap = VFoldersMenu.contentMinimapEnabled && !isListArea;
-            var useHierarchyLines = VFoldersMenu.hierarchyLinesEnabled && !isListArea;
-            var useZebraStriping = VFoldersMenu.zebraStripingEnabled && !isListArea;
+            var prevSelection = Selection.objects;
 
 
-
-            EditorWindow browser = null;
-            Tree tree = null;
-            TreeViewItem treeItem = null;
-
-            var isTreeFocused = false;
-            var isRowSelected = false;
-            var isRowBeingRenamed = false;
-
-            void setObjects()
+            void navbarGui()
             {
-                if (isListArea) return;
+                if (!navbars_byWindow.ContainsKey(window))
+                    navbars_byWindow[window] = new VFoldersNavbar(window);
 
-                if (!curEvent.isRepaint) // only needed for drawing,
-                    if (!curEvent.isMouseUp) // altClick and
-                        if (!isRowHovered) // setting last hovered tree item
-                            return;
+                var navbarRect = window.position.SetPos(0, 0).SetHeight(navbarHeight);
 
+                navbars_byWindow[window].OnGUI(navbarRect);
 
-                void set_browser()
-                {
-                    var pointInsideWindow = EditorGUIUtility.GUIToScreenPoint(rowRect.center);
-
-                    browser = allProjectBrowsers.FirstOrDefault(r => r.position.AddHeight(30).Contains(pointInsideWindow) && r.hasFocus);
-
-                }
-                void set_tree()
-                {
-                    if (browser == null) return;
-
-                    tree = GetTree(browser);
-
-                }
-                void set_treeItem_byRect()
-                {
-                    if (tree == null) return;
-                    if (tree.animatingExpansion) return;
-
-                    var offest = tree.isTwoColumns ? -15 : -4;
-
-
-                    if ((rowRect.y + offest) % 16 != 0) return;
-
-                    var rowIndex = ((rowRect.y + offest) / 16).ToInt();
-
-
-                    if (rowIndex < 0) return;
-                    if (tree.data == null) return;
-
-                    treeItem = (TreeViewItem)Tree.mi_data_GetItem.Invoke(tree.data, new object[] { rowIndex });
-
-                }
-                void set_treeItem_byInstanceId()
-                {
-                    if (tree == null) return;
-                    if (treeItem != null) return;
-                    if (isFavorite || isFavoritesRoot) return;
-
-                    var instanceId = typeof(AssetDatabase).InvokeMethod("GetMainAssetOrInProgressProxyInstanceID", guid.ToPath());
-
-                    treeItem = tree.treeViewController.InvokeMethod<TreeViewItem>("FindItem", instanceId);
-
-                }
-
-                set_browser();
-                set_tree();
-                set_treeItem_byRect();
-                set_treeItem_byInstanceId();
 
             }
-            void setState()
+            void hideDefaultTopBar()
             {
-                void set_isTreeFocused()
-                {
-                    if (!curEvent.isRepaint) return;
-                    if (tree?.treeViewController == null) return;
-                    if (isListArea) return;
-
-                    isTreeFocused = EditorWindow.focusedWindow == browser &&
-                                    GUIUtility.keyboardControl == tree.treeViewController.GetFieldValue<int>("m_KeyboardControlID");
-
-                }
-                void set_isRowSelected_oneColumn()
-                {
-                    if (!curEvent.isRepaint) return;
-                    if (isListArea) return;
-                    if (tree == null) return;
-                    if (treeItem == null) return;
-                    if (tree.isTwoColumns) return;
-
-#if UNITY_2021_1_OR_NEWER
-                    var dragSelectionList = tree.treeViewController?.GetFieldValue("m_DragSelection")?.GetFieldValue<List<int>>("m_List");
-#else
-                    var dragSelectionList = tree.treeViewController?.GetFieldValue<List<int>>("m_DragSelection");
-#endif
-
-                    var dragging = dragSelectionList != null && dragSelectionList.Any();
-
-                    isRowSelected = dragging ? (dragSelectionList.Contains(treeItem.id)) : Selection.Contains(treeItem.id);
-
-                }
-                void set_isRowSelected_TwoColumns()
-                {
-                    if (!curEvent.isRepaint) return;
-                    if (isListArea) return;
-                    if (tree == null) return;
-                    if (treeItem == null) return;
-                    if (!tree.isTwoColumns) return;
-
-#if UNITY_2021_1_OR_NEWER
-                    var dragSelectionList = tree.treeViewController?.GetFieldValue("m_DragSelection")?.GetFieldValue<List<int>>("m_List");
-                    var normalSelectionList = tree.treeViewController?.GetFieldValue("m_CachedSelection")?.GetFieldValue<List<int>>("m_List");
-#else
-                    var dragSelectionList = tree.treeViewController?.GetFieldValue<List<int>>("m_DragSelection");
-                    var normalSelectionList = tree.treeViewController?.GetMemberValue("state").GetMemberValue<List<int>>("selectedIDs");
-#endif
-
-                    var dragging = dragSelectionList != null && dragSelectionList.Any();
-
-                    isRowSelected = dragging ? (dragSelectionList.Contains(treeItem.id)) : normalSelectionList != null && normalSelectionList.Contains(treeItem.id);
-
-                }
-                void set_isRowBeingRenamed()
-                {
-                    if (!curEvent.isRepaint) return;
-                    if (isListArea) return;
-
-                    isRowBeingRenamed = EditorGUIUtility.editingTextField &&
-                                           isRowSelected &&
-                                           tree?.treeViewController?.GetMemberValue("state")?.GetMemberValue("renameOverlay")?.InvokeMethod<bool>("IsRenaming") == true;
-
-                }
-                void set_lastHovered()
-                {
-                    if (isListArea) return;
-                    if (!curEvent.isRepaint) return;
-                    if (!isRowHovered) return;
-
-                    lastHoveredRowRect_screenSpace = EditorGUIUtility.GUIToScreenRect(fullRowRect);
-                    lastHoveredTreeItem = treeItem;
-
-                }
-
-                set_isTreeFocused();
-                set_isRowSelected_oneColumn();
-                set_isRowSelected_TwoColumns();
-                set_isRowBeingRenamed();
-                set_lastHovered();
-
-                lastKnownMousePosition_screenSpace = curEvent.mousePosition_screenSpace;
+                if (curEvent.isLayout || typeof(GUILayoutUtility).GetMemberValue("current")?.GetMemberValue("topLevel")?.GetMemberValue<IList>("entries").Count != 1) // prevents exception on focus by vTabs shift-scroll  // doesnt always work. tbh not sure why it works at all
+                    Space(-123);
 
             }
-
-
-            void drawing()
+            void defaultGuiWithOffset()
             {
-                if (!curEvent.isRepaint) { hierarchyLines_isFirstRowDrawn = false; return; }
+                var defaultTopBarHeight = 20;
+                var topOffset = navbarHeight - defaultTopBarHeight;
 
-                var folderInfo = GetFolderInfo(guid, createDataIfDoesntExist: false);
-
-                var showBackgroundColor = folderInfo.hasColor && useClearerRows;// && !(isRowSelected && isTreeFocused);
-                var showCustomIcon = useClearerRows ? folderInfo.hasIcon : (folderInfo.hasIcon || folderInfo.hasColor);
-                var showDefaultIcon = !showCustomIcon && (!useMinimalMode || isRowBeingRenamed);
-
-                var makeTriangleBrighter = showBackgroundColor && isDarkTheme;
-                var makeNameBrighter = showBackgroundColor && isDarkTheme;
-                var makeIconBrighter = showBackgroundColor;
-
-                var hideProperly = showBackgroundColor || (!showCustomIcon && !showDefaultIcon);
-
-                Color defaultBackground = default;
+                var m_Pos_original = window.GetFieldValue<Rect>("m_Pos");
 
 
-                void calcDefaultBackground()
+
+
+                GUI.BeginGroup(m_Pos_original.SetPos(0, 0).AddHeightFromBottom(-topOffset));
+
+                window.SetFieldValue("m_Pos", m_Pos_original.AddHeightFromBottom(-topOffset));
+
+
+                try { window.InvokeMethod("OnGUI"); }
+                catch (System.Exception exception)
                 {
-                    if (!isFolder && !isFavoritesRoot && !isPackagesRoot) return;
-                    if (!hideProperly) return;
-
-                    var selectedFocused = GUIColors.selectedBackground;
-                    var selectedUnfocused = isDarkTheme ? Greyscale(.3f) : Greyscale(.68f);
-                    var normal = isListArea ? Greyscale(.2f) : GUIColors.windowBackground;
-
-                    if (isRowSelected && !isRowBeingRenamed)
-                        defaultBackground = isTreeFocused ? selectedFocused : selectedUnfocused;
-
+                    if (exception.InnerException is ExitGUIException)
+                        throw exception.InnerException;
                     else
-                        defaultBackground = normal;
+                        throw exception;
 
-                }
-                void hideName_proper()
-                {
-                    if (!showBackgroundColor && (showCustomIcon || showDefaultIcon)) return;
-                    if (!isFolder && !isFavoritesRoot && !isPackagesRoot) return;
-                    if (!hideProperly) return;
-
-                    var name = isListArea ? guid.ToPath().GetFilename() : treeItem != null ? treeItem.displayName : "Favorites";
-
-                    var nameRect = rowRect.SetWidth(name.GetLabelWidth() + 3).MoveX(16).MoveX(isListArea ? 3 : 0);
-
-                    nameRect.Draw(defaultBackground);
-
-                }
-                void hideDefaultIcon_proper()
-                {
-                    if (showDefaultIcon) return;
-                    if (!isFolder && !isFavoritesRoot && !isPackagesRoot) return;
-                    if (!hideProperly) return;
-
-                    var iconRect = rowRect.SetWidth(16).MoveX(isListArea ? 3 : 0);
-
-                    iconRect.Draw(defaultBackground);
-
-
-
-                }
-                void hideDefaultIcon_fast()
-                {
-                    if (showDefaultIcon) return;
-                    if (hideProperly) return;
-
-                    var iconRect = rowRect.SetWidth(16).MoveX(isListArea ? 3 : 0);
-
-                    SetGUIColor(EditorGUIUtility.isProSkin ? Greyscale(.28f) : Color.white);
-
-                    GUI.DrawTexture(iconRect, EditorGUIUtility.FindTexture("d_Folder Icon"));
-                    GUI.DrawTexture(iconRect, EditorGUIUtility.FindTexture("d_FolderOpened Icon"));
-
-                    ResetGUIColor();
+                    // GUIUtility.ExitGUI() works by throwing ExitGUIException, which just exits imgui loop and doesn't appear in console
+                    // but if ExitGUI is called from a reflected method (OnGUI in this case), the exception becomes TargetInvokationException
+                    // which gets logged to console (only if debugger is attached, for some reason)
+                    // so here in such cases we rethrow the original ExitGUIException
 
                 }
 
-                void backgroundColor()
-                {
-                    if (!showBackgroundColor) return;
-                    if (!isFolder && !isFavoritesRoot && !isPackagesRoot) return;
 
+                window.SetFieldValue("m_Pos", m_Pos_original);
 
-                    var hasLeftGradient = rowRect.x > 32;
-
-
-
-                    var colorRect = rowRect.AddWidthFromRight(30).AddWidth(16);
-
-                    if (!isRowSelected)
-                        colorRect = colorRect.AddHeightFromMid(EditorGUIUtility.pixelsPerPoint >= 2 ? -.5f : -1);
-
-                    if (hasLeftGradient)
-                        colorRect = colorRect.AddWidthFromRight(2);
-
-
-
-
-                    var leftGradientWith = hasLeftGradient ? 22 : 0;
-                    var rightGradientWidth = (fullRowRect.width * .77f).Min(colorRect.width);
-
-                    var leftGradientRect = colorRect.SetWidth(leftGradientWith);
-                    var rightGradientRect = colorRect.SetWidthFromRight(rightGradientWidth - leftGradientWith);
-
-                    var flatColorRect = colorRect.SetX(leftGradientRect.xMax).SetXMax(rightGradientRect.x);
-
-
-
-
-                    var colorWithFlatness = folderInfo.color;
-
-                    var flatness = colorWithFlatness.a;
-
-                    var color = (isDarkTheme ? colorWithFlatness * .64f : Color.Lerp(colorWithFlatness, Greyscale(.8f), .5f)).SetAlpha(1);
-
-                    if (isRowHovered)
-                        color *= 1.1f;
-
-                    if (isRowSelected)
-                        color *= 1.2f;
-
-
-
-
-                    leftGradientRect.Draw(color.SetAlpha((flatness - .1f) / .9f));
-                    leftGradientRect.DrawCurtainLeft(color);
-
-                    flatColorRect.AddWidth(1).Draw(color);
-
-                    rightGradientRect.Draw(color.MultiplyAlpha(flatness));
-                    rightGradientRect.DrawCurtainRight(color);
-
-
-                }
-                void triangle()
-                {
-                    if (!showBackgroundColor) return;
-                    if (treeItem == null) return;
-                    if (!treeItem.hasChildren) return;
-                    if (!isFolder && !isFavoritesRoot && !isPackagesRoot) return;
-
-
-                    var triangleRect = rowRect.MoveX(-15).SetWidth(16).Resize(-1);
-
-                    GUI.Label(triangleRect, EditorGUIUtility.IconContent(tree.IsExpanded(treeItem) ? "IN_foldout_on" : "IN_foldout"));
-
-
-                    if (!makeTriangleBrighter) return;
-
-                    GUI.Label(triangleRect, EditorGUIUtility.IconContent(tree.IsExpanded(treeItem) ? "IN_foldout_on" : "IN_foldout"));
-
-                }
-                void name()
-                {
-                    if (!showBackgroundColor && (showCustomIcon || showDefaultIcon)) return;
-                    if (!isFolder && !isFavoritesRoot && !isPackagesRoot) return;
-                    if (isRowBeingRenamed) return;
-
-
-                    var nameRect = rowRect.MoveX(18);
-
-                    if (isListArea)
-                        nameRect = nameRect.MoveX(3);
-
-                    if (useMinimalMode && !showCustomIcon && !showDefaultIcon)
-                        nameRect = nameRect.MoveX(-17);
-
-                    if (makeNameBrighter)
-                        nameRect = nameRect.MoveX(-2).MoveY(-.5f);
-
-
-
-                    var styleName = makeNameBrighter ? "WhiteLabel" : "TV Line";
-
-                    if (isFavoritesRoot || isAssetsRoot || isPackagesRoot)
-                        styleName = "BoldLabel";
-
-
-
-                    var name = isFavoritesRoot ? "Favorites" :
-                               isPackagesRoot ? "Packages" :
-                               isListArea || treeItem == null ? guid.ToPath().GetFilename() :
-                               treeItem.displayName;
-
-
-
-                    if (makeNameBrighter)
-                        SetGUIColor(Greyscale(isRowSelected ? 1 : .93f));
-
-                    GUI.skin.GetStyle(styleName).Draw(nameRect, name, false, false, isRowSelected, isTreeFocused && styleName != "BoldLabel");
-
-                    if (makeNameBrighter)
-                        ResetGUIColor();
-
-                }
-                void defaultIcon()
-                {
-                    if (!isFolder) return;
-                    if (!showBackgroundColor) return;
-                    if (!showDefaultIcon) return;
-
-
-                    var iconRect = rowRect.SetWidth(16).MoveX(isListArea ? 3 : 0);
-
-
-                    SetLabelAlignmentCenter();
-
-                    if (makeNameBrighter)
-                        SetGUIColor(Greyscale(.88f));
-
-                    if (makeNameBrighter)
-                        GUI.Label(iconRect.Resize(-2), EditorGUIUtility.IconContent(folderInfo.isEmpty ? "FolderEmpty On Icon" : "Folder On Icon"));
-                    else
-                        GUI.Label(iconRect.Resize(-2), EditorGUIUtility.IconContent(folderInfo.isEmpty ? "FolderEmpty Icon" : "Folder Icon"));
-
-                    if (makeNameBrighter)
-                        ResetGUIColor();
-
-                    ResetLabelStyle();
-
-                }
-                void customIcon()
-                {
-                    if (!isFolder) return;
-                    if (!showCustomIcon) return;
-
-
-                    var icon = useClearerRows ? EditorIcons.GetIcon(folderInfo.iconNameOrPath)
-                                              : GetSmallFolderIcon(folderInfo);
-
-                    if (!icon) return;
-
-
-                    var iconRect = rowRect.SetWidth(16).MoveX(isListArea ? 3 : 0);
-
-                    iconRect = iconRect.SetWidth(iconRect.height / icon.height * icon.width);
-
-
-                    GUI.DrawTexture(iconRect, icon);
-
-                }
-                void hierarchyLines()
-                {
-                    if (!useHierarchyLines) return;
-                    if (isListArea) return;
-                    if (treeItem == null) return;
-
-
-                    var lineThickness = 1f;
-                    var lineContrast = isDarkTheme ? .35f : .55f;
-
-                    if (isRowSelected)
-                        if (isTreeFocused)
-                            lineContrast += isDarkTheme ? .1f : -.25f;
-                        else
-                            lineContrast += isDarkTheme ? .05f : -.05f;
-
-
-                    var depth = ((rowRect.x - 16) / 14).RoundToInt();
-
-                    bool isLastChild(TreeViewItem item) => item.parent?.children?.LastOrDefault() == item;
-                    bool hasChilren(TreeViewItem item) => item.children != null && item.children.Count > 0;
-
-                    void calcVerticalGaps_beforeFirstRowDrawn()
-                    {
-                        if (hierarchyLines_isFirstRowDrawn) return;
-
-                        hierarchyLines_verticalGaps.Clear();
-
-                        var curItem = treeItem.parent;
-                        var curDepth = depth - 1;
-
-                        while (curItem != null && curItem.parent != null)
-                        {
-                            if (isLastChild(curItem))
-                                hierarchyLines_verticalGaps.Add(curDepth - 1);
-
-                            curItem = curItem.parent;
-                            curDepth--;
-                        }
-
-                    }
-                    void updateVerticalGaps_beforeNextRowDrawn()
-                    {
-                        if (isLastChild(treeItem))
-                            hierarchyLines_verticalGaps.Add(depth - 1);
-
-                        if (depth < hierarchyLines_prevRowDepth)
-                            hierarchyLines_verticalGaps.RemoveAll(r => r >= depth);
-
-                    }
-
-                    void drawVerticals()
-                    {
-                        for (int i = 1; i < depth; i++)
-                            if (!hierarchyLines_verticalGaps.Contains(i))
-                                rowRect.SetX(9 + i * 14 - lineThickness / 2)
-                                       .SetWidth(lineThickness)
-                                       .SetHeight(isLastChild(treeItem) && i == depth - 1 ? 8 + lineThickness / 2 : 16)
-                                       .Draw(Greyscale(lineContrast));
-
-                    }
-                    void drawHorizontals()
-                    {
-                        if (depth == 0) return;
-                        if (depth == 1) return;
-
-                        rowRect.MoveX(-21)
-                               .SetHeightFromMid(lineThickness)
-                               .SetWidth(hasChilren(treeItem) ? 7 : 17)
-                               .Draw(Greyscale(lineContrast));
-
-                    }
-
-
-
-                    calcVerticalGaps_beforeFirstRowDrawn();
-
-                    drawVerticals();
-                    drawHorizontals();
-
-                    updateVerticalGaps_beforeNextRowDrawn();
-
-                    hierarchyLines_prevRowDepth = depth;
-                    hierarchyLines_isFirstRowDrawn = true;
-
-                }
-                void zebraStriping()
-                {
-                    if (!useZebraStriping) return;
-
-                    var contrast = isDarkTheme ? .033f : .05f;
-
-                    var t = 1 - rowRect.y.PingPong(16f) / 16f;
-
-                    fullRowRect.Draw(Greyscale(isDarkTheme ? 1 : 0, contrast * t));
-
-
-                }
-                void hoveredRow()
-                {
-                    if (!isRowHovered) return;
-                    if (isListArea) return;
-                    if (EditorWindow.mouseOverWindow == VFoldersPaletteWindow.instance) return;
-
-                    fullRowRect.Draw(Greyscale(isDarkTheme ? 1 : 0, .06f));
-
-                }
-
-                void contentMinimap()
-                {
-                    if (!isFolder) return;
-                    if (!useContentMinimap) return;
-                    if (guid.IsNullOrEmpty()) return;
-
-                    void icon(Rect rect, string name)
-                    {
-                        var icon = EditorIcons.GetIcon(name);
-
-                        if (!icon) return;
-
-
-                        SetGUIColor(Greyscale(1, isDarkTheme ? .49f : .7f));
-
-                        GUI.DrawTexture(rect, icon);
-
-                        ResetGUIColor();
-
-                    }
-
-
-                    var iconDistance = 13;
-                    var minButtonX = rowRect.x + guid.ToPath().GetFilename().GetLabelWidth() + iconDistance + 2;
-                    var iconRect = fullRowRect.SetWidthFromRight(iconDistance).SetSizeFromMid(12, 12).MoveX(-1.5f);
-
-                    foreach (var iconName in folderInfo.folderState.contentMinimapIconNames)
-                    {
-                        if (iconRect.x < minButtonX) continue;
-
-                        icon(iconRect, iconName);
-
-                        iconRect = iconRect.MoveX(-iconDistance);
-
-                    }
-
-                }
-
-
-                fullRowRect.MarkInteractive();
-
-                calcDefaultBackground();
-                hideName_proper();
-                hideDefaultIcon_proper();
-                hideDefaultIcon_fast();
-
-                hierarchyLines();
-                backgroundColor();
-                triangle();
-                defaultIcon();
-                customIcon();
-                name();
-                zebraStriping();
-                hoveredRow();
-
-                contentMinimap();
+                GUI.EndGroup();
 
             }
-
-            void altDrag()
+            void treeViewShadow()
             {
-                if (!curEvent.holdingAlt) return;
+                if (!curEvent.isRepaint) return;
 
-                void mouseDown()
-                {
-                    if (!curEvent.isMouseDown) return;
-                    if (!isRowHovered) return;
+                var shadowLength = 30;
+                var shadowPos = 21;
+                var shadowGreyscale = isDarkTheme ? .1f : .28f;
+                var shadowAlpha = isDarkTheme ? .35f : .15f;
 
-                    mouseDownPos = curEvent.mousePosition;
+                var minScrollPos = 10;
+                var maxScrollPos = 20;
 
-                }
-                void mouseDrag()
-                {
-                    if (!curEvent.isMouseDrag) return;
-                    if ((curEvent.mousePosition - mouseDownPos).magnitude < 5) return;
-                    if (!rowRect.Contains(mouseDownPos)) return;
-                    if (!rowRect.Contains(curEvent.mousePosition - curEvent.mouseDelta)) return;
-                    if (DragAndDrop.objectReferences.Any()) return;
 
-                    DragAndDrop.PrepareStartDrag();
-                    DragAndDrop.objectReferences = new[] { AssetDatabase.LoadAssetAtPath<Object>(guid.ToPath()) };
-                    DragAndDrop.StartDrag(guid.ToPath().GetFilename());
+                var scrollPos = window.GetMemberValue(isOneColumn ? "m_AssetTree" : "m_FolderTree").GetMemberValue<TreeViewState>("state").scrollPos.y;
 
-                }
+                var opacity = ((scrollPos - minScrollPos) / (maxScrollPos - minScrollPos)).Clamp01();
 
-                mouseDown();
-                mouseDrag();
 
-                // altdrag has to be set up manually before altClick because altClick will use() mouseDown event to prevent selection change
+                var rectWidth = isOneColumn ? window.position.width : window.GetMemberValue<Rect>("m_TreeViewRect").width;// - 12;
+
+                var rect = window.position.SetPos(0, 0).MoveY(shadowPos).SetHeight(shadowLength).SetWidth(rectWidth);
+
+
+
+                var clipAtY = navbarHeight + 1;
+
+                GUI.BeginClip(window.position.SetPos(0, clipAtY));
+
+                rect.MoveY(-clipAtY).DrawCurtainDown(Greyscale(shadowGreyscale, shadowAlpha * opacity));
+
+                GUI.EndClip();
+
+
+
+
+                if (isOneColumn) return;
+
+                var dividerRect = window.GetMemberValue<Rect>("m_TreeViewRect").SetWidthFromRight(1).MoveX(1);
+
+                var dividerColor = Greyscale(.16f);
+
+                dividerRect.Draw(dividerColor);
+
+
             }
-            void altClick()
+            void listAreaShadow()
             {
-                if (!isRowHovered) return;
-                if (!curEvent.holdingAlt) return;
-                if (!isFolder) return;
-
-                void mouseDown()
-                {
-                    if (!curEvent.isMouseDown) return;
-
-                    curEvent.Use();
-
-                }
-                void mouseUp()
-                {
-                    if (!curEvent.isMouseUp) return;
-
-                    var selectedGuids = isListArea
-                                               ?
-                                               Selection.objects.Where(r => r is DefaultAsset).Select(r => r.GetPath().ToGuid())
-                                               :
-#if UNITY_2021_1_OR_NEWER
-                                               tree.treeViewController.GetFieldValue("m_CachedSelection").GetFieldValue<List<int>>("m_List")
-#else
-                                               tree.treeViewController?.GetMemberValue("state").GetMemberValue<List<int>>("selectedIDs")
-#endif
-                                 .Select(id => tree.treeViewController.InvokeMethod("FindItem", id)                                                 // todo to somethinf else (finditem reveals selected item for some reason)
-                                                                      .GetPropertyValue<string>("Guid", exceptionIfNotFound: false))
-                                                                      .Where(r => r != null);
+                if (isOneColumn) return;
+                if (!curEvent.isRepaint) return;
 
 
-                    var editMultiSelection = selectedGuids.Count() > 1 && selectedGuids.Contains(guid);
+                var shadowLength = 30;
+                var shadowPos = navbarHeight + 17;
+                var shadowGreyscale = isDarkTheme ? .1f : .28f;
+                var shadowAlpha = .35f;
 
-                    var guidsToEdit = (editMultiSelection ? selectedGuids.Where(r => AssetDatabase.IsValidFolder(r.ToPath())) : new[] { guid }).ToList();
+                var minScrollPos = 10;
+                var maxScrollPos = 20;
 
 
-                    if (VFoldersPaletteWindow.instance && VFoldersPaletteWindow.instance.guids.SequenceEqual(guidsToEdit)) { VFoldersPaletteWindow.instance.Close(); return; }
+                var scrollPos = window.GetMemberValue("m_ListAreaState").GetMemberValue<Vector2>("m_ScrollPosition").y;
 
-                    var openNearRect = rowRect;// editMultiSelection ? lastVisibleSelectedCellRect : cellRect;
-                    var position = EditorGUIUtility.GUIToScreenPoint(new Vector2(curEvent.mousePosition.x + 20, openNearRect.y - 13));
+                var opacity = ((scrollPos - minScrollPos) / (maxScrollPos - minScrollPos)).Clamp01();
 
-                    if (!VFoldersPaletteWindow.instance)
-                        VFoldersPaletteWindow.CreateInstance(position);
 
-                    VFoldersPaletteWindow.instance.Init(guidsToEdit);
-                    VFoldersPaletteWindow.instance.Focus();
+                var rectX = window.GetMemberValue<Rect>("m_TreeViewRect").width + 1;
+                var rectWidth = window.position.width - rectX;// - 12;
 
-                    VFoldersPaletteWindow.instance.targetPosition = position;
+                var rect = window.position.SetPos(rectX, 0).MoveY(shadowPos).SetHeight(shadowLength).SetWidth(rectWidth);
 
-                    if (editMultiSelection)
-                        Selection.objects = null;
-                }
 
-                mouseDown();
-                mouseUp();
+
+                var clipAtY = navbarHeight + 22;
+
+                GUI.BeginClip(window.position.SetPos(0, clipAtY));
+
+                rect.MoveY(-clipAtY).DrawCurtainDown(Greyscale(shadowGreyscale, shadowAlpha * opacity));
+
+                GUI.EndClip();
+
+
+
+                if (isDarkTheme)
+                    window.position.SetPos(rectX, clipAtY - 1).SetSize(12321, 1).Draw(Greyscale(.175f)); // line under breadcrumbs
 
             }
+            // void preventSelectionChangeInOtherBrowsers()
+            // {
+            //     if (!UnityEditorInternal.InternalEditorUtility.isApplicationActive) return; // fixes https://discord.com/channels/1120291189707509840/1121124228507381791/1418551070933913611
+            //     if (Selection.objects.SequenceEqual(prevSelection)) return;
+
+
+            //     allBrowsers.ForEach(r => r?.SetMemberValue("m_InternalSelectionChange", true));
+
+            //     EditorApplication.delayCall += () =>
+            //         allBrowsers.ForEach(r => r?.SetMemberValue("m_InternalSelectionChange", false));
+
+            // }
 
 
 
-            setObjects();
-            setState();
 
-            drawing();
 
-            altDrag();
-            altClick();
+
+            var doNavbarFirst = GUI.GetNameOfFocusedControl() == "navbar search field" || curEvent.keyCode == KeyCode.Escape;
+
+            if (doNavbarFirst)
+                navbarGui();
+
+            hideDefaultTopBar();
+            defaultGuiWithOffset();
+            treeViewShadow();
+            listAreaShadow();
+
+            if (!doNavbarFirst)
+                navbarGui();
 
         }
 
-        static List<int> hierarchyLines_verticalGaps = new List<int>();
-        static bool hierarchyLines_isFirstRowDrawn;
-        static int hierarchyLines_prevRowDepth;
-
-        static Vector2 lastKnownMousePosition_screenSpace;
-        static Rect lastHoveredRowRect_screenSpace;
-        static TreeViewItem lastHoveredTreeItem;
+        static Dictionary<EditorWindow, VFoldersNavbar> navbars_byWindow = new();
 
 
 
-
-        static void CellGUI(string guid, Rect cellRect)
+        static void UpdateGUIWrapping(EditorWindow window)
         {
-            if (!AssetDatabase.IsValidFolder(guid.ToPath())) return;
+            if (!window.hasFocus) return;
 
-            var folderInfo = GetFolderInfo(guid, createDataIfDoesntExist: false);
+            var isLocked = window.GetMemberValue<bool>("isLocked");
+            var isVTabsActive = t_VTabs != null && !EditorPrefsCached.GetBool("vTabs-pluginDisabled", false);
 
+            var curOnGUIMethod = window.GetMemberValue("m_Parent").GetMemberValue<System.Delegate>("m_OnGUI").Method;
 
-            void setLastVisibleSelectedForAltClick()
+            var isWrapped = curOnGUIMethod == mi_WrappedGUI;
+            var shouldBeWrapped = VFoldersMenu.navigationBarEnabled && !(isVTabsActive && isLocked) && curOnGUIMethod != mi_VFavorites_WrappedOnGUI;
+
+            void wrap()
             {
-                if (!curEvent.isRepaint) return;
-                if (!Selection.objects.Contains(AssetDatabase.LoadAssetAtPath<DefaultAsset>(guid.ToPath()))) return;
+                var hostView = window.GetMemberValue("m_Parent");
 
-                lastVisibleSelectedCellRect = cellRect;
+                var newDelegate = typeof(VFolders).GetMethod(nameof(WrappedGUI), maxBindingFlags).CreateDelegate(t_EditorWindowDelegate, window);
+
+                hostView.SetMemberValue("m_OnGUI", newDelegate);
+
+                window.Repaint();
 
             }
-
-            void hideIcon()
+            void unwrap()
             {
-                if (!curEvent.isRepaint) return;
-                if (!folderInfo.hasColor) return;
+                var hostView = window.GetMemberValue("m_Parent");
 
-                cellRect.SetHeight(cellRect.width).Resize(4).Draw(EditorGUIUtility.isProSkin ? Greyscale(.2f) : Greyscale(.75f));
+                var originalDelegate = hostView.InvokeMethod("CreateDelegate", "OnGUI");
 
-            }
-            void icon()
-            {
-                if (!curEvent.isRepaint) return;
-                if (!folderInfo.hasColor && !folderInfo.hasIcon) return;
+                hostView.SetMemberValue("m_OnGUI", originalDelegate);
 
-                DrawBigFolderIcon(cellRect, folderInfo);
-
-            }
-
-            void altDrag()
-            {
-                if (!curEvent.holdingAlt) return;
-
-                void mouseDown()
-                {
-                    if (!curEvent.isMouseDown) return;
-                    if (!cellRect.IsHovered()) return;
-
-                    mouseDownPos = curEvent.mousePosition;
-
-                }
-                void mouseDrag()
-                {
-                    if (!curEvent.isMouseDrag) return;
-                    if ((curEvent.mousePosition - mouseDownPos).magnitude < 5) return;
-                    if (!cellRect.Contains(mouseDownPos)) return;
-                    if (!cellRect.Contains(curEvent.mousePosition - curEvent.mouseDelta)) return;
-                    if (DragAndDrop.objectReferences.Any()) return;
-
-                    DragAndDrop.PrepareStartDrag();
-                    DragAndDrop.objectReferences = new[] { AssetDatabase.LoadAssetAtPath<Object>(guid.ToPath()) };
-                    DragAndDrop.StartDrag(guid.ToPath().GetFilename());
-
-                }
-
-                mouseDown();
-                mouseDrag();
-
-            }
-            void altClick()
-            {
-                if (!cellRect.IsHovered()) return;
-                if (!curEvent.holdingAlt) return;
-
-                void mouseDown()
-                {
-                    if (!curEvent.isMouseDown) return;
-
-                    curEvent.Use();
-
-                }
-                void mouseUp()
-                {
-                    if (!curEvent.isMouseUp) return;
-
-                    var selectedFoldersGuids = Selection.objects.Where(r => r is DefaultAsset).Select(r => r.GetPath().ToGuid());
-
-                    var editMultiSelection = selectedFoldersGuids.Count() > 1 && selectedFoldersGuids.Contains(guid);
-
-                    var guidsToEdit = (editMultiSelection ? selectedFoldersGuids : new[] { guid }).ToList();
-
-
-                    if (VFoldersPaletteWindow.instance && VFoldersPaletteWindow.instance.guids.SequenceEqual(guidsToEdit)) { VFoldersPaletteWindow.instance.Close(); return; }
-
-                    var openNearRect = editMultiSelection ? lastVisibleSelectedCellRect : cellRect;
-                    var position = EditorGUIUtility.GUIToScreenPoint(new Vector2(openNearRect.xMax + 8, openNearRect.y - 5));
-
-                    if (!VFoldersPaletteWindow.instance)
-                        VFoldersPaletteWindow.CreateInstance(position);
-
-                    VFoldersPaletteWindow.instance.Init(guidsToEdit);
-                    VFoldersPaletteWindow.instance.Focus();
-
-                    VFoldersPaletteWindow.instance.targetPosition = position;
-
-                    if (editMultiSelection)
-                        Selection.objects = null;
-                }
-
-                mouseDown();
-                mouseUp();
+                window.Repaint();
 
             }
 
 
-            setLastVisibleSelectedForAltClick();
+            if (shouldBeWrapped && !isWrapped)
+                wrap();
 
-            hideIcon();
-            icon();
+            if (!shouldBeWrapped && isWrapped)
+                unwrap();
 
-            altDrag();
-            altClick();
+        }
+        static void UpdateGUIWrappingForAllBrowsers() => allBrowsers.ForEach(r => UpdateGUIWrapping(r));
+
+        static void OnDomainReloaded() => toCallInGUI += UpdateGUIWrappingForAllBrowsers;
+
+        static void OnWindowUnmaximized() => UpdateGUIWrappingForAllBrowsers();
+
+        static void OnBrowserFocused() => UpdateGUIWrapping(EditorWindow.focusedWindow);
+
+        static void OnDelayCall() => UpdateGUIWrappingForAllBrowsers();
+
+
+
+
+
+        static void CheckIfFocusedWindowChanged()
+        {
+            if (prevFocusedWindow != EditorWindow.focusedWindow)
+                if (EditorWindow.focusedWindow?.GetType() == t_ProjectBrowser)
+                    OnBrowserFocused();
+
+            prevFocusedWindow = EditorWindow.focusedWindow;
 
         }
 
-        static Rect lastVisibleSelectedCellRect;
+        static EditorWindow prevFocusedWindow;
 
 
 
-        static void ProjectBrowserItemGUI(string guid, Rect itemRect)
+        static void CheckIfWindowWasUnmaximized()
         {
-            void callRowGUI()
+            var isMaximized = EditorWindow.focusedWindow?.maximized == true;
+
+            if (!isMaximized && wasMaximized)
+                OnWindowUnmaximized();
+
+            wasMaximized = isMaximized;
+
+        }
+
+        static bool wasMaximized;
+
+
+
+        static void OnSomeGUI()
+        {
+            toCallInGUI?.Invoke();
+            toCallInGUI = null;
+
+            CheckIfFocusedWindowChanged();
+
+        }
+
+        static void ProjectWindowItemOnGUI(string _, Rect __) => OnSomeGUI();
+        static void HierarchyWindowItemOnGUI(int _, Rect __) => OnSomeGUI();
+
+        static System.Action toCallInGUI;
+
+
+
+        static void DelayCallLoop()
+        {
+            OnDelayCall();
+
+            EditorApplication.delayCall -= DelayCallLoop;
+            EditorApplication.delayCall += DelayCallLoop;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static void ItemGUI(Rect itemRect, string guid, int instanceId)
+        {
+            EditorWindow window;
+
+            void findWindow()
             {
-                if (itemRect.height != 16) return;
+                if (allBrowsers.Count() == 1) { window = allBrowsers.First(); return; }
 
-                RowGUI(guid, itemRect);
-
-            }
-            void callCellGUI()
-            {
-                if (itemRect.height == 16) return;
-
-                CellGUI(guid, itemRect);
-
-            }
-            void updateExpandQueues()
-            {
-                if (!curEvent.isLayout) return;
-
-                foreach (var tree in trees_byBrowser.Values)
-                    tree.UpdateExpandQueue();
-
-            }
-            void createFoldersFirstUpdater()
-            {
-                if (!curEvent.isLayout) return;
-                if (!VFoldersMenu.foldersFirstEnabled) return;
 
                 var pointInsideWindow = EditorGUIUtility.GUIToScreenPoint(itemRect.center);
 
-                var browser = allProjectBrowsers.FirstOrDefault(r => r.position.AddHeight(30).Contains(pointInsideWindow) && r.hasFocus);
+                window = allBrowsers.FirstOrDefault(r => r.position.AddHeight(30).Contains(pointInsideWindow) && r.hasFocus);
 
-                if (browser == null) return;
-                if (foldersFirstUpdater_byBrowser.ContainsKey(browser)) return;
+            }
+            void updateWindow()
+            {
+                if (!window) return; // happens on half-visible rows during expand animation
 
-                var updater = new FoldersFirstUpdater(browser);
+                if (curEvent.isLayout && !lastEventWasLayout)
+                    UpdateWindow_Layout(window);
 
-                foldersFirstUpdater_byBrowser[browser] = updater;
+                if (curEvent.isRepaint && !lastEventWasRepaint)
+                    UpdateWindow_Repaint(window);
 
-                updater.Update();
+
+                lastEventWasLayout = curEvent.isLayout;
+                lastEventWasRepaint = curEvent.isRepaint;
+
+            }
+            void catchScrollInputForController()
+            {
+                if (!window) return;
+                if (!controllers_byWindow.ContainsKey(window)) return;
+
+                if (curEvent.isScroll)
+                    controllers_byWindow[window].animatingScroll = false;
+
+            }
+            void callGUI()
+            {
+                if (!window) return;
+                if (!guis_byWindow.ContainsKey(window)) return;
+
+
+                var gui = guis_byWindow[window];
+
+                if (itemRect.height == 16)
+                    gui.RowGUI(itemRect, guid, instanceId);
+                else
+                    gui.CellGUI(itemRect, guid, instanceId);
 
             }
 
-            callRowGUI();
-            callCellGUI();
-            updateExpandQueues();
-            createFoldersFirstUpdater();
+            findWindow();
+            updateWindow();
+            catchScrollInputForController();
+            callGUI();
 
         }
 
-        static Vector2 mouseDownPos;
-
-
-
-
-
-
-
-
-
-
-        public static Texture2D GetSmallFolderIcon(FolderInfo folderInfo)
+        static void ItemGUI_2021_3_and_older(string guid, Rect itemRect)
         {
-            var key = new object[] { folderInfo.iconNameOrPath, folderInfo.color, folderInfo.isEmpty, isDarkTheme }.Aggregate(0, (hash, r) => (hash * 2) ^ r.GetHashCode());
+            var instanceId = typeof(AssetDatabase).InvokeMethod<int>("GetMainAssetOrInProgressProxyInstanceID", guid.ToPath());
+
+            ItemGUI(itemRect, guid, instanceId);
+
+        }
+        static void ItemGUI_2022_1_and_newer(int instanceId, Rect itemRect)
+        {
+            var guid = _AssetDatabase_GetAssetPath(instanceId).ToGuid();
+
+            ItemGUI(itemRect, guid, instanceId);
+
+        }
+
+        static bool lastEventWasLayout;
+        static bool lastEventWasRepaint;
+
+
+
+        static void UpdateWindow_Layout(EditorWindow window)
+        {
+            if (!guis_byWindow.TryGetValue(window, out var gui))
+                gui = guis_byWindow[window] = new(window);
+
+            if (!controllers_byWindow.TryGetValue(window, out var controller))
+                controller = controllers_byWindow[window] = new(window);
+
+            if (!histories_byWindow.TryGetValue(window, out var history))
+                history = histories_byWindow[window] = new(window);
+
+
+            gui.UpdateState_Layout();
+            gui.UpdateFoldersFirst();
+
+            controller.UpdateState();
+            controller.UpdateExpandQueue();
+            controller.UpdateScrollAnimation();
+            controller.UpdateHighlightAnimation();
+
+            history.UpdateState();
+            history.CheckTreeStateChange();
+            history.CheckFolderPathChange();
+
+        }
+        static void UpdateWindow_Repaint(EditorWindow window)
+        {
+            if (guis_byWindow.ContainsKey(window))
+                guis_byWindow[window].UpdateState_Repaint();
+        }
+
+        public static Dictionary<EditorWindow, VFoldersGUI> guis_byWindow = new();
+        public static Dictionary<EditorWindow, VFoldersController> controllers_byWindow = new();
+        public static Dictionary<EditorWindow, VFoldersHistory> histories_byWindow => VFoldersHistorySingleton.instance.histories_byWindow;
+
+
+
+
+
+
+
+
+        public static Texture2D GetSmallFolderIcon(FolderInfo folderInfo, bool removeColor = false)
+        {
+            var hasColor = folderInfo.hasColor && !removeColor;
+            var hasIcon = folderInfo.hasIcon;
+
+            var color = hasColor ? folderInfo.color : default;
+            var iconNameOrPath = hasIcon ? folderInfo.iconNameOrPath : "";
+
+            var isEmpty = folderInfo.folderState.isEmpty;
+
+            var key = new object[] { iconNameOrPath, color, isEmpty, isDarkTheme }.Aggregate(0, (hash, r) => (hash * 2) ^ r.GetHashCode());
+
 
             Texture2D icon = null;
 
@@ -924,7 +492,7 @@ namespace VFolders
                 if (icon != null) return;
                 if (Event.current != null) return;  // interactions with gpu in OnGUI may interfere with gui rendering
 
-                var iconSizeX = folderInfo.hasIcon ? 36 : 32;
+                var iconSizeX = hasIcon ? 36 : 32;
                 var iconSizeY = 32;
 
                 var assetIconSize = 20; // 20 21
@@ -951,9 +519,8 @@ namespace VFolders
                 }
                 void createFolderIcon()
                 {
-                    // var folderIconName = folderInfo.isEmpty ? "FolderEmpty Icon" : "Project@2x";
-                    var folderIconName = folderInfo.hasColor ? (folderInfo.isEmpty ? "FolderEmpty On Icon" : "Folder On Icon") :
-                                                               (folderInfo.isEmpty ? "FolderEmpty Icon" : "Folder Icon");
+                    var folderIconName = hasColor ? (isEmpty ? "FolderEmpty On Icon" : "Folder On Icon") :
+                                                    (isEmpty ? "FolderEmpty Icon" : "Folder Icon");
 
 
                     folderIcon = EditorGUIUtility.FindTexture(folderIconName);
@@ -968,7 +535,7 @@ namespace VFolders
                 }
                 void copyFolderIcon()
                 {
-                    if (!folderInfo.hasIcon) { iconPixels = folderIconPixels; return; }
+                    if (!hasIcon) { iconPixels = folderIconPixels; return; }
 
                     for (int x = 0; x < folderIcon.width; x++)
                         for (int y = 0; y < folderIcon.height - folderIconOffsetY_ifHasAssetIcon; y++)
@@ -977,18 +544,18 @@ namespace VFolders
                 }
                 void applyColor()
                 {
-                    if (!folderInfo.hasColor) return;
+                    if (!hasColor) return;
 
                     for (int i = 0; i < iconPixels.Length; i++)
-                        iconPixels[i] *= folderInfo.color.SetAlpha(1);
+                        iconPixels[i] *= (color * 1.06f).SetAlpha(1);
 
                 }
                 void insertAssetIcon()
                 {
-                    if (!folderInfo.hasIcon) return;
+                    if (!hasIcon) return;
 
 
-                    var assetIconOriginal = EditorIcons.GetIcon(folderInfo.iconNameOrPath);
+                    var assetIconOriginal = EditorIcons.GetIcon(iconNameOrPath);
 
                     if (!assetIconOriginal) return;
 
@@ -1015,7 +582,7 @@ namespace VFolders
                             if (!yAssetIcon.IsInRange(0, assetIconSize - 1)) continue;
 
 
-                            var innerRadius = (folderInfo.iconNameOrPath == "AudioClip Icon" ? .2f : .4f);
+                            var innerRadius = (iconNameOrPath == "AudioClip Icon" ? .2f : .4f);
                             var isInnerPixel = (new Vector2(xAssetIcon, yAssetIcon) / (assetIconSize - 1) - Vector2.one * .5f).magnitude < innerRadius;
 
                             var isOutlinePixel = false;
@@ -1058,40 +625,29 @@ namespace VFolders
             {
                 if (icon != null) return;
 
-                toCallInUpdate.Add(generateAndCache);
+                toGenerateInUpdate.Add(generateAndCache);
 
             }
+
 
             getCached();
             generateAndCache();
             queueGeneration();
 
-            return icon ?? EditorGUIUtility.FindTexture(folderInfo.isEmpty ? "FolderEmpty Icon" : "Project@2x");
-
-        }
-        public static Texture2D GetSmallFolderIcon_forVTabs(string folderGuid)
-        {
-            var folderInfo = GetFolderInfo(folderGuid, false);
-
-            if (folderInfo.hasColor || folderInfo.hasIcon)
-                return GetSmallFolderIcon(folderInfo);
-
-            return null;
+            return icon ?? EditorGUIUtility.FindTexture(isEmpty ? "FolderEmpty Icon" : "Project@2x");
 
         }
 
-        static void Update()
+        static void GenerateIconsInUpdate()
         {
-            foreach (var r in toCallInUpdate)
+            foreach (var r in toGenerateInUpdate)
                 r.Invoke();
 
-            toCallInUpdate.Clear();
+            toGenerateInUpdate.Clear();
 
         }
 
-        static List<System.Action> toCallInUpdate = new List<System.Action>();
-
-
+        static List<System.Action> toGenerateInUpdate = new();
 
 
 
@@ -1105,8 +661,7 @@ namespace VFolders
             {
                 folderIconRect = rect.SetHeight(rect.width);
 
-#if UNITY_2022_3_OR_NEWER
-#else
+#if !UNITY_2022_3_OR_NEWER
                 if (Application.platform == RuntimePlatform.OSXEditor)
                     if (folderIconRect.width > 64)
                         folderIconRect = folderIconRect.SetSizeFromMid(64, 64);
@@ -1121,14 +676,13 @@ namespace VFolders
 
                 var t = ((folderIconRect.width - 16) / (64 - 16));
 
-#if UNITY_2022_3_OR_NEWER
-#else
+#if !UNITY_2022_3_OR_NEWER
                 if (Application.platform == RuntimePlatform.OSXEditor)
                     t = t.Clamp01();
 #endif
 
-                var assetIconOffset = Lerp(assetIconOffsetMin, assetIconOffsetMax, t);
-                var assetIconSize = Lerp(assetIconSizeMin, assetIconSizeMax, t);
+                var assetIconOffset = MathUtil.Lerp(assetIconOffsetMin, assetIconOffsetMax, t);
+                var assetIconSize = MathUtil.Lerp(assetIconSizeMin, assetIconSizeMax, t);
 
                 assetIconRect = folderIconRect.Move(assetIconOffset).SetSizeFromMid(assetIconSize, assetIconSize).AlignToPixelGrid();
 
@@ -1141,7 +695,7 @@ namespace VFolders
 
                 SetGUIColor(folderInfo.color.SetAlpha(1));
 
-                GUI.DrawTexture(folderIconRect, EditorGUIUtility.FindTexture(folderInfo.isEmpty ? "FolderEmpty On Icon" : "Folder On Icon"));
+                GUI.DrawTexture(folderIconRect, EditorGUIUtility.FindTexture(folderInfo.folderState.isEmpty ? "FolderEmpty On Icon" : "Folder On Icon"));
 
                 ResetGUIColor();
 
@@ -1150,17 +704,25 @@ namespace VFolders
             {
                 if (!folderInfo.hasIcon) return;
 
+
                 var texture = EditorIcons.GetIcon(folderInfo.iconNameOrPath);
 
                 if (!texture) return;
 
+                if (texture.width < texture.height) assetIconRect = assetIconRect.SetWidthFromMid(assetIconRect.height * texture.width / texture.height);
+                if (texture.height < texture.width) assetIconRect = assetIconRect.SetHeightFromMid(assetIconRect.width * texture.height / texture.width);
+
+
+
                 void material()
                 {
-                    if (outlineMaterial) return;
+                    if (!outlineMaterial)
+                        outlineMaterial = new Material(Shader.Find("Hidden/Internal-GUITextureClipText"));
 
-                    outlineMaterial = new Material(Shader.Find("Hidden/VFoldersOutline"));
+                    outlineMaterial.color = isDarkTheme ? Greyscale(.2f, .6f) : Greyscale(.75f);
 
-                    outlineMaterial.SetColor("_Color", EditorGUIUtility.isProSkin ? Greyscale(.2f, .6f) : Greyscale(.75f));
+                    // .color needs to be updated continiously because it gets reset on some editor events
+                    // only happens when internal shader is used
 
                 }
 
@@ -1208,10 +770,6 @@ namespace VFolders
             assetIcon();
 
         }
-        public static void DrawBigFolderIcon_forVFavorites(Rect rect, string folderGuid)
-        {
-            DrawBigFolderIcon(rect, GetFolderInfo(folderGuid, false));
-        }
 
         static Material outlineMaterial;
 
@@ -1225,12 +783,75 @@ namespace VFolders
 
 
 
-        static void CheckShortcuts() // called from globalEventHandler
+
+
+
+
+
+
+        public static Texture2D GetSmallFolderIcon_forVTabs(string folderGuid)
         {
-            if (!hoveredProjectBrowser) return;
-            if (!curEvent.isKeyDown) return;
-            if (curEvent.keyCode == KeyCode.None) return;
-            if (EditorWindow.mouseOverWindow.GetType() != t_ProjectBrowser) return;
+            var folderInfo = GetFolderInfo(folderGuid);
+
+            if (folderInfo.hasColor || folderInfo.hasIcon)
+                return GetSmallFolderIcon(folderInfo);
+
+            return null;
+
+        }
+
+        public static void DrawBigFolderIcon_forVFavorites(Rect rect, string folderGuid)
+        {
+            DrawBigFolderIcon(rect, GetFolderInfo(folderGuid));
+        }
+
+        public static void SetIcon(string folderPath, string iconName, bool recursive = false)
+        {
+            var folderData = GetFolderData(folderPath.ToGuid(), createDataIfDoesntExist: true);
+
+            folderData.iconNameOrGuid = iconName ?? "";
+            folderData.isIconRecursive = recursive;
+
+
+            folderInfoCache.Clear();
+
+            EditorApplication.RepaintProjectWindow();
+
+        }
+        public static void SetColor(string folderPath, int colorIndex, bool recursive = false)
+        {
+            var folderData = GetFolderData(folderPath.ToGuid(), createDataIfDoesntExist: true);
+
+            folderData.colorIndex = colorIndex;
+            folderData.isColorRecursive = recursive;
+
+
+            folderInfoCache.Clear();
+
+            EditorApplication.RepaintProjectWindow();
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static void Shortcuts() // globalEventHandler 
+        {
+            if (EditorWindow.mouseOverWindow is not EditorWindow hoveredWindow) return;
+            if (hoveredWindow.GetType() != t_ProjectBrowser) return;
 
             void toggleExpanded()
             {
@@ -1247,14 +868,11 @@ namespace VFolders
                 if (lastHoveredTreeItem.children == null) return;
                 if (lastHoveredTreeItem.children.Count == 0) return;
 
-                var tree = GetTree(hoveredProjectBrowser);
 
-                tree.SetExpandedWithAnimation(lastHoveredTreeItem.id, !tree.expandedIds.Contains(lastHoveredTreeItem.id));
-
-                EditorApplication.RepaintProjectWindow();
+                controllers_byWindow[hoveredWindow].ToggleExpanded(lastHoveredTreeItem);
 
             }
-            void collapseEverything()
+            void collapseAll()
             {
                 if (!curEvent.isKeyDown) return;
                 if (curEvent.keyCode != KeyCode.E) return;
@@ -1263,31 +881,11 @@ namespace VFolders
 
                 curEvent.Use();
 
-                var tree = GetTree(hoveredProjectBrowser);
 
-
-                var idsToCollapse_roots = tree.expandedIds.Where(id => EditorUtility.InstanceIDToObject(id).GetPath() is string path &&
-                                                                       path.HasParentPath() &&
-                                                                      (path.GetParentPath() == "Assets" || path.GetParentPath() == "Packages"));
-
-
-                var idsToCollapse_children = tree.expandedIds.Where(id => EditorUtility.InstanceIDToObject(id).GetPath() is string path &&
-                                                                         !path.IsNullOrEmpty() &&
-                                                                          path != "Assets" &&
-                                                                          path != "Packages" &&
-                                                                         !idsToCollapse_roots.Contains(id));
-
-
-                tree.expandQueue_toCollapseAfterAnimation = idsToCollapse_children.ToList();
-
-                tree.expandQueue_toAnimate = idsToCollapse_roots.Select(id => new Tree.ExpandQueueEntry { id = id, expand = false })
-                                                                .OrderBy(row => tree.VisibleRowIndex(row.id)).ToList();
-
-
-                EditorApplication.RepaintProjectWindow();
+                controllers_byWindow[hoveredWindow].CollapseAll();
 
             }
-            void collapseEverythingElse()
+            void isolate()
             {
                 if (!curEvent.isKeyDown) return;
                 if (curEvent.keyCode != KeyCode.E) return;
@@ -1302,318 +900,252 @@ namespace VFolders
                 if (lastHoveredTreeItem.children == null) return;
                 if (lastHoveredTreeItem.children.Count == 0) return;
 
-                var tree = GetTree(hoveredProjectBrowser);
 
-
-
-                var parents = new List<TreeViewItem>();
-
-                for (var cur = lastHoveredTreeItem.parent; cur != null; cur = cur.parent)
-                    parents.Add(cur);
-
-
-
-                var idsToCollapse = new List<int>();
-
-                foreach (var id in tree.expandedIds.ToList())
-                    if (!parents.Any(r => r.id == id))
-                        if (id != lastHoveredTreeItem.id)
-                            idsToCollapse.Add(id);
-
-
-
-                tree.expandQueue_toAnimate = idsToCollapse.Select(id => new Tree.ExpandQueueEntry { id = id, expand = false })
-                                                          .Append(new Tree.ExpandQueueEntry { id = lastHoveredTreeItem.id, expand = true })
-                                                          .OrderBy(r => tree.VisibleRowIndex(r.id)).ToList();
-
-
-                EditorApplication.RepaintProjectWindow();
+                controllers_byWindow[hoveredWindow].Isolate(lastHoveredTreeItem);
 
             }
+            void moveBack()
+            {
+                if (!curEvent.isMouseDown) return;
+                if (curEvent.mouseButton != 3) return;
+
+
+                var isOneColumn = hoveredWindow.GetMemberValue<int>("m_ViewMode") == 0;
+
+                if (isOneColumn) return;
+
+
+
+                if (!histories_byWindow.ContainsKey(hoveredWindow))
+                    histories_byWindow[hoveredWindow] = new(hoveredWindow);
+
+                var history = histories_byWindow[hoveredWindow];
+
+                if (!history.prevFolderPaths.Any()) return;
+
+
+                history.MoveBack_TwoColumns();
+
+            }
+            void moveForward()
+            {
+                if (!curEvent.isMouseDown) return;
+                if (curEvent.mouseButton != 4) return;
+
+
+                var isOneColumn = hoveredWindow.GetMemberValue<int>("m_ViewMode") == 0;
+
+                if (isOneColumn) return;
+
+
+
+                if (!histories_byWindow.ContainsKey(hoveredWindow))
+                    histories_byWindow[hoveredWindow] = new(hoveredWindow);
+
+                var history = histories_byWindow[hoveredWindow];
+
+                if (!history.nextFolderPaths.Any()) return;
+
+
+                history.MoveForward_TwoColumns();
+
+            }
+
 
             toggleExpanded();
-            collapseEverything();
-            collapseEverythingElse();
+            collapseAll();
+            isolate();
+            moveBack();
+            moveForward();
 
         }
 
+        public static TreeViewItem lastHoveredTreeItem;
+
+        public static Rect lastHoveredRowRect_screenSpace;
+
+        public static Vector2 lastKnownMousePosition_screenSpace;
 
 
 
 
 
 
-        class Tree
+
+
+
+
+
+
+
+
+
+
+
+        public static FolderInfo GetFolderInfo(string guid)
         {
-            public void UpdateExpandQueue() // called from gui because reflected methods rely on event.current
-            {
-                if (animatingExpansion) return;
+            if (folderInfoCache.TryGetValue(guid, out var cachedFolderInfo)) return cachedFolderInfo;
 
-                if (!expandQueue_toAnimate.Any())
-                {
-                    if (!expandQueue_toCollapseAfterAnimation.Any()) return;
 
-                    foreach (var id in expandQueue_toCollapseAfterAnimation)
-                        SetExpanded(id, false);
-
-                    expandQueue_toCollapseAfterAnimation.Clear();
-
-                    return;
-                }
-
-                var iid = expandQueue_toAnimate.First().id;
-                var expand = expandQueue_toAnimate.First().expand;
-
-                if (expandedIds.Contains(iid) != expand)
-                    SetExpandedWithAnimation(iid, expand);
-
-                expandQueue_toAnimate.RemoveAt(0);
-
-            }
-
-            public void SetExpandedWithAnimation(int instanceId, bool expanded) => treeViewController.InvokeMethod("ChangeFoldingForSingleItem", instanceId, expanded);
-            public void SetExpanded(int instanceId, bool expanded) => treeViewController.GetPropertyValue("data").InvokeMethod("SetExpanded", instanceId, expanded);
-
-            public int VisibleRowIndex(int instanceId) => treeViewController.GetPropertyValue("data").InvokeMethod<int>("GetRow", instanceId);
-
-            public bool animatingExpansion => treeViewController.GetPropertyValue<bool>("animatingExpansion");
-
-            public bool IsExpanded(TreeViewItem treeItem) => expandedIds.Contains(treeItem.id);
-
-
-            public List<ExpandQueueEntry> expandQueue_toAnimate = new List<ExpandQueueEntry>();
-            public List<int> expandQueue_toCollapseAfterAnimation = new List<int>();
-
-            public struct ExpandQueueEntry { public int id; public bool expand; }
-
-
-
-
-
-            public void UpdateState() // delayCall loop
-            {
-                isTwoColumns = browser.GetFieldValue<int>("m_ViewMode") == 1;
-
-                treeViewController = browser.GetFieldValue(isTwoColumns ? "m_FolderTree" : "m_AssetTree");
-
-                data = treeViewController?.GetPropertyValue("data");
-
-                expandedIds = treeViewController?.GetPropertyValue("state")?.GetPropertyValue<List<int>>("expandedIDs") ?? new List<int>();
-
-
-                EditorApplication.delayCall -= UpdateState;
-                EditorApplication.delayCall += UpdateState;
-
-            }
-
-            public bool isTwoColumns;
-
-            public object treeViewController;
-
-            public object data;
-
-            public List<int> expandedIds = new List<int>();
-
-
-
-
-
-            public Tree(EditorWindow browser) => this.browser = browser;
-
-            public EditorWindow browser;
-
-
-
-
-            public static MethodInfo mi_data_GetItem = typeof(Editor).Assembly.GetType("UnityEditor.IMGUI.Controls.ITreeViewDataSource").GetMethod("GetItem", maxBindingFlags);
-
-        }
-
-        static Tree GetTree(EditorWindow browser)
-        {
-            if (trees_byBrowser.TryGetValue(browser, out var existingState)) return existingState;
-
-
-            var tree = new Tree(browser);
-
-            tree.UpdateState();
-
-            trees_byBrowser[browser] = tree;
-
-            return tree;
-
-        }
-
-        static Dictionary<EditorWindow, Tree> trees_byBrowser = new Dictionary<EditorWindow, Tree>();
-
-
-
-
-
-
-
-        class FoldersFirstUpdater
-        {
-            public void Update() // delayCall loop 
-            {
-                if (browser == null) { foldersFirstUpdater_byBrowser.Remove(browser); return; }
-
-
-                var isTwoColumns = browser.GetFieldValue<int>("m_ViewMode") == 1;
-
-                void oneColumn()
-                {
-                    if (isTwoColumns) return;
-                    if (initedForOneColumn) return;
-
-
-                    var m_AssetTree = browser.GetFieldValue("m_AssetTree");
-
-                    if (m_AssetTree == null) return;
-
-                    m_AssetTree.GetPropertyValue("data").SetPropertyValue("foldersFirst", true);
-                    m_AssetTree.InvokeMethod("ReloadData");
-
-
-                    initedForOneColumn = true;
-                    initedForTwoColumns = false;
-
-                }
-                void twoColumns()
-                {
-                    if (!isTwoColumns) return;
-                    if (initedForTwoColumns) return;
-
-
-                    var m_ListArea = browser.GetFieldValue("m_ListArea");
-
-                    if (m_ListArea == null) return;
-
-                    m_ListArea.SetPropertyValue("foldersFirst", true);
-                    browser.InvokeMethod("InitListArea");
-
-
-                    initedForOneColumn = false;
-                    initedForTwoColumns = true;
-
-                }
-
-
-                oneColumn();
-                twoColumns();
-
-
-                EditorApplication.delayCall -= Update;
-                EditorApplication.delayCall += Update;
-
-            }
-
-            bool initedForOneColumn;
-            bool initedForTwoColumns;
-
-
-
-
-            public FoldersFirstUpdater(EditorWindow browser) => this.browser = browser;
-
-            public EditorWindow browser;
-
-
-        }
-
-        static Dictionary<EditorWindow, FoldersFirstUpdater> foldersFirstUpdater_byBrowser = new Dictionary<EditorWindow, FoldersFirstUpdater>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public static FolderInfo GetFolderInfo(string guid, bool createDataIfDoesntExist)
-        {
             var folderInfo = new FolderInfo();
 
-            folderInfo.folderData = GetFolderData(guid, createDataIfDoesntExist);
-            folderInfo.folderState = GetFolderState(guid);
+            var folderData = folderInfo.folderData = GetFolderData(guid, createDataIfDoesntExist: false);
+            var folderState = folderInfo.folderState = GetFolderState(guid);
 
-            return folderInfo;
+
+            var recursiveIconNameOrGuid = "";
+            var recursiveColorIndex = 0;
+
+            var ruledIconNameOrGuid = "";
+            var ruledColorIndex = 0;
+
+            void checkRules()
+            {
+                if (rules == null)
+                    rules = TypeCache.GetMethodsWithAttribute<RuleAttribute>()
+                                     .Where(r => r.IsStatic
+                                              && r.GetParameters().Count() == 1
+                                              && r.GetParameters().First().ParameterType == typeof(Folder)).ToList();
+
+                if (!rules.Any()) return;
+
+
+
+                var folder = new Folder(guid);
+
+                foreach (var rule in rules)
+                    rule.Invoke(null, new[] { folder });
+
+
+                ruledIconNameOrGuid = folder.icon;
+                ruledColorIndex = folder.color;
+
+
+            }
+            void checkRecursion(string path, int depth)
+            {
+                if (!path.HasParentPath()) return;
+
+                var parentFolderData = GetFolderData(path.GetParentPath().ToGuid(), createDataIfDoesntExist: false);
+
+                if (parentFolderData != null)
+                {
+
+                    if (parentFolderData.isIconRecursive && parentFolderData.iconNameOrGuid != "")
+                        if (recursiveIconNameOrGuid == "")
+                            recursiveIconNameOrGuid = parentFolderData.iconNameOrGuid;
+
+                    if (parentFolderData.isColorRecursive && parentFolderData.colorIndex != 0)
+                        if (recursiveColorIndex == 0)
+                            recursiveColorIndex = parentFolderData.colorIndex;
+
+
+                    if (parentFolderData.isColorRecursive && parentFolderData.colorIndex != 0)
+                        folderInfo.maxColorRecursionDepth = depth + 1;
+
+                }
+
+
+
+                checkRecursion(path.GetParentPath(), depth + 1);
+
+            }
+            void setIcon()
+            {
+                var iconNameOrGuid = "";
+
+                if (folderData != null && folderData.iconNameOrGuid != "")
+                    iconNameOrGuid = folderData.iconNameOrGuid;
+
+                else if (recursiveIconNameOrGuid != "")
+                    iconNameOrGuid = recursiveIconNameOrGuid;
+
+                else if (ruledIconNameOrGuid != "")
+                    iconNameOrGuid = ruledIconNameOrGuid;
+
+                else if (VFoldersMenu.autoIconsEnabled && folderState.autoIconName != "" && folderData?.isIconRecursive != true)
+                    iconNameOrGuid = folderState.autoIconName;
+
+
+
+                if (iconNameOrGuid == "" || iconNameOrGuid == "none") { folderInfo.hasIcon = false; return; }
+
+                folderInfo.hasIcon = true;
+                folderInfo.hasIconByRecursion = recursiveIconNameOrGuid != "";
+
+                folderInfo.iconNameOrPath = iconNameOrGuid.Length == 32 ? iconNameOrGuid.ToPath()
+                                                                        : iconNameOrGuid;
+
+            }
+            void setColor()
+            {
+                var colorIndex = 0;
+
+                if (folderData != null && folderData.colorIndex > 0)
+                    colorIndex = folderData.colorIndex;
+
+                else if (recursiveColorIndex != 0)
+                    colorIndex = recursiveColorIndex;
+
+                else if (ruledColorIndex != 0)
+                    colorIndex = ruledColorIndex;
+
+
+
+                if (colorIndex == 0) { folderInfo.hasColor = false; return; }
+
+                folderInfo.hasColor = true;
+                folderInfo.hasColorByRecursion = recursiveColorIndex != 0;
+
+
+
+
+                var brightness = palette?.colorBrightness ?? 1;
+                var saturation = palette?.colorSaturation ?? 1;
+
+
+                var rawColor = palette ? palette.colors[colorIndex - 1] : VFoldersPalette.GetDefaultColor(colorIndex - 1);
+
+                var brightenedColor = MathUtil.Lerp(Greyscale(.2f), rawColor, brightness);
+
+                Color.RGBToHSV(brightenedColor, out float h, out float s, out float v);
+                var saturatedColor = Color.HSVToRGB(h, s * saturation, v);
+
+
+                folderInfo.color = saturatedColor;
+
+            }
+
+            checkRules();
+            checkRecursion(guid.ToPath(), 0);
+            setIcon();
+            setColor();
+
+
+            return folderInfoCache[guid] = folderInfo;
 
         }
 
         public class FolderInfo
         {
-            public string iconNameOrGuid
-            {
-                get
-                {
-                    var iconNameOrGuid = folderData?.iconNameOrGuid;
+            public string iconNameOrPath = "";
+            public bool hasIcon;
+            public bool hasIconByRecursion;
 
-                    if (iconNameOrGuid == "" || iconNameOrGuid == null)
-                        iconNameOrGuid = VFoldersMenu.autoIconsEnabled ? folderState.autoIconName : "";
+            public Color color;
+            public bool hasColor;
+            public bool hasColorByRecursion;
+            public int maxColorRecursionDepth;
 
-                    if (iconNameOrGuid == "none")
-                        iconNameOrGuid = "";
-
-                    return iconNameOrGuid;
-
-                }
-                set
-                {
-                    if (!VFoldersMenu.autoIconsEnabled) { folderData.iconNameOrGuid = value; return; }
-
-                    if (value == folderState.autoIconName)
-                        folderData.iconNameOrGuid = "";
-
-                    else if (value == "")
-                        folderData.iconNameOrGuid = "none";
-
-                    else
-                        folderData.iconNameOrGuid = value;
-
-
-                    // if (value == folderState.autoIconName && VFoldersMenu.autoIconsEnabled)
-                    //     folderData.iconNameOrGuid = "";
-
-                    // else if (value == "")
-                    //     folderData.iconNameOrGuid = "none";
-
-                    // else
-                    //     folderData.iconNameOrGuid = value;
-
-                }
-
-            }
-            public string iconNameOrPath => iconNameOrGuid.Length == 32 ? iconNameOrGuid.ToPath() : iconNameOrGuid;
-
-            public Color color
-            {
-                get
-                {
-                    if (!hasColor) return default;
-                    // return VFoldersPalette.GetDefaultColor(folderData.colorIndex - 1);
-
-                    if (palette)
-                        return palette.colors[folderData.colorIndex - 1];
-                    else
-                        return VFoldersPalette.GetDefaultColor(folderData.colorIndex - 1);
-
-                }
-            }
-
-            public bool hasIcon => (folderData != null && folderData.iconNameOrGuid != "" && folderData.iconNameOrGuid != "none") || (VFoldersMenu.autoIconsEnabled && folderState.autoIconName != "" && (folderData == null || folderData.iconNameOrGuid != "none"));
-            public bool hasColor => folderData != null && folderData.colorIndex.IsInRange(1, VFoldersPalette.colorsCount);
-            public bool isEmpty => folderState.isEmpty;
 
             public FolderData folderData;
             public FolderState folderState;
 
         }
+
+        public static Dictionary<string, FolderInfo> folderInfoCache = new();
+
+        public static List<MethodInfo> rules = null;
 
 
 
@@ -1644,6 +1176,7 @@ namespace VFolders
                 folderDatasFromMetaFiles_byGuid.TryGetValue(guid, out folderData);
 
 
+
                 if (folderData != null) return;
 
                 var importer = AssetImporter.GetAtPath(guid.ToPath());
@@ -1651,6 +1184,7 @@ namespace VFolders
                 try { folderData = JsonUtility.FromJson<FolderData>(importer.userData); } catch { }
 
                 folderDatasFromMetaFiles_byGuid[guid] = folderData;
+
 
 
                 if (folderData != null || !createDataIfDoesntExist) return;
@@ -1668,7 +1202,7 @@ namespace VFolders
 
         }
 
-        public static Dictionary<string, FolderData> folderDatasFromMetaFiles_byGuid = new Dictionary<string, FolderData>();
+        public static Dictionary<string, FolderData> folderDatasFromMetaFiles_byGuid = new();
 
 
 
@@ -1676,7 +1210,7 @@ namespace VFolders
         {
             FolderState folderState = null;
 
-            void getFromCache()
+            void getCached()
             {
                 cache.folderStates_byGuid.TryGetValue(guid, out folderState);
             }
@@ -1696,53 +1230,109 @@ namespace VFolders
                 if (!folderState.needsUpdate) return;
                 if (!Directory.Exists(guid.ToPath())) { folderState.needsUpdate = false; return; }
 
+
+                var typesInFolder = Directory.GetFiles(guid.ToPath(), "*.*").Select(r => AssetDatabase.GetMainAssetTypeAtPath(r)).Where(r => r != null);
+
                 void isEmpty()
                 {
                     folderState.isEmpty = !Directory.EnumerateFileSystemEntries(guid.ToPath()).Any();
                 }
-                void contentTypeNames()
+                void contentMinimap()
                 {
-                    var types = Directory.GetFiles(guid.ToPath(), "*.*")
-                                         .Select(r => AssetDatabase.GetMainAssetTypeAtPath(r))
-                                         .Where(r => r != null);
-
-
                     var iconNames = new List<string>();
 
-                    foreach (var type in types)
+                    void fill()
+                    {
+                        foreach (var type in typesInFolder)
 
-                        if (type == typeof(Texture2D))
-                            iconNames.Add("Texture Icon");
+                            if (type == typeof(Texture2D))
+                                iconNames.Add("Texture Icon");
 
-                        else if (type == typeof(GameObject))
-                            iconNames.Add("Prefab Icon");
+                            else if (type == typeof(GameObject))
+                                iconNames.Add("Prefab Icon");
 
-                        else if (type.BaseType == typeof(ScriptableObject) || type.BaseType?.BaseType == typeof(ScriptableObject))
-                            iconNames.Add("ScriptableObject Icon");
+                            else if (type.BaseType == typeof(ScriptableObject) || type.BaseType?.BaseType == typeof(ScriptableObject))
+                                iconNames.Add("ScriptableObject Icon");
 
-                        // else if (type == typeof(MonoScript) || type == typeof(AssemblyDefinitionAsset) || type == typeof(AssemblyDefinitionReferenceAsset))
-                        else if (type == typeof(MonoScript))// || type == typeof(AssemblyDefinitionAsset) || type == typeof(AssemblyDefinitionReferenceAsset))
-                            iconNames.Add("cs Script Icon");
+                            else if (type == typeof(MonoScript))
+                                iconNames.Add("cs Script Icon");
 
-                        else if (AssetPreview.GetMiniTypeThumbnail(type)?.name is string iconName)
-                            iconNames.Add(iconName);
+                            else if (AssetPreview.GetMiniTypeThumbnail(type) is Texture2D icon)
+                                if (AssetDatabase.Contains(icon) && !icon.GetPath().StartsWith("Library"))
+                                    iconNames.Add(icon.GetPath());
+                                else
+                                    iconNames.Add(icon.name);
+
+                    }
+                    void filter()
+                    {
+                        iconNames = iconNames.Distinct().ToList();
 
 
-                    folderState.contentMinimapIconNames = iconNames.Distinct().OrderBy(r => r).ToList();
+                        for (int i = 0; i < iconNames.Count; i++)
+                            if (iconNames[i].StartsWith("d_"))
+                                iconNames[i] = iconNames[i].Substring(2);
+
+
+
+                        iconNames.Remove("DefaultAsset Icon");
+                        iconNames.Remove("TextAsset Icon");
+
+
+
+                        if (iconNames.Contains("cs Script Icon"))
+                            iconNames.Remove("AssemblyDefinitionAsset Icon");
+
+                        if (iconNames.Contains("Shader Icon"))
+                            iconNames.Remove("ShaderInclude Icon");
+
+                    }
+                    void order()
+                    {
+                        var order = new List<string>
+                        {
+
+                            "SceneAsset Icon",
+
+
+                            "Prefab Icon",
+                            "Mesh Icon",
+                            "Material Icon",
+                            "Texture Icon",
+
+
+                            "cs Script Icon",
+                            "Shader Icon",
+                            "ComputeShader Icon",
+                            "ShaderInclude Icon",
+
+
+                            "ScriptableObject Icon",
+
+                        };
+
+                        iconNames = iconNames.OrderBy(r => order.IndexOf(r) is int i && i != -1 ? i : 1232)
+                                              .ThenBy(r => r)
+                                              .ToList();
+                    }
+
+                    fill();
+                    filter();
+                    order();
+
+                    folderState.contentMinimapIconNames = iconNames;
 
                 }
-                void autoIconName()
+                void autoIcon()
                 {
                     folderState.autoIconName = "";
 
-                    var types = Directory.GetFiles(guid.ToPath(), "*.*")
-                                         .Select(r => AssetDatabase.GetMainAssetTypeAtPath(r))
-                                         .Where(r => r != null);
 
-                    if (!types.Any()) return;
-                    if (!types.All(r => r == types.First())) return;
+                    if (!typesInFolder.Any()) return;
+                    if (!typesInFolder.All(r => r == typesInFolder.First()) && !typesInFolder.All(r => typeof(ScriptableObject).IsAssignableFrom(r))) return;
 
-                    var type = types.First();
+                    var type = typesInFolder.First();
+
 
                     if (type == typeof(SceneAsset))
                         folderState.autoIconName = "SceneAsset Icon";
@@ -1756,9 +1346,6 @@ namespace VFolders
                     else if (type == typeof(Texture))
                         folderState.autoIconName = "Texture Icon";
 
-                    else if (type.BaseType == typeof(ScriptableObject))
-                        folderState.autoIconName = "ScriptableObject Icon";
-
                     else if (type == typeof(TerrainData))
                         folderState.autoIconName = "TerrainData Icon";
 
@@ -1771,19 +1358,24 @@ namespace VFolders
                     else if (type == typeof(ComputeShader))
                         folderState.autoIconName = "ComputeShader Icon";
 
-                    else if (type == typeof(MonoScript) || type == typeof(AssemblyDefinitionAsset) || type == typeof(AssemblyDefinitionReferenceAsset))
+                    else if (type == typeof(MonoScript) || type == typeof(UnityEditorInternal.AssemblyDefinitionAsset) || type == typeof(UnityEditorInternal.AssemblyDefinitionReferenceAsset))
                         folderState.autoIconName = "cs Script Icon";
+
+                    else if (typeof(ScriptableObject).IsAssignableFrom(type))
+                        folderState.autoIconName = "ScriptableObject Icon";
+
                 }
 
+
                 isEmpty();
-                contentTypeNames();
-                autoIconName();
+                contentMinimap();
+                autoIcon();
 
                 folderState.needsUpdate = false;
 
             }
 
-            getFromCache();
+            getCached();
             create();
             update();
 
@@ -1793,7 +1385,7 @@ namespace VFolders
 
         class FolderStateChangeDetector : AssetPostprocessor
         {
-#if UNITY_2021_2_OR_NEWER
+#if UNITY_2021_1_OR_NEWER
             static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths, bool didDomainReload)
 #else
             static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
@@ -1802,11 +1394,19 @@ namespace VFolders
                 foreach (var path in importedAssets.Concat(deletedAssets).Concat(movedAssets).Concat(movedFromAssetPaths))
                     if (path.HasParentPath())
                         if (cache.folderStates_byGuid.TryGetValue(path.GetParentPath().ToGuid(), out var folderState))
-                            folderState.needsUpdate = true;
+                            folderState.needsUpdate = true; // todo only clear folderinfo cache here?
             }
         }
 
         public static VFoldersCache cache => VFoldersCache.instance;
+
+
+
+        public static void OnProjectChanged() => folderInfoCache.Clear();
+        public static void OnDataSerialization() => folderInfoCache.Clear();
+
+
+
 
 
 
@@ -1827,23 +1427,55 @@ namespace VFolders
 
             void subscribe()
             {
-                EditorApplication.projectWindowItemOnGUI -= ProjectBrowserItemGUI;
-                EditorApplication.projectWindowItemOnGUI = ProjectBrowserItemGUI + EditorApplication.projectWindowItemOnGUI;
 
-                EditorApplication.update -= Update;
-                EditorApplication.update += Update;
+                // gui
+
+#if UNITY_2022_1_OR_NEWER
+                EditorApplication.projectWindowItemInstanceOnGUI -= ItemGUI_2022_1_and_newer;
+                EditorApplication.projectWindowItemInstanceOnGUI = ItemGUI_2022_1_and_newer + EditorApplication.projectWindowItemInstanceOnGUI;
+#else
+                EditorApplication.projectWindowItemOnGUI -= ItemGUI_2021_3_and_older;
+                EditorApplication.projectWindowItemOnGUI = ItemGUI_2021_3_and_older + EditorApplication.projectWindowItemOnGUI;
+#endif
+
+
+
+                // wrapping updaters            
+
+                EditorApplication.projectWindowItemOnGUI -= ProjectWindowItemOnGUI;
+                EditorApplication.projectWindowItemOnGUI += ProjectWindowItemOnGUI;
+
+                EditorApplication.hierarchyWindowItemOnGUI -= HierarchyWindowItemOnGUI;
+                EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
+
+                EditorApplication.delayCall -= DelayCallLoop;
+                EditorApplication.delayCall += DelayCallLoop;
+
+                EditorApplication.update -= CheckIfFocusedWindowChanged;
+                EditorApplication.update += CheckIfFocusedWindowChanged;
+
+
+
+                // shortcuts
 
                 var globalEventHandler = typeof(EditorApplication).GetFieldValue<EditorApplication.CallbackFunction>("globalEventHandler");
-                typeof(EditorApplication).SetFieldValue("globalEventHandler", CheckShortcuts + (globalEventHandler - CheckShortcuts));
+                typeof(EditorApplication).SetFieldValue("globalEventHandler", Shortcuts + (globalEventHandler - Shortcuts));
 
 
-                // EditorApplication.playModeStateChanged += (PlayModeStateChange obj) => UpdateFoldersFirst();
-                // EditorApplication.projectChanged += UpdateFoldersFirst;
+
+                // other
+
+                EditorApplication.update -= GenerateIconsInUpdate;
+                EditorApplication.update += GenerateIconsInUpdate;
+
+                EditorApplication.projectChanged -= OnProjectChanged;
+                EditorApplication.projectChanged += OnProjectChanged;
+
 
             }
             void loadData()
             {
-                data = AssetDatabase.LoadAssetAtPath<VFoldersData>(EditorPrefs.GetString("vFolders-lastKnownDataPath-" + GetProjectId()));
+                data = AssetDatabase.LoadAssetAtPath<VFoldersData>(ProjectPrefs.GetString("vFolders-lastKnownDataPath"));
 
 
                 if (data) return;
@@ -1853,12 +1485,12 @@ namespace VFolders
 
                 if (!data) return;
 
-                EditorPrefs.SetString("vFolders-lastKnownDataPath-" + GetProjectId(), data.GetPath());
+                ProjectPrefs.SetString("vFolders-lastKnownDataPath", data.GetPath());
 
             }
             void loadPalette()
             {
-                palette = AssetDatabase.LoadAssetAtPath<VFoldersPalette>(EditorPrefs.GetString("vFolders-lastKnownPalettePath-" + GetProjectId()));
+                palette = AssetDatabase.LoadAssetAtPath<VFoldersPalette>(ProjectPrefs.GetString("vFolders-lastKnownPalettePath"));
 
 
                 if (palette) return;
@@ -1868,7 +1500,7 @@ namespace VFolders
 
                 if (!palette) return;
 
-                EditorPrefs.SetString("vFolders-lastKnownPalettePath-" + GetProjectId(), palette.GetPath());
+                ProjectPrefs.SetString("vFolders-lastKnownPalettePath", palette.GetPath());
 
             }
             void loadDataAndPaletteDelayed()
@@ -1888,9 +1520,9 @@ namespace VFolders
             void migrateDataFromV1()
             {
                 if (!data) return;
-                if (EditorPrefs.GetBool("vFolders-dataMigrationFromV1Attempted-" + GetProjectId(), false)) return;
+                if (ProjectPrefs.GetBool("vFolders-dataMigrationFromV1Attempted", false)) return;
 
-                EditorPrefs.SetBool("vFolders-dataMigrationFromV1Attempted-" + GetProjectId(), true);
+                ProjectPrefs.SetBool("vFolders-dataMigrationFromV1Attempted", true);
 
                 var lines = System.IO.File.ReadAllLines(data.GetPath());
 
@@ -1971,12 +1603,33 @@ namespace VFolders
                 catch { }
 
             }
+            void fixIconNamesForUnity6()
+            {
+                if (!Application.unityVersion.Contains("6000")) return;
+                if (ProjectPrefs.GetBool("vFolders-iconNamesForUnity6Fixed", false)) return;
+                if (!palette) return;
+                if (!data) return;
+
+                foreach (var iconRow in palette.iconRows)
+                    if (iconRow.builtinIcons.Contains("PhysicMaterial Icon"))
+                        iconRow.builtinIcons[iconRow.builtinIcons.IndexOf("PhysicMaterial Icon")] = "PhysicsMaterial Icon";
+
+                foreach (var folderData in data.folderDatas_byGuid.Values)
+                    if (folderData.iconNameOrGuid == "PhysicMaterial Icon")
+                        folderData.iconNameOrGuid = "PhysicsMaterial Icon";
+
+                ProjectPrefs.SetBool("vFolders-iconNamesForUnity6Fixed", true);
+
+            }
 
             subscribe();
             loadData();
             loadPalette();
             loadDataAndPaletteDelayed();
             migrateDataFromV1();
+            fixIconNamesForUnity6();
+
+            OnDomainReloaded();
 
         }
 
@@ -1987,12 +1640,33 @@ namespace VFolders
 
 
 
-        static EditorWindow hoveredProjectBrowser => EditorWindow.mouseOverWindow?.GetType() == t_ProjectBrowser ? EditorWindow.mouseOverWindow : null;
-
-        static IEnumerable<EditorWindow> allProjectBrowsers => _allProjectBrowsers ??= t_ProjectBrowser.GetFieldValue<IList>("s_ProjectBrowsers").Cast<EditorWindow>();
-        static IEnumerable<EditorWindow> _allProjectBrowsers;
+        static IEnumerable<EditorWindow> allBrowsers => _allBrowsers ??= t_ProjectBrowser.GetFieldValue<IList>("s_ProjectBrowsers").Cast<EditorWindow>();
+        static IEnumerable<EditorWindow> _allBrowsers;
 
         static Type t_ProjectBrowser = typeof(Editor).Assembly.GetType("UnityEditor.ProjectBrowser");
+        static Type t_HostView = typeof(Editor).Assembly.GetType("UnityEditor.HostView");
+        static Type t_EditorWindowDelegate = t_HostView.GetNestedType("EditorWindowDelegate", maxBindingFlags);
+
+        static Type t_VTabs = Type.GetType("VTabs.VTabs") ?? Type.GetType("VTabs.VTabs, VTabs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+        static Type t_VFavorites = Type.GetType("VFavorites.VFavorites") ?? Type.GetType("VFavorites.VFavorites, VFavorites, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
+
+        static MethodInfo mi_WrappedGUI = typeof(VFolders).GetMethod(nameof(WrappedGUI), maxBindingFlags);
+        static MethodInfo mi_VFavorites_WrappedOnGUI = t_VFavorites?.GetMethod("WrappedOnGUI", maxBindingFlags);
+
+
+
+
+
+
+#if UNITY_6000_3_OR_NEWER
+        public static EntityId ToIdType(this int id) => id;
+        public static List<int> ToInts(this List<EntityId> ids) => ids.Select(r => (int)r).ToList();
+        public static List<int> GetIdList(this object o, string listName) => o.GetMemberValue<List<EntityId>>(listName)?.ToInts();
+#else
+        public static int ToIdType(this int id) => id;
+        public static List<int> ToInts(this List<int> ids) => ids;
+        public static List<int> GetIdList(this object o, string listName) => o.GetMemberValue<List<int>>(listName);
+#endif
 
 
 
@@ -2000,8 +1674,34 @@ namespace VFolders
 
 
 
-        const string version = "2.0.8";
+        const string version = "2.1.13";
 
     }
+
+    #region Rules
+
+    public class RuleAttribute : System.Attribute { }
+
+    public class Folder
+    {
+        public string path => guid.ToPath();
+        public string name => path.Split('/').Last();
+
+        public int color = 0;
+        public string icon = "";
+
+
+
+        public Folder(string guid) => this.guid = guid;
+
+        string guid;
+
+
+    }
+
+
+
+    #endregion
+
 }
 #endif

@@ -178,6 +178,10 @@ MonoBehaviour:
   - rid: 9129764570494402921
   - rid: 9129764570494402922
   - rid: 9129764570494402923
+  - rid: 7087601677197115482
+  - rid: 7087601677197115485
+  - rid: 7087601677197115478
+  - rid: 7087601677197115488
   - rid: 9129764570494402924
   - rid: 9129764570494402925
   - rid: 9129764570494402926
@@ -186,6 +190,9 @@ MonoBehaviour:
   - rid: 9129764570494402929
   - rid: 9129764570494402930
   - rid: 9129764570494402931
+  - rid: 7087601677197115491
+  - rid: 7087601677197115494
+  - rid: 7087601677197115497
   - rid: 9129764570494402932
   - rid: 9129764570494402933
   - rid: 9129764570494402934
@@ -348,6 +355,119 @@ MonoBehaviour:
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
         musicId: Bullies
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 7087601677197115478
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: ae341ffe74954e77b4268d5de6376d9d
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115480
+        nextStepId: fda519773a0040a7a5dbf8ac0345afb7
+    - rid: 7087601677197115480
+      type: {class: VNShowCutsceneCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        cutsceneId: Shinrai_Ep.1
+        clipOverride: {fileID: 0}
+        hideDialogue: 0
+        hideCharacters: 1
+        blockInput: 0
+        fadeInSeconds: 0.15
+        playAudio: 1
+        audioVolume: 1
+    - rid: 7087601677197115482
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 3d7e9553e9434270b25ad09b063fe922
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115484
+        nextStepId: e6e9b7e0cb034e3da532208009f54f8b
+    - rid: 7087601677197115484
+      type: {class: VNVibrationCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        feedbackType: 1
+        pulseCount: 1
+        pulseIntervalSeconds: 0.08
+    - rid: 7087601677197115485
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: e6e9b7e0cb034e3da532208009f54f8b
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115487
+        nextStepId: ae341ffe74954e77b4268d5de6376d9d
+    - rid: 7087601677197115487
+      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        sfxId: Shinrai_Impact
+    - rid: 7087601677197115488
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: fda519773a0040a7a5dbf8ac0345afb7
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115490
+        nextStepId: vnchapter_1_kaitora_line_r172_c04
+    - rid: 7087601677197115490
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shinrai_Balcony_1
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 7087601677197115491
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 452456b5cf724c669c8e86597d759309
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115493
+        nextStepId: 450c7e35ec964675918fcbb0cc5b5e90
+    - rid: 7087601677197115493
+      type: {class: VNHideCutsceneCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        fadeOutSeconds: 0.15
+    - rid: 7087601677197115494
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 450c7e35ec964675918fcbb0cc5b5e90
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115496
+        nextStepId: 77d3fc20c46b467ba31540c7dc062515
+    - rid: 7087601677197115496
+      type: {class: VNVibrationCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        feedbackType: 0
+        pulseCount: 1
+        pulseIntervalSeconds: 0.08
+    - rid: 7087601677197115497
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 77d3fc20c46b467ba31540c7dc062515
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115499
+        nextStepId: vnchapter_1_kaitora_line_r180_c04
+    - rid: 7087601677197115499
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shinrai_Class
         fadeInSeconds: 0.5
         loop: 1
     - rid: 9129764570494402773
@@ -2228,8 +2348,8 @@ MonoBehaviour:
         options:
         - text: Help Yuzuri and impress Shinrai with your magic
           nextStepId: vnchapter_1_kaitora_line_r155_c04
-          kind: 0
-          premiumPrice: 0
+          kind: 2
+          premiumPrice: 15
           effects: []
         - text: Tell Shinrai Yuzuri's uncomfortable
           nextStepId: vnchapter_1_kaitora_line_r156_c05
@@ -2697,7 +2817,7 @@ MonoBehaviour:
         sfxId: 
         text: You take a deep breath, focusing on Shinrai's gaze.
         addToLog: 1
-        nextStepId: vnchapter_1_kaitora_line_r172_c04
+        nextStepId: 3d7e9553e9434270b25ad09b063fe922
     - rid: 9129764570494402924
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2820,7 +2940,7 @@ MonoBehaviour:
         sfxId: 
         text: When you open them again, you're back in the classroom.
         addToLog: 1
-        nextStepId: vnchapter_1_kaitora_line_r180_c04
+        nextStepId: 452456b5cf724c669c8e86597d759309
     - rid: 9129764570494402932
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:

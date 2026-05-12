@@ -18,4 +18,9 @@ MonoBehaviour:
   mentorSprite: {fileID: 21300000, guid: cd1c34d10c2faae43b55619cdff8ae45, type: 3}
   mentorIdSprite: {fileID: 21300000, guid: ec9efc402393d4b4ca61b30189bec452, type: 3}
   mirrorSprite: {fileID: 21300000, guid: 8093affbd67fe074b81466077b5c09b6, type: 3}
+  mentorCharacterId: Hinato
+  overrideMainMenuMentorPose: 0
+  mainMenuMentorPose: 0
+  overrideMainMenuMentorEmotion: 0
+  mainMenuMentorEmotion: 0
   narratives: []

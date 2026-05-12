@@ -18,4 +18,9 @@ MonoBehaviour:
   mentorSprite: {fileID: 21300000, guid: 63a20a2efe8660645a0759f420d59374, type: 3}
   mentorIdSprite: {fileID: 21300000, guid: 4d2ba29716ba64b4382c4a6d6deda4fd, type: 3}
   mirrorSprite: {fileID: 21300000, guid: d03b9a7053f2e96449206b35362269cf, type: 3}
+  mentorCharacterId: Shinrai
+  overrideMainMenuMentorPose: 0
+  mainMenuMentorPose: 0
+  overrideMainMenuMentorEmotion: 0
+  mainMenuMentorEmotion: 0
   narratives: []

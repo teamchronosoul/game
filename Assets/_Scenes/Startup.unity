@@ -4337,6 +4337,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c2d833fe692047044b7d0e4502413a1c, type: 3}
   - key: click
     clip: {fileID: 8300000, guid: 57ffc02a8e201394eab16cdc4ae104af, type: 3}
+  - key: crystals_1
+    clip: {fileID: 8300000, guid: bb3de27c0e9bdca44a1f705e73e0a4fd, type: 3}
   - key: fire_card_Hinato
     clip: {fileID: 8300000, guid: 9796baae79b66214db993facf3d1aeab, type: 3}
   - key: Hinato_intro
@@ -4357,8 +4359,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4c65334bad2269c4ab36b5608b018579, type: 3}
   - key: Shadow
     clip: {fileID: 8300000, guid: 1b1d2f5b04085ff4583ca99f6ff1c25a, type: 3}
-  - key: Shinrai_Balcony
-    clip: {fileID: 8300000, guid: 019663a045863d0429fff9ed18b3698b, type: 3}
+  - key: Shinrai_Balcony_1
+    clip: {fileID: 8300000, guid: b36744a50eeb78443a715518eb1b511f, type: 3}
   - key: Shinrai_Class
     clip: {fileID: 8300000, guid: f43a592baa4fb4d4c8f4642ac6c9d93e, type: 3}
   - key: Shinrai_Impact
@@ -5610,12 +5612,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2ec6ba1ee8b48749524f015ed572a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AppsFlyer::AppsFlyerObjectScript
-  devKey: 
-  appID: 
+  devKey: N7apUjcnPEkLceWsGs5sbC
+  appID: com.chronosoul.game
   UWPAppID: 
   macOSAppID: 
-  isDebug: 0
-  getConversionData: 0
+  isDebug: 1
+  getConversionData: 1
 --- !u!1 &7669604502304819975
 GameObject:
   m_ObjectHideFlags: 0

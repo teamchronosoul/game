@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VN.UI;
 
 namespace VN
 {
@@ -13,6 +14,11 @@ namespace VN
 
         [Header("UI")]
         [SerializeField] private GameObject mainMenuRoot;
+
+        [Header("Test Reward")]
+        [SerializeField] [Min(0)] private int testCompletedCrystalsReward = 50;
+        [SerializeField] private bool playTestRewardFlyAnimation = true;
+        [SerializeField] private RectTransform testRewardFxSource;
 
         [Header("Behaviour")]
         [SerializeField] private bool clearAutosaveBeforeTest = true;
@@ -103,9 +109,21 @@ namespace VN
                 VNAutosave.Save(runner.State);
 
             ShowMainMenu();
+            GiveTestCompletedReward();
         }
         
 
+        private void GiveTestCompletedReward()
+        {
+            if (testCompletedCrystalsReward <= 0)
+                return;
+
+            if (playTestRewardFlyAnimation && VNCurrencyCounterUGUI.TryPlayAddCrystals(testCompletedCrystalsReward, testRewardFxSource))
+                return;
+
+            VNCrystalWallet.Add(testCompletedCrystalsReward);
+        }
+        
         private void ShowMainMenu()
         {
             PlayMainMenuMusic();

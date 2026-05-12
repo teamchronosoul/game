@@ -852,6 +852,9 @@ namespace VN.Editor
                 menu.AddDisabledItem(new GUIContent($"Node {node.stepIndex:000}"));
                 menu.AddSeparator("");
 
+                AddSwapSelectedBlocksMenuItem(menu);
+                menu.AddSeparator("");
+
                 menu.AddItem(new GUIContent("Add Child/Line"), false, () => AddChildStep(typeof(VNLineStep)));
                 menu.AddItem(new GUIContent("Add Child/Choice"), false, () => AddChildStep(typeof(VNChoiceStep)));
                 menu.AddItem(new GUIContent("Add Child/If"), false, () => AddChildStep(typeof(VNIfStep)));
@@ -884,6 +887,7 @@ namespace VN.Editor
                 menu.AddItem(new GUIContent("Layout/Auto Layout"), false, AutoLayoutGraph);
                 menu.AddItem(new GUIContent("Layout/Normalize Layout"), false, NormalizeLayout);
                 menu.AddSeparator("");
+                AddSwapSelectedBlocksMenuItem(menu);
                 menu.AddItem(new GUIContent("Selection/Clear"), false, () =>
                 {
                     _multiSelection.Clear();
@@ -2081,6 +2085,122 @@ namespace VN.Editor
             return step;
         }
 
+        private void AddSwapSelectedBlocksMenuItem(GenericMenu menu)
+        {
+            if (CanSwapSelectedBlocks())
+                menu.AddItem(new GUIContent("Selection/Swap Selected Blocks"), false, SwapSelectedBlocks);
+            else
+                menu.AddDisabledItem(new GUIContent("Selection/Swap Selected Blocks"));
+        }
+
+        private bool CanSwapSelectedBlocks()
+        {
+            return TryGetTwoSelectedStepIndices(out _, out _);
+        }
+
+        private bool TryGetTwoSelectedStepIndices(out int first, out int second)
+        {
+            first = -1;
+            second = -1;
+
+            if (_chapter == null || _chapter.steps == null)
+                return false;
+
+            var valid = _multiSelection
+                .Where(i => i >= 0 && i < _chapter.steps.Count)
+                .Distinct()
+                .OrderBy(i => i)
+                .ToList();
+
+            if (valid.Count != 2)
+                return false;
+
+            first = valid[0];
+            second = valid[1];
+            return true;
+        }
+
+        private void SwapSelectedBlocks()
+        {
+            if (_chapter == null || _chapter.steps == null)
+                return;
+
+            if (!TryGetTwoSelectedStepIndices(out int first, out int second))
+            {
+                EditorUtility.DisplayDialog("Swap Blocks", "Select exactly two blocks first.", "OK");
+                return;
+            }
+
+            if (first == second)
+                return;
+
+            var stepA = _chapter.steps[first];
+            var stepB = _chapter.steps[second];
+            if (stepA == null || stepB == null)
+                return;
+
+            string selectedId = _selectedStepIndex >= 0 && _selectedStepIndex < _chapter.steps.Count
+                ? NormalizeId(_chapter.steps[_selectedStepIndex]?.id)
+                : "";
+
+            string idA = EnsureStepHasId(stepA);
+            string idB = EnsureStepHasId(stepB);
+
+            bool hasPosA = TryGetNodePosition(first, idA, out Vector2 posA);
+            bool hasPosB = TryGetNodePosition(second, idB, out Vector2 posB);
+
+            Undo.RecordObject(_chapter, "Swap VN Blocks");
+
+            _chapter.steps[first] = stepB;
+            _chapter.steps[second] = stepA;
+
+            if (hasPosA && hasPosB)
+            {
+                _manualNodePositions[idA] = posB;
+                _manualNodePositions[idB] = posA;
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(idA)) _manualNodePositions.Remove(idA);
+                if (!string.IsNullOrEmpty(idB)) _manualNodePositions.Remove(idB);
+            }
+
+            EditorUtility.SetDirty(_chapter);
+
+            _multiSelection.Clear();
+            _multiSelection.Add(first);
+            _multiSelection.Add(second);
+
+            if (!string.IsNullOrEmpty(selectedId))
+            {
+                int newSelected = _chapter.steps.FindIndex(s => NormalizeId(s?.id) == selectedId);
+                _selectedStepIndex = newSelected >= 0 ? newSelected : first;
+            }
+            else
+            {
+                _selectedStepIndex = first;
+            }
+
+            RebuildGraph(forceAutoLayout: false);
+            SaveLayoutState();
+            Repaint();
+        }
+
+        private bool TryGetNodePosition(int stepIndex, string stepId, out Vector2 position)
+        {
+            if (_nodeByStep.TryGetValue(stepIndex, out var node))
+            {
+                position = node.rect.position;
+                return true;
+            }
+
+            if (!string.IsNullOrWhiteSpace(stepId) && _manualNodePositions.TryGetValue(stepId, out position))
+                return true;
+
+            position = default;
+            return false;
+        }
+
         private void SetSelectedAsFirst()
         {
             if (_chapter == null) return;
@@ -2773,10 +2893,19 @@ namespace VN.Editor
 
             var types = TypeCache.GetTypesDerivedFrom<VNCommand>()
                 .Where(t => !t.IsAbstract && t.GetConstructor(Type.EmptyTypes) != null)
-                .OrderBy(t => t.Name)
+                .Select(t => new
+                {
+                    Type = t,
+                    Category = GetCommandMenuCategory(t),
+                    Name = GetCommandDisplayName(t)
+                })
+                .OrderBy(x => GetCommandMenuCategoryOrder(x.Category))
+                .ThenBy(x => x.Name)
                 .ToList();
 
-            string currentName = current != null ? current.Name : "(None)";
+            string currentName = current != null
+                ? $"{GetCommandMenuCategory(current)} / {GetCommandDisplayName(current)}"
+                : "(None)";
 
             using (new EditorGUILayout.HorizontalScope())
             {
@@ -2796,10 +2925,17 @@ namespace VN.Editor
 
                     m.AddSeparator("");
 
-                    foreach (var t in types)
+                    string previousCategory = null;
+                    foreach (var item in types)
                     {
-                        var captured = t;
-                        m.AddItem(new GUIContent(captured.Name), current == captured, () =>
+                        if (previousCategory != null && previousCategory != item.Category)
+                            m.AddSeparator(previousCategory + "/");
+
+                        previousCategory = item.Category;
+                        var captured = item.Type;
+                        string menuPath = $"{item.Category}/{item.Name}";
+
+                        m.AddItem(new GUIContent(menuPath), current == captured, () =>
                         {
                             cmdProp.managedReferenceValue = Activator.CreateInstance(captured);
                             cmdProp.serializedObject.ApplyModifiedProperties();
@@ -2810,6 +2946,89 @@ namespace VN.Editor
                     m.ShowAsContext();
                 }
             }
+        }
+
+        private static string GetCommandMenuCategory(Type type)
+        {
+            string name = type != null ? type.Name : "";
+
+            if (name.Contains("Background") || name.Contains("Character") || name.Contains("Vfx") || name.Contains("Cutscene"))
+                return "Visual";
+
+            if (name.Contains("Music") || name.Contains("Sfx") || name.Contains("Sound") || name.Contains("Audio"))
+                return "Audio";
+
+            if (name.Contains("Crystal") || name.Contains("Currency") || name.Contains("Money") || name.Contains("Reward"))
+                return "Currency";
+
+            if (name.Contains("BoolVar") || name.Contains("IntVar") || name.Contains("StringVar") || name.Contains("Var"))
+                return "Variables";
+
+            if (name.Contains("TruthEye") || name.Contains("Mbti") || name.Contains("Artifact") || name.Contains("Gate"))
+                return "Gameplay";
+
+            if (name.Contains("Vibration") || name.Contains("Haptic"))
+                return "Feedback";
+
+            if (name.Contains("Wait") || name.Contains("Delay"))
+                return "Flow";
+
+            return "Other";
+        }
+
+        private static int GetCommandMenuCategoryOrder(string category)
+        {
+            switch (category)
+            {
+                case "Visual": return 0;
+                case "Audio": return 1;
+                case "Currency": return 2;
+                case "Variables": return 3;
+                case "Gameplay": return 4;
+                case "Feedback": return 5;
+                case "Flow": return 6;
+                default: return 100;
+            }
+        }
+
+        private static string GetCommandDisplayName(Type type)
+        {
+            if (type == null) return "(None)";
+
+            string name = type.Name;
+            if (name.StartsWith("VN", StringComparison.Ordinal))
+                name = name.Substring(2);
+            if (name.EndsWith("Command", StringComparison.Ordinal))
+                name = name.Substring(0, name.Length - "Command".Length);
+
+            return AddSpacesToPascalCase(name);
+        }
+
+        private static string AddSpacesToPascalCase(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return value;
+
+            var result = new System.Text.StringBuilder(value.Length + 8);
+            result.Append(value[0]);
+
+            for (int i = 1; i < value.Length; i++)
+            {
+                char current = value[i];
+                char previous = value[i - 1];
+                char next = i + 1 < value.Length ? value[i + 1] : '\0';
+
+                bool breakBeforeUpper = char.IsUpper(current) &&
+                                        (!char.IsUpper(previous) || (next != '\0' && char.IsLower(next)));
+                bool breakBeforeDigit = char.IsDigit(current) && !char.IsDigit(previous);
+
+                if (breakBeforeUpper || breakBeforeDigit)
+                    result.Append(' ');
+
+                result.Append(current);
+            }
+
+            return result.ToString();
         }
 
         private static void DrawProp(SerializedProperty root, string name)

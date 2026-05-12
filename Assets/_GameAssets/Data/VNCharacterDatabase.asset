@@ -38,6 +38,55 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: 34a51a5b35ef99747922bc543164292d, type: 3}
+    spineSkeletonData: {fileID: 11400000, guid: c24aac8b6ad89c64998b7aa6fdc18724, type: 2}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: man
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations:
+    - pose: 0
+      emotion: 0
+      baseSkinNameOverride: 
+      emotionSlotName: man
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 1
+      baseSkinNameOverride: 
+      emotionSlotName: man_happy
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 2
+      baseSkinNameOverride: 
+      emotionSlotName: man_sad
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 3
+      baseSkinNameOverride: 
+      emotionSlotName: man_angry
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 4
+      baseSkinNameOverride: 
+      emotionSlotName: man_shock
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 5
+      baseSkinNameOverride: 
+      emotionSlotName: man_smile
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 6
+      baseSkinNameOverride: 
+      emotionSlotName: man_arrogant
+      animationName: 
+      loop: 1
   - id: Lumis
     displayName: Lumis
     defaultScreenSlot: 1
@@ -63,6 +112,55 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: 53430ffb89290d349aeb6fa7f3e2b4ce, type: 3}
+    spineSkeletonData: {fileID: 11400000, guid: f3fd91f025fe9be439b5577a9fe44b9e, type: 2}
+    defaultBaseSkinName: 
+    defaultEmotionSlotName: lumis_stand
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations:
+    - pose: 0
+      emotion: 0
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_stand
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 1
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_happy
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 2
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_sad
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 3
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_angry
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 4
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_surprise
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 5
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_smile
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 6
+      baseSkinNameOverride: 
+      emotionSlotName: lumis_thoughtful
+      animationName: 
+      loop: 1
   - id: Kensui
     displayName: Kensui
     defaultScreenSlot: 0
@@ -88,6 +186,55 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: c55ca8602d8bd4a4eacfd1ea9882ee9d, type: 3}
+    spineSkeletonData: {fileID: 11400000, guid: 9de6db2390bcd7848a8cc51542c032c6, type: 2}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: man
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations:
+    - pose: 0
+      emotion: 0
+      baseSkinNameOverride: 
+      emotionSlotName: man
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 1
+      baseSkinNameOverride: 
+      emotionSlotName: man_happy
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 2
+      baseSkinNameOverride: 
+      emotionSlotName: man_sad
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 3
+      baseSkinNameOverride: 
+      emotionSlotName: man_angry
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 4
+      baseSkinNameOverride: 
+      emotionSlotName: man_surprise
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 5
+      baseSkinNameOverride: 
+      emotionSlotName: man_smile
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 6
+      baseSkinNameOverride: 
+      emotionSlotName: man_soft_smile
+      animationName: 
+      loop: 1
   - id: Kaitora
     displayName: Kaitora
     defaultScreenSlot: 0
@@ -113,6 +260,55 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: 1cc2ec143fd3df242b4221cf0bd123cc, type: 3}
+    spineSkeletonData: {fileID: 11400000, guid: d114c7c4bc4543c438edf1e8d822f12a, type: 2}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: man
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations:
+    - pose: 0
+      emotion: 0
+      baseSkinNameOverride: 
+      emotionSlotName: man
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 1
+      baseSkinNameOverride: 
+      emotionSlotName: man_happy
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 2
+      baseSkinNameOverride: 
+      emotionSlotName: man_sad
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 3
+      baseSkinNameOverride: 
+      emotionSlotName: man_angry
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 4
+      baseSkinNameOverride: 
+      emotionSlotName: man_shock
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 5
+      baseSkinNameOverride: 
+      emotionSlotName: man_smile
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 6
+      baseSkinNameOverride: 
+      emotionSlotName: man_focused_concentration
+      animationName: 
+      loop: 1
   - id: Hinato
     displayName: Hinato
     defaultScreenSlot: 0
@@ -138,10 +334,66 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: 24025b3d152c55743af709416f98ebda, type: 3}
+    spineSkeletonData: {fileID: 11400000, guid: a1fde3d3a3680834ba57d08ac36798c8, type: 2}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: 
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations:
+    - pose: 0
+      emotion: 0
+      baseSkinNameOverride: 
+      emotionSlotName: man
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 1
+      baseSkinNameOverride: 
+      emotionSlotName: man_happy
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 2
+      baseSkinNameOverride: 
+      emotionSlotName: man_sad
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 3
+      baseSkinNameOverride: 
+      emotionSlotName: man_angry
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 4
+      baseSkinNameOverride: 
+      emotionSlotName: man_shock
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 5
+      baseSkinNameOverride: 
+      emotionSlotName: man_smile
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 6
+      baseSkinNameOverride: 
+      emotionSlotName: man_cheeky_smile
+      animationName: 
+      loop: 1
   - id: You
     displayName: You
     defaultScreenSlot: 1
     sprites: []
+    spineSkeletonData: {fileID: 0}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: 
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations: []
   - id: Yuzuri
     displayName: Yuzuri
     defaultScreenSlot: 0
@@ -167,6 +419,55 @@ MonoBehaviour:
     - pose: 0
       emotion: 6
       sprite: {fileID: 21300000, guid: d67de7cf6a93f9341a685ce379db0861, type: 3}
+    spineSkeletonData: {fileID: 11400000, guid: ecc7b1316f0778447b10dac1d8a0af4e, type: 2}
+    defaultBaseSkinName: girl_stand
+    defaultEmotionSlotName: girl_stand
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations:
+    - pose: 0
+      emotion: 0
+      baseSkinNameOverride: 
+      emotionSlotName: girl_stand
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 1
+      baseSkinNameOverride: 
+      emotionSlotName: girl_happy
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 2
+      baseSkinNameOverride: 
+      emotionSlotName: girl_sad
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 3
+      baseSkinNameOverride: 
+      emotionSlotName: girl_angry
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 4
+      baseSkinNameOverride: 
+      emotionSlotName: girl_shock
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 5
+      baseSkinNameOverride: 
+      emotionSlotName: girl_smile
+      animationName: idle
+      loop: 1
+    - pose: 0
+      emotion: 6
+      baseSkinNameOverride: 
+      emotionSlotName: girl_nervous
+      animationName: 
+      loop: 1
   - id: Kenji
     displayName: Kenji
     defaultScreenSlot: 0
@@ -177,6 +478,13 @@ MonoBehaviour:
     - pose: 0
       emotion: 0
       sprite: {fileID: 21300000, guid: 251ce4959b257024ba56dec70e509156, type: 3}
+    spineSkeletonData: {fileID: 0}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: 
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations: []
   - id: Sota
     displayName: Sota
     defaultScreenSlot: 0
@@ -187,6 +495,13 @@ MonoBehaviour:
     - pose: 0
       emotion: 3
       sprite: {fileID: 21300000, guid: ad998dbca59dbd04aa713e99b11468f6, type: 3}
+    spineSkeletonData: {fileID: 0}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: 
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations: []
   - id: 'Aki '
     displayName: 'Aki '
     defaultScreenSlot: 0
@@ -197,7 +512,21 @@ MonoBehaviour:
     - pose: 0
       emotion: 3
       sprite: {fileID: 21300000, guid: 6debd29b0c55917499855208e838cdd8, type: 3}
+    spineSkeletonData: {fileID: 0}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: 
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations: []
   - id: ???
     displayName: ???
     defaultScreenSlot: 0
     sprites: []
+    spineSkeletonData: {fileID: 0}
+    defaultBaseSkinName: man_stand
+    defaultEmotionSlotName: 
+    spineEmotionSlotsToClear: []
+    defaultAnimationName: idle
+    defaultLoop: 1
+    spineAnimations: []

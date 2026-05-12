@@ -1,7 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
+using Spine.Unity;
 using VN.UI;
+using YsoCorp.GameUtils;
 
 namespace VN
 {
@@ -73,6 +77,9 @@ namespace VN
         public event Action OnMainMenuRequested;
         public event Action<VNChoicePayload> OnChoicePresented;
         public event Action OnChoiceHidden;
+        public event Action<VNPremiumChoiceRejectedPayload> OnPremiumChoiceRejected;
+        public event Action<VNPremiumChoicePaidPayload> OnPremiumChoicePaid;
+        public event Action<VNCurrencyRewardPayload> OnCrystalsRewardRequested;
 
         public event Action<VNBackgroundPayload> OnBackgroundChanged;
         public event Action<VNLocationIntroPayload> OnLocationIntroStarted;
@@ -83,6 +90,8 @@ namespace VN
         public event Action<float> OnMusicStop;
         public event Action<VNSfxPayload> OnSfxPlay;
         public event Action<VNArtifactPayload> OnArtifactShown;
+        public event Action<VNCutscenePayload> OnCutsceneShown;
+        public event Action<VNCutsceneHidePayload> OnCutsceneHidden;
 
         public event Action<bool> OnAutoChanged;
         public event Action<bool> OnSkipChanged;
@@ -113,6 +122,31 @@ namespace VN
         {
             public string stepId;
             public VNChoiceOption[] options;
+        }
+
+        [Serializable]
+        public struct VNPremiumChoiceRejectedPayload
+        {
+            public string stepId;
+            public int optionIndex;
+            public int price;
+            public int balance;
+        }
+
+        [Serializable]
+        public struct VNPremiumChoicePaidPayload
+        {
+            public string stepId;
+            public int optionIndex;
+            public int price;
+            public int balanceBefore;
+            public int balanceAfter;
+        }
+
+        [Serializable]
+        public struct VNCurrencyRewardPayload
+        {
+            public int amount;
         }
 
         [Serializable]
@@ -147,6 +181,15 @@ namespace VN
             public VNEmotion emotion;
 
             public Sprite sprite;
+
+            public bool hasSpine;
+            public SkeletonDataAsset spineSkeletonDataAsset;
+            public string spineBaseSkinName;
+            public string spineSkinName;
+            public string spineAnimationName;
+            public bool spineLoop;
+            public IReadOnlyList<string> spineEmotionSlotsToClear;
+
             public float crossfadeSeconds;
 
             public bool isNewCharacter;
@@ -179,6 +222,25 @@ namespace VN
             public float scaleUpSeconds;
             public float scaleSettleSeconds;
             public float holdSeconds;
+            public float fadeOutSeconds;
+        }
+
+        [Serializable]
+        public struct VNCutscenePayload
+        {
+            public string cutsceneId;
+            public VideoClip clip;
+            public bool hideDialogue;
+            public bool hideCharacters;
+            public bool blockInput;
+            public float fadeInSeconds;
+            public bool playAudio;
+            public float audioVolume;
+        }
+
+        [Serializable]
+        public struct VNCutsceneHidePayload
+        {
             public float fadeOutSeconds;
         }
 
@@ -296,6 +358,9 @@ namespace VN
             if (_locationIntroActive)
                 return;
 
+            if (State.cutsceneVisible && State.cutsceneBlockInput)
+                return;
+
             if (_modalOpen)
                 return;
 
@@ -385,16 +450,49 @@ namespace VN
                 return;
 
             var opt = _currentChoiceStep.options[optionIndex];
+            if (opt == null)
+                return;
+
+            var next = Norm(opt.nextStepId);
+            if (string.IsNullOrEmpty(next))
+                return;
+
+            var price = GetPremiumPrice(opt);
+            if (price > 0)
+            {
+                var balanceBefore = VNCrystalWallet.Balance;
+
+                if (!VNCrystalWallet.TrySpend(price))
+                {
+                    OnPremiumChoiceRejected?.Invoke(new VNPremiumChoiceRejectedPayload
+                    {
+                        stepId = State.stepId,
+                        optionIndex = optionIndex,
+                        price = price,
+                        balance = VNCrystalWallet.Balance
+                    });
+                    return;
+                }
+
+                var balanceAfter = VNCrystalWallet.Balance;
+
+                CoinFxManager.PlayCrystalCurrencySfxGlobal();
+
+                OnPremiumChoicePaid?.Invoke(new VNPremiumChoicePaidPayload
+                {
+                    stepId = State.stepId,
+                    optionIndex = optionIndex,
+                    price = price,
+                    balanceBefore = balanceBefore,
+                    balanceAfter = balanceAfter
+                });
+            }
 
             AddChoiceToLog(opt.text);
 
             if (opt.effects != null)
                 for (var i = 0; i < opt.effects.Count; i++)
                     ApplyVarOp(opt.effects[i]);
-
-            var next = Norm(opt.nextStepId);
-            if (string.IsNullOrEmpty(next))
-                return;
 
             _choiceWaiting = false;
             _currentChoiceStep = null;
@@ -406,6 +504,26 @@ namespace VN
             State.currentStepLogged = false;
 
             VNAutosave.Save(State);
+        }
+
+        public bool CanChooseCurrentOption(int optionIndex)
+        {
+            if (!_choiceWaiting || _currentChoiceStep == null || _currentChoiceStep.options == null)
+                return false;
+
+            if (optionIndex < 0 || optionIndex >= _currentChoiceStep.options.Count)
+                return false;
+
+            var opt = _currentChoiceStep.options[optionIndex];
+            return opt != null && VNCrystalWallet.CanSpend(GetPremiumPrice(opt));
+        }
+
+        private static int GetPremiumPrice(VNChoiceOption option)
+        {
+            if (option == null || option.kind != VNChoiceKind.Premium)
+                return 0;
+
+            return Mathf.Max(0, option.premiumPrice);
         }
 
         private IEnumerator MainLoop()
@@ -1089,6 +1207,52 @@ namespace VN
                     EmitArtifact(give);
                     stopAutoHere = true;
                     break;
+
+                case VNGiveCrystalsCommand giveCrystals:
+                    GiveCrystals(giveCrystals.amount, giveCrystals.playFlyAnimation);
+                    break;
+
+                case VNVibrationCommand vibration:
+                    PlayVibrationCommand(vibration);
+                    break;
+
+                case VNShowCutsceneCommand showCutscene:
+                    ShowCutscene(showCutscene);
+                    break;
+
+                case VNHideCutsceneCommand hideCutscene:
+                    HideCutscene(hideCutscene);
+                    break;
+            }
+        }
+
+        private void PlayVibrationCommand(VNVibrationCommand command)
+        {
+            if (command == null)
+                return;
+
+            int pulseCount = Mathf.Max(1, command.pulseCount);
+
+            if (pulseCount <= 1 || !isActiveAndEnabled)
+            {
+                VNVibration.Play(command.feedbackType);
+                return;
+            }
+
+            StartCoroutine(PlayVibrationRoutine(command.feedbackType, pulseCount, command.pulseIntervalSeconds));
+        }
+
+        private IEnumerator PlayVibrationRoutine(VNHapticFeedbackType feedbackType, int pulseCount, float pulseIntervalSeconds)
+        {
+            pulseCount = Mathf.Max(1, pulseCount);
+            pulseIntervalSeconds = Mathf.Max(0f, pulseIntervalSeconds);
+
+            for (int i = 0; i < pulseCount; i++)
+            {
+                VNVibration.Play(feedbackType);
+
+                if (i < pulseCount - 1 && pulseIntervalSeconds > 0f)
+                    yield return new WaitForSecondsRealtime(pulseIntervalSeconds);
             }
         }
 
@@ -1182,6 +1346,12 @@ namespace VN
                 return;
 
             speakerId = Norm(speakerId);
+
+            // Narrator/player/unknown speakers must not clear the last visible character.
+            // Auto character switching is only allowed for real characters that have a sprite or Spine visual.
+            if (!CanAutoApplySpeakerVisual(speakerId, pose, emotion))
+                return;
+
             State.EnsureSlots();
 
             var fade = Mathf.Max(0f, autoSpeakerCrossfadeSeconds);
@@ -1230,6 +1400,37 @@ namespace VN
 
             if (AutoEnabled && stopAutoOnNewCharacter)
                 _autoStopDueToNewCharacterThisStep = true;
+        }
+
+        private bool CanAutoApplySpeakerVisual(string speakerId, VNPose pose, VNEmotion emotion)
+        {
+            speakerId = Norm(speakerId);
+
+            if (string.IsNullOrWhiteSpace(speakerId))
+                return false;
+
+            if (IsPlayerSpeakerId(speakerId))
+                return false;
+
+            if (project == null || project.characterDatabase == null)
+                return false;
+
+            if (!project.characterDatabase.TryGetCharacter(speakerId, out _))
+                return false;
+
+            if (project.characterDatabase.TryGetSprite(speakerId, pose, emotion, out var sprite) && sprite != null)
+                return true;
+
+            if (project.characterDatabase.TryGetSpineAnimation(speakerId, pose, emotion, out var spine) && spine.skeletonDataAsset != null)
+                return true;
+
+            return false;
+        }
+
+        private static bool IsPlayerSpeakerId(string speakerId)
+        {
+            return string.Equals(speakerId, "YOU", StringComparison.OrdinalIgnoreCase)
+                   || string.Equals(speakerId, "PLAYER", StringComparison.OrdinalIgnoreCase);
         }
 
         private void ShowOnlyCharacter(
@@ -1523,6 +1724,11 @@ namespace VN
                     EmitSlot(s.slot, null, VNPose.Default, VNEmotion.Neutral, false, 0f, false);
                 }
             }
+
+            if (State.cutsceneVisible && !string.IsNullOrWhiteSpace(State.cutsceneId))
+                EmitCutsceneFromState(0f);
+            else
+                OnCutsceneHidden?.Invoke(new VNCutsceneHidePayload { fadeOutSeconds = 0f });
         }
 
         private void EmitBackground(string backgroundId, float crossfade)
@@ -1554,11 +1760,29 @@ namespace VN
 
             var name = "";
             Sprite sprite = null;
+            var hasSpine = false;
+            SkeletonDataAsset spineSkeletonDataAsset = null;
+            var spineBaseSkinName = "";
+            var spineSkinName = "";
+            var spineAnimationName = "";
+            var spineLoop = true;
+            IReadOnlyList<string> spineEmotionSlotsToClear = null;
 
             if (visible && !string.IsNullOrWhiteSpace(characterId) && project.characterDatabase != null)
             {
                 project.characterDatabase.TryGetDisplayName(characterId, out name);
                 project.characterDatabase.TryGetSprite(characterId, pose, emotion, out sprite);
+
+                if (project.characterDatabase.TryGetSpineAnimation(characterId, pose, emotion, out var spine))
+                {
+                    hasSpine = spine.skeletonDataAsset != null;
+                    spineSkeletonDataAsset = spine.skeletonDataAsset;
+                    spineBaseSkinName = spine.baseSkinName ?? "";
+                    spineSkinName = spine.skinName ?? "";
+                    spineAnimationName = spine.animationName ?? "";
+                    spineLoop = spine.loop;
+                    spineEmotionSlotsToClear = spine.emotionSlotsToClear;
+                }
             }
 
             OnSlotChanged?.Invoke(new VNSlotPayload
@@ -1570,6 +1794,13 @@ namespace VN
                 pose = pose,
                 emotion = emotion,
                 sprite = sprite,
+                hasSpine = hasSpine,
+                spineSkeletonDataAsset = spineSkeletonDataAsset,
+                spineBaseSkinName = spineBaseSkinName,
+                spineSkinName = spineSkinName,
+                spineAnimationName = spineAnimationName,
+                spineLoop = spineLoop,
+                spineEmotionSlotsToClear = spineEmotionSlotsToClear,
                 crossfadeSeconds = Mathf.Max(0f, crossfade),
                 isNewCharacter = isNewCharacter
             });
@@ -1590,6 +1821,108 @@ namespace VN
                 fadeInSeconds = Mathf.Max(0f, fadeIn),
                 loop = loop
             });
+        }
+
+        private void ShowCutscene(VNShowCutsceneCommand command)
+        {
+            if (command == null)
+                return;
+
+            var cutsceneId = Norm(command.cutsceneId);
+            var clip = command.clipOverride;
+
+            if (clip == null && !string.IsNullOrWhiteSpace(cutsceneId) && project != null && project.assetDatabase != null)
+                project.assetDatabase.TryGetCutscene(cutsceneId, out clip);
+
+            if (clip == null)
+            {
+                Debug.LogWarning($"[VNRunner] Cutscene video not found. ID: '{cutsceneId ?? "<empty>"}'.");
+                return;
+            }
+
+            State.cutsceneVisible = true;
+            State.cutsceneId = cutsceneId;
+            State.cutsceneHideDialogue = command.hideDialogue;
+            State.cutsceneHideCharacters = command.hideCharacters;
+            State.cutsceneBlockInput = command.blockInput;
+            State.cutscenePlayAudio = command.playAudio;
+            State.cutsceneAudioVolume = Mathf.Clamp01(command.audioVolume);
+
+            if (string.IsNullOrWhiteSpace(cutsceneId) && command.clipOverride != null)
+            {
+                Debug.LogWarning(
+                    "[VNRunner] Cutscene uses Clip Override without cutsceneId. It will play now, but it cannot be restored from autosave after reload.");
+            }
+
+            OnCutsceneShown?.Invoke(new VNCutscenePayload
+            {
+                cutsceneId = cutsceneId,
+                clip = clip,
+                hideDialogue = command.hideDialogue,
+                hideCharacters = command.hideCharacters,
+                blockInput = command.blockInput,
+                fadeInSeconds = Mathf.Max(0f, command.fadeInSeconds),
+                playAudio = command.playAudio,
+                audioVolume = Mathf.Clamp01(command.audioVolume)
+            });
+        }
+
+        private void HideCutscene(VNHideCutsceneCommand command)
+        {
+            State.cutsceneVisible = false;
+            State.cutsceneId = null;
+            State.cutsceneHideDialogue = false;
+            State.cutsceneHideCharacters = false;
+            State.cutsceneBlockInput = false;
+            State.cutscenePlayAudio = true;
+            State.cutsceneAudioVolume = 1f;
+
+            OnCutsceneHidden?.Invoke(new VNCutsceneHidePayload
+            {
+                fadeOutSeconds = Mathf.Max(0f, command != null ? command.fadeOutSeconds : 0f)
+            });
+        }
+
+        private void EmitCutsceneFromState(float fadeInSeconds)
+        {
+            var cutsceneId = Norm(State.cutsceneId);
+            if (string.IsNullOrWhiteSpace(cutsceneId) || project == null || project.assetDatabase == null)
+                return;
+
+            if (!project.assetDatabase.TryGetCutscene(cutsceneId, out var clip) || clip == null)
+            {
+                Debug.LogWarning($"[VNRunner] Saved cutscene video not found. ID: '{cutsceneId}'.");
+                return;
+            }
+
+            OnCutsceneShown?.Invoke(new VNCutscenePayload
+            {
+                cutsceneId = cutsceneId,
+                clip = clip,
+                hideDialogue = State.cutsceneHideDialogue,
+                hideCharacters = State.cutsceneHideCharacters,
+                blockInput = State.cutsceneBlockInput,
+                fadeInSeconds = Mathf.Max(0f, fadeInSeconds),
+                playAudio = State.cutscenePlayAudio,
+                audioVolume = Mathf.Clamp01(State.cutsceneAudioVolume)
+            });
+        }
+
+        private void GiveCrystals(int amount, bool playFlyAnimation)
+        {
+            amount = Mathf.Max(0, amount);
+            if (amount <= 0)
+                return;
+
+            var handler = OnCrystalsRewardRequested;
+            if (playFlyAnimation && handler != null)
+            {
+                handler.Invoke(new VNCurrencyRewardPayload { amount = amount });
+                return;
+            }
+
+            VNCrystalWallet.Add(amount);
+            CoinFxManager.PlayCrystalCurrencySfxGlobal();
         }
 
         private void EmitSfx(string sfxId)
@@ -1827,6 +2160,7 @@ namespace VN
             
             OnChoiceHidden?.Invoke();
             OnLineHidden?.Invoke();
+            OnCutsceneHidden?.Invoke(new VNCutsceneHidePayload { fadeOutSeconds = 0f });
         }
         private void SetTruthEyeMinigameActive(bool active)
         {
@@ -1994,6 +2328,16 @@ namespace VN
                 sprite = null,
                 crossfadeSeconds = 0f
             });
+
+            State.cutsceneVisible = false;
+            State.cutsceneId = null;
+            State.cutsceneHideDialogue = false;
+            State.cutsceneHideCharacters = false;
+            State.cutsceneBlockInput = false;
+            State.cutscenePlayAudio = true;
+            State.cutsceneAudioVolume = 1f;
+
+            OnCutsceneHidden?.Invoke(new VNCutsceneHidePayload { fadeOutSeconds = 0f });
 
             VNAutosave.Save(State);
         }

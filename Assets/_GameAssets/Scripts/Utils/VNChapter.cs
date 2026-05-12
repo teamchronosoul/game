@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace VN
 {
@@ -206,6 +207,14 @@ namespace VN
         public float fadeOutSeconds = 0.2f;
     }
     [Serializable]
+    public class VNGiveCrystalsCommand : VNCommand
+    {
+        [Min(1)] public int amount = 50;
+
+        [Tooltip("Если включено, начисление идет через CoinFxManager полетом к счетчику валюты.")]
+        public bool playFlyAnimation = true;
+    }
+    [Serializable]
     public class VNShowCharacterCommand : VNCommand
     {
         public string characterId;
@@ -237,6 +246,38 @@ namespace VN
     }
 
     [Serializable] public class VNPlaySfxCommand : VNCommand { public string sfxId; }
+
+    [Serializable]
+    public class VNShowCutsceneCommand : VNCommand
+    {
+        [Header("Cutscene Video")]
+        [Tooltip("ID видео из VNAssetDatabase/Cutscenes. Можно оставить пустым, если задан Clip Override.")]
+        public string cutsceneId;
+
+        [Tooltip("Опционально: прямой клип. Удобно для теста, но для сохранения лучше использовать cutsceneId из базы.")]
+        public VideoClip clipOverride;
+
+        [Header("UI Visibility")]
+        [Tooltip("Скрывать диалоговую плашку и выборы, пока катсцена видна.")]
+        public bool hideDialogue = true;
+
+        [Tooltip("Скрывать персонажей, пока катсцена видна.")]
+        public bool hideCharacters = true;
+
+        [Tooltip("Блокировать клики по VN, пока катсцена видна. Полезно для автокатсцен через Show -> Wait -> Hide.")]
+        public bool blockInput = true;
+
+        [Header("Playback")]
+        [Min(0f)] public float fadeInSeconds = 0.15f;
+        public bool playAudio = true;
+        [Range(0f, 1f)] public float audioVolume = 1f;
+    }
+
+    [Serializable]
+    public class VNHideCutsceneCommand : VNCommand
+    {
+        [Min(0f)] public float fadeOutSeconds = 0.15f;
+    }
 
     [Serializable] public class VNWaitCommand : VNCommand { [Min(0f)] public float seconds = 0.5f; }
 

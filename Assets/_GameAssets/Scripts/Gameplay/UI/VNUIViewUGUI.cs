@@ -32,9 +32,59 @@ namespace VN.UI
         [SerializeField] private VNCrossfadeImageUGUI centerSlot;
         [SerializeField] private VNCrossfadeImageUGUI rightSlot;
 
+        [Header("Spine character slots optional")]
+        [Tooltip("Optional animated Spine layer for the Left slot. If empty, this slot keeps using sprites only.")]
+        [SerializeField] private VNSpineCharacterSlotUGUI leftSpineSlot;
+        [Tooltip("Optional animated Spine layer for the Center slot. If empty, this slot keeps using sprites only.")]
+        [SerializeField] private VNSpineCharacterSlotUGUI centerSpineSlot;
+        [Tooltip("Optional animated Spine layer for the Right slot. If empty, this slot keeps using sprites only.")]
+        [SerializeField] private VNSpineCharacterSlotUGUI rightSpineSlot;
+
+        [Header("Spine Slot Alignment")]
+        [Tooltip("Если включено, перед показом Spine-персонажа обычный sprite помещается в Image_A/Image_B, получает SetNativeSize и становится прозрачным. Spine встает в центр этого Image.")]
+        [SerializeField] private bool alignSpineSlotsToSpriteSlots = true;
+
+        [Tooltip("Оставь включенным. Это новый стабильный режим позиционирования Spine: прозрачный Image_A становится эталоном размера и позиции.")]
+        [SerializeField] private bool useTransparentSpriteProxyForSpineAlignment = true;
+
+        [Tooltip("Если включено, Spine-slot дополнительно копирует sizeDelta прозрачного Image. Обычно выключено, чтобы не менять масштаб Spine-персонажа.")]
+        [SerializeField] private bool copySpriteSlotSizeToSpineSlot = false;
+
+        [Tooltip("Если включено и Spine-slot находится под тем же parent, что и Image_A/Image_B, будут скопированы anchors/pivot. Обычно выключено.")]
+        [SerializeField] private bool copySpriteSlotLayoutToSpineSlotWhenSameParent = false;
+
+        [Header("Character Switching")]
+        [Tooltip("Если включено, при смене персонажа старый персонаж скрывается мгновенно, без fade-out. Это убирает заметное белое/полупрозрачное исчезновение при переключении персонажей.")]
+        [SerializeField] private bool instantHideOldCharacterOnSwitch = true;
+
+        [Tooltip("Если включено, новый персонаж при смене тоже появляется мгновенно. Эмоции текущего персонажа продолжают обновляться без этого форса.")]
+        [SerializeField] private bool instantShowNewCharacterOnSwitch = true;
+
+        [Tooltip("Если включено, UI дополнительно сам проверяет, изменился ли characterId в слоте. Это защищает от случаев, когда runner не пометил смену персонажа как isNewCharacter.")]
+        [SerializeField] private bool detectCharacterSwitchInView = true;
+
+        [Tooltip("Жесткий режим для Spine/PMA-экспортов: любые скрытия и переключения персонажей происходят без alpha-fade. Оставь включенным, чтобы не было белых краев/вспышек при исчезновении.")]
+        [SerializeField] private bool forceInstantCharacterVisibility = true;
+
         [Header("Choice UI")] [SerializeField] private VNChoicePanelUGUI choicePanel;
 
-        [Header("Log UI")] [SerializeField] private VNLogPanelUGUI logPanel;
+        [Header("Currency UI")]
+        [Tooltip("Если включено, счетчик будет показываться сразу при появлении premium choices. По умолчанию выключено: счетчик показывается только при оплате/нехватке валюты/начислении.")]
+        [SerializeField] private bool showCurrencyCounterDuringPremiumChoices = false;
+        [Tooltip("Откуда стартует полет кристаллов для VN-команд начисления, если отдельный источник не задан внутри prefab-счетчика.")]
+        [SerializeField] private RectTransform defaultCurrencyRewardFxSource;
+        [Tooltip("Куда переносить глобальный счетчик валюты при оплате premium choice. Обычно это anchor внутри активного игрового HUD.")]
+        [SerializeField] private RectTransform premiumPaymentCounterAnchor;
+        [Tooltip("Если premiumPaymentCounterAnchor пустой, счетчик будет временно переноситься к нажатой premium-кнопке.")]
+        [SerializeField] private bool useClickedChoiceAsPaymentAnchor = true;
+
+        [Header("Cutscene UI")]
+        [SerializeField] private VNCutscenePlayerUGUI cutscenePlayer;
+        [Tooltip("Дополнительные объекты, которые нужно скрывать на время катсцены. Например кнопки Auto/Skip/Log, если они не внутри dialogueRoot.")]
+        [SerializeField] private GameObject[] extraHideDuringCutscene;
+
+        [Header("Log UI")]
+ [SerializeField] private VNLogPanelUGUI logPanel;
 
         [Header("Buttons")] [SerializeField] private Button autoButton;
         [SerializeField] private Button skipButton;
@@ -93,6 +143,14 @@ namespace VN.UI
         private GameObject[] _locationIntroHiddenTargets;
         private bool[] _locationIntroHiddenTargetStates;
         private Coroutine _locationIntroCoroutine;
+
+        private bool _cutsceneActive;
+        private bool _cutsceneHideDialogue;
+        private bool _cutsceneHideCharacters;
+        private bool _cutsceneBlockInput;
+        private bool _cutsceneVisualsHidden;
+        private GameObject[] _cutsceneHiddenTargets;
+        private bool[] _cutsceneHiddenTargetStates;
         private bool _hasPendingLocationIntroMusic;
         private VNRunner.VNMusicPayload _pendingLocationIntroMusic;
         private RectTransform _activeCameraSlideTarget;
@@ -106,6 +164,16 @@ namespace VN.UI
         private Action<bool> _skipChangedHandler;
         private Action<bool> _skipAllowedChangedHandler;
 
+        private RectTransform _pendingChoiceButtonRect;
+        private int _pendingChoiceIndex = -1;
+
+        private string _leftVisibleCharacterId;
+        private string _centerVisibleCharacterId;
+        private string _rightVisibleCharacterId;
+        private bool _leftVisibleAsSpine;
+        private bool _centerVisibleAsSpine;
+        private bool _rightVisibleAsSpine;
+
         private bool _isLogOpen;
 
         private void OnEnable()
@@ -118,6 +186,11 @@ namespace VN.UI
 
             runner.OnChoicePresented += OnChoice;
             runner.OnChoiceHidden += OnChoiceHidden;
+            runner.OnPremiumChoiceRejected += OnPremiumChoiceRejected;
+            runner.OnPremiumChoicePaid += OnPremiumChoicePaid;
+            runner.OnCrystalsRewardRequested += OnCrystalsRewardRequested;
+            runner.OnCutsceneShown += OnCutsceneShown;
+            runner.OnCutsceneHidden += OnCutsceneHidden;
 
             runner.OnBackgroundChanged += OnBackground;
             runner.OnSlotChanged += OnSlot;
@@ -181,8 +254,13 @@ namespace VN.UI
                 runner.OnRequestInstantReveal -= OnInstantReveal;
                 runner.OnLineHidden -= OnLineHidden;
 
-                runner.OnChoicePresented -= OnChoice;
+                    runner.OnChoicePresented -= OnChoice;
                 runner.OnChoiceHidden -= OnChoiceHidden;
+                runner.OnPremiumChoiceRejected -= OnPremiumChoiceRejected;
+                runner.OnPremiumChoicePaid -= OnPremiumChoicePaid;
+                runner.OnCrystalsRewardRequested -= OnCrystalsRewardRequested;
+                runner.OnCutsceneShown -= OnCutsceneShown;
+                runner.OnCutsceneHidden -= OnCutsceneHidden;
 
                 runner.OnBackgroundChanged -= OnBackground;
                 runner.OnSlotChanged -= OnSlot;
@@ -232,6 +310,15 @@ namespace VN.UI
             _locationIntroActive = false;
             _hasPendingLocationIntroMusic = false;
             _pendingLocationIntroMusic = default;
+
+            SetCutsceneVisualsHidden(false);
+            _cutsceneActive = false;
+            _cutsceneHideDialogue = false;
+            _cutsceneHideCharacters = false;
+            _cutsceneBlockInput = false;
+
+            if (cutscenePlayer != null)
+                cutscenePlayer.HideImmediate();
 
             if (logPanel != null)
                 logPanel.HideImmediate();
@@ -385,7 +472,7 @@ namespace VN.UI
             if (closeLogButton != null)
                 closeLogButton.interactable = _isLogOpen;
             
-            if (_truthEyeActive || _locationIntroActive)
+            if (_truthEyeActive || _locationIntroActive || (_cutsceneActive && _cutsceneBlockInput))
             {
                 if (autoButton != null)
                 {
@@ -463,6 +550,8 @@ namespace VN.UI
 
             if (typewriter != null)
                 typewriter.Begin(BuildShownLineText(line));
+
+            ApplyCutsceneVisibilityConstraints();
         }
 
         private string ResolveShownSpeakerName(VNRunner.VNLinePayload line)
@@ -513,8 +602,26 @@ namespace VN.UI
             if (dialogueRoot != null)
                 dialogueRoot.SetActive(false);
 
+            if (showCurrencyCounterDuringPremiumChoices && HasPremiumChoice(payload))
+            {
+                VNCurrencyCounterUGUI.SetRegisteredVisible(true);
+                VNCurrencyCounterUGUI.RefreshRegistered();
+            }
+
+            _pendingChoiceButtonRect = null;
+            _pendingChoiceIndex = -1;
+
             if (choicePanel != null)
-                choicePanel.Show(payload, idx => runner.Choose(idx));
+                choicePanel.Show(payload, OnChoiceButtonClicked);
+
+            ApplyCutsceneVisibilityConstraints();
+        }
+
+        private void OnChoiceButtonClicked(int optionIndex)
+        {
+            _pendingChoiceIndex = optionIndex;
+            _pendingChoiceButtonRect = choicePanel != null ? choicePanel.GetChoiceButtonRectTransform(optionIndex) : null;
+            runner.Choose(optionIndex);
         }
 
         private void OnChoiceHidden()
@@ -524,6 +631,141 @@ namespace VN.UI
 
             if (dialogueRoot != null)
                 dialogueRoot.SetActive(true);
+
+            _pendingChoiceButtonRect = null;
+            _pendingChoiceIndex = -1;
+
+            ApplyCutsceneVisibilityConstraints();
+        }
+
+        private void OnPremiumChoiceRejected(VNRunner.VNPremiumChoiceRejectedPayload payload)
+        {
+            if (choicePanel != null)
+                choicePanel.RefreshCurrentChoices();
+
+            var anchor = ResolvePremiumPaymentCounterAnchor();
+            if (!VNCurrencyCounterUGUI.TryShowBalanceAt(anchor, true))
+            {
+                VNCurrencyCounterUGUI.SetRegisteredVisible(true);
+                VNCurrencyCounterUGUI.RefreshRegistered();
+                VNCurrencyCounterUGUI.PulseRegistered();
+            }
+        }
+
+        private void OnPremiumChoicePaid(VNRunner.VNPremiumChoicePaidPayload payload)
+        {
+            var anchor = ResolvePremiumPaymentCounterAnchor();
+            if (!VNCurrencyCounterUGUI.TryShowPremiumSpend(payload.price, anchor, _pendingChoiceButtonRect))
+            {
+                VNCurrencyCounterUGUI.SetRegisteredVisible(true);
+                VNCurrencyCounterUGUI.RefreshRegistered();
+                VNCurrencyCounterUGUI.PulseRegistered();
+            }
+        }
+
+        private RectTransform ResolvePremiumPaymentCounterAnchor()
+        {
+            if (premiumPaymentCounterAnchor != null)
+                return premiumPaymentCounterAnchor;
+
+            if (useClickedChoiceAsPaymentAnchor)
+                return _pendingChoiceButtonRect;
+
+            return null;
+        }
+
+        private void OnCrystalsRewardRequested(VNRunner.VNCurrencyRewardPayload payload)
+        {
+            if (VNCurrencyCounterUGUI.TryPlayAddCrystals(payload.amount, defaultCurrencyRewardFxSource))
+                return;
+
+            VNCrystalWallet.Add(payload.amount);
+        }
+
+        private static bool HasPremiumChoice(VNRunner.VNChoicePayload payload)
+        {
+            if (payload.options == null)
+                return false;
+
+            for (int i = 0; i < payload.options.Length; i++)
+            {
+                var option = payload.options[i];
+                if (option != null && option.kind == VNChoiceKind.Premium && option.premiumPrice > 0)
+                    return true;
+            }
+
+            return false;
+        }
+
+        private void OnCutsceneShown(VNRunner.VNCutscenePayload payload)
+        {
+            if (_isLogOpen)
+                SetLogOpen(false);
+
+            if (typewriter != null && typewriter.IsPlaying)
+                typewriter.RevealInstant();
+
+            _cutsceneActive = true;
+            _cutsceneHideDialogue = payload.hideDialogue;
+            _cutsceneHideCharacters = payload.hideCharacters;
+            _cutsceneBlockInput = payload.blockInput;
+
+            SetCutsceneVisualsHidden(true);
+
+            if (cutscenePlayer != null)
+                cutscenePlayer.Show(payload);
+            else
+                Debug.LogWarning("[VNUIViewUGUI] Cutscene command received, but VNCutscenePlayerUGUI is not assigned.");
+
+            RefreshButtons();
+        }
+
+        private void OnCutsceneHidden(VNRunner.VNCutsceneHidePayload payload)
+        {
+            if (cutscenePlayer != null)
+                cutscenePlayer.Hide(payload.fadeOutSeconds);
+
+            SetCutsceneVisualsHidden(false);
+
+            _cutsceneActive = false;
+            _cutsceneHideDialogue = false;
+            _cutsceneHideCharacters = false;
+
+            _cutsceneBlockInput = false;
+
+            RefreshButtons();
+        }
+
+        private void ApplyCutsceneVisibilityConstraints()
+        {
+            if (!_cutsceneActive)
+                return;
+
+            if (_cutsceneHideDialogue)
+            {
+                if (dialogueRoot != null)
+                    dialogueRoot.SetActive(false);
+
+                if (choicePanel != null)
+                    choicePanel.Hide();
+            }
+
+            if (_cutsceneHideCharacters)
+            {
+                if (leftSlot != null)
+                    leftSlot.gameObject.SetActive(false);
+                if (centerSlot != null)
+                    centerSlot.gameObject.SetActive(false);
+                if (rightSlot != null)
+                    rightSlot.gameObject.SetActive(false);
+
+                if (leftSpineSlot != null)
+                    leftSpineSlot.gameObject.SetActive(false);
+                if (centerSpineSlot != null)
+                    centerSpineSlot.gameObject.SetActive(false);
+                if (rightSpineSlot != null)
+                    rightSpineSlot.gameObject.SetActive(false);
+            }
         }
 
         private void OnBackground(VNRunner.VNBackgroundPayload bg)
@@ -538,28 +780,207 @@ namespace VN.UI
 
         private void OnSlot(VNRunner.VNSlotPayload slot)
         {
-            var view = slot.slot switch
+            var spriteView = ResolveSpriteSlot(slot.slot);
+            var spineView = ResolveSpineSlot(slot.slot);
+
+            var visualsHidden = _locationIntroVisualsHidden || _truthEyeVisualsHidden || _cutsceneVisualsHidden;
+            var canUseSpine = slot.visible
+                              && slot.hasSpine
+                              && slot.spineSkeletonDataAsset != null
+                              && spineView != null;
+
+            var wasVisible = TryGetDisplayedCharacter(slot.slot, out var previousCharacterId, out var previousWasSpine);
+            var normalizedCharacterId = NormalizeCharacterId(slot.characterId);
+            var changedCharacterInView = detectCharacterSwitchInView
+                                         && slot.visible
+                                         && wasVisible
+                                         && !string.Equals(previousCharacterId, normalizedCharacterId, StringComparison.Ordinal);
+            var changedRenderLayer = slot.visible && wasVisible && previousWasSpine != canUseSpine;
+
+            var isCharacterSwitch = slot.visible
+                                    && (slot.isNewCharacter || changedCharacterInView || changedRenderLayer);
+
+            var showSeconds = forceInstantCharacterVisibility
+                              || visualsHidden
+                              || (isCharacterSwitch && instantShowNewCharacterOnSwitch)
+                ? 0f
+                : slot.crossfadeSeconds;
+
+            if (!slot.visible)
+            {
+                HideSpriteSlot(spriteView, 0f, true);
+                HideSpineSlot(spineView, 0f);
+                SetDisplayedCharacter(slot.slot, null, false, false);
+                return;
+            }
+
+            if (canUseSpine)
+            {
+                var sameVisibleSpineCharacter = wasVisible
+                                               && previousWasSpine
+                                               && !string.IsNullOrEmpty(normalizedCharacterId)
+                                               && string.Equals(previousCharacterId, normalizedCharacterId, StringComparison.Ordinal);
+
+                if (sameVisibleSpineCharacter && !isCharacterSwitch)
+                {
+                    // Same Spine character on the same slot: this is usually a consecutive line
+                    // or only an emotion/skin change. Do NOT run hidden preparation here.
+                    // Hidden preparation clears the renderer and causes the visible blink/blank frame.
+                    // Also do not rebuild the transparent Image_A proxy: the character must keep
+                    // standing where it already stands.
+                    spineView.Show(
+                        slot.spineSkeletonDataAsset,
+                        slot.spineBaseSkinName,
+                        slot.spineSkinName,
+                        slot.spineAnimationName,
+                        slot.spineLoop,
+                        slot.spineEmotionSlotsToClear,
+                        0f,
+                        allowActivate: true);
+
+                    if (!visualsHidden)
+                        spineView.ForceVisibleInstant();
+
+                    SetDisplayedCharacter(slot.slot, normalizedCharacterId, true, true);
+                    return;
+                }
+
+                // New character / new render layer: do hidden preparation so the player never sees
+                // the default Spine pose or the character jumping from the center into Image_A.
+                // The transparent sprite proxy is refreshed only on this actual switch.
+                var referenceRect = PrepareSpineSpriteProxy(spriteView, slot.sprite);
+
+                if (instantHideOldCharacterOnSwitch && spineView != null)
+                    spineView.SetInstantHidden();
+
+                spineView.ShowHiddenForAlignment(
+                    slot.spineSkeletonDataAsset,
+                    slot.spineBaseSkinName,
+                    slot.spineSkinName,
+                    slot.spineAnimationName,
+                    slot.spineLoop,
+                    slot.spineEmotionSlotsToClear,
+                    allowActivate: true);
+
+                AlignSpineSlotToSpriteReference(spineView, referenceRect);
+
+                if (!visualsHidden)
+                    spineView.RevealAfterAlignment(showSeconds);
+
+                SetDisplayedCharacter(slot.slot, normalizedCharacterId, true, true);
+                return;
+            }
+
+            HideSpineSlot(spineView, 0f);
+            ShowSpriteSlot(spriteView, slot, visualsHidden, forceInstantCharacterVisibility || (isCharacterSwitch && instantShowNewCharacterOnSwitch));
+            SetDisplayedCharacter(slot.slot, normalizedCharacterId, true, false);
+        }
+
+        private RectTransform PrepareSpineSpriteProxy(VNCrossfadeImageUGUI spriteView, Sprite sprite)
+        {
+            if (spriteView == null)
+                return null;
+
+            if (useTransparentSpriteProxyForSpineAlignment)
+                return spriteView.PrepareTransparentSpriteProxy(sprite, setNativeSize: true);
+
+            return spriteView.GetReferenceRectTransform();
+        }
+
+        private void AlignSpineSlotToSpriteReference(VNSpineCharacterSlotUGUI spineView, RectTransform referenceRect)
+        {
+            if (!alignSpineSlotsToSpriteSlots || spineView == null || referenceRect == null)
+                return;
+
+            spineView.AlignToImageSlot(
+                referenceRect,
+                copySpriteSlotSizeToSpineSlot,
+                copySpriteSlotLayoutToSpineSlotWhenSameParent);
+        }
+
+        private bool TryGetDisplayedCharacter(VNScreenSlot slot, out string characterId, out bool wasSpine)
+        {
+            switch (slot)
+            {
+                case VNScreenSlot.Left:
+                    characterId = _leftVisibleCharacterId;
+                    wasSpine = _leftVisibleAsSpine;
+                    break;
+                case VNScreenSlot.Center:
+                    characterId = _centerVisibleCharacterId;
+                    wasSpine = _centerVisibleAsSpine;
+                    break;
+                case VNScreenSlot.Right:
+                    characterId = _rightVisibleCharacterId;
+                    wasSpine = _rightVisibleAsSpine;
+                    break;
+                default:
+                    characterId = null;
+                    wasSpine = false;
+                    return false;
+            }
+
+            return !string.IsNullOrEmpty(characterId);
+        }
+
+        private void SetDisplayedCharacter(VNScreenSlot slot, string characterId, bool visible, bool asSpine)
+        {
+            characterId = visible ? NormalizeCharacterId(characterId) : null;
+
+            switch (slot)
+            {
+                case VNScreenSlot.Left:
+                    _leftVisibleCharacterId = characterId;
+                    _leftVisibleAsSpine = visible && asSpine;
+                    break;
+                case VNScreenSlot.Center:
+                    _centerVisibleCharacterId = characterId;
+                    _centerVisibleAsSpine = visible && asSpine;
+                    break;
+                case VNScreenSlot.Right:
+                    _rightVisibleCharacterId = characterId;
+                    _rightVisibleAsSpine = visible && asSpine;
+                    break;
+            }
+        }
+
+        private static string NormalizeCharacterId(string value)
+        {
+            return string.IsNullOrWhiteSpace(value) ? null : value.Trim();
+        }
+
+        private VNCrossfadeImageUGUI ResolveSpriteSlot(VNScreenSlot slot)
+        {
+            return slot switch
             {
                 VNScreenSlot.Left => leftSlot,
                 VNScreenSlot.Center => centerSlot,
                 VNScreenSlot.Right => rightSlot,
                 _ => null
             };
+        }
 
-            if (view == null) return;
-
-            // Во время location intro character-slot может быть временно SetActive(false).
-            // На неактивном объекте Crossfade запускает coroutine и может не выполниться,
-            // поэтому команды hide/show персонажа применяем мгновенно, чтобы состояние не потерялось.
-            var canAnimateSlot = view.gameObject.activeInHierarchy && !_locationIntroVisualsHidden;
-
-            if (!slot.visible || slot.sprite == null)
+        private VNSpineCharacterSlotUGUI ResolveSpineSlot(VNScreenSlot slot)
+        {
+            return slot switch
             {
-                if (canAnimateSlot && slot.crossfadeSeconds > 0f)
-                    view.Crossfade((Sprite)null, Mathf.Max(0f, slot.crossfadeSeconds), false);
-                else
-                    view.SetInstant((Sprite)null, false);
+                VNScreenSlot.Left => leftSpineSlot,
+                VNScreenSlot.Center => centerSpineSlot,
+                VNScreenSlot.Right => rightSpineSlot,
+                _ => null
+            };
+        }
 
+        private void ShowSpriteSlot(VNCrossfadeImageUGUI view, VNRunner.VNSlotPayload slot, bool visualsHidden, bool forceInstant = false)
+        {
+            if (view == null)
+                return;
+
+            var canAnimateSlot = view.gameObject.activeInHierarchy && !visualsHidden && !forceInstant;
+
+            if (slot.sprite == null)
+            {
+                HideSpriteSlot(view, slot.crossfadeSeconds, visualsHidden);
                 return;
             }
 
@@ -573,6 +994,28 @@ namespace VN.UI
                 view.Crossfade(slot.sprite, slot.crossfadeSeconds, true);
                 StartCoroutine(ApplyNativeSizeNextFrame(view));
             }
+        }
+
+        private void HideSpriteSlot(VNCrossfadeImageUGUI view, float fadeSeconds, bool visualsHidden)
+        {
+            if (view == null)
+                return;
+
+            var canAnimateSlot = view.gameObject.activeInHierarchy && !visualsHidden && !forceInstantCharacterVisibility;
+
+            if (canAnimateSlot && fadeSeconds > 0f)
+                view.Crossfade((Sprite)null, Mathf.Max(0f, fadeSeconds), false);
+            else
+                view.SetInstantHidden();
+        }
+
+        private void HideSpineSlot(VNSpineCharacterSlotUGUI view, float fadeSeconds)
+        {
+            if (view == null)
+                return;
+
+            var visualsHidden = _locationIntroVisualsHidden || _truthEyeVisualsHidden || _cutsceneVisualsHidden;
+            view.Hide((visualsHidden || forceInstantCharacterVisibility) ? 0f : fadeSeconds);
         }
 
         private void ApplyNativeSize(VNCrossfadeImageUGUI view)
@@ -852,6 +1295,9 @@ namespace VN.UI
                 AddUniqueHideTarget(list, leftSlot != null ? leftSlot.gameObject : null);
                 AddUniqueHideTarget(list, centerSlot != null ? centerSlot.gameObject : null);
                 AddUniqueHideTarget(list, rightSlot != null ? rightSlot.gameObject : null);
+                AddUniqueHideTarget(list, leftSpineSlot != null ? leftSpineSlot.gameObject : null);
+                AddUniqueHideTarget(list, centerSpineSlot != null ? centerSpineSlot.gameObject : null);
+                AddUniqueHideTarget(list, rightSpineSlot != null ? rightSpineSlot.gameObject : null);
             }
 
             if (extraHideDuringLocationIntro != null)
@@ -953,11 +1399,84 @@ namespace VN.UI
                 AddUniqueHideTarget(list, leftSlot != null ? leftSlot.gameObject : null);
                 AddUniqueHideTarget(list, centerSlot != null ? centerSlot.gameObject : null);
                 AddUniqueHideTarget(list, rightSlot != null ? rightSlot.gameObject : null);
+                AddUniqueHideTarget(list, leftSpineSlot != null ? leftSpineSlot.gameObject : null);
+                AddUniqueHideTarget(list, centerSpineSlot != null ? centerSpineSlot.gameObject : null);
+                AddUniqueHideTarget(list, rightSpineSlot != null ? rightSpineSlot.gameObject : null);
             }
 
             if (extraHideDuringTruthEye != null)
                 for (var i = 0; i < extraHideDuringTruthEye.Length; i++)
                     AddUniqueHideTarget(list, extraHideDuringTruthEye[i]);
+
+            return list.ToArray();
+        }
+
+        private void SetCutsceneVisualsHidden(bool hidden)
+        {
+            if (_cutsceneVisualsHidden == hidden)
+                return;
+
+            _cutsceneVisualsHidden = hidden;
+
+            if (hidden)
+            {
+                _cutsceneHiddenTargets = BuildCutsceneHideTargets();
+                _cutsceneHiddenTargetStates = new bool[_cutsceneHiddenTargets.Length];
+
+                for (var i = 0; i < _cutsceneHiddenTargets.Length; i++)
+                {
+                    var target = _cutsceneHiddenTargets[i];
+                    if (target == null)
+                        continue;
+
+                    _cutsceneHiddenTargetStates[i] = target.activeSelf;
+                    target.SetActive(false);
+                }
+            }
+            else
+            {
+                if (_cutsceneHiddenTargets != null && _cutsceneHiddenTargetStates != null)
+                {
+                    var count = Mathf.Min(_cutsceneHiddenTargets.Length, _cutsceneHiddenTargetStates.Length);
+
+                    for (var i = 0; i < count; i++)
+                    {
+                        var target = _cutsceneHiddenTargets[i];
+                        if (target == null)
+                            continue;
+
+                        target.SetActive(_cutsceneHiddenTargetStates[i]);
+                    }
+                }
+
+                _cutsceneHiddenTargets = null;
+                _cutsceneHiddenTargetStates = null;
+            }
+        }
+
+        private GameObject[] BuildCutsceneHideTargets()
+        {
+            var list = new List<GameObject>();
+
+            if (_cutsceneHideDialogue)
+            {
+                AddUniqueHideTarget(list, dialogueRoot);
+                AddUniqueHideTarget(list, choicePanel != null ? choicePanel.gameObject : null);
+            }
+
+            if (_cutsceneHideCharacters)
+            {
+                AddUniqueHideTarget(list, leftSlot != null ? leftSlot.gameObject : null);
+                AddUniqueHideTarget(list, centerSlot != null ? centerSlot.gameObject : null);
+                AddUniqueHideTarget(list, rightSlot != null ? rightSlot.gameObject : null);
+                AddUniqueHideTarget(list, leftSpineSlot != null ? leftSpineSlot.gameObject : null);
+                AddUniqueHideTarget(list, centerSpineSlot != null ? centerSpineSlot.gameObject : null);
+                AddUniqueHideTarget(list, rightSpineSlot != null ? rightSpineSlot.gameObject : null);
+            }
+
+            if (extraHideDuringCutscene != null)
+                for (var i = 0; i < extraHideDuringCutscene.Length; i++)
+                    AddUniqueHideTarget(list, extraHideDuringCutscene[i]);
 
             return list.ToArray();
         }

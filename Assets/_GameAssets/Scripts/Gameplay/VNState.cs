@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +15,14 @@ namespace VN
         public VNMbtiState mbti = new VNMbtiState();
         public string backgroundId;
         public string musicId;
+
+        public bool cutsceneVisible;
+        public string cutsceneId;
+        public bool cutsceneHideDialogue;
+        public bool cutsceneHideCharacters;
+        public bool cutsceneBlockInput;
+        public bool cutscenePlayAudio;
+        public float cutsceneAudioVolume = 1f;
 
         public List<SlotState> slots = new()
         {
@@ -60,6 +68,14 @@ namespace VN
             
             backgroundId = null;
             musicId = null;
+
+            cutsceneVisible = false;
+            cutsceneId = null;
+            cutsceneHideDialogue = false;
+            cutsceneHideCharacters = false;
+            cutsceneBlockInput = false;
+            cutscenePlayAudio = true;
+            cutsceneAudioVolume = 1f;
 
             EnsureSlots();
             foreach (var s in slots)

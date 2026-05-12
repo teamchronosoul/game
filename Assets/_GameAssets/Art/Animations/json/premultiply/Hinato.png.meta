@@ -1,0 +1,689 @@
+fileFormatVersion: 2
+guid: 9db053dfa35c1aa46bdacc22f1a7d531
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7812439699164797792
+    second: Hinato_0
+  - first:
+      213: -8705319767427836898
+    second: Hinato_1
+  - first:
+      213: 1613826109172485903
+    second: Hinato_2
+  - first:
+      213: -6705713307172333671
+    second: Hinato_3
+  - first:
+      213: 7690659135033690288
+    second: Hinato_4
+  - first:
+      213: 7319916225500608886
+    second: Hinato_5
+  - first:
+      213: -8233617434540703315
+    second: Hinato_6
+  - first:
+      213: -5459552080353996423
+    second: Hinato_7
+  - first:
+      213: 1489631687157384409
+    second: Hinato_8
+  - first:
+      213: 3888363229913813178
+    second: Hinato_9
+  - first:
+      213: 8658443043293897362
+    second: Hinato_10
+  - first:
+      213: 227190268054115865
+    second: Hinato_11
+  - first:
+      213: 8787702079574715638
+    second: Hinato_12
+  - first:
+      213: 6387123564232774288
+    second: Hinato_13
+  - first:
+      213: 8962432667809141037
+    second: Hinato_14
+  - first:
+      213: 4923978032716524328
+    second: Hinato_15
+  - first:
+      213: -8927319994628545616
+    second: Hinato_16
+  - first:
+      213: 4049994858006796666
+    second: Hinato_17
+  - first:
+      213: 3093864405813171622
+    second: Hinato_18
+  - first:
+      213: 6132777817163729428
+    second: Hinato_19
+  - first:
+      213: 8883076873168374741
+    second: Hinato_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Hinato_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2022
+        width: 75
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a46f165c73a49390800000000000000
+      internalID: -7812439699164797792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1689
+        width: 184
+        height: 330
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1417465bcd703780800000000000000
+      internalID: -8705319767427836898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_2
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1912
+        width: 49
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f0a7ebb46756610800000000000000
+      internalID: 1613826109172485903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_3
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 1680
+        width: 194
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9971268864580f2a0800000000000000
+      internalID: -6705713307172333671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_4
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1680
+        width: 187
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b8cb488cb5baba60800000000000000
+      internalID: 7690659135033690288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_5
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1791
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679f4964601959560800000000000000
+      internalID: 7319916225500608886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_6
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 4
+        width: 845
+        height: 1679
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da10dbd11905cbd80800000000000000
+      internalID: -8233617434540703315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_7
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 1680
+        width: 197
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97151c11f46cb34b0800000000000000
+      internalID: -5459552080353996423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_8
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 1680
+        width: 12
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d48e27802c3ca410800000000000000
+      internalID: 1489631687157384409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_9
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 845
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab014b491cd36f530800000000000000
+      internalID: 3888363229913813178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_10
+      rect:
+        serializedVersion: 2
+        x: 853
+        y: 703
+        width: 127
+        height: 139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2922c7fc218f82870800000000000000
+      internalID: 8658443043293897362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_11
+      rect:
+        serializedVersion: 2
+        x: 983
+        y: 696
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9169ac75854272300800000000000000
+      internalID: 227190268054115865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_12
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 463
+        width: 187
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fc230d6b7034f970800000000000000
+      internalID: 8787702079574715638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_13
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 230
+        width: 187
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0921f9e8a0f93a850800000000000000
+      internalID: 6387123564232774288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_14
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 230
+        width: 34
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d21de10c605f06c70800000000000000
+      internalID: 8962432667809141037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_15
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 5
+        width: 230
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82b25e1beeb755440800000000000000
+      internalID: 4923978032716524328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_16
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 194
+        width: 43
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b36ceb83c9cb1480800000000000000
+      internalID: -8927319994628545616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_17
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 4
+        width: 230
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7957a59dd8743830800000000000000
+      internalID: 4049994858006796666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_18
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 4
+        width: 230
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a518bbf84d9fea20800000000000000
+      internalID: 3093864405813171622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_19
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 139
+        width: 9
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41a807e8ee00c1550800000000000000
+      internalID: 6132777817163729428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hinato_20
+      rect:
+        serializedVersion: 2
+        x: 1550
+        y: 8
+        width: 108
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5db40b10a57074b70800000000000000
+      internalID: 8883076873168374741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Hinato_0: -7812439699164797792
+      Hinato_1: -8705319767427836898
+      Hinato_10: 8658443043293897362
+      Hinato_11: 227190268054115865
+      Hinato_12: 8787702079574715638
+      Hinato_13: 6387123564232774288
+      Hinato_14: 8962432667809141037
+      Hinato_15: 4923978032716524328
+      Hinato_16: -8927319994628545616
+      Hinato_17: 4049994858006796666
+      Hinato_18: 3093864405813171622
+      Hinato_19: 6132777817163729428
+      Hinato_2: 1613826109172485903
+      Hinato_20: 8883076873168374741
+      Hinato_3: -6705713307172333671
+      Hinato_4: 7690659135033690288
+      Hinato_5: 7319916225500608886
+      Hinato_6: -8233617434540703315
+      Hinato_7: -5459552080353996423
+      Hinato_8: 1489631687157384409
+      Hinato_9: 3888363229913813178
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

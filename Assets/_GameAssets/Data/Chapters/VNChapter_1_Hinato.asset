@@ -185,6 +185,10 @@ MonoBehaviour:
   - rid: 9129764567614750909
   - rid: 9129764567614750910
   - rid: 9129764567614750911
+  - rid: 7087601677197115505
+  - rid: 7087601677197115508
+  - rid: 7087601677197115511
+  - rid: 7087601677197115502
   - rid: 9129764567614750912
   - rid: 9129764567614750913
   - rid: 9129764567614750914
@@ -193,6 +197,10 @@ MonoBehaviour:
   - rid: 9129764567614750917
   - rid: 9129764567614750918
   - rid: 9129764567614750919
+  - rid: 7087601677197115514
+  - rid: 7087601677197115517
+  - rid: 7087601677197115523
+  - rid: 7087601677197115520
   - rid: 9129764567614750920
   - rid: 9129764567614750921
   - rid: 9129764567614750922
@@ -338,6 +346,133 @@ MonoBehaviour:
           but you still managed to cast the spell and turn invisible."
         addToLog: 1
         nextStepId: vnchapter_1_hinato_line_r133_c03
+    - rid: 7087601677197115502
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 70f048bf391342e896cc9cfc75ff6892
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115504
+        nextStepId: vnchapter_1_hinato_line_r176_c04
+    - rid: 7087601677197115504
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shinrai_Balcony_1
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 7087601677197115505
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 2af191f843c04a1babe9ffcfcab6d3ac
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115507
+        nextStepId: d7e1d97fe5764a11ac80e78f6c1afd7a
+    - rid: 7087601677197115507
+      type: {class: VNVibrationCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        feedbackType: 1
+        pulseCount: 1
+        pulseIntervalSeconds: 0.08
+    - rid: 7087601677197115508
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: d7e1d97fe5764a11ac80e78f6c1afd7a
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115510
+        nextStepId: 4a71fe426a0243a3ab2098c649e69dd9
+    - rid: 7087601677197115510
+      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        sfxId: Shinrai_Impact
+    - rid: 7087601677197115511
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 4a71fe426a0243a3ab2098c649e69dd9
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115513
+        nextStepId: 70f048bf391342e896cc9cfc75ff6892
+    - rid: 7087601677197115513
+      type: {class: VNShowCutsceneCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        cutsceneId: Shinrai_Ep.1
+        clipOverride: {fileID: 0}
+        hideDialogue: 0
+        hideCharacters: 1
+        blockInput: 0
+        fadeInSeconds: 0.15
+        playAudio: 1
+        audioVolume: 1
+    - rid: 7087601677197115514
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 2f877d7e5a8b49e7ab4affba290df5d7
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115516
+        nextStepId: 27714ebac0a146b1944a290ce6555825
+    - rid: 7087601677197115516
+      type: {class: VNHideCutsceneCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        fadeOutSeconds: 0.15
+    - rid: 7087601677197115517
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 27714ebac0a146b1944a290ce6555825
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115519
+        nextStepId: a093944895934ea6b869c0c21d02c3eb
+    - rid: 7087601677197115519
+      type: {class: VNVibrationCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        feedbackType: 0
+        pulseCount: 1
+        pulseIntervalSeconds: 0.08
+    - rid: 7087601677197115520
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: eab6829fe3024c4088a907b4911d5827
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115522
+        nextStepId: vnchapter_1_hinato_line_r184_c04
+    - rid: 7087601677197115522
+      type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        musicId: Shinrai_Class
+        fadeInSeconds: 0.5
+        loop: 1
+    - rid: 7087601677197115523
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: a093944895934ea6b869c0c21d02c3eb
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601677197115525
+        nextStepId: eab6829fe3024c4088a907b4911d5827
+    - rid: 7087601677197115525
+      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        sfxId: Shinrai_Impact
     - rid: 9129764567614750754
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2330,8 +2465,8 @@ MonoBehaviour:
         options:
         - text: Help Yuzuri and impress Shinrai with your magic
           nextStepId: vnchapter_1_hinato_line_r159_c04
-          kind: 0
-          premiumPrice: 0
+          kind: 2
+          premiumPrice: 15
           effects: []
         - text: Tell Shinrai Yuzuri's uncomfortable
           nextStepId: vnchapter_1_hinato_line_r160_c05
@@ -2799,7 +2934,7 @@ MonoBehaviour:
         sfxId: 
         text: You take a deep breath, focusing on Shinrai's gaze.
         addToLog: 1
-        nextStepId: vnchapter_1_hinato_line_r176_c04
+        nextStepId: 2af191f843c04a1babe9ffcfcab6d3ac
     - rid: 9129764567614750912
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -2922,7 +3057,7 @@ MonoBehaviour:
         sfxId: 
         text: When you open them again, you're back in the classroom.
         addToLog: 1
-        nextStepId: vnchapter_1_hinato_line_r184_c04
+        nextStepId: 2f877d7e5a8b49e7ab4affba290df5d7
     - rid: 9129764567614750920
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4028,7 +4163,7 @@ MonoBehaviour:
       type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
       data:
         slot: 0
-        fadeSeconds: 0.2
+        fadeSeconds: 0
     - rid: 9129764567614751687
       type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
       data:

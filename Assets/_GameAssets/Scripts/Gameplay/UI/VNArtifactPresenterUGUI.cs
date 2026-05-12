@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using _GameAssets.Scripts.Gameplay.UI;
 using CandyCoded.HapticFeedback;
 using UnityEngine;
@@ -25,6 +26,18 @@ namespace VN.UI
         [SerializeField] private VNCrossfadeImageUGUI leftSlot;
         [SerializeField] private VNCrossfadeImageUGUI centerSlot;
         [SerializeField] private VNCrossfadeImageUGUI rightSlot;
+
+        [Tooltip("Optional Spine slots. If character is rendered through Spine, these must also be hidden while the artifact is shown.")]
+        [SerializeField] private VNSpineCharacterSlotUGUI leftSpineSlot;
+        [SerializeField] private VNSpineCharacterSlotUGUI centerSpineSlot;
+        [SerializeField] private VNSpineCharacterSlotUGUI rightSpineSlot;
+
+        [Tooltip("Recommended mode. Characters are hidden only visually for the artifact presentation and then restored. This does not clear sprite buffers or Spine state.")]
+        [SerializeField] private bool temporarilyDisableCharacterSlotObjects = true;
+
+        [Tooltip("Extra character-related objects to hide together with the slots, if some character visuals live outside the standard slot fields.")]
+        [SerializeField] private GameObject[] extraCharacterObjectsToHide;
+
         [SerializeField] private float hideCharactersFadeSeconds = 0.2f;
 
         [Header("Artifact vibration")]
@@ -45,6 +58,9 @@ namespace VN.UI
 
         private Coroutine _routine;
         private Coroutine _hapticRoutine;
+
+        private GameObject[] _hiddenCharacterObjects;
+        private bool[] _hiddenCharacterObjectStates;
 
         private Vector2 _baseAnchoredPosition;
         private Quaternion _baseLocalRotation;
@@ -88,15 +104,20 @@ namespace VN.UI
                 runner.OnArtifactShown -= HandleArtifactShown;
 
             StopHapticRoutine();
+            RestoreTemporarilyHiddenCharacters();
         }
 
         private void HandleArtifactShown(VN.VNRunner.VNArtifactPayload payload)
         {
             if (_routine != null)
+            {
                 StopCoroutine(_routine);
+                _routine = null;
+            }
 
             StopHapticRoutine();
             ResetArtifactVibration();
+            RestoreTemporarilyHiddenCharacters();
             HideAllCharacters();
 
             _routine = StartCoroutine(PlayRoutine(payload));
@@ -105,11 +126,21 @@ namespace VN.UI
 
         private void HideAllCharacters()
         {
+            if (temporarilyDisableCharacterSlotObjects)
+            {
+                HideCharactersTemporarily();
+                return;
+            }
+
             float fade = Mathf.Max(0f, hideCharactersFadeSeconds);
 
             HideSlot(leftSlot, fade);
             HideSlot(centerSlot, fade);
             HideSlot(rightSlot, fade);
+
+            HideSpineSlot(leftSpineSlot, fade);
+            HideSpineSlot(centerSpineSlot, fade);
+            HideSpineSlot(rightSpineSlot, fade);
         }
 
         private void HideSlot(VNCrossfadeImageUGUI slot, float fade)
@@ -117,9 +148,84 @@ namespace VN.UI
             if (slot == null) return;
 
             if (fade <= 0f)
-                slot.SetInstant((Sprite)null, false);
+                slot.SetInstantHidden();
             else
                 slot.Crossfade((Sprite)null, fade, false);
+        }
+
+        private void HideSpineSlot(VNSpineCharacterSlotUGUI slot, float fade)
+        {
+            if (slot == null) return;
+
+            if (fade <= 0f)
+                slot.SetInstantHidden();
+            else
+                slot.Hide(fade);
+        }
+
+        private void HideCharactersTemporarily()
+        {
+            var targets = BuildCharacterHideTargets();
+
+            _hiddenCharacterObjects = targets;
+            _hiddenCharacterObjectStates = new bool[targets.Length];
+
+            for (int i = 0; i < targets.Length; i++)
+            {
+                var target = targets[i];
+                if (target == null)
+                    continue;
+
+                _hiddenCharacterObjectStates[i] = target.activeSelf;
+                if (target.activeSelf)
+                    target.SetActive(false);
+            }
+        }
+
+        private void RestoreTemporarilyHiddenCharacters()
+        {
+            if (_hiddenCharacterObjects == null || _hiddenCharacterObjectStates == null)
+                return;
+
+            int count = Mathf.Min(_hiddenCharacterObjects.Length, _hiddenCharacterObjectStates.Length);
+            for (int i = 0; i < count; i++)
+            {
+                var target = _hiddenCharacterObjects[i];
+                if (target != null)
+                    target.SetActive(_hiddenCharacterObjectStates[i]);
+            }
+
+            _hiddenCharacterObjects = null;
+            _hiddenCharacterObjectStates = null;
+        }
+
+        private GameObject[] BuildCharacterHideTargets()
+        {
+            var list = new List<GameObject>(12);
+
+            AddUniqueHideTarget(list, leftSlot != null ? leftSlot.gameObject : null);
+            AddUniqueHideTarget(list, centerSlot != null ? centerSlot.gameObject : null);
+            AddUniqueHideTarget(list, rightSlot != null ? rightSlot.gameObject : null);
+
+            AddUniqueHideTarget(list, leftSpineSlot != null ? leftSpineSlot.gameObject : null);
+            AddUniqueHideTarget(list, centerSpineSlot != null ? centerSpineSlot.gameObject : null);
+            AddUniqueHideTarget(list, rightSpineSlot != null ? rightSpineSlot.gameObject : null);
+
+            if (extraCharacterObjectsToHide != null)
+            {
+                for (int i = 0; i < extraCharacterObjectsToHide.Length; i++)
+                    AddUniqueHideTarget(list, extraCharacterObjectsToHide[i]);
+            }
+
+            return list.ToArray();
+        }
+
+        private static void AddUniqueHideTarget(List<GameObject> list, GameObject target)
+        {
+            if (target == null || list.Contains(target))
+                return;
+
+            list.Add(target);
         }
 
         private IEnumerator PlayRoutine(VN.VNRunner.VNArtifactPayload payload)
@@ -229,6 +335,8 @@ namespace VN.UI
 
             if (root != null)
                 root.SetActive(false);
+
+            RestoreTemporarilyHiddenCharacters();
 
             runner?.NotifyArtifactPresentationFinished();
             _routine = null;

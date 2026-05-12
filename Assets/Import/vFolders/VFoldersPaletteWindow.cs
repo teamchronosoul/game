@@ -10,18 +10,20 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using Type = System.Type;
-using static VFolders.Libs.VUtils;
-using static VFolders.Libs.VGUI;
 using static VFolders.VFolders;
 using static VFolders.VFoldersData;
 using static VFolders.VFoldersPalette;
 using static VFolders.VFoldersCache;
+using static VFolders.Libs.VUtils;
+using static VFolders.Libs.VGUI;
+// using static VTools.VDebug;
 
 
 namespace VFolders
 {
     public class VFoldersPaletteWindow : EditorWindow
     {
+
         void OnGUI()
         {
             if (!palette) { Close(); return; }
@@ -42,9 +44,10 @@ namespace VFolders
             }
             void colors()
             {
-                if (!palette.colorsEnabled) { Space(-spaceAfterColors); return; }
+                if (!palette.colorsEnabled) return;
 
-                var rowRect = ExpandWidthLabelRect(height: cellSize).SetX(paddingX);
+                var rowRect = this.position.SetPos(paddingX, paddingY).SetHeight(cellSize);
+
 
                 void color(int i)
                 {
@@ -52,42 +55,97 @@ namespace VFolders
 
                     void backgroundSelected()
                     {
-                        if (!initialColorIndexes.Contains(i)) return;
+                        if (!colorIndexes_initial.Contains(i)) return;
 
-                        cellRect.Resize(1).DrawWithRoundedCorners(selectedBackground, 2);
+                        cellRect.Resize(1).DrawRounded(selectedBackground, 2);
 
                     }
                     void backgroundHovered()
                     {
                         if (!cellRect.IsHovered()) return;
 
-                        cellRect.Resize(1).DrawWithRoundedCorners(this.hoveredBackground, 2);
+                        cellRect.Resize(1).DrawRounded(this.hoveredBackground, 2);
 
                     }
                     void crossIcon()
                     {
                         if (i != 0) return;
 
-                        SetLabelAlignmentCenter();
+                        GUI.DrawTexture(cellRect.SetSizeFromMid(iconSize), EditorIcons.GetIcon("CrossIcon"));
 
-                        GUI.Label(cellRect.SetSizeFromMid(iconSize), EditorGUIUtility.IconContent("CrossIcon"));
+                    }
+                    void colorOutline()
+                    {
+                        if (i == 0) return;
 
-                        ResetLabelStyle();
+                        var outlineColor = i <= VFoldersPalette.greyColorsCount ? Greyscale(.0f, .4f) : Greyscale(.15f, .2f);
+
+                        cellRect.Resize(3).DrawRounded(outlineColor, 4);
 
                     }
                     void color()
                     {
                         if (i == 0) return;
 
-                        var brightness = 1.00f;
-                        var outlineColor = Greyscale(.15f, .2f);
+                        var brightness = palette.colorBrightness;
+                        var saturation = palette.colorSaturation;
+                        var drawGradients = palette.colorGradientsEnabled;
 
-                        cellRect.Resize(3).DrawWithRoundedCorners(outlineColor, 4);
-                        cellRect.Resize(4).DrawWithRoundedCorners((palette.colors[i - 1] * brightness).SetAlpha(1), 3);
-                        cellRect.Resize(4).AddWidthFromRight(-2).DrawCurtainLeft(GUIColors.windowBackground.SetAlpha((1 - palette.colors[i - 1].a) * .45f));
-                        // cellRect.Resize(4).AddWidthFromRight(-2).DrawCurtainLeft(GUIColors.windowBackground.SetAlpha((1 - .1f) * .45f));
+                        if (!palette.colorGradientsEnabled)
+                            brightness *= isDarkTheme ? .75f : .97f;
+
+                        if (i <= VFoldersPalette.greyColorsCount)
+                        {
+                            saturation = brightness = 1;
+                            drawGradients = false;
+                        }
+
+
+                        var colorRaw = palette ? palette.colors[i - 1] : VFoldersPalette.GetDefaultColor(i - 1);
+
+                        var color = MathUtil.Lerp(Greyscale(.2f), colorRaw, brightness);
+
+                        Color.RGBToHSV(color, out float h, out float s, out float v);
+                        color = Color.HSVToRGB(h, s * saturation, v);
+
+                        color = MathUtil.Lerp(color, colorRaw, .5f).SetAlpha(1);
+
+
+
+
+                        cellRect.Resize(4).DrawRounded(color, 3);
+
+                        if (drawGradients)
+                            cellRect.Resize(4).AddWidthFromRight(-2).DrawCurtainLeft(GUIColors.windowBackground.SetAlpha(.45f));
 
                     }
+                    void recursiveIndicator()
+                    {
+                        if (!curEvent.isRepaint) return;
+
+
+                        var isRecursive = folderDatas.First().colorIndex == i && folderDatas.First().isColorRecursive;
+
+                        if (!isRecursive) return;
+
+
+
+                        var iconRect = cellRect.SetSizeFromMid(16).Move(-6, -7);
+                        var shadowRect = iconRect.Resize(3).Move(2, 1).AddWidthFromRight(3);
+                        var shadowRadius = 4;
+
+                        shadowRect.DrawBlurred(GUIColors.windowBackground, shadowRadius);
+
+
+                        SetGUIColor(Color.white * 2);
+
+                        GUI.DrawTexture(iconRect, EditorIcons.GetIcon("UnityEditor.SceneHierarchyWindow@2x"));
+
+                        ResetGUIColor();
+
+
+                    }
+
                     void setHovered()
                     {
                         if (!cellRect.IsHovered()) return;
@@ -98,11 +156,14 @@ namespace VFolders
                     void closeOnClick()
                     {
                         if (!cellRect.IsHovered()) return;
-                        if (!curEvent.isMouseDown) return;
+                        if (!curEvent.isMouseUp) return;
+
+                        curEvent.Use();
 
                         Close();
 
                     }
+
 
 
                     cellRect.MarkInteractive();
@@ -110,11 +171,15 @@ namespace VFolders
                     backgroundSelected();
                     backgroundHovered();
                     crossIcon();
+                    colorOutline();
                     color();
+                    recursiveIndicator();
+
                     setHovered();
                     closeOnClick();
 
                 }
+
 
                 for (int i = 0; i < palette.colors.Count + 1; i++)
                     color(i);
@@ -122,13 +187,12 @@ namespace VFolders
             }
             void icons()
             {
-                void row(IconRow iconRow)
+                void row(int i, IconRow iconRow)
                 {
-                    if (!iconRow.enabled) return;
-                    if (iconRow.isEmpty) return;
+                    var rowRect = this.position.SetPos(paddingX, paddingY).SetHeight(cellSize).MoveY(palette.colorsEnabled ? cellSize + spaceAfterColors : 0).MoveY(i * (cellSize + rowSpacing));
 
-                    var rowRect = ExpandWidthLabelRect(height: cellSize).SetX(paddingX);
                     var isFirstEnabledRow = palette.iconRows.First(r => r.enabled) == iconRow;
+
 
                     void icon(int i)
                     {
@@ -136,55 +200,75 @@ namespace VFolders
 
                         var isCrossIcon = isFirstEnabledRow && i == 0;
                         var actualIconIndex = isFirstEnabledRow ? i - 1 : i;
-                        var isBuiltinIcon = !isCrossIcon && actualIconIndex < iconRow.builtinIcons.Count;
                         var isCustomIcon = !isCrossIcon && actualIconIndex >= iconRow.builtinIcons.Count;
                         var iconNameOrGuid = isCrossIcon ? "" : isCustomIcon ? iconRow.customIcons[actualIconIndex - iconRow.builtinIcons.Count] : iconRow.builtinIcons[actualIconIndex];
 
+
                         void backgroundSelected()
                         {
-                            if (!initialIconNamesOrGuids.Contains(iconNameOrGuid)) return;
+                            if (!iconNamesOrGuids_initial.Contains(iconNameOrGuid)) return;
 
-                            cellRect.Resize(1).DrawWithRoundedCorners(selectedBackground, 2);
+                            cellRect.Resize(1).DrawRounded(selectedBackground, 2);
 
                         }
                         void backgroundHovered()
                         {
                             if (!cellRect.IsHovered()) return;
 
-                            cellRect.Resize(1).DrawWithRoundedCorners(this.hoveredBackground, 2);
+                            cellRect.Resize(1).DrawRounded(this.hoveredBackground, 2);
 
                         }
                         void crossIcon()
                         {
                             if (!isCrossIcon) return;
 
-                            SetLabelAlignmentCenter();
-
-                            GUI.Label(cellRect.SetSizeFromMid(iconSize), EditorGUIUtility.IconContent("CrossIcon"));
-
-                            ResetLabelStyle();
+                            GUI.DrawTexture(cellRect.SetSizeFromMid(iconSize), EditorIcons.GetIcon("CrossIcon"));
 
                         }
-                        void builtinIcon()
+                        void normalIcon()
                         {
-                            if (!isBuiltinIcon) return;
+                            if (isCrossIcon) return;
 
-                            SetLabelAlignmentCenter();
+                            var iconNameOrPath = iconNameOrGuid?.Length == 32 ? iconNameOrGuid.ToPath() : iconNameOrGuid;
+                            var icon = EditorIcons.GetIcon(iconNameOrPath) ?? Texture2D.blackTexture;
 
-                            GUI.Label(cellRect.SetSizeFromMid(iconSize), EditorGUIUtility.IconContent(iconNameOrGuid));
+                            var iconRect = cellRect.SetSizeFromMid(iconSize);
 
-                            ResetLabelStyle();
+                            if (icon.width < icon.height) iconRect = iconRect.SetWidthFromMid(iconRect.height * icon.width / icon.height);
+                            if (icon.height < icon.width) iconRect = iconRect.SetHeightFromMid(iconRect.width * icon.height / icon.width);
+
+
+                            GUI.DrawTexture(iconRect, icon);
 
                         }
-                        void customIcon()
+                        void recursiveIndicator()
                         {
-                            if (!isCustomIcon) return;
+                            if (!curEvent.isRepaint) return;
 
-                            var texture = AssetDatabase.LoadAssetAtPath<Texture2D>(iconNameOrGuid.ToPath());
 
-                            GUI.DrawTexture(cellRect.SetSizeFromMid(iconSize), texture ?? Texture2D.blackTexture);
+                            var isRecursive = folderDatas.First().iconNameOrGuid == iconNameOrGuid && folderDatas.First().isIconRecursive;
+
+                            if (!isRecursive) return;
+
+
+
+                            var iconRect = cellRect.SetSizeFromMid(16).Move(-6, -7);
+                            var shadowRect = iconRect.Resize(3).Move(2, 1).AddWidthFromRight(3);
+                            var shadowRadius = 4;
+
+                            shadowRect.DrawBlurred(GUIColors.windowBackground, shadowRadius);
+
+
+
+                            SetGUIColor(Color.white * 2);
+
+                            GUI.DrawTexture(iconRect, EditorIcons.GetIcon("UnityEditor.SceneHierarchyWindow@2x"));
+
+                            ResetGUIColor();
+
 
                         }
+
                         void setHovered()
                         {
                             if (!cellRect.IsHovered()) return;
@@ -195,11 +279,14 @@ namespace VFolders
                         void closeOnClick()
                         {
                             if (!cellRect.IsHovered()) return;
-                            if (!curEvent.isMouseDown) return;
+                            if (!curEvent.isMouseUp) return;
+
+                            curEvent.Use();
 
                             Close();
 
                         }
+
 
 
                         cellRect.MarkInteractive();
@@ -207,40 +294,65 @@ namespace VFolders
                         backgroundSelected();
                         backgroundHovered();
                         crossIcon();
-                        builtinIcon();
-                        customIcon();
+                        normalIcon();
+                        recursiveIndicator();
+
                         setHovered();
                         closeOnClick();
 
                     }
 
-                    for (int i = 0; i < iconRow.iconCount + (isFirstEnabledRow ? 1 : 0); i++)
-                        icon(i);
 
-                    Space(rowSpacing - 2);
+                    for (int j = 0; j < iconRow.iconCount + (isFirstEnabledRow ? 1 : 0); j++)
+                        icon(j);
 
                 }
 
-                for (int i = 0; i < palette.iconRows.Count; i++)
-                    row(palette.iconRows[i]);
+
+                var i = 0;
+
+                foreach (var iconRow in palette.iconRows)
+                {
+                    if (!iconRow.enabled) continue;
+                    if (iconRow.isEmpty) continue;
+
+                    row(i, iconRow);
+
+                    i++;
+                }
+
+            }
+            void editPaletteButton()
+            {
+                var buttonRect = position.SetPos(0, 0).SetWidthFromRight(16).SetHeightFromBottom(16).Move(-14, -14);
+                var buttonColor = isDarkTheme ? Greyscale(.6f) : Greyscale(1, .6f);
+
+                if (!IconButton(buttonRect, "Toolbar Plus", 16, buttonColor)) return;
+
+
+                palette.SelectInInspector(frameInProject: false);
+
+                EditorWindow.GetWindow(typeof(Editor).Assembly.GetType("UnityEditor.InspectorWindow"))?.Show();
+
+                this.Close();
 
             }
 
             void setColorsAndIcons()
             {
-                if (!curEvent.isRepaint) return;
+                if (!curEvent.isLayout) return;
 
 
                 if (palette.iconRows.Any(r => r.enabled))
                     if (hoveredIconNameOrGuid != null)
-                        SetIcon(hoveredIconNameOrGuid);
+                        SetIcon(hoveredIconNameOrGuid, isRecursive: curEvent.holdingAlt);
                     else
                         SetInitialIcons();
 
 
                 if (palette.colorsEnabled)
                     if (hoveredColorIndex != -1)
-                        SetColor(hoveredColorIndex);
+                        SetColor(hoveredColorIndex, isRecursive: curEvent.holdingAlt);
                     else
                         SetInitialColors();
 
@@ -270,8 +382,8 @@ namespace VFolders
                 {
                     var speed = 9;
 
-                    SmoothDamp(ref currentPosition, targetPosition, speed, ref positionDeriv, deltaTime);
-                    // Lerp(ref currentPosition, targetPosition, speed, deltaTime);
+                    MathUtil.SmoothDamp(ref currentPosition, targetPosition, speed, ref positionDeriv, deltaTime);
+                    // MathfUtils.Lerp(ref currentPosition, targetPosition, speed, deltaTime);
 
                 }
                 void setCurPos()
@@ -305,16 +417,17 @@ namespace VFolders
 
             background();
             outline();
-
-            Space(paddingY);
             colors();
-
-            Space(spaceAfterColors);
             icons();
+            editPaletteButton();
 
             setColorsAndIcons();
             updatePosition();
             closeOnEscape();
+
+
+
+            VFolders.folderInfoCache.Clear();
 
             EditorApplication.RepaintProjectWindow();
 
@@ -322,18 +435,17 @@ namespace VFolders
 
         }
 
-        static float iconSize => 18;
-        static float iconSpacing => 2;
+        static float iconSize => 14;
+        static float iconSpacing => 6;
         static float cellSize => iconSize + iconSpacing;
-        static float spaceAfterColors => 11;
+        static float spaceAfterColors => 13;
         public float rowSpacing = 1;
         static float paddingX => 12;
         static float paddingY => 12;
 
-        Color windowBackground => isDarkTheme ? Greyscale(.23f) : Greyscale(.7f);
-        Color selectedBackground => isDarkTheme ? new Color(.3f, .5f, .7f, .8f) : new Color(.3f, .5f, .7f, .4f) * 1.35f;
-        Color hoveredBackground = Greyscale(1, .3f);
-        Color colorOutline => Greyscale(.2f, .5f);
+        Color windowBackground => isDarkTheme ? Greyscale(.23f) : Greyscale(.75f);
+        Color selectedBackground => isDarkTheme ? new Color(.3f, .5f, .7f, .8f) : new Color(.3f, .5f, .7f, .6f) * 1.25f;
+        Color hoveredBackground => isDarkTheme ? Greyscale(1, .3f) : Greyscale(0, .1f);
 
         public Vector2 targetPosition;
         public Vector2 currentPosition;
@@ -346,33 +458,45 @@ namespace VFolders
 
 
 
-        void SetIcon(string iconNameOrGuid)
+        void SetIcon(string iconNameOrGuid, bool isRecursive)
         {
-            foreach (var r in folderInfos)
+            foreach (var r in folderDatas)
+            {
+                r.isIconRecursive = isRecursive; // setting it firstbecause iconNameOrGuid setter relies on isIconRecursive
                 r.iconNameOrGuid = iconNameOrGuid;
+            }
         }
-        void SetColor(int colorIndex)
+        void SetColor(int colorIndex, bool isRecursive)
         {
-            foreach (var r in folderInfos)
-                r.folderData.colorIndex = colorIndex;
+            foreach (var r in folderDatas)
+            {
+                r.isColorRecursive = isRecursive;
+                r.colorIndex = colorIndex;
+            }
         }
 
         void SetInitialIcons()
         {
-            for (int i = 0; i < folderInfos.Count; i++)
-                folderInfos[i].iconNameOrGuid = initialIconNamesOrGuids[i];
+            for (int i = 0; i < folderDatas.Count; i++)
+            {
+                folderDatas[i].isIconRecursive = isIconRecursives_initial[i];
+                folderDatas[i].iconNameOrGuid = iconNamesOrGuids_initial[i];
+            }
         }
         void SetInitialColors()
         {
-            for (int i = 0; i < folderInfos.Count; i++)
-                folderInfos[i].folderData.colorIndex = initialColorIndexes[i];
+            for (int i = 0; i < folderDatas.Count; i++)
+            {
+                folderDatas[i].isColorRecursive = isColorRecursives_initial[i];
+                folderDatas[i].colorIndex = colorIndexes_initial[i];
+            }
         }
 
         void RemoveEmptyFolderDatas()
         {
             if (VFoldersData.storeDataInMetaFiles) return; // empties removed from meta files in SaveData()
 
-            var toRemove = folderInfos.Select(r => r.folderData).Where(r => r.iconNameOrGuid == "" && r.colorIndex == 0);
+            var toRemove = folderDatas.Select(r => r.folderData).Where(r => r.iconNameOrGuid == "" && r.colorIndex == 0);
 
             foreach (var r in toRemove)
                 data.folderDatas_byGuid.RemoveValue(r);
@@ -405,15 +529,21 @@ namespace VFolders
         }
         void SaveData()
         {
-            if (!VFoldersData.storeDataInMetaFiles) { data.Save(); return; }
+            if (!VFoldersData.storeDataInMetaFiles) return;
+            // if (!VFoldersData.storeDataInMetaFiles) { data.Save(); return; }
 
             for (int i = 0; i < guids.Count; i++)
-                AssetImporter.GetAtPath(guids[i].ToPath()).userData = folderInfos[i].folderData.iconNameOrGuid == "" && folderInfos[i].folderData.colorIndex == 0 ? "" : JsonUtility.ToJson(folderInfos[i].folderData);
+                if (folderDatas[i].iconNameOrGuid == "" && folderDatas[i].colorIndex == 0)
+                    AssetImporter.GetAtPath(guids[i].ToPath()).userData = "";
+                else
+                    AssetImporter.GetAtPath(guids[i].ToPath()).userData = JsonUtility.ToJson(folderDatas[i].folderData);
 
             for (int i = 0; i < guids.Count; i++)
                 AssetImporter.GetAtPath(guids[i].ToPath()).SaveAndReimport();
 
         }
+
+
 
 
 
@@ -435,6 +565,20 @@ namespace VFolders
             EditorApplication.delayCall += () => { if (EditorWindow.focusedWindow != this) Close(); };
         }
 
+
+
+
+        static void RepaintOnAlt() // Update 
+        {
+            if (curEvent.holdingAlt != wasHoldingAlt)
+                if (EditorWindow.mouseOverWindow is VFoldersPaletteWindow paletteWindow)
+                    paletteWindow.Repaint();
+
+            wasHoldingAlt = curEvent.holdingAlt;
+
+        }
+
+        static bool wasHoldingAlt;
 
 
 
@@ -466,46 +610,54 @@ namespace VFolders
             }
             void setSize()
             {
+                if (!palette.colorsEnabled && !palette.iconRows.Any(r => r.enabled && !r.isEmpty)) // somehow happened on first palette window opening in 2022.3.50
+                    palette.InvokeMethod("Reset");
+
+
+
                 var rowCellCounts = new List<int>();
 
                 if (palette.colorsEnabled)
                     rowCellCounts.Add(palette.colors.Count + 1);
 
-                foreach (var r in palette.iconRows.Where(r => r.enabled))
+                foreach (var r in palette.iconRows.Where(r => r.enabled && !r.isEmpty))
                     rowCellCounts.Add(r.iconCount + (r == palette.iconRows.First(r => r.enabled) ? 1 : 0));
 
-                var width = rowCellCounts.Max() * cellSize + paddingX * 2;
+                var width = paddingX
+                          + rowCellCounts.Max() * cellSize
+                          + (rowCellCounts.Last() == rowCellCounts.Max() ? cellSize : 0)
+                          + paddingX;
 
 
 
                 var iconRowCount = palette.iconRows.Count(r => r.enabled && !r.isEmpty);
-                var rowCount = iconRowCount + (palette.colorsEnabled ? 1 : 0);
 
-                var height = rowCount * (cellSize + rowSpacing) + (palette.colorsEnabled && palette.iconRows.Any(r => r.enabled && !r.isEmpty) ? spaceAfterColors : 0) + paddingY * 2;
-
+                var height = paddingY
+                           + (palette.colorsEnabled ? cellSize : 0)
+                           + (palette.colorsEnabled && palette.iconRows.Any(r => r.enabled && !r.isEmpty) ? spaceAfterColors : 0)
+                           + cellSize * iconRowCount
+                           + rowSpacing * (iconRowCount - 1)
+                           + paddingY;
 
 
                 position = position.SetSize(width, height).SetPos(targetPosition);
 
             }
-            void getInfos()
+            void getFolderDatas()
             {
-                folderInfos.Clear();
+                folderDatas.Clear();
 
-                foreach (var r in guids)
-                    folderInfos.Add(VFolders.GetFolderInfo(r, createDataIfDoesntExist: true));
+                foreach (var guid in guids)
+                    folderDatas.Add(new FolderDataWrapper(guid));
 
             }
-            void getInitColorsAndIcons()
+            void getInitialState()
             {
-                initialColorIndexes.Clear();
-                initialIconNamesOrGuids.Clear();
+                iconNamesOrGuids_initial = folderDatas.Select(r => r.iconNameOrGuid).ToList();
+                colorIndexes_initial = folderDatas.Select(r => r.colorIndex).ToList();
 
-                foreach (var r in folderInfos)
-                    initialColorIndexes.Add(r.folderData.colorIndex);
-
-                foreach (var r in folderInfos)
-                    initialIconNamesOrGuids.Add(r.iconNameOrGuid);
+                isIconRecursives_initial = folderDatas.Select(r => r.isIconRecursive).ToList();
+                isColorRecursives_initial = folderDatas.Select(r => r.isColorRecursive).ToList();
 
             }
 
@@ -517,11 +669,14 @@ namespace VFolders
             createData();
             createPalette();
             setSize();
-            getInfos();
-            getInitColorsAndIcons();
+            getFolderDatas();
+            getInitialState();
 
             Undo.undoRedoPerformed -= EditorApplication.RepaintProjectWindow;
             Undo.undoRedoPerformed += EditorApplication.RepaintProjectWindow;
+
+            EditorApplication.update -= RepaintOnAlt;
+            EditorApplication.update += RepaintOnAlt;
 
         }
 
@@ -531,13 +686,18 @@ namespace VFolders
             MarkDatasDirty();
             SaveData();
 
+            EditorApplication.update -= RepaintOnAlt;
+
         }
 
-        public List<string> guids = new List<string>();
-        public List<FolderInfo> folderInfos = new List<FolderInfo>();
+        public List<string> guids = new();
+        public List<FolderDataWrapper> folderDatas = new();
 
-        public List<int> initialColorIndexes = new List<int>();
-        public List<string> initialIconNamesOrGuids = new List<string>();
+        public List<string> iconNamesOrGuids_initial = new();
+        public List<int> colorIndexes_initial = new();
+
+        public List<bool> isIconRecursives_initial = new();
+        public List<bool> isColorRecursives_initial = new();
 
         static VFoldersPalette palette => VFolders.palette;
         static VFoldersData data => VFolders.data;
@@ -560,6 +720,65 @@ namespace VFolders
         }
 
         public static VFoldersPaletteWindow instance;
+
+
+
+
+
+
+        public class FolderDataWrapper
+        {
+            public string iconNameOrGuid
+            {
+                get
+                {
+                    if (folderData != null && folderData.iconNameOrGuid != "")
+                        if (folderData.iconNameOrGuid == "none") return "";
+                        else return folderData.iconNameOrGuid ?? "";
+
+                    else if (VFoldersMenu.autoIconsEnabled && folderState.autoIconName != "")
+                        return folderState.autoIconName;
+
+                    else return "";
+
+                }
+                set
+                {
+                    if (VFoldersMenu.autoIconsEnabled && folderState.autoIconName != "")
+                        if (value == folderState.autoIconName && !folderData.isIconRecursive)
+                            folderData.iconNameOrGuid = "";
+                        else if (value == "")
+                            folderData.iconNameOrGuid = "none";
+                        else
+                            folderData.iconNameOrGuid = value;
+
+
+                    else folderData.iconNameOrGuid = value;
+
+                }
+
+            }
+            public bool isIconRecursive { get => folderData.isIconRecursive; set => folderData.isIconRecursive = value; }
+
+            public int colorIndex { get => folderData.colorIndex; set => folderData.colorIndex = value; }
+            public bool isColorRecursive { get => folderData.isColorRecursive; set => folderData.isColorRecursive = value; }
+
+
+            public FolderDataWrapper(string guid)
+            {
+                folderData = VFolders.GetFolderData(guid, createDataIfDoesntExist: true);
+                folderState = VFolders.GetFolderState(guid);
+            }
+
+            public FolderData folderData;
+            public FolderState folderState;
+
+
+            // used as an interlayer between folderData and palette window to account for automatic icons
+            // it's the only structural difference between vFolders' PaletteWindow and vHierarchy's
+
+        }
+
 
     }
 }

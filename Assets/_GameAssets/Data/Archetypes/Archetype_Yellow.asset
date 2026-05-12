@@ -18,4 +18,9 @@ MonoBehaviour:
   mentorSprite: {fileID: 21300000, guid: ad112c92f19528b4fb74450effbaca65, type: 3}
   mentorIdSprite: {fileID: 21300000, guid: b941bd4cecc6d6541ab1bd7181cdd5b8, type: 3}
   mirrorSprite: {fileID: 21300000, guid: 552671c832883b64babd2449afca7ed4, type: 3}
+  mentorCharacterId: Kaitora
+  overrideMainMenuMentorPose: 0
+  mainMenuMentorPose: 0
+  overrideMainMenuMentorEmotion: 0
+  mainMenuMentorEmotion: 0
   narratives: []

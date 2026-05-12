@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: ba87aa09b69232f40bc16857698fe3ed
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5433902923760681424
+    second: Yuzuri_0
+  - first:
+      213: -2244484537759493318
+    second: Yuzuri_1
+  - first:
+      213: 4048406386871790033
+    second: Yuzuri_2
+  - first:
+      213: 2107363092150462166
+    second: Yuzuri_3
+  - first:
+      213: 4615769669606862061
+    second: Yuzuri_4
+  - first:
+      213: -6746866431709313348
+    second: Yuzuri_5
+  - first:
+      213: 7926218694847195666
+    second: Yuzuri_6
+  - first:
+      213: 4693570783929247963
+    second: Yuzuri_7
+  - first:
+      213: 653565376667050373
+    second: Yuzuri_8
+  - first:
+      213: -8210415238948146354
+    second: Yuzuri_9
+  - first:
+      213: -4627380831900323732
+    second: Yuzuri_10
+  - first:
+      213: 4122684124448629542
+    second: Yuzuri_11
+  - first:
+      213: -9171380617748477332
+    second: Yuzuri_12
+  - first:
+      213: -3045445948372343596
+    second: Yuzuri_13
+  - first:
+      213: -4924904671580536468
+    second: Yuzuri_14
+  - first:
+      213: 1653472056320315855
+    second: Yuzuri_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yuzuri_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1972
+        width: 255
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03eb945b416e694b0800000000000000
+      internalID: -5433902923760681424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_1
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1719
+        width: 199
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a331df6643df9d0e0800000000000000
+      internalID: -2244484537759493318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_2
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1719
+        width: 199
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d96ae3d824de2830800000000000000
+      internalID: 4048406386871790033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_3
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1720
+        width: 55
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d6a568219bde3d10800000000000000
+      internalID: 2107363092150462166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_4
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 120
+        width: 780
+        height: 1597
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dec60f12f028e0040800000000000000
+      internalID: 4615769669606862061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_5
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1384
+        width: 59
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb685fe0ab05e52a0800000000000000
+      internalID: -6746866431709313348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_6
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1132
+        width: 199
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a6d6678e59ffd60800000000000000
+      internalID: 7926218694847195666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_7
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 1142
+        width: 50
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd82148a2c9e22140800000000000000
+      internalID: 4693570783929247963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_8
+      rect:
+        serializedVersion: 2
+        x: 1014
+        y: 1133
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581ebb15f3ee11900800000000000000
+      internalID: 653565376667050373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_9
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 881
+        width: 199
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e43ba0047debe0e80800000000000000
+      internalID: -8210415238948146354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_10
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 881
+        width: 199
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c60312a76ad38cfb0800000000000000
+      internalID: -4627380831900323732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_11
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 882
+        width: 30
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62327e64e57b63930800000000000000
+      internalID: 4122684124448629542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_12
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 119
+        width: 976
+        height: 760
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6a03339be5b8b080800000000000000
+      internalID: -9171380617748477332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_13
+      rect:
+        serializedVersion: 2
+        x: 1765
+        y: 371
+        width: 104
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d42d90ab076cb5d0800000000000000
+      internalID: -3045445948372343596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_14
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 119
+        width: 199
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c61c7c16b4937abb0800000000000000
+      internalID: -4924904671580536468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yuzuri_15
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 120
+        width: 34
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1d103231052f610800000000000000
+      internalID: 1653472056320315855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Yuzuri_0: -5433902923760681424
+      Yuzuri_1: -2244484537759493318
+      Yuzuri_10: -4627380831900323732
+      Yuzuri_11: 4122684124448629542
+      Yuzuri_12: -9171380617748477332
+      Yuzuri_13: -3045445948372343596
+      Yuzuri_14: -4924904671580536468
+      Yuzuri_15: 1653472056320315855
+      Yuzuri_2: 4048406386871790033
+      Yuzuri_3: 2107363092150462166
+      Yuzuri_4: 4615769669606862061
+      Yuzuri_5: -6746866431709313348
+      Yuzuri_6: 7926218694847195666
+      Yuzuri_7: 4693570783929247963
+      Yuzuri_8: 653565376667050373
+      Yuzuri_9: -8210415238948146354
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

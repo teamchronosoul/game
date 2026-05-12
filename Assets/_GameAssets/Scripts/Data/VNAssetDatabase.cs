@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 namespace VN
 {
@@ -96,6 +97,13 @@ namespace VN
             public AudioClip asset;
         }
 
+        [Serializable]
+        public class VideoEntry
+        {
+            public string id;
+            public VideoClip asset;
+        }
+
         [Header("Backgrounds")]
         public List<SpriteEntry> backgrounds = new();
 
@@ -105,12 +113,17 @@ namespace VN
         [Header("Audio")]
         public List<AudioEntry> music = new();
         public List<AudioEntry> sfx = new();
+
+        [Header("Cutscenes")]
+        public List<VideoEntry> cutscenes = new();
+
         [Header("VFX")]
         [SerializeField] private List<VNVfxDefinition> vfx = new();
         private readonly Dictionary<string, Sprite> _bg = new(StringComparer.Ordinal);
         private readonly Dictionary<string, Sprite> _artifacts = new(StringComparer.Ordinal);
         private readonly Dictionary<string, AudioClip> _msc = new(StringComparer.Ordinal);
         private readonly Dictionary<string, AudioClip> _sfx = new(StringComparer.Ordinal);
+        private readonly Dictionary<string, VideoClip> _cutscenes = new(StringComparer.Ordinal);
 
         private void OnEnable() => Rebuild();
         private void OnValidate() => Rebuild();
@@ -198,9 +211,19 @@ namespace VN
             return _sfx.TryGetValue(id, out clip) && clip != null;
         }
 
+        public bool TryGetCutscene(string id, out VideoClip clip)
+        {
+            RebuildIfNeeded();
+            clip = null;
+            id = Normalize(id);
+            if (string.IsNullOrEmpty(id)) return false;
+            return _cutscenes.TryGetValue(id, out clip) && clip != null;
+        }
+
         private void RebuildIfNeeded()
         {
-            if (_bg.Count == 0 && (backgrounds.Count > 0 || artifacts.Count > 0 || music.Count > 0 || sfx.Count > 0))
+            if (_bg.Count == 0 &&
+                (backgrounds.Count > 0 || artifacts.Count > 0 || music.Count > 0 || sfx.Count > 0 || cutscenes.Count > 0))
                 Rebuild();
         }
 
@@ -210,11 +233,13 @@ namespace VN
             _artifacts.Clear();
             _msc.Clear();
             _sfx.Clear();
+            _cutscenes.Clear();
 
             Build(backgrounds, _bg);
             Build(artifacts, _artifacts);
             Build(music, _msc);
             Build(sfx, _sfx);
+            Build(cutscenes, _cutscenes);
         }
 
         private static void Build(List<SpriteEntry> list, Dictionary<string, Sprite> map)
@@ -230,6 +255,18 @@ namespace VN
         }
 
         private static void Build(List<AudioEntry> list, Dictionary<string, AudioClip> map)
+        {
+            if (list == null) return;
+            foreach (var e in list)
+            {
+                if (e == null) continue;
+                var id = Normalize(e.id);
+                if (string.IsNullOrEmpty(id)) continue;
+                if (!map.ContainsKey(id)) map[id] = e.asset;
+            }
+        }
+
+        private static void Build(List<VideoEntry> list, Dictionary<string, VideoClip> map)
         {
             if (list == null) return;
             foreach (var e in list)

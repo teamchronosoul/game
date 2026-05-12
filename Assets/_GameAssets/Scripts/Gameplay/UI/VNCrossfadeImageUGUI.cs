@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -265,6 +265,95 @@ namespace VN.UI
 
             _aIsFront = !_aIsFront;
             _co = null;
+        }
+
+
+        // Used by Spine characters: keeps Image_A/Image_B as an invisible alignment proxy.
+        // The old sprite is assigned and SetNativeSize() is called, but alpha stays 0,
+        // so the player does not see the sprite. Spine can then be placed exactly
+        // in the center of the same Image where the sprite character would stand.
+        public RectTransform PrepareTransparentSpriteProxy(Sprite sprite, bool setNativeSize = true)
+        {
+            StopFade();
+
+            if (UseRawImage)
+                return PrepareTransparentRawProxy(sprite);
+
+            var proxy = a != null ? a : b;
+            var other = proxy == a ? b : a;
+
+            if (proxy == null)
+                return transform as RectTransform;
+
+            proxy.sprite = sprite;
+            proxy.enabled = sprite != null;
+            proxy.raycastTarget = false;
+            SetAlpha(proxy, 0f);
+
+            if (sprite != null && setNativeSize)
+                proxy.SetNativeSize();
+
+            DisableImage(other);
+
+            // Keep Image_A as the reference buffer whenever it exists.
+            _aIsFront = proxy == a;
+
+            return proxy.transform as RectTransform;
+        }
+
+        private RectTransform PrepareTransparentRawProxy(Sprite sprite)
+        {
+            var proxy = rawA != null ? rawA : rawB;
+            var other = proxy == rawA ? rawB : rawA;
+
+            if (proxy == null)
+                return transform as RectTransform;
+
+            ApplySpriteToRawImage(proxy, sprite);
+            proxy.enabled = sprite != null;
+            proxy.raycastTarget = false;
+            SetAlpha(proxy, 0f);
+            DisableRawImage(other);
+
+            _aIsFront = proxy == rawA;
+
+            return proxy.transform as RectTransform;
+        }
+
+
+        // Used by Spine alignment: returns the real visual buffer RectTransform, not necessarily this root.
+        // Character slot roots are often big containers, while the actual Image child is the place
+        // where a sprite character would stand. Aligning Spine to this rect fixes unwanted centering.
+        public RectTransform GetReferenceRectTransform()
+        {
+            if (UseRawImage)
+            {
+                var front = _aIsFront ? rawA : rawB;
+                var back = _aIsFront ? rawB : rawA;
+
+                if (front != null) return front.transform as RectTransform;
+                if (back != null) return back.transform as RectTransform;
+            }
+            else
+            {
+                var front = _aIsFront ? a : b;
+                var back = _aIsFront ? b : a;
+
+                if (front != null) return front.transform as RectTransform;
+                if (back != null) return back.transform as RectTransform;
+            }
+
+            return transform as RectTransform;
+        }
+
+        public void SetInstantHidden()
+        {
+            StopFade();
+
+            DisableImage(a);
+            DisableImage(b);
+            DisableRawImage(rawA);
+            DisableRawImage(rawB);
         }
 
         // =========================

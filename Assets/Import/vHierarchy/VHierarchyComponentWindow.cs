@@ -13,28 +13,25 @@ using Type = System.Type;
 using static VHierarchy.VHierarchyData;
 using static VHierarchy.Libs.VUtils;
 using static VHierarchy.Libs.VGUI;
-
+// using static VTools.VDebug;
 
 
 namespace VHierarchy
 {
     public class VHierarchyComponentWindow : EditorWindow
     {
+
         void OnGUI()
         {
-            if (!component) { Close(); return; } // todo script components break on playmode
+            if (!component) component = _EditorUtility_InstanceIDToObject(componentIid) as Component;
+            if (!component) { Close(); return; }
+
+            if (!editor) Init(component);
 
 
             void background()
             {
                 position.SetPos(0, 0).Draw(GUIColors.windowBackground);
-            }
-            void outline()
-            {
-                if (Application.platform == RuntimePlatform.OSXEditor) return;
-
-                position.SetPos(0, 0).DrawOutline(Greyscale(.1f));
-
             }
             void header()
             {
@@ -46,7 +43,8 @@ namespace VHierarchy
 
                 void startDragging()
                 {
-                    if (isResizing) return;
+                    if (isResizingVertically) return;
+                    if (isResizingHorizontally) return;
                     if (isDragged) return;
                     if (!curEvent.isMouseDrag) return;
                     if (!headerRect.IsHovered()) return;
@@ -133,7 +131,9 @@ namespace VHierarchy
                 {
                     var nameRect = headerRect.MoveX(54).MoveY(-1);
 
-                    var s = VHierarchy.GetComponentName(component);
+                    var s = new GUIContent(EditorGUIUtility.ObjectContent(component, component.GetType())).text;
+                    s = s.Substring(s.LastIndexOf('(') + 1);
+                    s = s.Substring(0, s.Length - 1);
 
                     if (isPinned)
                         s += " of " + component.gameObject.name;
@@ -228,6 +228,15 @@ namespace VHierarchy
                     ResetGUIEnabled();
 
                 }
+                void rightClick()
+                {
+                    if (!curEvent.isMouseDown) return;
+                    if (curEvent.mouseButton != 1) return;
+                    if (!headerRect.IsHovered()) return;
+
+                    typeof(EditorUtility).InvokeMethod("DisplayObjectContextMenu", Rect.zero.SetPos(curEvent.mousePosition), component, 0);
+
+                }
 
                 startDragging();
                 updateDragging();
@@ -240,24 +249,53 @@ namespace VHierarchy
                 nameCurtain();
                 pinButton();
                 closeButton();
+                rightClick();
 
             }
             void body()
             {
-                BeginIndent(16);
+                EditorGUIUtility.labelWidth = (this.position.width * .4f).Max(120);
+
+
+                scrollPosition = EditorGUILayout.BeginScrollView(Vector2.up * scrollPosition).y;
+                BeginIndent(17);
+
 
                 editor?.OnInspectorGUI();
 
-                EndIndent(0);
+                updateHeight();
+
+
+                EndIndent(1);
+                EditorGUILayout.EndScrollView();
+
+
+                EditorGUIUtility.labelWidth = 0;
+
+            }
+            void outline()
+            {
+                // if (Application.platform == RuntimePlatform.OSXEditor) return;
+
+                position.SetPos(0, 0).DrawOutline(Greyscale(.1f));
 
             }
 
             void updateHeight()
             {
-                var r = ExpandWidthLabelRect();
 
-                if (curEvent.isRepaint)
-                    position = position.SetHeight(lastRect.y);
+                ExpandWidthLabelRect(height: -5);
+
+                if (!curEvent.isRepaint) return;
+                if (isResizingVertically) return;
+
+
+                targetHeight = lastRect.y + 30;
+
+                position = position.SetHeight(targetHeight.Min(maxHeight));
+
+
+                prevHeight = position.height;
 
             }
             void updatePosition()
@@ -287,8 +325,8 @@ namespace VHierarchy
 
                     var speed = 9;
 
-                    SmoothDamp(ref currentPosition, targetPosition, speed, ref positionDeriv, deltaTime);
-                    // Lerp(ref currentPosition, targetPosition, speed, deltaTime);
+                    MathUtil.SmoothDamp(ref currentPosition, targetPosition, speed, ref positionDeriv, deltaTime);
+                    // MathfUtils.Lerp(ref currentPosition, targetPosition, speed, deltaTime);
 
                 }
                 void setCurPos()
@@ -307,6 +345,7 @@ namespace VHierarchy
             }
             void closeOnEscape()
             {
+                if (isPinned) return;
                 if (!curEvent.isKeyDown) return;
                 if (curEvent.keyCode != KeyCode.Escape) return;
 
@@ -315,43 +354,46 @@ namespace VHierarchy
 
             void horizontalResize()
             {
-                var resizeArea = this.position.SetPos(0, 0).SetWidthFromRight(5).AddHeightFromBottom(-20);
+                var showingScrollbar = targetHeight > maxHeight;
+
+                var resizeArea = this.position.SetPos(0, 0).SetWidthFromRight(showingScrollbar ? 3 : 5).AddHeightFromBottom(-20);
 
                 void startResize()
                 {
                     if (isDragged) return;
-                    if (isResizing) return;
+                    if (isResizingHorizontally) return;
                     if (!curEvent.isMouseDown && !curEvent.isMouseDrag) return;
                     if (!resizeArea.IsHovered()) return;
 
-                    isResizing = true;
+                    isResizingHorizontally = true;
 
-                    resizeStartMousePos = EditorGUIUtility.GUIToScreenPoint(curEvent.mousePosition);
+                    resizeStartMousePos = curEvent.mousePosition_screenSpace;
                     resizeStartWindowSize = this.position.size;
 
                 }
                 void updateResize()
                 {
-                    if (!isResizing) return;
+                    if (!isResizingHorizontally) return;
 
 
-                    var resizedWidth = resizeStartWindowSize.x + EditorGUIUtility.GUIToScreenPoint(curEvent.mousePosition).x - resizeStartMousePos.x;
+                    var resizedWidth = resizeStartWindowSize.x + curEvent.mousePosition_screenSpace.x - resizeStartMousePos.x;
 
-                    var width = resizedWidth.Max(minWidth);
+                    var width = resizedWidth.Max(300);
 
                     if (!curEvent.isRepaint)
                         position = position.SetWidth(width);
 
 
                     EditorGUIUtility.hotControl = EditorGUIUtility.GetControlID(FocusType.Passive);
+                    // GUI.focused
 
                 }
                 void stopResize()
                 {
-                    if (!isResizing) return;
+                    if (!isResizingHorizontally) return;
                     if (!curEvent.isMouseUp) return;
 
-                    isResizing = false;
+                    isResizingHorizontally = false;
 
                     EditorGUIUtility.hotControl = 0;
 
@@ -365,27 +407,87 @@ namespace VHierarchy
                 stopResize();
 
             }
+            void verticalResize()
+            {
+                var resizeArea = this.position.SetPos(0, 0).SetHeightFromBottom(5);
+
+                void startResize()
+                {
+                    if (isDragged) return;
+                    if (isResizingVertically) return;
+                    if (!curEvent.isMouseDown && !curEvent.isMouseDrag) return;
+                    if (!resizeArea.IsHovered()) return;
+
+                    isResizingVertically = true;
+
+                    resizeStartMousePos = curEvent.mousePosition_screenSpace;
+                    resizeStartWindowSize = this.position.size;
+
+                }
+                void updateResize()
+                {
+                    if (!isResizingVertically) return;
+
+
+                    var resizedHeight = resizeStartWindowSize.y + curEvent.mousePosition_screenSpace.y - resizeStartMousePos.y;
+
+                    var height = resizedHeight.Min(targetHeight).Max(50);
+
+                    if (!curEvent.isRepaint)
+                        position = position.SetHeight(height);
+
+                    maxHeight = height;
+
+
+                    EditorGUIUtility.hotControl = EditorGUIUtility.GetControlID(FocusType.Passive);
+                    // GUI.focused
+
+                }
+                void stopResize()
+                {
+                    if (!isResizingVertically) return;
+                    if (!curEvent.isMouseUp) return;
+
+                    isResizingVertically = false;
+
+                    EditorGUIUtility.hotControl = 0;
+
+                }
+
+
+                EditorGUIUtility.AddCursorRect(resizeArea, MouseCursor.ResizeVertical);
+
+                startResize();
+                updateResize();
+                stopResize();
+
+            }
 
 
             background();
-            outline();
+
+            horizontalResize();
+            verticalResize();
+
 
             header();
 
             Space(3);
             body();
+            outline();
 
             Space(7);
 
 
-            updateHeight();
             updatePosition();
             closeOnEscape();
 
-            horizontalResize();
 
             if (!isPinned)
                 Repaint();
+
+            EditorApplication.delayCall -= Repaint;
+            EditorApplication.delayCall += Repaint;
 
         }
 
@@ -399,9 +501,16 @@ namespace VHierarchy
         Vector2 dragStartMousePos;
         Vector2 dragStartWindowPos;
 
-        bool isResizing;
-        Vector2 resizeStartMousePos;
-        Vector2 resizeStartWindowSize;
+        public bool isResizingHorizontally;
+        public bool isResizingVertically;
+        public Vector2 resizeStartMousePos;
+        public Vector2 resizeStartWindowSize;
+
+        public float scrollPosition;
+
+        public float targetHeight;
+        public float maxHeight;
+        public float prevHeight;
 
 
 
@@ -435,6 +544,7 @@ namespace VHierarchy
                 editor.DestroyImmediate();
 
             this.component = component;
+            this.componentIid = component.GetInstanceID();
             this.editor = Editor.CreateEditor(component);
 
         }
@@ -453,6 +563,8 @@ namespace VHierarchy
         public Component component;
         public Editor editor;
 
+        public int componentIid;
+
 
 
 
@@ -461,7 +573,11 @@ namespace VHierarchy
         {
             floatingInstance = ScriptableObject.CreateInstance<VHierarchyComponentWindow>();
 
-            floatingInstance.ShowPopup();
+            // floatingInstance.ShowPopup();
+            typeof(EditorWindow).GetMethod("ShowWithMode", maxBindingFlags).Invoke(floatingInstance, new object[] { 3 }); // show in NoShadow mode
+
+
+            floatingInstance.maxHeight = EditorGUIUtility.GetMainWindowPosition().height * .7f;
 
 
             var savedWidth = EditorPrefs.GetFloat("vHierarchy-componentWindowWidth", minWidth);
@@ -469,6 +585,7 @@ namespace VHierarchy
             var width = savedWidth.Max(minWidth);
 
             floatingInstance.position = Rect.zero.SetPos(position).SetWidth(width).SetHeight(200);
+            floatingInstance.prevHeight = floatingInstance.position.height;
 
             floatingInstance.targetPosition = position;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using UnityEngine;
 using YP;
@@ -528,6 +529,13 @@ namespace VN
                         continue;
                     }
 
+                    if (TryCreateCommandStep(row, flowCol, out var commandStep))
+                    {
+                        AppendTerminalStep(result, commandStep);
+                        row++;
+                        continue;
+                    }
+
                     var choiceColumns = CollectChoiceColumns(row, choiceStartCol);
 
                     var hasText = !string.IsNullOrWhiteSpace(flowText);
@@ -658,17 +666,345 @@ namespace VN
                     var col = choiceColumns[i];
                     var optionText = NormalizeText(GetCell(row, col));
 
-                    step.options.Add(new VNChoiceOption
-                    {
-                        text = optionText,
-                        nextStepId = string.Empty,
-                        kind = VNChoiceKind.Cosmetic,
-                        premiumPrice = 0,
-                        effects = new List<VNVarOp>()
-                    });
+                    step.options.Add(CreateChoiceOption(optionText));
                 }
 
                 return step;
+            }
+
+
+            private bool TryCreateCommandStep(int row, int flowCol, out VNCommandStep step)
+            {
+                step = null;
+
+                // Командные строки относятся к основному потоку.
+                // Иначе во время разбора веток выбора одна строка из A/B могла бы случайно продублироваться в каждой ветке.
+                if (flowCol != (int)binding.flowColumn)
+                    return false;
+
+                // Команды задаются для геймдизайнера в первых двух столбцах:
+                // A = название команды без префикса VN и без суффикса Command, B = основной параметр.
+                // Обычные строки продолжают использовать A как speaker, B как emotion, C как текст.
+                var rawCommandName = GetCell(row, (int)binding.speakerColumn);
+                var rawArgument = GetCell(row, (int)binding.emotionColumn);
+
+                if (!TryCreateCommand(rawCommandName, rawArgument, row, out var command, out var label))
+                    return false;
+
+                step = new VNCommandStep
+                {
+                    id = MakeStepId("cmd", row, flowCol),
+                    label = label,
+                    command = command,
+                    nextStepId = string.Empty
+                };
+
+                return true;
+            }
+
+            private bool TryCreateCommand(
+                string rawCommandName,
+                string rawArgument,
+                int row,
+                out VNCommand command,
+                out string label)
+            {
+                command = null;
+                label = string.Empty;
+
+                rawCommandName = NormalizeText(rawCommandName);
+                rawArgument = NormalizeText(rawArgument);
+
+                if (string.IsNullOrWhiteSpace(rawCommandName))
+                    return false;
+
+                var token = NormalizeCommandToken(rawCommandName);
+
+                switch (token)
+                {
+                    case "setbackground":
+                    case "background":
+                    case "location":
+                    case "setlocation":
+                        command = new VNSetBackgroundCommand
+                        {
+                            backgroundId = rawArgument,
+                            crossfadeSeconds = 0.25f,
+                            playLocationIntro = true,
+                            forceLocationIntro = false,
+                            locationIntroDurationOverride = 0f
+                        };
+                        label = BuildCommandLabel(row, "SetBackground", rawArgument);
+                        return true;
+
+                    case "showcharacter":
+                    case "character":
+                    case "showchar":
+                        command = new VNShowCharacterCommand
+                        {
+                            characterId = rawArgument,
+                            slot = VNScreenSlot.Left,
+                            pose = VNPose.Default,
+                            emotion = VNEmotion.Neutral,
+                            crossfadeSeconds = 0.2f
+                        };
+                        label = BuildCommandLabel(row, "ShowCharacter", rawArgument);
+                        return true;
+
+                    case "hidecharacter":
+                    case "hidechar":
+                        command = new VNHideCharacterCommand
+                        {
+                            slot = ParseEnumOrDefault(rawArgument, VNScreenSlot.Left),
+                            fadeSeconds = 0.2f
+                        };
+                        label = BuildCommandLabel(row, "HideCharacter", rawArgument);
+                        return true;
+
+                    case "playmusic":
+                    case "music":
+                        command = new VNPlayMusicCommand
+                        {
+                            musicId = rawArgument,
+                            fadeInSeconds = 0.5f,
+                            loop = true
+                        };
+                        label = BuildCommandLabel(row, "PlayMusic", rawArgument);
+                        return true;
+
+                    case "stopmusic":
+                        command = new VNStopMusicCommand
+                        {
+                            fadeOutSeconds = 0.5f
+                        };
+                        label = BuildCommandLabel(row, "StopMusic", rawArgument);
+                        return true;
+
+                    case "playsfx":
+                    case "sfx":
+                    case "sound":
+                        command = new VNPlaySfxCommand
+                        {
+                            sfxId = rawArgument
+                        };
+                        label = BuildCommandLabel(row, "PlaySfx", rawArgument);
+                        return true;
+
+                    case "showcutscene":
+                    case "cutscene":
+                        command = new VNShowCutsceneCommand
+                        {
+                            cutsceneId = rawArgument,
+                            clipOverride = null,
+                            hideDialogue = true,
+                            hideCharacters = true,
+                            blockInput = true,
+                            fadeInSeconds = 0.15f,
+                            playAudio = true,
+                            audioVolume = 1f
+                        };
+                        label = BuildCommandLabel(row, "ShowCutscene", rawArgument);
+                        return true;
+
+                    case "hidecutscene":
+                        command = new VNHideCutsceneCommand
+                        {
+                            fadeOutSeconds = 0.15f
+                        };
+                        label = BuildCommandLabel(row, "HideCutscene", rawArgument);
+                        return true;
+
+                    case "wait":
+                        command = new VNWaitCommand
+                        {
+                            seconds = ParseFloatOrDefault(rawArgument, 0.5f)
+                        };
+                        label = BuildCommandLabel(row, "Wait", rawArgument);
+                        return true;
+
+                    case "giveartifact":
+                    case "artifact":
+                        command = new VNGiveArtifactCommand
+                        {
+                            artifactId = rawArgument,
+                            dimAlpha = 0.65f,
+                            fadeInSeconds = 0.2f,
+                            scaleUpSeconds = 0.2f,
+                            scaleSettleSeconds = 0.12f,
+                            holdSeconds = 0.8f,
+                            fadeOutSeconds = 0.2f
+                        };
+                        label = BuildCommandLabel(row, "GiveArtifact", rawArgument);
+                        return true;
+
+                    case "givecrystals":
+                    case "crystals":
+                    case "givecrystal":
+                        command = new VNGiveCrystalsCommand
+                        {
+                            amount = Mathf.Max(1, ParseIntOrDefault(rawArgument, 50)),
+                            playFlyAnimation = true
+                        };
+                        label = BuildCommandLabel(row, "GiveCrystals", rawArgument);
+                        return true;
+
+                    case "vfx":
+                        command = new VNVfxCommand
+                        {
+                            vfxId = rawArgument,
+                            anchorId = "center",
+                            localOffset = Vector3.zero,
+                            scale = 1f,
+                            lifetimeOverride = -1f,
+                            softStopSecondsOverride = -1f,
+                            waitUntilFinished = false
+                        };
+                        label = BuildCommandLabel(row, "Vfx", rawArgument);
+                        return true;
+
+                    case "trutheye":
+                    case "eye":
+                        command = new VNTruthEyeCommand
+                        {
+                            holdSeconds = 15f,
+                            failsBeforeSkip = 0,
+                            allowSkipAfterFails = true,
+                            finishOnFail = true,
+                            driftStrength = -1f,
+                            resultBoolKey = string.IsNullOrWhiteSpace(rawArgument) ? "truth_eye_win" : rawArgument
+                        };
+                        label = BuildCommandLabel(row, "TruthEye", rawArgument);
+                        return true;
+
+                    case "mbtianswer":
+                    case "mbti":
+                        command = new VNMbtiAnswerCommand
+                        {
+                            letter = ParseEnumOrDefault(rawArgument, VNMbtiLetter.E)
+                        };
+                        label = BuildCommandLabel(row, "MbtiAnswer", rawArgument);
+                        return true;
+
+                    case "resolvembti":
+                        command = new VNResolveMbtiCommand();
+                        label = BuildCommandLabel(row, "ResolveMbti", rawArgument);
+                        return true;
+
+                    case "setboolvar":
+                    case "setbool":
+                        ParseKeyValue(rawArgument, out var boolKey, out var boolRawValue);
+                        command = new VNSetBoolVarCommand
+                        {
+                            key = boolKey,
+                            value = ParseBoolOrDefault(boolRawValue, true)
+                        };
+                        label = BuildCommandLabel(row, "SetBoolVar", rawArgument);
+                        return true;
+
+                    case "setintvar":
+                    case "setint":
+                        ParseKeyValue(rawArgument, out var intKey, out var intRawValue);
+                        command = new VNSetIntVarCommand
+                        {
+                            key = intKey,
+                            value = ParseIntOrDefault(intRawValue, 0)
+                        };
+                        label = BuildCommandLabel(row, "SetIntVar", rawArgument);
+                        return true;
+
+                    case "addintvar":
+                    case "addint":
+                        ParseKeyValue(rawArgument, out var addIntKey, out var addIntRawDelta);
+                        command = new VNAddIntVarCommand
+                        {
+                            key = addIntKey,
+                            delta = ParseIntOrDefault(addIntRawDelta, 1)
+                        };
+                        label = BuildCommandLabel(row, "AddIntVar", rawArgument);
+                        return true;
+
+                    case "setstringvar":
+                    case "setstring":
+                        ParseKeyValue(rawArgument, out var stringKey, out var stringValue);
+                        command = new VNSetStringVarCommand
+                        {
+                            key = stringKey,
+                            value = stringValue
+                        };
+                        label = BuildCommandLabel(row, "SetStringVar", rawArgument);
+                        return true;
+
+                    case "gate":
+                        command = new VNGateCommand
+                        {
+                            kind = ParseEnumOrDefault(rawArgument, VNGateKind.Mechanic),
+                            gateStopsAuto = true,
+                            gateDisablesSkip = false
+                        };
+                        label = BuildCommandLabel(row, "Gate", rawArgument);
+                        return true;
+
+                    case "vibration":
+                    case "haptic":
+                        command = new VNVibrationCommand
+                        {
+                            feedbackType = ParseEnumOrDefault(rawArgument, VNHapticFeedbackType.Heavy),
+                            pulseCount = 1,
+                            pulseIntervalSeconds = 0.08f
+                        };
+                        label = BuildCommandLabel(row, "Vibration", rawArgument);
+                        return true;
+                }
+
+                return false;
+            }
+
+            private static VNChoiceOption CreateChoiceOption(string optionText)
+            {
+                var option = new VNChoiceOption
+                {
+                    text = optionText,
+                    nextStepId = string.Empty,
+                    kind = VNChoiceKind.Cosmetic,
+                    premiumPrice = 0,
+                    effects = new List<VNVarOp>()
+                };
+
+                TryExtractPremiumChoiceMarker(option);
+                return option;
+            }
+
+            private static void TryExtractPremiumChoiceMarker(VNChoiceOption option)
+            {
+                if (option == null || string.IsNullOrWhiteSpace(option.text))
+                    return;
+
+                var text = option.text.Trim();
+                if (!text.StartsWith("[", StringComparison.Ordinal) || !text.Contains("]"))
+                    return;
+
+                var closeIndex = text.IndexOf(']');
+                if (closeIndex <= 1)
+                    return;
+
+                var marker = text.Substring(1, closeIndex - 1).Trim();
+                var parts = marker.Split(':');
+                if (parts.Length != 2)
+                    return;
+
+                var key = parts[0].Trim();
+                if (!string.Equals(key, "premium", StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(key, "paid", StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(key, "crystal", StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(key, "crystals", StringComparison.OrdinalIgnoreCase))
+                    return;
+
+                if (!int.TryParse(parts[1].Trim(), out var price) || price <= 0)
+                    return;
+
+                option.kind = VNChoiceKind.Premium;
+                option.premiumPrice = price;
+                option.text = text.Substring(closeIndex + 1).Trim();
             }
 
             private void AppendTerminalStep(ParseResult result, VNChapterStep step)
@@ -766,6 +1102,124 @@ namespace VN
                 }
 
                 return result;
+            }
+
+
+            private string BuildCommandLabel(int row, string commandName, string argument)
+            {
+                var suffix = string.IsNullOrWhiteSpace(argument) ? string.Empty : $": {argument}";
+                return $"R{row + 1} {commandName}{suffix}";
+            }
+
+            private static string NormalizeCommandToken(string value)
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    return string.Empty;
+
+                var normalized = NormalizeEnumToken(value);
+
+                if (normalized.StartsWith("vn", StringComparison.Ordinal))
+                    normalized = normalized.Substring(2);
+
+                if (normalized.EndsWith("command", StringComparison.Ordinal))
+                    normalized = normalized.Substring(0, normalized.Length - "command".Length);
+
+                return normalized;
+            }
+
+            private static TEnum ParseEnumOrDefault<TEnum>(string raw, TEnum fallback) where TEnum : struct
+            {
+                if (TryParseEnumFlexible(raw, out TEnum parsed))
+                    return parsed;
+
+                return fallback;
+            }
+
+            private static int ParseIntOrDefault(string raw, int fallback)
+            {
+                raw = NormalizeText(raw);
+
+                if (int.TryParse(raw, NumberStyles.Integer, CultureInfo.InvariantCulture, out var result))
+                    return result;
+
+                return fallback;
+            }
+
+            private static float ParseFloatOrDefault(string raw, float fallback)
+            {
+                raw = NormalizeText(raw);
+
+                if (float.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out var result))
+                    return Mathf.Max(0f, result);
+
+                raw = raw.Replace(',', '.');
+
+                if (float.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out result))
+                    return Mathf.Max(0f, result);
+
+                return fallback;
+            }
+
+            private static bool ParseBoolOrDefault(string raw, bool fallback)
+            {
+                raw = NormalizeText(raw);
+
+                if (bool.TryParse(raw, out var parsed))
+                    return parsed;
+
+                switch (NormalizeEnumToken(raw))
+                {
+                    case "1":
+                    case "yes":
+                    case "y":
+                    case "true":
+                    case "on":
+                    case "да":
+                    case "истина":
+                        return true;
+
+                    case "0":
+                    case "no":
+                    case "n":
+                    case "false":
+                    case "off":
+                    case "нет":
+                    case "ложь":
+                        return false;
+
+                    default:
+                        return fallback;
+                }
+            }
+
+            private static void ParseKeyValue(string raw, out string key, out string value)
+            {
+                raw = NormalizeText(raw);
+                key = raw;
+                value = string.Empty;
+
+                if (string.IsNullOrWhiteSpace(raw))
+                    return;
+
+                var separators = new[] { '=', ':', ';', ',' };
+                var separatorIndex = -1;
+
+                for (var i = 0; i < separators.Length; i++)
+                {
+                    var index = raw.IndexOf(separators[i]);
+
+                    if (index < 0)
+                        continue;
+
+                    if (separatorIndex < 0 || index < separatorIndex)
+                        separatorIndex = index;
+                }
+
+                if (separatorIndex < 0)
+                    return;
+
+                key = raw.Substring(0, separatorIndex).Trim();
+                value = raw.Substring(separatorIndex + 1).Trim();
             }
 
             private string NormalizeSpeaker(string rawSpeaker)

@@ -11,22 +11,26 @@ using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using static VFolders.Libs.VUtils;
 using static VFolders.Libs.VGUI;
-
+// using static VTools.VDebug;
 
 namespace VFolders
 {
     [FilePath("Library/vFolders Cache.asset", FilePathAttribute.Location.ProjectFolder)]
     public class VFoldersCache : ScriptableSingleton<VFoldersCache>
     {
+
         public Texture2D GetIcon(int key)
         {
-            if (instance.iconTextures_byKey.ContainsKey(key)) return instance.iconTextures_byKey[key];
+            if (instance.iconTextures_byKey.ContainsKey(key))
+                return instance.iconTextures_byKey[key];
 
-            if (instance.iconTextureDatas_byKey.ContainsKey(key)) return instance.iconTextures_byKey[key] = instance.iconTextureDatas_byKey[key].GetTexture();
+            if (instance.iconTextureDatas_byKey.ContainsKey(key))
+                return instance.iconTextures_byKey[key] = instance.iconTextureDatas_byKey[key].GetTexture();
 
             return null;
 
         }
+
         public void AddIcon(int key, Texture2D icon)
         {
             instance.iconTextures_byKey[key] = icon;
@@ -37,8 +41,8 @@ namespace VFolders
         }
         public bool HasIcon(int key) => instance.iconTextureDatas_byKey.ContainsKey(key);
 
-        public Dictionary<int, Texture2D> iconTextures_byKey = new Dictionary<int, Texture2D>();
-        public SerializableDictionary<int, TextureData> iconTextureDatas_byKey = new SerializableDictionary<int, TextureData>();
+        public Dictionary<int, Texture2D> iconTextures_byKey = new();
+        public SerializableDictionary<int, TextureData> iconTextureDatas_byKey = new();
 
         [System.Serializable]
         public class TextureData
@@ -78,14 +82,14 @@ namespace VFolders
 
 
 
-        public SerializableDictionary<string, FolderState> folderStates_byGuid = new SerializableDictionary<string, FolderState>();
+        public SerializableDictionary<string, FolderState> folderStates_byGuid = new();
 
         [System.Serializable]
         public class FolderState
         {
             public bool isEmpty;
 
-            public List<string> contentMinimapIconNames = new List<string>();
+            public List<string> contentMinimapIconNames = new();
 
             public string autoIconName = "";
 
@@ -93,25 +97,6 @@ namespace VFolders
 
         }
 
-
-
-
-
-
-        public static void Clear()
-        {
-            instance.iconTextures_byKey.Clear();
-            instance.iconTextureDatas_byKey.Clear();
-
-            instance.folderStates_byGuid.Clear();
-
-            instance.Save(true);
-
-        }
-
-
-
     }
 }
 #endif
-
