@@ -111,6 +111,7 @@ MonoBehaviour:
   - rid: 9129764572344614918
   - rid: 9129764572344614919
   - rid: 9129764572344614920
+  - rid: 7087601793229128011
   - rid: 9129764703577833832
   - rid: 7087601633252343922
   - rid: 7087601633252343924
@@ -457,6 +458,21 @@ MonoBehaviour:
         feedbackType: 0
         pulseCount: 1
         pulseIntervalSeconds: 0.08
+    - rid: 7087601793229128011
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 598bd8981fce4c358179a0ea9746b478
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601793229128013
+        nextStepId: b80dc93392fe4c109bd6be6d8f876328
+    - rid: 7087601793229128013
+      type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        slot: 0
+        fadeSeconds: 0.2
     - rid: 9129764570494403504
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1859,7 +1875,7 @@ MonoBehaviour:
         text: You close your eyes tight and focus your mind and energy on your will
           to become invisible.
         addToLog: 1
-        nextStepId: b80dc93392fe4c109bd6be6d8f876328
+        nextStepId: 598bd8981fce4c358179a0ea9746b478
     - rid: 9129764572344614921
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:

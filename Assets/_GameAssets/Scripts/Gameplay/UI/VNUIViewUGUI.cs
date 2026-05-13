@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace VN.UI
@@ -19,6 +20,15 @@ namespace VN.UI
 
         [SerializeField] private TextMeshProUGUI speakerNameText;
         [SerializeField] private VNTypewriterUGUI typewriter;
+
+        [Header("One-Line Scene Object")]
+        [Tooltip("UI-объект на сцене, который нужно включать только на одной особой строке после победы в мини-игре с глазом. Это НЕ artifact и НЕ sprite из базы — просто ссылка на объект в сцене.")]
+        [FormerlySerializedAs("oneLineImageRoot")]
+        [SerializeField] private GameObject oneLineSceneObject;
+
+        [Tooltip("Если включено, объект особой строки скрывается сразу при переходе на следующую строку.")]
+        [FormerlySerializedAs("hideOneLineImageOnLineHidden")]
+        [SerializeField] private bool hideOneLineSceneObjectOnLineHidden = true;
 
         [Header("Player")] [Tooltip("Имя, которое будет показано вместо speakerId = YOU")] [SerializeField]
         private string playerDisplayName = "Player";
@@ -323,6 +333,8 @@ namespace VN.UI
             if (logPanel != null)
                 logPanel.HideImmediate();
 
+            HideOneLineSceneObject();
+
             ResetButtonGraphic(autoButton);
             ResetButtonGraphic(skipButton);
         }
@@ -548,6 +560,8 @@ namespace VN.UI
             if (speakerNameText != null)
                 speakerNameText.text = showSpeakerPlate ? shownSpeakerName : "";
 
+            ApplyOneLineSceneObject(line);
+
             if (typewriter != null)
                 typewriter.Begin(BuildShownLineText(line));
 
@@ -595,10 +609,14 @@ namespace VN.UI
 
         private void OnLineHidden()
         {
+            if (hideOneLineSceneObjectOnLineHidden)
+                HideOneLineSceneObject();
         }
 
         private void OnChoice(VNRunner.VNChoicePayload payload)
         {
+            HideOneLineSceneObject();
+
             if (dialogueRoot != null)
                 dialogueRoot.SetActive(false);
 
@@ -1311,10 +1329,57 @@ namespace VN.UI
         {
             var text = line.text ?? "";
 
+            if (line.useTextColorOverride)
+                text = WrapColor(text, line.textColorHex);
+
             if (IsPlayerThoughtsLine(line))
                 return WrapItalic(text);
 
             return text;
+        }
+
+        private void ApplyOneLineSceneObject(VNRunner.VNLinePayload line)
+        {
+            if (!line.showOneLineSceneObject)
+            {
+                HideOneLineSceneObject();
+                return;
+            }
+
+            if (oneLineSceneObject == null)
+            {
+                Debug.LogWarning("[VNUIViewUGUI] Truth Eye victory line requested a scene UI object, but One Line Scene Object is not assigned.");
+                return;
+            }
+
+            oneLineSceneObject.SetActive(true);
+
+            if (oneLineSceneObject.TryGetComponent<CanvasGroup>(out var canvasGroup))
+            {
+                canvasGroup.alpha = 1f;
+                canvasGroup.interactable = false;
+                canvasGroup.blocksRaycasts = false;
+            }
+        }
+
+        private void HideOneLineSceneObject()
+        {
+            if (oneLineSceneObject != null)
+                oneLineSceneObject.SetActive(false);
+        }
+
+        private static string WrapColor(string text, string colorHex)
+        {
+            if (string.IsNullOrWhiteSpace(colorHex))
+                colorHex = "#5E3F92";
+
+            if (!colorHex.StartsWith("#", StringComparison.Ordinal))
+                colorHex = "#" + colorHex;
+
+            if (!ColorUtility.TryParseHtmlString(colorHex, out _))
+                colorHex = "#5E3F92";
+
+            return $"<color={colorHex}>{text}</color>";
         }
 
         private void SetTruthEyeActive(bool active)
@@ -1323,6 +1388,8 @@ namespace VN.UI
 
             if (active)
             {
+                HideOneLineSceneObject();
+
                 if (_isLogOpen)
                     SetLogOpen(false);
 

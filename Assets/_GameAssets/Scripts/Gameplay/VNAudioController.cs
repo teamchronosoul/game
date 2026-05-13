@@ -6,6 +6,17 @@ namespace VN.UI
 {
     public class VNAudioController : MonoBehaviour
     {
+        [Header("Quiet SFX Fallback")]
+        [Tooltip("Если SOUND не умеет PlaySFX(..., volume), тихие клиповые SFX проигрываются через локальный AudioSource, чтобы громкость реально применялась.")]
+        [SerializeField] private bool useLocalAudioSourceForQuietClipSfx = true;
+
+        [SerializeField] private AudioSource localSfxSource;
+
+        private void Awake()
+        {
+            EnsureLocalSfxSource();
+        }
+
         public void PlayMusic(AudioClip clip, float fadeInSeconds, bool loop)
         {
             PlayMusic(clip, fadeInSeconds, loop, 1f);
@@ -55,8 +66,20 @@ namespace VN.UI
 
             volume = Mathf.Clamp01(volume);
 
-            if (!TryInvokeSoundMethod("PlaySFX", clip, volume))
-                Sound.PlaySFX(clip);
+            if (TryInvokeSoundMethod("PlaySFX", clip, volume))
+                return;
+
+            if (useLocalAudioSourceForQuietClipSfx && volume < 0.999f)
+            {
+                var source = EnsureLocalSfxSource();
+                if (source != null)
+                {
+                    source.PlayOneShot(clip, volume);
+                    return;
+                }
+            }
+
+            Sound.PlaySFX(clip);
         }
 
         public void PlaySfx(string sfxKey)
@@ -73,6 +96,21 @@ namespace VN.UI
 
             if (!TryInvokeSoundMethod("PlaySFX", sfxKey, volume))
                 Sound.PlaySFX(sfxKey);
+        }
+
+        private AudioSource EnsureLocalSfxSource()
+        {
+            if (localSfxSource != null)
+                return localSfxSource;
+
+            localSfxSource = GetComponent<AudioSource>();
+            if (localSfxSource == null)
+                localSfxSource = gameObject.AddComponent<AudioSource>();
+
+            localSfxSource.playOnAwake = false;
+            localSfxSource.loop = false;
+            localSfxSource.spatialBlend = 0f;
+            return localSfxSource;
         }
 
         private static bool TryInvokeSoundMethod(string methodName, params object[] args)

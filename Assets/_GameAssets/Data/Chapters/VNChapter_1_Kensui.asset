@@ -116,6 +116,7 @@ MonoBehaviour:
   - rid: 9129764570494403361
   - rid: 9129764570494403362
   - rid: 9129764570494403363
+  - rid: 7087601793229128006
   - rid: 9129764703577833829
   - rid: 7087601633252343919
   - rid: 7087601633252343921
@@ -467,6 +468,21 @@ MonoBehaviour:
         musicId: Shinrai_Class
         fadeInSeconds: 0.5
         loop: 1
+    - rid: 7087601793229128006
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: f335ad2a75884b47a593269ec7d24a74
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601793229128008
+        nextStepId: 833183f42c4b42509be1667b57d36251
+    - rid: 7087601793229128008
+      type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        slot: 0
+        fadeSeconds: 0.2
     - rid: 9129764570494403270
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -1952,7 +1968,7 @@ MonoBehaviour:
         text: You close your eyes tight and focus your mind and energy on your will
           to become invisible.
         addToLog: 1
-        nextStepId: 833183f42c4b42509be1667b57d36251
+        nextStepId: f335ad2a75884b47a593269ec7d24a74
     - rid: 9129764570494403364
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:

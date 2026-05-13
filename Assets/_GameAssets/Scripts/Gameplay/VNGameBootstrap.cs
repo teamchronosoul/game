@@ -134,6 +134,10 @@ namespace VN
 
         private void PlayMainMenuMusic()
         {
+            // Перед Home принудительно гасим трек интро/главы, чтобы музыка наставника
+            // не доигрывала поверх главного меню на устройствах.
+            Sound.StopMusic(0f);
+
             if (string.IsNullOrWhiteSpace(mainMenuMusicId))
                 return;
 

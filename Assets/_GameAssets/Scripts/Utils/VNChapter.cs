@@ -155,6 +155,13 @@ namespace VN
         [Header("Result Condition")]
         [Tooltip("Один bool-ключ для условий главы. true = победа, false = поражение или Skip.")]
         public string resultBoolKey = "truth_eye_win";
+
+        [Header("Success Next Line Visual")]
+        [Tooltip("Если игрок победил, следующая VNLineStep будет показана как особая строка: включится сценовый UI-объект из VNUIViewUGUI и поменяется цвет текста. Модификатор применяется только к одной следующей строке.")]
+        public bool decorateNextLineOnSuccess = true;
+
+        [Tooltip("Цвет текста для одной строки после победы. Формат: #RRGGBB или RRGGBB.")]
+        public string successLineTextColorHex = "#5E3F92";
     }
     
     [Serializable]

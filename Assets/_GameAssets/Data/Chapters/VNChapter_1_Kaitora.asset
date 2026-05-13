@@ -120,6 +120,7 @@ MonoBehaviour:
   - rid: 9129764570494402868
   - rid: 9129764570494402869
   - rid: 9129764703577833826
+  - rid: 7087601793229127996
   - rid: 7087601633252343903
   - rid: 7087601633252343905
   - rid: 7087601633252343904
@@ -193,6 +194,7 @@ MonoBehaviour:
   - rid: 7087601677197115491
   - rid: 7087601677197115494
   - rid: 7087601677197115497
+  - rid: 7087601793229127999
   - rid: 9129764570494402932
   - rid: 9129764570494402933
   - rid: 9129764570494402934
@@ -463,13 +465,42 @@ MonoBehaviour:
         stopAuto: 0
         command:
           rid: 7087601677197115499
-        nextStepId: vnchapter_1_kaitora_line_r180_c04
+        nextStepId: 0ba046428e2849f5bf3826dbdca80652
     - rid: 7087601677197115499
       type: {class: VNPlayMusicCommand, ns: VN, asm: Assembly-CSharp}
       data:
         musicId: Shinrai_Class
         fadeInSeconds: 0.5
         loop: 1
+    - rid: 7087601793229127996
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 7b11f44aa50d4b29be4a91e142363037
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601793229127998
+        nextStepId: 8a2976794c774e9bb0dc2bce9e067ca0
+    - rid: 7087601793229127998
+      type: {class: VNHideCharacterCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        slot: 0
+        fadeSeconds: 0.2
+    - rid: 7087601793229127999
+      type: {class: VNCommandStep, ns: VN, asm: Assembly-CSharp}
+      data:
+        id: 0ba046428e2849f5bf3826dbdca80652
+        label: 
+        disableSkip: 0
+        stopAuto: 0
+        command:
+          rid: 7087601793229128001
+        nextStepId: vnchapter_1_kaitora_line_r180_c04
+    - rid: 7087601793229128001
+      type: {class: VNPlaySfxCommand, ns: VN, asm: Assembly-CSharp}
+      data:
+        sfxId: Shinrai_Impact
     - rid: 9129764570494402773
       type: {class: VNLineStep, ns: VN, asm: Assembly-CSharp}
       data:
@@ -4215,7 +4246,7 @@ MonoBehaviour:
         stopAuto: 0
         command:
           rid: 9129764703577833828
-        nextStepId: 8a2976794c774e9bb0dc2bce9e067ca0
+        nextStepId: 7b11f44aa50d4b29be4a91e142363037
     - rid: 9129764703577833828
       type: {class: VNTruthEyeCommand, ns: VN, asm: Assembly-CSharp}
       data:

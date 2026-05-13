@@ -2666,6 +2666,7 @@ namespace VN.Editor
 
             if (runtime.command is VNShowCharacterCommand)
                 DrawCharacterDropdown(cmdProp.FindPropertyRelative("characterId"));
+
         }
 
         private void DrawSpeakerDropdown(SerializedProperty speakerIdProp)
@@ -2747,6 +2748,37 @@ namespace VN.Editor
                 foreach (var id in ids)
                 {
                     m.AddItem(new GUIContent(id), idProp.stringValue == id, () =>
+                    {
+                        idProp.stringValue = id;
+                        idProp.serializedObject.ApplyModifiedProperties();
+                        EditorUtility.SetDirty(_chapter);
+                    });
+                }
+                m.ShowAsContext();
+            }
+        }
+
+        private void DrawArtifactDropdown(SerializedProperty idProp, string label)
+        {
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                EditorGUILayout.PropertyField(idProp, new GUIContent(label));
+
+                if (_project?.assetDatabase == null) return;
+                if (!GUILayout.Button("▼", GUILayout.Width(28))) return;
+
+                var ids = _project.assetDatabase.artifacts
+                    .Select(e => (e?.id ?? "").Trim())
+                    .Where(s => !string.IsNullOrEmpty(s))
+                    .Distinct().OrderBy(s => s).ToList();
+
+                ids.Insert(0, "");
+
+                var m = new GenericMenu();
+                foreach (var id in ids)
+                {
+                    string menuLabel = string.IsNullOrEmpty(id) ? "(None)" : id;
+                    m.AddItem(new GUIContent(menuLabel), idProp.stringValue == id, () =>
                     {
                         idProp.stringValue = id;
                         idProp.serializedObject.ApplyModifiedProperties();

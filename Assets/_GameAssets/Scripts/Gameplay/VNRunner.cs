@@ -144,6 +144,11 @@ namespace VN
 
             public string sfxId;
             public string text;
+
+            public bool useTextColorOverride;
+            public string textColorHex;
+
+            public bool showOneLineSceneObject;
         }
 
         [Serializable]
@@ -297,6 +302,8 @@ namespace VN
         private Coroutine _locationIntroCoroutine;
         private bool _locationIntroPreviousSkipAllowed = true;
         private bool _mbtiIntroActive;
+        private bool _truthEyeSuccessLinePending;
+        private string _truthEyeSuccessLineColorHex;
 
         private void Awake()
         {
@@ -629,6 +636,14 @@ namespace VN
                 yield return WaitManualAdvance();
 
             var result = EvaluateConditions(iff);
+
+            // TruthEye visual is allowed only on the victory branch.
+            // The command itself still writes the bool for chapter conditions,
+            // but if the chapter routes to the false branch, the one-line image/color
+            // must not leak onto the defeat line.
+            if (_truthEyeSuccessLinePending && !result)
+                ClearPendingTruthEyeSuccessLineVisual();
+
             var explicitTarget = result ? Norm(iff.trueStepId) : Norm(iff.falseStepId);
 
             TryAdvanceToExplicitOrFallback(chapter, index, explicitTarget);
@@ -650,8 +665,12 @@ namespace VN
 
             if (!State.currentStepApplied)
             {
-                if (!string.IsNullOrWhiteSpace(line.speakerId))
-                    AutoApplySpeakerPoseEmotion(Norm(line.speakerId), line.pose, line.emotion);
+                var speakerId = Norm(line.speakerId);
+
+                if (ShouldNeutralizeVisibleCharactersForSpeaker(speakerId))
+                    NeutralizeVisibleCharactersForPassiveSpeaker(0f);
+                else
+                    AutoApplySpeakerPoseEmotion(speakerId, line.pose, line.emotion);
 
                 if (!string.IsNullOrWhiteSpace(line.sfxId))
                     EmitSfx(Norm(line.sfxId));
@@ -1436,6 +1455,49 @@ namespace VN
                 _autoStopDueToNewCharacterThisStep = true;
         }
 
+        private static bool ShouldNeutralizeVisibleCharactersForSpeaker(string speakerId)
+        {
+            speakerId = Norm(speakerId);
+            return string.IsNullOrWhiteSpace(speakerId) || IsPlayerSpeakerId(speakerId);
+        }
+
+        private void NeutralizeVisibleCharactersForPassiveSpeaker(float crossfadeSeconds)
+        {
+            if (State == null)
+                return;
+
+            State.EnsureSlots();
+
+            for (var i = 0; i < State.slots.Count; i++)
+            {
+                var s = State.slots[i];
+
+                if (!s.visible || string.IsNullOrWhiteSpace(s.characterId))
+                    continue;
+
+                if (IsPlayerSpeakerId(s.characterId))
+                    continue;
+
+                var targetPose = s.pose;
+
+                if (!CanAutoApplySpeakerVisual(s.characterId, targetPose, VNEmotion.Neutral))
+                {
+                    targetPose = VNPose.Default;
+
+                    if (!CanAutoApplySpeakerVisual(s.characterId, targetPose, VNEmotion.Neutral))
+                        continue;
+                }
+
+                if (s.pose == targetPose && s.emotion == VNEmotion.Neutral)
+                    continue;
+
+                s.pose = targetPose;
+                s.emotion = VNEmotion.Neutral;
+
+                EmitSlot(s.slot, s.characterId, targetPose, VNEmotion.Neutral, true, Mathf.Max(0f, crossfadeSeconds), false);
+            }
+        }
+
         private bool CanAutoApplySpeakerVisual(string speakerId, VNPose pose, VNEmotion emotion)
         {
             speakerId = Norm(speakerId);
@@ -1586,8 +1648,10 @@ namespace VN
 
             if (playMbtiIntroVideoAfterTest && TryBuildMbtiIntroDefinition(out var intro))
                 yield return PlayMbtiIntroRoutine(intro);
-            else
-                yield return ShowMbtiResultLineRoutine();
+
+            // Временно оставляем обязательный показ типа личности до верстки зеркала.
+            // По ТЗ последняя строка после интро должна быть именно с MBTI-типом.
+            yield return ShowMbtiResultLineRoutine();
 
             _mbtiIntroActive = false;
             SetSkipAllowed(previousSkipAllowed);
@@ -1689,7 +1753,10 @@ namespace VN
                 pose = VNPose.Default,
                 emotion = VNEmotion.Neutral,
                 sfxId = null,
-                text = text
+                text = text,
+                useTextColorOverride = false,
+                textColorHex = null,
+                showOneLineSceneObject = false
             };
 
             OnLineStarted?.Invoke(payload);
@@ -1718,7 +1785,7 @@ namespace VN
                     musicId = "Shinrai_intro_3",
                     musicVolume = normalMbtiIntroMusicVolume,
                     sfxIds = new[] { "Mgc_Water_Throw_02" },
-                    sfxVolumes = new[] { normalMbtiIntroSfxVolume },
+                    sfxVolumes = new[] { Mathf.Min(normalMbtiIntroSfxVolume, 0.65f) },
                     lines = new[]
                     {
                         "Welcome to the Order of the Labyrinth, esteemed one.",
@@ -1758,7 +1825,7 @@ namespace VN
                     musicId = "Kensui_1",
                     musicVolume = normalMbtiIntroMusicVolume,
                     sfxIds = new[] { "Amb_Wind" },
-                    sfxVolumes = new[] { quietMbtiIntroSfxVolume },
+                    sfxVolumes = new[] { Mathf.Min(quietMbtiIntroSfxVolume, 0.22f) },
                     lines = new[]
                     {
                         "I welcome you to the Temple of the Everveil, dear heart.",
@@ -1938,6 +2005,13 @@ namespace VN
             if (!isNarrator && project.characterDatabase != null)
                 project.characterDatabase.TryGetDisplayName(speakerId, out speakerName);
 
+            var useTextColorOverride = _truthEyeSuccessLinePending && !string.IsNullOrWhiteSpace(_truthEyeSuccessLineColorHex);
+            var textColorHex = _truthEyeSuccessLineColorHex;
+            var showOneLineSceneObject = _truthEyeSuccessLinePending;
+
+            if (_truthEyeSuccessLinePending)
+                ClearPendingTruthEyeSuccessLineVisual();
+
             return new VNLinePayload
             {
                 speakerId = speakerId,
@@ -1947,7 +2021,10 @@ namespace VN
                 pose = line.pose,
                 emotion = line.emotion,
                 sfxId = Norm(line.sfxId),
-                text = line.text ?? ""
+                text = line.text ?? "",
+                useTextColorOverride = useTextColorOverride,
+                textColorHex = textColorHex,
+                showOneLineSceneObject = showOneLineSceneObject
             };
         }
 
@@ -2411,6 +2488,7 @@ namespace VN
             _suppressNextTap = false;
 
             StopLocationIntro(sendFinishedEvent: true, restoreSkipAllowed: false);
+            ClearPendingTruthEyeSuccessLineVisual();
 
             SetTruthEyeMinigameActive(false);
             
@@ -2477,9 +2555,46 @@ namespace VN
             // true = победа, false = поражение или Skip.
             State.SetBool(resultBoolKey, result.success);
 
+            if (result.success && command.decorateNextLineOnSuccess)
+                ArmTruthEyeSuccessLineVisual(command);
+            else
+                ClearPendingTruthEyeSuccessLineVisual();
+
             VNAutosave.Save(State);
         }
         
+        private void ArmTruthEyeSuccessLineVisual(VNTruthEyeCommand command)
+        {
+            if (command == null)
+            {
+                ClearPendingTruthEyeSuccessLineVisual();
+                return;
+            }
+
+            _truthEyeSuccessLinePending = true;
+            _truthEyeSuccessLineColorHex = NormalizeColorHex(command.successLineTextColorHex, "#5E3F92");
+        }
+
+        private void ClearPendingTruthEyeSuccessLineVisual()
+        {
+            _truthEyeSuccessLinePending = false;
+            _truthEyeSuccessLineColorHex = null;
+        }
+
+        private static string NormalizeColorHex(string value, string fallback)
+        {
+            value = Norm(value);
+            fallback = Norm(fallback) ?? "#5E3F92";
+
+            if (string.IsNullOrWhiteSpace(value))
+                value = fallback;
+
+            if (!value.StartsWith("#", StringComparison.Ordinal))
+                value = "#" + value;
+
+            return ColorUtility.TryParseHtmlString(value, out _) ? value : fallback;
+        }
+
         public void SetPresentedPlayerName(string value)
         {
             _presentedPlayerName = string.IsNullOrWhiteSpace(value) ? "Player" : value.Trim();
@@ -2609,6 +2724,9 @@ namespace VN
             State.cutsceneAudioVolume = 1f;
 
             OnCutsceneHidden?.Invoke(new VNCutsceneHidePayload { fadeOutSeconds = 0f });
+
+            State.musicId = null;
+            OnMusicStop?.Invoke(0f);
 
             VNAutosave.Save(State);
         }
