@@ -1075,12 +1075,12 @@ namespace VN.UI
 
             if (m.clip != null)
             {
-                audioController.PlayMusic(m.clip, m.fadeInSeconds, m.loop);
+                audioController.PlayMusic(m.clip, m.fadeInSeconds, m.loop, m.volume);
                 return;
             }
 
             if (!string.IsNullOrWhiteSpace(m.musicId))
-                audioController.PlayMusic(m.musicId, m.fadeInSeconds, m.loop);
+                audioController.PlayMusic(m.musicId, m.fadeInSeconds, m.loop, m.volume);
         }
 
         private void OnSfx(VNRunner.VNSfxPayload sfx)
@@ -1089,12 +1089,12 @@ namespace VN.UI
 
             if (sfx.clip != null)
             {
-                audioController.PlaySfx(sfx.clip);
+                audioController.PlaySfx(sfx.clip, sfx.volume);
                 return;
             }
 
             if (!string.IsNullOrWhiteSpace(sfx.sfxId))
-                audioController.PlaySfx(sfx.sfxId);
+                audioController.PlaySfx(sfx.sfxId, sfx.volume);
         }
 
         private void OnLocationIntroStarted(VNRunner.VNLocationIntroPayload payload)

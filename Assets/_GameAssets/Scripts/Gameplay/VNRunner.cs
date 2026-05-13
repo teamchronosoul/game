@@ -43,6 +43,35 @@ namespace VN
         [Header("MBTI")] [SerializeField] private VNMbtiState mbti = new();
         public VNMbtiState Mbti => mbti;
 
+        [Header("MBTI Intro Video")]
+        [Tooltip("Если включено, VNResolveMbtiCommand вместо строки с типом личности запускает интро-видео наставника по выпавшему архетипу.")]
+        [SerializeField] private bool playMbtiIntroVideoAfterTest = true;
+
+        [Tooltip("Скрывать персонажей поверх интро-видео. Диалоговая плашка остается видимой, чтобы текст шел обычным typewriter-чтением.")]
+        [SerializeField] private bool hideCharactersDuringMbtiIntro = true;
+
+        [Tooltip("Включать звук, встроенный в сам VideoClip. Обычно выключено, потому что музыка/SFX идут отдельными ключами из SOUND.")]
+        [SerializeField] private bool playMbtiIntroVideoAudio = false;
+
+        [SerializeField, Min(0f)] private float mbtiIntroVideoFadeInSeconds = 0.15f;
+        [SerializeField, Min(0f)] private float mbtiIntroVideoFadeOutSeconds = 0.15f;
+        [SerializeField, Min(0f)] private float mbtiIntroMusicFadeInSeconds = 0.35f;
+        [SerializeField, Min(0f)] private float mbtiIntroMusicFadeOutSeconds = 0.35f;
+        [SerializeField] private bool stopMbtiIntroMusicOnFinish = true;
+
+        [Header("MBTI Intro Volume")]
+        [Tooltip("Обычная громкость музыки интро. Если текущий SOUND не поддерживает громкость на отдельном PlayMusic, значение будет проигнорировано и звук сыграет как раньше.")]
+        [SerializeField, Range(0f, 1f)] private float normalMbtiIntroMusicVolume = 1f;
+
+        [Tooltip("Тихая громкость для интро Kensui/Hinato.")]
+        [SerializeField, Range(0f, 1f)] private float quietMbtiIntroMusicVolume = 0.45f;
+
+        [Tooltip("Обычная громкость SFX интро. Если текущий SOUND не поддерживает громкость на отдельном PlaySFX, значение будет проигнорировано.")]
+        [SerializeField, Range(0f, 1f)] private float normalMbtiIntroSfxVolume = 1f;
+
+        [Tooltip("Тихая громкость для Amb_Wind и других шумных SFX.")]
+        [SerializeField, Range(0f, 1f)] private float quietMbtiIntroSfxVolume = 0.35f;
+
         [Header("Character auto show")] [SerializeField] [Min(0f)]
         private float autoSpeakerCrossfadeSeconds = 0.2f;
 
@@ -202,6 +231,7 @@ namespace VN
             public AudioClip clip;
             public float fadeInSeconds;
             public bool loop;
+            public float volume;
         }
 
         [Serializable]
@@ -209,6 +239,7 @@ namespace VN
         {
             public string sfxId;
             public AudioClip clip;
+            public float volume;
         }
 
         [Serializable]
@@ -265,6 +296,7 @@ namespace VN
         private bool _locationIntroActive;
         private Coroutine _locationIntroCoroutine;
         private bool _locationIntroPreviousSkipAllowed = true;
+        private bool _mbtiIntroActive;
 
         private void Awake()
         {
@@ -395,7 +427,7 @@ namespace VN
 
         public void SetAuto(bool enabled)
         {
-            if (_locationIntroActive && enabled)
+            if ((_locationIntroActive || _mbtiIntroActive) && enabled)
                 enabled = false;
 
             if (AutoEnabled == enabled)
@@ -407,7 +439,7 @@ namespace VN
 
         public void SetSkip(bool enabled)
         {
-            if (_locationIntroActive && enabled)
+            if ((_locationIntroActive || _mbtiIntroActive) && enabled)
                 enabled = false;
 
             if (enabled && !SkipAllowed)
@@ -741,6 +773,14 @@ namespace VN
 
                     yield return StartCoroutine(HandleTruthEyeCommand(truthEyeCommand));
                 }
+                else if (cmdStep.command is VNResolveMbtiCommand resolveMbtiCommand)
+                {
+                    yield return StartCoroutine(HandleResolveMbtiCommand(resolveMbtiCommand));
+
+                    // Интро уже само показало все строки и дождалось клика после последней.
+                    // Дополнительный WaitManualAdvance здесь не нужен.
+                    stopAutoHere = false;
+                }
                 else
                 {
                     ApplyCommand(cmdStep.command, ref stopAutoHere);
@@ -922,7 +962,7 @@ namespace VN
 
         private void SetSkipAllowed(bool allowed)
         {
-            if (_locationIntroActive)
+            if (_locationIntroActive || _mbtiIntroActive)
                 allowed = false;
 
             if (SkipAllowed == allowed)
@@ -1168,15 +1208,9 @@ namespace VN
                     break;
 
                 case VNResolveMbtiCommand:
-                    ResolveMbtiResult();
-                    ShowMbtiResultLine();
-
+                    // VNResolveMbtiCommand обрабатывается корутиной HandleResolveMbtiCommand,
+                    // потому что интро-видео содержит несколько typewriter-строк и ожидание тапов.
                     stopAutoHere = true;
-                    State.mbti = mbti;
-                    VNAutosave.Save(State);
-
-                    if (SkipEnabled)
-                        SetSkip(false);
                     break;
 
                 case VNSetBoolVarCommand vb:
@@ -1533,24 +1567,244 @@ namespace VN
             }
         }
 
-        private void ShowMbtiResultLine()
+        private IEnumerator HandleResolveMbtiCommand(VNResolveMbtiCommand command)
         {
+            ResolveMbtiResult();
+
+            State.mbti = mbti;
+            VNAutosave.Save(State);
+
+            if (AutoEnabled)
+                SetAuto(false);
+
+            if (SkipEnabled)
+                SetSkip(false);
+
+            var previousSkipAllowed = SkipAllowed;
+            _mbtiIntroActive = true;
+            SetSkipAllowed(false);
+
+            if (playMbtiIntroVideoAfterTest && TryBuildMbtiIntroDefinition(out var intro))
+                yield return PlayMbtiIntroRoutine(intro);
+            else
+                yield return ShowMbtiResultLineRoutine();
+
+            _mbtiIntroActive = false;
+            SetSkipAllowed(previousSkipAllowed);
+        }
+
+        private IEnumerator PlayMbtiIntroRoutine(VNMbtiIntroDefinition intro)
+        {
+            if (intro == null)
+                yield break;
+
+            if (hideCharactersDuringMbtiIntro)
+                HideAllCharacters(0f);
+
+            if (!string.IsNullOrWhiteSpace(intro.musicId))
+            {
+                State.musicId = Norm(intro.musicId);
+                EmitMusic(intro.musicId, mbtiIntroMusicFadeInSeconds, true, intro.musicVolume);
+            }
+
+            if (!string.IsNullOrWhiteSpace(intro.cutsceneId))
+            {
+                ShowCutscene(new VNShowCutsceneCommand
+                {
+                    cutsceneId = intro.cutsceneId,
+                    hideDialogue = false,
+                    hideCharacters = hideCharactersDuringMbtiIntro,
+                    blockInput = false,
+                    fadeInSeconds = mbtiIntroVideoFadeInSeconds,
+                    playAudio = playMbtiIntroVideoAudio,
+                    audioVolume = 1f
+                });
+            }
+
+            if (intro.sfxIds != null)
+            {
+                for (var i = 0; i < intro.sfxIds.Length; i++)
+                {
+                    var sfxId = intro.sfxIds[i];
+                    if (string.IsNullOrWhiteSpace(sfxId))
+                        continue;
+
+                    var volume = intro.sfxVolumes != null && i < intro.sfxVolumes.Length
+                        ? intro.sfxVolumes[i]
+                        : normalMbtiIntroSfxVolume;
+
+                    EmitSfx(sfxId, volume);
+                }
+            }
+
+            if (intro.lines != null)
+            {
+                for (var i = 0; i < intro.lines.Length; i++)
+                    yield return PlayRuntimeDialogueLine(
+                        intro.speakerId,
+                        intro.speakerName,
+                        intro.lines[i],
+                        addToLog: true);
+            }
+
+            HideCutscene(new VNHideCutsceneCommand { fadeOutSeconds = mbtiIntroVideoFadeOutSeconds });
+
+            if (stopMbtiIntroMusicOnFinish && !string.IsNullOrWhiteSpace(intro.musicId))
+            {
+                State.musicId = null;
+                OnMusicStop?.Invoke(Mathf.Max(0f, mbtiIntroMusicFadeOutSeconds));
+            }
+        }
+
+        private IEnumerator ShowMbtiResultLineRoutine()
+        {
+            yield return PlayRuntimeDialogueLine(
+                null,
+                "",
+                $"<color={mbti.ResultColorHex}>{mbti.ResultType}</color>",
+                addToLog: false,
+                narrator: true);
+        }
+
+        private IEnumerator PlayRuntimeDialogueLine(
+            string speakerId,
+            string speakerName,
+            string text,
+            bool addToLog,
+            bool narrator = false)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                yield break;
+
             _advanceRequested = false;
-            _interruptWaitRequested = false;
             _interruptWaitRequested = false;
             _lineRevealCompleted = false;
 
-            OnLineStarted?.Invoke(new VNLinePayload
+            var payload = new VNLinePayload
             {
-                speakerId = null,
-                speakerName = "",
-                isNarrator = true,
+                speakerId = Norm(speakerId),
+                speakerName = speakerName ?? "",
+                isNarrator = narrator,
                 showSpeakerName = true,
                 pose = VNPose.Default,
                 emotion = VNEmotion.Neutral,
                 sfxId = null,
-                text = $"<color={mbti.ResultColorHex}>{mbti.ResultType}</color>"
-            });
+                text = text
+            };
+
+            OnLineStarted?.Invoke(payload);
+
+            yield return WaitUntilLineRevealed();
+
+            if (addToLog)
+                AddRuntimeLineToLog(payload);
+
+            yield return WaitManualAdvance();
+
+            OnLineHidden?.Invoke();
+        }
+
+        private bool TryBuildMbtiIntroDefinition(out VNMbtiIntroDefinition intro)
+        {
+            var archetypeId = Norm(mbti.ArchetypeId);
+
+            if (string.Equals(archetypeId, "Logics", StringComparison.OrdinalIgnoreCase))
+            {
+                intro = new VNMbtiIntroDefinition
+                {
+                    speakerId = "Shinrai",
+                    speakerName = "Shinrai",
+                    cutsceneId = "Shinrai_intro",
+                    musicId = "Shinrai_intro_3",
+                    musicVolume = normalMbtiIntroMusicVolume,
+                    sfxIds = new[] { "Mgc_Water_Throw_02" },
+                    sfxVolumes = new[] { normalMbtiIntroSfxVolume },
+                    lines = new[]
+                    {
+                        "Welcome to the Order of the Labyrinth, esteemed one.",
+                        "I invite you to assist me in shaping the future of the academy and the world beyond, for this is our purpose, and this is who we are."
+                    }
+                };
+                return true;
+            }
+
+            if (string.Equals(archetypeId, "Defenders", StringComparison.OrdinalIgnoreCase))
+            {
+                intro = new VNMbtiIntroDefinition
+                {
+                    speakerId = "Kaitora",
+                    speakerName = "Kaitora",
+                    cutsceneId = "Kaitora_intro",
+                    musicId = "Kaitora_1",
+                    musicVolume = normalMbtiIntroMusicVolume,
+                    sfxIds = Array.Empty<string>(),
+                    sfxVolumes = Array.Empty<float>(),
+                    lines = new[]
+                    {
+                        "Welcome to Legion of Sentinels. Together, we will honor and protect the Academy and our ancient magic.",
+                        "Together we stand, free in heart, strong in mind."
+                    }
+                };
+                return true;
+            }
+
+            if (string.Equals(archetypeId, "Diplomats", StringComparison.OrdinalIgnoreCase))
+            {
+                intro = new VNMbtiIntroDefinition
+                {
+                    speakerId = "Kensui",
+                    speakerName = "Kensui",
+                    cutsceneId = "Kensui_intro",
+                    musicId = "Kensui_1",
+                    musicVolume = normalMbtiIntroMusicVolume,
+                    sfxIds = new[] { "Amb_Wind" },
+                    sfxVolumes = new[] { quietMbtiIntroSfxVolume },
+                    lines = new[]
+                    {
+                        "I welcome you to the Temple of the Everveil, dear heart.",
+                        "Here you will unlock the potential of your soul and help your fellow scholars do the same.",
+                        "Your gentle nature is your greatest gift, gracious one."
+                    }
+                };
+                return true;
+            }
+
+            if (string.Equals(archetypeId, "Seekers", StringComparison.OrdinalIgnoreCase))
+            {
+                intro = new VNMbtiIntroDefinition
+                {
+                    speakerId = "Hinato",
+                    speakerName = "Hinato",
+                    cutsceneId = "Hinato_intro",
+                    musicId = "Hinato_2",
+                    musicVolume = quietMbtiIntroMusicVolume,
+                    // Берем один огненный SFX, чтобы интро не шумело слишком сильно.
+                    sfxIds = new[] { "Mgc_Fire_Hold_01" },
+                    sfxVolumes = new[] { normalMbtiIntroSfxVolume },
+                    lines = new[]
+                    {
+                        "Congratulations! You're part of the Guild of the Flow. Honestly, I knew you would be. I could see it in your eyes.",
+                        "Your thoughts and feelings are now one with the Flow, and a tremendous source of power will open its doors to you... as long as you're not scared."
+                    }
+                };
+                return true;
+            }
+
+            intro = null;
+            Debug.LogWarning($"[VNRunner] MBTI intro not found for archetype '{archetypeId ?? "<empty>"}'. Falling back to plain MBTI result line.");
+            return false;
+        }
+
+        private sealed class VNMbtiIntroDefinition
+        {
+            public string speakerId;
+            public string speakerName;
+            public string cutsceneId;
+            public string musicId;
+            public float musicVolume = 1f;
+            public string[] sfxIds;
+            public float[] sfxVolumes;
+            public string[] lines;
         }
 
         private VNScreenSlot FindPreferredSingleSlot(string characterId)
@@ -1806,12 +2060,12 @@ namespace VN
             });
         }
 
-        private void EmitMusic(string musicId, float fadeIn, bool loop)
+        private void EmitMusic(string musicId, float fadeIn, bool loop, float volume = 1f)
         {
             musicId = Norm(musicId);
             AudioClip clip = null;
 
-            if (!string.IsNullOrWhiteSpace(musicId) && project.assetDatabase != null)
+            if (!string.IsNullOrWhiteSpace(musicId) && project != null && project.assetDatabase != null)
                 project.assetDatabase.TryGetMusic(musicId, out clip);
 
             OnMusicPlay?.Invoke(new VNMusicPayload
@@ -1819,7 +2073,8 @@ namespace VN
                 musicId = musicId,
                 clip = clip,
                 fadeInSeconds = Mathf.Max(0f, fadeIn),
-                loop = loop
+                loop = loop,
+                volume = Mathf.Clamp01(volume)
             });
         }
 
@@ -1925,7 +2180,7 @@ namespace VN
             CoinFxManager.PlayCrystalCurrencySfxGlobal();
         }
 
-        private void EmitSfx(string sfxId)
+        private void EmitSfx(string sfxId, float volume = 1f)
         {
             sfxId = Norm(sfxId);
 
@@ -1934,13 +2189,14 @@ namespace VN
 
             AudioClip clip = null;
 
-            if (project.assetDatabase != null)
+            if (project != null && project.assetDatabase != null)
                 project.assetDatabase.TryGetSfx(sfxId, out clip);
 
             OnSfxPlay?.Invoke(new VNSfxPayload
             {
                 sfxId = sfxId,
-                clip = clip
+                clip = clip,
+                volume = Mathf.Clamp01(volume)
             });
         }
 
@@ -2245,6 +2501,21 @@ namespace VN
                 speakerName = GetPresentedPlayerName(),
                 text = choiceText
             });
+        }
+
+        private void AddRuntimeLineToLog(VNLinePayload payload)
+        {
+            if (string.IsNullOrWhiteSpace(payload.text))
+                return;
+
+            State.log.Add(new VNState.LogEntry
+            {
+                speakerId = Norm(payload.speakerId),
+                speakerName = payload.speakerName ?? "",
+                text = payload.text ?? ""
+            });
+
+            VNAutosave.Save(State);
         }
 
         private void AddToLogAfterReveal(VNLineStep line)

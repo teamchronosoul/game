@@ -49,6 +49,14 @@ MonoBehaviour:
   cutscenes:
   - id: Shinrai_Ep.1
     asset: {fileID: 32900000, guid: ddc978367fae9e94f86e69b8faca42fb, type: 3}
+  - id: Hinato_intro
+    asset: {fileID: 32900000, guid: 3a531ccf0fd23e74a837ca319c8572d4, type: 3}
+  - id: Kaitora_intro
+    asset: {fileID: 32900000, guid: 8e1b6f1e193de02488fbe75062ce603d, type: 3}
+  - id: Kensui_intro
+    asset: {fileID: 32900000, guid: 3fbf430c5b6528142afa7a23e2b645dc, type: 3}
+  - id: Shinrai_intro
+    asset: {fileID: 32900000, guid: d5f378c085605ba44b2207a87e0a4892, type: 3}
   vfx:
   - id: snow
     prefab: {fileID: 4923469801378391415, guid: 88482a96dce539e449059e35912741f6, type: 3}

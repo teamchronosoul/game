@@ -4331,6 +4331,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - key: Amb_Wind
+    clip: {fileID: 8300000, guid: c15f1e8e8e5f7a54699c0f2342700bfb, type: 3}
   - key: background_music_intro_test
     clip: {fileID: 8300000, guid: fa33d246a30e8aa48a95184e6eb2eefc, type: 3}
   - key: Bullies
@@ -4341,14 +4343,28 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: bb3de27c0e9bdca44a1f705e73e0a4fd, type: 3}
   - key: fire_card_Hinato
     clip: {fileID: 8300000, guid: 9796baae79b66214db993facf3d1aeab, type: 3}
+  - key: Hinato_1
+    clip: {fileID: 8300000, guid: ba60cb4dc7cc784458813166c188ff57, type: 3}
+  - key: Hinato_2
+    clip: {fileID: 8300000, guid: c5e883facbb838c4bb20c96c9385a51e, type: 3}
   - key: Hinato_intro
     clip: {fileID: 8300000, guid: 38e48b0ff92d66b4cbff71326f613ee9, type: 3}
   - key: home_page
     clip: {fileID: 8300000, guid: 1209eb7109f6be94990f35cac1ed4496, type: 3}
+  - key: Kaitora_1
+    clip: {fileID: 8300000, guid: 4f5e0ad49d8f7ba44af2c0dfe1622e3a, type: 3}
   - key: Kaitora_intro
     clip: {fileID: 8300000, guid: 54b00a667a42c5347b30e9d93daa9449, type: 3}
+  - key: Kensui_1
+    clip: {fileID: 8300000, guid: 3a07a8d8c5c8b774c8f15dc7cf0d157d, type: 3}
+  - key: Kensui_2
+    clip: {fileID: 8300000, guid: fccdf6896796e1241b8479dbac2fbc66, type: 3}
   - key: Kensui_intro
     clip: {fileID: 8300000, guid: 11cc7b5225d511442969a3fe79f6a872, type: 3}
+  - key: Mgc_Fire_Hold_01
+    clip: {fileID: 8300000, guid: 3efa6988a6b7ac6498bf4c12f1287a4b, type: 3}
+  - key: Mgc_Water_Throw_02
+    clip: {fileID: 8300000, guid: ea8dba82e6af79c41882d386e781d850, type: 3}
   - key: miniGameEyeNearLose
     clip: {fileID: 8300000, guid: 511b74ca4c4bf7c42a819fd9f6bda2b6, type: 3}
   - key: MiniGameEyeWin
@@ -4367,6 +4383,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: d39e7dd492832e846bf96e5c0e9e49f8, type: 3}
   - key: Shinrai_intro
     clip: {fileID: 8300000, guid: 11e84d0387a269141bd84fa7c4ac6f8f, type: 3}
+  - key: Shinrai_intro_3
+    clip: {fileID: 8300000, guid: 5b6dc32e196ccd74a8b8426f907a9c0b, type: 3}
   - key: tap
     clip: {fileID: 8300000, guid: 4e7721584ddef9e4e9f69ff474cecbcc, type: 3}
   - key: Tense_1
